@@ -9,9 +9,9 @@ public class Visualizer : MonoBehaviour
 
     public RoadHelper roadHelper;
     public StructureHelper structureHelper;
-    public int roadLength = 18;
-    private int length = 8;
-    private float angle = 80;
+    public int roadLength = 40;
+    private int length = 40;
+    private float angle = 90;
     private bool waitingForTheRoad = false;
 
     public int Length
@@ -40,12 +40,14 @@ public class Visualizer : MonoBehaviour
     {
         length = roadLength;
         roadHelper.Reset();
-       // structureHelper.Reset();
+      //  structureHelper.Reset();
         var sequence = lsystem.GenerateSentence();
-        StartCoroutine(VisualizeSequence(sequence));
+       // var iteration = 
+       // StartCoroutine(VisualizeSequence(sequence));
+        VisualizeSequence(sequence);
     }
 
-    private IEnumerator VisualizeSequence(string sequence)
+    private void VisualizeSequence(string sequence)
     {
         Stack<AgentParameters> savePoints = new Stack<AgentParameters>();
         var currentPosition = Vector3.zero;
@@ -56,10 +58,10 @@ public class Visualizer : MonoBehaviour
 
         foreach (var letter in sequence)
         {
-            if (waitingForTheRoad)
+           /* if (waitingForTheRoad)
             {
                 yield return new WaitForEndOfFrame();
-            }
+            }*/
             EncodingLetters encoding = (EncodingLetters)letter;
             switch (encoding)
             {
@@ -87,9 +89,10 @@ public class Visualizer : MonoBehaviour
                 case EncodingLetters.draw:
                     tempPosition = currentPosition;
                     currentPosition += direction * length;
-                    StartCoroutine(roadHelper.PlaceStreetPositions(tempPosition, Vector3Int.RoundToInt(direction), length));
-                    waitingForTheRoad = true;
-                    yield return new WaitForEndOfFrame();
+                    //    StartCoroutine(roadHelper.PlaceStreetPositions(tempPosition, Vector3Int.RoundToInt(direction), length));
+                    roadHelper.PlaceStreetPositions(tempPosition, Vector3Int.RoundToInt(direction), length);
+                 //   waitingForTheRoad = true;
+                   // yield return new WaitForEndOfFrame();
 
                     Length -= 2;
                     break;
@@ -103,10 +106,10 @@ public class Visualizer : MonoBehaviour
                     break;
             }
         }
-        yield return new WaitForSeconds(0.1f);
+       // yield return new WaitForSeconds(0.1f);
         roadHelper.FixRoad();
-        yield return new WaitForSeconds(0.8f);
-       // StartCoroutine(structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions()));
+       // yield return new WaitForSeconds(0.8f);
+     //   StartCoroutine(structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions()));
 
     }
 }

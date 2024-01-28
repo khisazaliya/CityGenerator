@@ -8,7 +8,7 @@ public class LSystemGenerator : MonoBehaviour
     public Rule[] rules;
     public string rootSentence;
     [Range(0, 20)]
-    public int iterationLimit = 1;
+    public int iterationLimit = 20;
 
     public bool randomIgnoreRuleModifier = true;
     [Range(0, 1)]
@@ -40,11 +40,15 @@ public class LSystemGenerator : MonoBehaviour
         {
             newWord.Append(c);
             ProcessRulesRecursivelly(newWord, c, iterationIndex);
+            GetIndex(iterationIndex);
         }
-
         return newWord.ToString();
     }
 
+    public int GetIndex(int iterationIndex)
+    {
+        return iterationIndex;
+    }
     private void ProcessRulesRecursivelly(StringBuilder newWord, char c, int iterationIndex)
     {
         foreach (var rule in rules)
@@ -53,10 +57,10 @@ public class LSystemGenerator : MonoBehaviour
             {
                 if (randomIgnoreRuleModifier && iterationIndex > 1)
                 {
-                    if (Random.value < chanceToIgnoreRule)
+                    /*if (Random.value < chanceToIgnoreRule)
                     {
                         return;
-                    }
+                    }*/
                 }
                 newWord.Append(GrowRecursive(rule.GetResult(), iterationIndex + 1));
             }
