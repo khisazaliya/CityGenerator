@@ -10,7 +10,7 @@ public class SimpleVisualizer : MonoBehaviour
     public Material lineMaterial;
 
     private int length = 8;
-    private readonly float angle = 80;
+    private readonly float angle = 90;
 
     public int Length
     {

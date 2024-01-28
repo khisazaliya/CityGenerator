@@ -154,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rules:
   - {fileID: 11400000, guid: ccd52555e78eebf4880ffd9c4254d146, type: 2}
-  rootSentence: '[F][-][F][-][F][-][F][-]'
-  iterationLimit: 8
-  randomIgnoreRuleModifier: 0
-  chanceToIgnoreRule: 0
+  rootSentence: F[+F][-F]
+  iterationLimit: 5
+  randomIgnoreRuleModifier: 1
+  chanceToIgnoreRule: 0.28
 --- !u!4 &540249990
 Transform:
   m_ObjectHideFlags: 0
@@ -301,6 +301,7 @@ MonoBehaviour:
   road3way: {fileID: 5962866701861012061, guid: 315ae3df12eb2cd48be4923c16f3547a, type: 3}
   road4way: {fileID: 9024991216101018872, guid: 42168f3369da5d741b4848f69149e780, type: 3}
   roadEnd: {fileID: 1901475907271895716, guid: d293aa27ae6eca54c97ea18b5e7892a0, type: 3}
+  Tree3: {fileID: 6315202082271303812, guid: 2918e207393839d4da9ffe1bb063b87b, type: 3}
   animationTime: 0.01
 --- !u!4 &920142012
 Transform:

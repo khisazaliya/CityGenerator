@@ -57,10 +57,10 @@ public class LSystemGenerator : MonoBehaviour
             {
                 if (randomIgnoreRuleModifier && iterationIndex > 1)
                 {
-                    /*if (Random.value < chanceToIgnoreRule)
+                    if (Random.value < chanceToIgnoreRule)
                     {
                         return;
-                    }*/
+                    }
                 }
                 newWord.Append(GrowRecursive(rule.GetResult(), iterationIndex + 1));
             }
