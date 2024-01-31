@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class PlacementHelper
 {
+    public static System.Random rand = new System.Random();
     public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection)
     {
         List<Direction> neighbourDirections = new List<Direction>();
@@ -35,9 +36,9 @@ public static class PlacementHelper
             case Direction.Down:
                 return new Vector3Int(0, 0, -1);
             case Direction.Left:
-                return Vector3Int.left;
+                return new Vector3Int(rand.Next(-5,-1), 0, 0);
             case Direction.Right:
-                return Vector3Int.right;
+                return new Vector3Int(rand.Next(1, 5), 0, 0);
             default:
                 break;
         }

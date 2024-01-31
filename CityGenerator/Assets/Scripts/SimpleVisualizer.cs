@@ -10,7 +10,7 @@ public class SimpleVisualizer : MonoBehaviour
     public Material lineMaterial;
 
     private int length = 8;
-    private readonly float angle = 90;
+    private readonly float angle = 80;
 
     public int Length
     {
@@ -111,7 +111,6 @@ public class SimpleVisualizer : MonoBehaviour
 
     public enum EncodingLetters
     {
-        unknown = '1',
         save = '[',
         load = ']',
         draw = 'F',

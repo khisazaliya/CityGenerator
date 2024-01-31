@@ -154,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rules:
   - {fileID: 11400000, guid: ccd52555e78eebf4880ffd9c4254d146, type: 2}
-  rootSentence: F[+F][-F]
-  iterationLimit: 5
+  rootSentence: F[+F[+F][-F]]
+  iterationLimit: 1
   randomIgnoreRuleModifier: 1
-  chanceToIgnoreRule: 0.28
+  chanceToIgnoreRule: 0.546
 --- !u!4 &540249990
 Transform:
   m_ObjectHideFlags: 0
@@ -439,8 +439,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553c73ae3bc20404883af9d7b55ef716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingTypes:
+  - prefabs:
+    - {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
+    sizeRequired: 2
+    quantity: 100
+    quantityAlreadyPlaced: 0
+  - prefabs:
+    - {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
+    sizeRequired: 1
+    quantity: 1
+    quantityAlreadyPlaced: 0
+  - prefabs:
+    - {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
+    sizeRequired: 1
+    quantity: 1
+    quantityAlreadyPlaced: 0
+  naturePrefabs: []
+  randomNaturePlacement: 0
+  randomNaturePlacementThreshold: 0.3
   animationTime: 0.01
-  blockSubdivisionThreshold: 100
 --- !u!4 &975204353
 Transform:
   m_ObjectHideFlags: 0
@@ -488,7 +506,7 @@ MonoBehaviour:
   lsystem: {fileID: 540249989}
   roadHelper: {fileID: 920142011}
   structureHelper: {fileID: 975204352}
-  roadLength: 30
+  roadLength: 10
 --- !u!4 &1823135532
 Transform:
   m_ObjectHideFlags: 0

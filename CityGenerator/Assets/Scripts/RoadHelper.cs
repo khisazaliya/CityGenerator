@@ -32,7 +32,7 @@ public class RoadHelper : MonoBehaviour
 		}
         else
         {
-			roadPref = Tree3;
+			roadPref = roadStraight;
         }
 		for (int i = 0; i < length; i++)
 		{
@@ -76,7 +76,7 @@ public class RoadHelper : MonoBehaviour
 				{
 					rotation = Quaternion.Euler(0, -90, 0);
 				}
-				//попробовать проверять по номеру в словаре, если начальные номера - одни префабы, иначе - другие
+				//попробовать провtrрять по номеру в словаре, если начальные номера - одни префабы, иначе - другие
 				roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
 			}
 			else if (neighbourDirections.Count == 2)

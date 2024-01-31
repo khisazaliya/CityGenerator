@@ -40,7 +40,7 @@ public class Visualizer : MonoBehaviour
     {
         length = roadLength;
         roadHelper.Reset();
-      //  structureHelper.Reset();
+        structureHelper.Reset();
         var sequence = lsystem.GenerateSentence();
        // var iteration = 
        // StartCoroutine(VisualizeSequence(sequence));
@@ -108,8 +108,9 @@ public class Visualizer : MonoBehaviour
         }
        // yield return new WaitForSeconds(0.1f);
         roadHelper.FixRoad();
-       // yield return new WaitForSeconds(0.8f);
-     //   StartCoroutine(structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions()));
+        structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions());
+        // yield return new WaitForSeconds(0.8f);
+        //   StartCoroutine(structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions()));
 
     }
 }
