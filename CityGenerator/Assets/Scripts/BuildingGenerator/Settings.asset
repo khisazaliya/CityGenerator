@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62a99736b00de941bd47149c38b075a, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  buildingSize: {x: 10, y: 10}
+  buildingSize: {x: 2, y: 1}
   wingStrategy: {fileID: 0}
   wingsStrategy: {fileID: 0}
   roofStrategy: {fileID: 11400000, guid: 20f95793485f9074a97fdcca896206ce, type: 2}

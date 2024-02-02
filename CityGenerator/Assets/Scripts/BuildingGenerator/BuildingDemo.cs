@@ -5,12 +5,15 @@ using UnityEngine;
 public class BuildingDemo : MonoBehaviour
 {
 
-    public BuildingSettings settings;
+    public BuildingSettings[] settings;
     public void GenerateBuilding()
     {
-        Building b = BuildingGenerator.Generate(settings);
-        GetComponent<BuildingRenderer>().Render(b);
-        Debug.Log(b.ToString());
+        for (int i = 0; i< settings.Length; i++)
+        {
+            Building b = BuildingGenerator.Generate(settings[i]);
+            GetComponent<BuildingRenderer>().Render(b);
+            Debug.Log(b.ToString());
+        }
     }
 
 
