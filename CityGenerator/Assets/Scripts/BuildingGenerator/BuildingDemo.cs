@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class BuildingDemo : MonoBehaviour
 {
-
     public BuildingSettings[] settings;
-    public void GenerateBuilding(Vector3 position)
+
+    public GameObject GenerateBuilding(Vector3 position, Quaternion rotation)
     {
-        for (int i = 0; i< settings.Length; i++)
+        GameObject renderedBuilding = new();
+        for (int i = 0; i < settings.Length; i++)
         {
             Building b = BuildingGenerator.Generate(settings[i]);
-            GetComponent<BuildingRenderer>().Render(b);
-            //b.transform.position = position;
+            BuildingRenderer buildingRenderer = GetComponent<BuildingRenderer>();
+            renderedBuilding = buildingRenderer.Render(b);
+            renderedBuilding.transform.position = position;
+            renderedBuilding.transform.rotation = rotation;
+            float scaleFactor = 0.5f;
+            // Получаем текущий масштаб
+            Vector3 currentScale = renderedBuilding.transform.localScale;
+
+            // Умножаем каждую компоненту вектора на scaleFactor
+            Vector3 newScale = new Vector3(
+                currentScale.x * scaleFactor,
+                currentScale.y * scaleFactor,
+                currentScale.z * scaleFactor
+            );
+
+            // Устанавливаем новый масштаб
+            renderedBuilding.transform.localScale = newScale;
             Debug.Log(b.ToString());
         }
+        return renderedBuilding;
     }
 
     public BuildingDemo(BuildingSettings[] settings)

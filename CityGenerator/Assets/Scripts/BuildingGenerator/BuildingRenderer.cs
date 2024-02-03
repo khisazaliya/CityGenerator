@@ -10,13 +10,14 @@ public class BuildingRenderer : MonoBehaviour
     public Transform[] roofPrefab;
     Transform bldgFolder;
 
-    public void Render(Building bldg)
+    public GameObject Render(Building bldg)
     {
         bldgFolder = new GameObject("Building").transform;
         foreach (Wing wing in bldg.Wings)
         {
             RenderWing(wing);
         }
+        return bldgFolder.gameObject;
     }
 
     private void RenderWing(Wing wing)

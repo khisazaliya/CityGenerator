@@ -44,52 +44,43 @@ public class StructureHelper : MonoBehaviour
                 default:
                     break;
             }
-            /*for (int i = 0; i < buildingTypes.Length; i++)
-			{
-				if (buildingTypes[i].IsBuildingAvailable())
-				{
-					if (buildingTypes[i].sizeRequired > 1)
-					{
-						var halfSize = Mathf.CeilToInt(buildingTypes[i].sizeRequired / 2.0f);
-						List<Vector3Int> tempPositionsBlocked = new List<Vector3Int>();
-						if (VerifyIfBuildingFits(halfSize, freeEstateSpots, freeSpot, ref tempPositionsBlocked))
-						{
-							blockedPositions.AddRange(tempPositionsBlocked);
-							buildingDemo.GenerateBuilding(freeSpot.Key);
-							//var building = SpawnPrefab(buildingTypes[i].GetPrefab(), freeSpot.Key, rotation);
-						//	structuresDictionary.Add(freeSpot.Key, building);
-							//foreach (var pos in tempPositionsBlocked)
-							{
-								structuresDictionary.Add(pos, building);
-							}
-							break;
-						}
-					}
-					else
-					{
-						buildingDemo.GenerateBuilding(freeSpot.Key);
-						//var building = SpawnPrefab(buildingTypes[i].GetPrefab(), freeSpot.Key, rotation);
-						//structuresDictionary.Add(freeSpot.Key, building);
-
-					}
-					break;
-				}
-			}*/
-            Debug.Log(buildingDemo.settings);
-            //buildingDemo.GenerateBuilding(freeSpot.Key);
 
             for (int i = 0; i < buildingDemo.settings.Length; i++)
             {
                 List<Vector3Int> tempPositionsBlocked = new List<Vector3Int>();
-                blockedPositions.AddRange(tempPositionsBlocked);
-                buildingDemo.GenerateBuilding(freeSpot.Key);
+                if (VerifyIfBuildingFits(2, freeEstateSpots, freeSpot, ref tempPositionsBlocked))
+                {
+                    blockedPositions.AddRange(tempPositionsBlocked);
+
+                    // —оздаем здание только в случае успешной проверки
+                    var building = buildingDemo.GenerateBuilding(freeSpot.Key, rotation);
+
+                    // ƒобавл€ем здание в словарь только если ключа нет
+                    if (!structuresDictionary.ContainsKey(freeSpot.Key))
+                    {
+                        // ƒобавл€ем здание в словарь, использу€ только позицию freeSpot.Key
+                        structuresDictionary.Add(freeSpot.Key, building);
+
+                        // ѕровер€ем, есть ли зан€тые позиции в словаре, и добавл€ем их, если они свободны
+                        foreach (var pos in tempPositionsBlocked.Skip(1))
+                        {
+                            if (!structuresDictionary.ContainsKey(pos))
+                            {
+                                structuresDictionary.Add(pos, building);
+                            }
+                        }
+
+                        // ¬ыход из цикла, так как здание уже размещено
+                        break;
+                    }
+
+                }
             }
+
+
 
         }
     }
-
-
-
 
     private bool VerifyIfBuildingFits(
     int halfSize,
@@ -118,13 +109,6 @@ public class StructureHelper : MonoBehaviour
             tempPositionsBlocked.Add(pos2);
         }
         return true;
-    }
-
-    private GameObject SpawnPrefab(GameObject prefab, Vector3Int position, Quaternion rotation)
-    {
-        var newStructure = Instantiate(prefab, position, rotation, transform);
-        newStructure.AddComponent<FallTween>();
-        return newStructure;
     }
 
     private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)

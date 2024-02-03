@@ -155,9 +155,9 @@ MonoBehaviour:
   rules:
   - {fileID: 11400000, guid: ccd52555e78eebf4880ffd9c4254d146, type: 2}
   rootSentence: F[+F[+F][-F]]
-  iterationLimit: 1
+  iterationLimit: 2
   randomIgnoreRuleModifier: 1
-  chanceToIgnoreRule: 0.546
+  chanceToIgnoreRule: 0.273
 --- !u!4 &540249990
 Transform:
   m_ObjectHideFlags: 0
@@ -559,6 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823135532}
   - component: {fileID: 1823135531}
+  - component: {fileID: 1823135533}
   m_Layer: 0
   m_Name: Visualizer
   m_TagString: Untagged
@@ -581,7 +582,7 @@ MonoBehaviour:
   lsystem: {fileID: 540249989}
   roadHelper: {fileID: 920142011}
   structureHelper: {fileID: 975204352}
-  roadLength: 10
+  roadLength: 20
   settings:
   - {fileID: 11400000, guid: 6b2ecaadb65a3f7478480ef9c6c91db2, type: 2}
   - {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
@@ -601,6 +602,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1823135533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823135530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e0597a760654044bfb08d9af0c0541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorPrefab: {fileID: 0}
+  wallPrefab:
+  - {fileID: 0}
+  - {fileID: 400000, guid: 956036c8d148c8241870e5a31ae1e7a3, type: 3}
+  - {fileID: 400000, guid: f24ff2a0b870b7846b0dc2d4dd1c3dbd, type: 3}
+  - {fileID: 400000, guid: 1f2b192365b3dd749bba8db830a73155, type: 3}
+  roofPrefab:
+  - {fileID: 400002, guid: adf888a5fbb8d464194221d63f51fd13, type: 3}
+  - {fileID: 400002, guid: 89e7ad342438f4a4dbc1e96d6f4eb7af, type: 3}
+  - {fileID: 400002, guid: 3ac29a2820fd760489c1f74381389614, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
