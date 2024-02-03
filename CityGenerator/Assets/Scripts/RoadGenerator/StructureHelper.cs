@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class StructureHelper : MonoBehaviour
 {
-    public BuildingType[] buildingTypes;
     public GameObject[] naturePrefabs;
     public bool randomNaturePlacement = false;
     [Range(0, 1)]
@@ -122,20 +121,10 @@ public class StructureHelper : MonoBehaviour
 
     public void Reset()
     {
-        foreach (var item in structuresDictionary.Values)
+       /* foreach (var item in structuresDictionary.Values)
         {
             Destroy(item);
-        }
+        }*/
         structuresDictionary.Clear();
-        foreach (var item in natureDictionary.Values)
-        {
-            Destroy(item);
-        }
-        natureDictionary.Clear();
-        foreach (var buildingType in buildingTypes)
-        {
-            buildingType.Reset();
-        }
-
     }
 }

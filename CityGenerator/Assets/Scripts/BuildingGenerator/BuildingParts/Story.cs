@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Story : MonoBehaviour
+public class Story 
 {
     int level;
     Wall[] walls;

@@ -30,8 +30,9 @@ public class SimpleVisualizer : MonoBehaviour
 
     private void Start()
     {
-        var sequence = lsystem.GenerateSentence();
-        VisualizeSequence(sequence);
+        //var sequence = lsystem.GenerateSentence();
+        // VisualizeSequence(sequence);
+        VisualizeSequence(lsystem.GenerateSentence());
     }
 
     private void VisualizeSequence(string sequence)
@@ -87,11 +88,11 @@ public class SimpleVisualizer : MonoBehaviour
                     break;
             }
         }
-
+/*
         foreach (var position in positions)
         {
             Instantiate(prefab, position, Quaternion.identity);
-        }
+        }*/
 
     }
 

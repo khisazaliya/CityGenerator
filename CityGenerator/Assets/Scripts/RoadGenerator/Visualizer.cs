@@ -14,7 +14,7 @@ public class Visualizer : MonoBehaviour
     private float angle = 90;
     private bool waitingForTheRoad = false;
     public BuildingSettings[] settings;
-    public BuildingDemo buildingDemo = new BuildingDemo();
+    public BuildingDemo buildingDemo;
 
     public int Length
     {
@@ -34,7 +34,7 @@ public class Visualizer : MonoBehaviour
 
     private void Start()
     {
-        roadHelper.finishedCoroutine += () => waitingForTheRoad = false;
+       // roadHelper.finishedCoroutine += () => waitingForTheRoad = false;
         CreateTown();
     }
 

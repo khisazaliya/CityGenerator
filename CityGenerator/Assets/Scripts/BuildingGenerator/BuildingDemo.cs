@@ -5,11 +5,11 @@ using UnityEngine;
 public class BuildingDemo : MonoBehaviour
 {
     public BuildingSettings[] settings;
-    public MeshCombiner meshCombiner;
+    GameObject renderedBuilding = new();
+    // public MeshCombiner meshCombiner;
 
     public GameObject GenerateBuilding(Vector3 position, Quaternion rotation)
     {
-        GameObject renderedBuilding = new();
         for (int i = 0; i < settings.Length; i++)
         {
             Building b = BuildingGenerator.Generate(settings[i]);
@@ -40,7 +40,5 @@ public class BuildingDemo : MonoBehaviour
         this.settings = settings;
     }
 
-    public BuildingDemo()
-    {
-    }
+   
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wing : MonoBehaviour
+public class Wing 
 {
     RectInt bounds;
     Story[] stories;

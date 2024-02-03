@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class RoadHelper : MonoBehaviour
 {
-	public Action finishedCoroutine;
 	public GameObject roadStraight, roadCorner, road3way, road4way, roadEnd, Tree3;
 	Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject>();
 	HashSet<Vector3Int> fixRoadCandidates = new HashSet<Vector3Int>();
@@ -19,21 +18,11 @@ public class RoadHelper : MonoBehaviour
 
 	public void PlaceStreetPositions(Vector3 startPosition, Vector3Int direction, int length)
 	{
-		GameObject roadPref = new GameObject();
 		var rotation = Quaternion.identity;
 		if (direction.x == 0)
 		{
 			rotation = Quaternion.Euler(0, 90, 0);
 		}
-		if (flag <= 30)
-		{
-			roadPref = roadStraight;
-			flag++;
-		}
-        else
-        {
-			roadPref = roadStraight;
-        }
 		for (int i = 0; i < length; i++)
 		{
 			var position = Vector3Int.RoundToInt(startPosition + direction * i);
@@ -42,7 +31,7 @@ public class RoadHelper : MonoBehaviour
 			{
 				continue;
 			}
-			var road = Instantiate(roadPref, position, rotation, transform);
+			var road = Instantiate(roadStraight, position, rotation, transform);
 			//road.AddComponent<FallTween>();
 			roadDictionary.Add(position, road);
 			if (i == 0 || i <= length - 1)
@@ -133,11 +122,6 @@ public class RoadHelper : MonoBehaviour
 				roadDictionary[position] = Instantiate(road4way, position, rotation, transform);
 			}
 		}
-
-		/*if (iteration > 2)
-        {
-
-        }*/
 	}
 
 	public void Reset()

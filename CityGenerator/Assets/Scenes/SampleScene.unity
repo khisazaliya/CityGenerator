@@ -155,7 +155,7 @@ MonoBehaviour:
   rules:
   - {fileID: 11400000, guid: ccd52555e78eebf4880ffd9c4254d146, type: 2}
   rootSentence: F[+F[+F][-F]]
-  iterationLimit: 2
+  iterationLimit: 1
   randomIgnoreRuleModifier: 1
   chanceToIgnoreRule: 0.273
 --- !u!4 &540249990
@@ -190,7 +190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &555699034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +232,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
-  meshCombiner: {fileID: 1989011066}
 --- !u!4 &555699036
 Transform:
   m_ObjectHideFlags: 0
@@ -358,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &920142011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,22 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553c73ae3bc20404883af9d7b55ef716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingTypes:
-  - prefabs:
-    - {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
-    sizeRequired: 2
-    quantity: 0
-    quantityAlreadyPlaced: 0
-  - prefabs:
-    - {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
-    sizeRequired: 1
-    quantity: 0
-    quantityAlreadyPlaced: 0
-  - prefabs:
-    - {fileID: 3866452111178995711, guid: 62dd89dfe4948b744ac32fe5d0249467, type: 3}
-    sizeRequired: 1
-    quantity: 0
-    quantityAlreadyPlaced: 0
   naturePrefabs: []
   randomNaturePlacement: 0
   randomNaturePlacementThreshold: 0.3
@@ -584,8 +567,7 @@ MonoBehaviour:
   roadHelper: {fileID: 920142011}
   structureHelper: {fileID: 975204352}
   roadLength: 30
-  settings:
-  - {fileID: 11400000, guid: 6b2ecaadb65a3f7478480ef9c6c91db2, type: 2}
+  settings: []
   buildingDemo: {fileID: 555699035}
 --- !u!4 &1823135532
 Transform:
@@ -614,9 +596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e0597a760654044bfb08d9af0c0541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: {fileID: 0}
+  floorPrefab: {fileID: 400002, guid: 586c4c43d2727bd45a7ef177530c10f8, type: 3}
   wallPrefab:
-  - {fileID: 0}
   - {fileID: 400000, guid: 956036c8d148c8241870e5a31ae1e7a3, type: 3}
   - {fileID: 400000, guid: f24ff2a0b870b7846b0dc2d4dd1c3dbd, type: 3}
   - {fileID: 400000, guid: 1f2b192365b3dd749bba8db830a73155, type: 3}
@@ -624,50 +605,6 @@ MonoBehaviour:
   - {fileID: 400002, guid: adf888a5fbb8d464194221d63f51fd13, type: 3}
   - {fileID: 400002, guid: 89e7ad342438f4a4dbc1e96d6f4eb7af, type: 3}
   - {fileID: 400002, guid: 3ac29a2820fd760489c1f74381389614, type: 3}
---- !u!1 &1989011065
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1989011067}
-  - component: {fileID: 1989011066}
-  m_Layer: 0
-  m_Name: MeshCombiner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1989011066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989011065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51db0e03e49994e46af831e2af68d594, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1989011067
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989011065}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3299563, y: 16.25409, z: 3.0861182}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -679,4 +616,3 @@ SceneRoots:
   - {fileID: 920142012}
   - {fileID: 975204353}
   - {fileID: 555699036}
-  - {fileID: 1989011067}
