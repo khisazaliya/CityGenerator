@@ -582,7 +582,9 @@ MonoBehaviour:
   roadHelper: {fileID: 920142011}
   structureHelper: {fileID: 975204352}
   roadLength: 10
-  settings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
+  settings:
+  - {fileID: 11400000, guid: 6b2ecaadb65a3f7478480ef9c6c91db2, type: 2}
+  - {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
   buildingDemo: {fileID: 555699035}
 --- !u!4 &1823135532
 Transform:

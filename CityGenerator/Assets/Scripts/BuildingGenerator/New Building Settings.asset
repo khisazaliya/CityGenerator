@@ -15,7 +15,7 @@ MonoBehaviour:
   buildingSize: {x: 1, y: 1}
   wingStrategy: {fileID: 0}
   wingsStrategy: {fileID: 0}
-  roofStrategy: {fileID: 0}
+  roofStrategy: {fileID: 11400000, guid: 20f95793485f9074a97fdcca896206ce, type: 2}
   wallsStrategy: {fileID: 0}
   storyStrategy: {fileID: 0}
   storiesStrategy: {fileID: 0}
