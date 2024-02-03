@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingDemo : MonoBehaviour
 {
     public BuildingSettings[] settings;
+    public MeshCombiner meshCombiner;
 
     public GameObject GenerateBuilding(Vector3 position, Quaternion rotation)
     {
@@ -14,8 +15,8 @@ public class BuildingDemo : MonoBehaviour
             Building b = BuildingGenerator.Generate(settings[i]);
             BuildingRenderer buildingRenderer = GetComponent<BuildingRenderer>();
             renderedBuilding = buildingRenderer.Render(b);
-            renderedBuilding.transform.position = position;
-            renderedBuilding.transform.rotation = rotation;
+            //renderedBuilding = meshCombiner.CombineMeshes(renderedBuilding);
+            renderedBuilding.transform.SetPositionAndRotation(position, rotation);
             float scaleFactor = 0.5f;
             // Получаем текущий масштаб
             Vector3 currentScale = renderedBuilding.transform.localScale;

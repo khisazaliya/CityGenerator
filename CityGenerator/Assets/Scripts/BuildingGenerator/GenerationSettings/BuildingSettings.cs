@@ -7,6 +7,8 @@ using UnityEngine;
 public class BuildingSettings : ScriptableObject
 {
     [SerializeField]
+    public int Count;
+    [SerializeField]
     public Vector2Int buildingSize;
     [SerializeField]
     public WingStrategy wingStrategy;
