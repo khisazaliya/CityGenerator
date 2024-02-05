@@ -64,7 +64,7 @@ public class SimpleVisualizer : MonoBehaviour
                         var agentParameter = savePoints.Pop();
                         currentPosition = agentParameter.position;
                         direction = agentParameter.direction;
-                        Length = agentParameter.length;
+                      //  Length = agentParameter.length;
                     }
                     else
                     {
@@ -75,7 +75,7 @@ public class SimpleVisualizer : MonoBehaviour
                     tempPosition = currentPosition;
                     currentPosition += direction * length;
                     DrawLine(tempPosition, currentPosition, Color.red);
-                    Length -= 2;
+                   // Length -= 2;
                     positions.Add(currentPosition);
                     break;
                 case EncodingLetters.turnRight:

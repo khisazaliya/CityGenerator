@@ -212,7 +212,7 @@ MonoBehaviour:
   - {fileID: 400002, guid: 430d7d8ed5cdfde41908088cd96c7d4a, type: 3}
   - {fileID: 400002, guid: 5bd7549d4ba97824eb10d08267faab67, type: 3}
   roofPrefab:
-  - {fileID: 400002, guid: 8a9c3ce2f8d1f1243b1d24a30042b9b3, type: 3}
+  - {fileID: 400002, guid: 3ac29a2820fd760489c1f74381389614, type: 3}
   - {fileID: 400002, guid: 3ac29a2820fd760489c1f74381389614, type: 3}
   - {fileID: 400002, guid: ce223a8a409293143849b81309a06bb0, type: 3}
   - {fileID: 400002, guid: adee1e541529ff7448d4ff21af0f6c21, type: 3}
@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &920142011
 MonoBehaviour:
   m_ObjectHideFlags: 0

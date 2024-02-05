@@ -10,7 +10,6 @@ public class RoadHelper : MonoBehaviour
 	Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject>();
 	HashSet<Vector3Int> fixRoadCandidates = new HashSet<Vector3Int>();
 	public float animationTime = 0.01f;
-	int flag = 0;
 	public List<Vector3Int> GetRoadPositions()
 	{
 		return roadDictionary.Keys.ToList();

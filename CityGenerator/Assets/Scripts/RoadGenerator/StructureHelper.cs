@@ -20,6 +20,7 @@ public class StructureHelper : MonoBehaviour
     public System.Random rand = new System.Random();
     public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingDemo buildingDemo)
     {
+        var building = buildingDemo.GenerateBuilding(new Vector3(0,0,0) , Quaternion.Euler(0,0,0));
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
 
         foreach (var freeSpot in freeEstateSpots)
@@ -51,7 +52,7 @@ public class StructureHelper : MonoBehaviour
                     if (VerifyIfBuildingFits(halfSize, freeEstateSpots, freeSpot, ref tempPositionsBlocked))
                     {
                         // Создаем здание только в случае успешной проверки
-                        var building = buildingDemo.GenerateBuilding(freeSpot.Key, rotation);
+                        building = buildingDemo.GenerateBuilding(freeSpot.Key, rotation);
                         buildingCount++;
                         // Добавляем здание в словарь только если ключа нет
                         if (!structuresDictionary.ContainsKey(freeSpot.Key))

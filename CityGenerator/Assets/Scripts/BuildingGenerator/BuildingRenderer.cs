@@ -19,7 +19,7 @@ public class BuildingRenderer : MonoBehaviour
             RenderWing(wing);
         }
 
-      //  meshCombiner.CombineMeshes(); // Вызываем объединение мешей
+        //  meshCombiner.CombineMeshes(); // Вызываем объединение мешей
         return bldgFolder.gameObject;
     }
 
@@ -160,11 +160,11 @@ public class BuildingRenderer : MonoBehaviour
     {
         Transform r;
         r = Instantiate(
-            roofPrefab[(int)type],
+            roofPrefab[0],
             wingFolder.TransformPoint(
                new Vector3(
                        x * -3f + rotationOffset[(int)direction].x,
-                        level * 2.5f + (type == RoofType.Point ? -0.3f : 0f),
+                        level * 2.2f + (type == RoofType.Point ? -0.3f : 0f),
                         y * -3f + rotationOffset[(int)direction].z
                     )
                 ),
@@ -179,4 +179,35 @@ public class BuildingRenderer : MonoBehaviour
         new Vector3 (0f, 90, -3f),
         new Vector3 (-3f, 180, -3f)
     };
+
+    public float GetPrefubSize(RoofType type)
+    {
+        float size = new();
+        {
+            // Создаем экземпляр префаба
+            var instance = Instantiate(roofPrefab[0], Vector3.zero, Quaternion.identity);
+
+            // Получаем коллайдер из экземпляра префаба
+            Renderer prefabRenderer = roofPrefab[0].GetComponent<MeshRenderer>();
+
+            if (prefabRenderer != null)
+            {
+                // Получаем размеры коллайдера
+                size = prefabRenderer.bounds.size.y;
+
+                // Выводим размеры в консоль
+                Debug.Log("Prefab size: " + size);
+
+                // Вы можете использовать size.x, size.y, size.z для получения конкретных размеров по осям
+            }
+            else
+            {
+                Debug.LogError("Prefab does not have a collider!");
+            }
+
+            // Уничтожаем временный экземпляр префаба
+            Destroy(instance);
+            return size;
+        }
+    }
 }
