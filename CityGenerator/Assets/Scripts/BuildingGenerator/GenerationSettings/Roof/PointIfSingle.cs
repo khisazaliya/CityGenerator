@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Building Generation/Roof/Point If Single")]
 public class PointIfSingle : RoofStrategy
 {
-    public override Roof GenerateRoof(BuildingSettings settings, RectInt bounds)
+    public override Roof GenerateRoof(BuildingStrategiesSettings settings, RectInt bounds)
     {
         if (bounds.size.x == 1 && bounds.size.y == 1)
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefaultStoryStrategy : StoryStrategy
 {
-   public override Story GenerateStory(BuildingSettings settings, RectInt bounds, int level){
+   public override Story GenerateStory(BuildingStrategiesSettings settings, RectInt bounds, int level){
     return new Story(
         0, 
         settings.wallsStrategy != null ? 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class RoofStrategy : ScriptableObject
 {
-    public abstract Roof GenerateRoof(BuildingSettings settings, RectInt bounds);
+    public abstract Roof GenerateRoof(BuildingStrategiesSettings settings, RectInt bounds);
 }
 
 

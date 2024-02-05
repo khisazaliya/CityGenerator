@@ -15,14 +15,63 @@ public class StructureHelper : MonoBehaviour
     public Dictionary<Vector3Int, GameObject> structuresDictionary = new Dictionary<Vector3Int, GameObject>();
     public Dictionary<Vector3Int, GameObject> natureDictionary = new Dictionary<Vector3Int, GameObject>();
     public float animationTime = 0.01f;
-    public int buildingCount = 0;
 
     public System.Random rand = new System.Random();
     public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingDemo buildingDemo)
     {
-        var building = buildingDemo.GenerateBuilding(new Vector3(0,0,0) , Quaternion.Euler(0,0,0));
+       // var building = buildingDemo.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
 
+        for (int i = 0; i < buildingDemo.buildingSettings.Length; i++)
+        {
+            for (int j = 0; j < buildingDemo.buildingSettings[i].buildingCount; j++)
+            {
+                List<Vector3Int> tempPositionsBlocked = new List<Vector3Int>();
+                var halfSize = Mathf.CeilToInt(buildingDemo.buildingSettings[i].buildingSize.x * buildingDemo.buildingSettings[i].buildingSize.y / 3f);
+                {
+                    // —оздаем здание только в случае успешной проверки
+                    var position = freeEstateSpots.Last().Key;
+                    var rotation = Quaternion.identity;
+
+                    switch (freeEstateSpots[position])
+                    {
+                        case Direction.Up:
+                            rotation = Quaternion.Euler(0, 90, 0);
+                            break;
+                        case Direction.Down:
+                            rotation = Quaternion.Euler(0, -90, 0);
+                            break;
+                        case Direction.Right:
+                            rotation = Quaternion.Euler(0, 180, 0);
+                            break;
+                        default:
+                            break;
+                    }
+                    if (tempPositionsBlocked.Contains(position)) freeEstateSpots.Remove(position);
+                    var building = buildingDemo.GenerateBuilding(freeEstateSpots.Last().Key, rotation, buildingDemo.buildingSettings[i]);
+                    freeEstateSpots.Remove(position);
+                    // ƒобавл€ем здание в словарь только если ключа нет
+                    if (!structuresDictionary.ContainsKey(position))
+                    {
+                        // ѕровер€ем, что позиции в tempPositionsBlocked не зан€ты
+                        if (tempPositionsBlocked.All(pos => !structuresDictionary.ContainsKey(pos)))
+                        {
+                            // ƒобавл€ем здание в словарь, использу€ позиции tempPositionsBlocked
+                            foreach (var pos in tempPositionsBlocked)
+                            {
+                                structuresDictionary.Add(pos, building);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+
+/*
         foreach (var freeSpot in freeEstateSpots)
         {
             var rotation = Quaternion.identity;
@@ -42,14 +91,12 @@ public class StructureHelper : MonoBehaviour
                     break;
             }
 
-            for (int i = 0; i < buildingDemo.settings.Length; i++)
+            for (int i = 0; i < buildingDemo.buildingSettings.Length; i++)
             {
-                if (buildingCount < buildingDemo.settings[i].Count)
+                for (int j = 0; j < buildingDemo.buildingSettings[i].buildingCount; j++)
                 {
                     List<Vector3Int> tempPositionsBlocked = new List<Vector3Int>();
-                    var halfSize = Mathf.CeilToInt(buildingDemo.settings[i].buildingSize.x * buildingDemo.settings[i].buildingSize.y / 3f);
-
-                    if (VerifyIfBuildingFits(halfSize, freeEstateSpots, freeSpot, ref tempPositionsBlocked))
+                    var halfSize = Mathf.CeilToInt(buildingDemo.buildingSettings[i].buildingSize.x * buildingDemo.buildingSettings[i].buildingSize.y / 3f);
                     {
                         // —оздаем здание только в случае успешной проверки
                         building = buildingDemo.GenerateBuilding(freeSpot.Key, rotation);
@@ -73,7 +120,7 @@ public class StructureHelper : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
 
     private bool VerifyIfBuildingFits(int halfSize, Dictionary<Vector3Int, Direction> freeEstateSpots, KeyValuePair<Vector3Int, Direction> freeSpot, ref List<Vector3Int> tempPositionsBlocked)
@@ -122,10 +169,10 @@ public class StructureHelper : MonoBehaviour
 
     public void Reset()
     {
-       /* foreach (var item in structuresDictionary.Values)
-        {
-            Destroy(item);
-        }*/
+        /* foreach (var item in structuresDictionary.Values)
+         {
+             Destroy(item);
+         }*/
         structuresDictionary.Clear();
     }
 }

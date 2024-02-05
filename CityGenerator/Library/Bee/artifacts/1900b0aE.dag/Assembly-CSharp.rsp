@@ -361,6 +361,7 @@
 "Assets/Scripts/BuildingGenerator/BuildingParts/Wing.cs"
 "Assets/Scripts/BuildingGenerator/BuildingRenderer.cs"
 "Assets/Scripts/BuildingGenerator/GenerationSettings/BuildingSettings.cs"
+"Assets/Scripts/BuildingGenerator/GenerationSettings/BuildingStrategiesSettings.cs"
 "Assets/Scripts/BuildingGenerator/GenerationSettings/Roof/DefaultRoofStrategy.cs"
 "Assets/Scripts/BuildingGenerator/GenerationSettings/Roof/PointIfSingle.cs"
 "Assets/Scripts/BuildingGenerator/GenerationSettings/Roof/RoofStrategy.cs"

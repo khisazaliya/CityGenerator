@@ -12,7 +12,7 @@ public class Visualizer : MonoBehaviour
     public int roadLength = 40;
     private int length = 40;
     private float angle = 90;
-    public BuildingSettings[] settings;
+    public BuildingStrategiesSettings[] settings;
     public BuildingDemo buildingDemo;
 
     public int Length

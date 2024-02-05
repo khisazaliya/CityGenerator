@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BuildingDemo : MonoBehaviour
 {
-    public BuildingSettings[] settings;
+    public BuildingStrategiesSettings strategySettings;
+    public BuildingSettings[] buildingSettings;
     GameObject renderedBuilding = new();
     // public MeshCombiner meshCombiner;
 
-    public GameObject GenerateBuilding(Vector3 position, Quaternion rotation)
+    public GameObject GenerateBuilding(Vector3 position, Quaternion rotation, BuildingSettings buildingSettings)
     {
-        for (int i = 0; i < settings.Length; i++)
-        {
-            Building b = BuildingGenerator.Generate(settings[i]);
+
+            Building b = BuildingGenerator.Generate(strategySettings, buildingSettings);
             BuildingRenderer buildingRenderer = GetComponent<BuildingRenderer>();
             renderedBuilding = buildingRenderer.Render(b);
             //renderedBuilding = meshCombiner.CombineMeshes(renderedBuilding);
@@ -31,13 +31,12 @@ public class BuildingDemo : MonoBehaviour
             // Устанавливаем новый масштаб
             renderedBuilding.transform.localScale = newScale;
             Debug.Log(b.ToString());
-        }
         return renderedBuilding;
     }
 
-    public BuildingDemo(BuildingSettings[] settings)
+    public BuildingDemo(BuildingStrategiesSettings settings)
     {
-        this.settings = settings;
+        this.strategySettings = settings;
     }
 
    

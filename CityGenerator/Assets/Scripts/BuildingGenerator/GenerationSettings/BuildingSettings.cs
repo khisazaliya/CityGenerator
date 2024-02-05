@@ -1,29 +1,19 @@
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Building Generation/Building Settings")]
-public class BuildingSettings : ScriptableObject
+[System.Serializable]
+public class BuildingSettings
 {
-    [SerializeField]
-    public int Count;
-    [SerializeField]
     public Vector2Int buildingSize;
-    [SerializeField]
-    public WingStrategy wingStrategy;
-    [SerializeField]
-    public WingsStrategy wingsStrategy;
-    [SerializeField]
-    public RoofStrategy roofStrategy;
-    [SerializeField]
-    public WallsStrategy wallsStrategy;
-    [SerializeField]
-    public StoryStrategy storyStrategy;
-    [SerializeField]
-    public StoriesStrategy storiesStrategy;
-    [SerializeField]
-    public Vector2Int Size { get { return buildingSize; } }
+    public int buildingCount;
 
-
+    public BuildingSettings(Vector2Int size, int count)
+    {
+        buildingSize = size;
+        buildingCount = count;
+    }
 }

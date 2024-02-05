@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefaultRoofStrategy : RoofStrategy
 {
-    public override Roof GenerateRoof(BuildingSettings settings, RectInt bounds){
+    public override Roof GenerateRoof(BuildingStrategiesSettings settings, RectInt bounds){
         return new Roof();
    }
 }

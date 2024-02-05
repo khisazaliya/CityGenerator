@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefaultWingStrategy : WingStrategy
 {
-    public override  Wing GenerateWing(BuildingSettings settings, RectInt bounds, int numberOfStrories){
+    public override  Wing GenerateWing(BuildingStrategiesSettings settings, RectInt bounds, int numberOfStrories){
     return new Wing(
         bounds,
         settings.storiesStrategy != null ? 

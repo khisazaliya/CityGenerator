@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class BuildingGenerator : MonoBehaviour
 {
-    public static Building Generate(BuildingSettings settings)
+    public static Building Generate(BuildingStrategiesSettings strategySettings, BuildingSettings buildingSettings)
     {
-        if (settings == null)
+        if (strategySettings == null)
         {
-            settings = new BuildingSettings();
-            settings.buildingSize.x = 1;
-            settings.buildingSize.y = 1;
-            Debug.Log(settings == null);
-            ((WingsStrategy)ScriptableObject.CreateInstance<DefaultWingsStrategy>()).GenerateWings(settings);
+            strategySettings = new BuildingStrategiesSettings();
+            buildingSettings.buildingSize.x = 1;
+            buildingSettings.buildingSize.y = 1;
+            Debug.Log(strategySettings == null);
+            ((WingsStrategy)ScriptableObject.CreateInstance<DefaultWingsStrategy>()).GenerateWings(strategySettings, buildingSettings);
 
         }
         return new Building(
-           settings.Size.x,
-           settings.Size.y,
-           settings.wingsStrategy != null ?
-           settings.wingsStrategy.GenerateWings(settings) :
-           ((WingsStrategy)ScriptableObject.CreateInstance<DefaultWingsStrategy>()).GenerateWings(settings)
+           buildingSettings.buildingSize.x,
+           buildingSettings.buildingSize.y,
+           strategySettings.wingsStrategy != null ?
+           strategySettings.wingsStrategy.GenerateWings(strategySettings, buildingSettings) :
+           ((WingsStrategy)ScriptableObject.CreateInstance<DefaultWingsStrategy>()).GenerateWings(strategySettings, buildingSettings)
        );
     }
 }

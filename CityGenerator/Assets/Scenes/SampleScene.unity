@@ -155,7 +155,7 @@ MonoBehaviour:
   rules:
   - {fileID: 11400000, guid: ccd52555e78eebf4880ffd9c4254d146, type: 2}
   rootSentence: F[+F[+F][-F]]
-  iterationLimit: 1
+  iterationLimit: 2
   randomIgnoreRuleModifier: 1
   chanceToIgnoreRule: 0.273
 --- !u!4 &540249990
@@ -230,8 +230,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c1dcadbdc2ff740b77bc2fd6a9be7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings:
-  - {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
+  strategySettings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
+  buildingSettings:
+  - buildingSize: {x: 2, y: 2}
+    buildingCount: 20
+  - buildingSize: {x: 1, y: 1}
+    buildingCount: 10
+  - buildingSize: {x: 3, y: 3}
+    buildingCount: 5
 --- !u!4 &555699036
 Transform:
   m_ObjectHideFlags: 0
@@ -357,7 +363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &920142011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +523,6 @@ MonoBehaviour:
   randomNaturePlacement: 0
   randomNaturePlacementThreshold: 0.3
   animationTime: 0.01
-  buildingCount: 0
 --- !u!4 &975204353
 Transform:
   m_ObjectHideFlags: 0

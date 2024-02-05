@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class WingStrategy : ScriptableObject
 {
-    public abstract Wing GenerateWing(BuildingSettings settings, RectInt bounds, int numberOfStrories);
+    public abstract Wing GenerateWing(BuildingStrategiesSettings settings, RectInt bounds, int numberOfStrories);
 }
