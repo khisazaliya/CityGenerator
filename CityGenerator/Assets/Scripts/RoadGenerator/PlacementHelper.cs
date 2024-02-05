@@ -32,13 +32,13 @@ public static class PlacementHelper
         switch (direction)
         {
             case Direction.Up:
-                return new Vector3Int(0, 0, (rand.Next(3, 5)));
+                return new Vector3Int(0, 0, (rand.Next(3, 12)));
             case Direction.Down:
                 return new Vector3Int(0, 0, (rand.Next(-10, -1)));
             case Direction.Left:
                 return new Vector3Int(rand.Next(-10,-1), 0, 0);
             case Direction.Right:
-                return new Vector3Int(rand.Next(3, 5), 0, 0);
+                return new Vector3Int(rand.Next(3, 12), 0, 0);
             default:
                 break;
         }

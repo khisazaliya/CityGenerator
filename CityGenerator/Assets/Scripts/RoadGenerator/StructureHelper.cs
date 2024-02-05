@@ -19,130 +19,71 @@ public class StructureHelper : MonoBehaviour
     public System.Random rand = new System.Random();
     public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingDemo buildingDemo)
     {
-       // var building = buildingDemo.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
 
         for (int i = 0; i < buildingDemo.buildingSettings.Length; i++)
         {
             for (int j = 0; j < buildingDemo.buildingSettings[i].buildingCount; j++)
             {
-                List<Vector3Int> tempPositionsBlocked = new List<Vector3Int>();
-                var halfSize = Mathf.CeilToInt(buildingDemo.buildingSettings[i].buildingSize.x * buildingDemo.buildingSettings[i].buildingSize.y / 3f);
+                bool intersects = true; 
+                while (intersects)
                 {
-                    // —оздаем здание только в случае успешной проверки
-                    var position = freeEstateSpots.Last().Key;
-                    var rotation = Quaternion.identity;
+                    var position = new Vector3Int() ;
+                    try
+                    {
+                        position = freeEstateSpots.Last().Key;
+                        var rotation = Quaternion.identity;
 
-                    switch (freeEstateSpots[position])
-                    {
-                        case Direction.Up:
-                            rotation = Quaternion.Euler(0, 90, 0);
-                            break;
-                        case Direction.Down:
-                            rotation = Quaternion.Euler(0, -90, 0);
-                            break;
-                        case Direction.Right:
-                            rotation = Quaternion.Euler(0, 180, 0);
-                            break;
-                        default:
-                            break;
-                    }
-                    if (tempPositionsBlocked.Contains(position)) freeEstateSpots.Remove(position);
-                    var building = buildingDemo.GenerateBuilding(freeEstateSpots.Last().Key, rotation, buildingDemo.buildingSettings[i]);
-                    freeEstateSpots.Remove(position);
-                    // ƒобавл€ем здание в словарь только если ключа нет
-                    if (!structuresDictionary.ContainsKey(position))
-                    {
-                        // ѕровер€ем, что позиции в tempPositionsBlocked не зан€ты
-                        if (tempPositionsBlocked.All(pos => !structuresDictionary.ContainsKey(pos)))
+                        switch (freeEstateSpots[position])
                         {
-                            // ƒобавл€ем здание в словарь, использу€ позиции tempPositionsBlocked
-                            foreach (var pos in tempPositionsBlocked)
-                            {
-                                structuresDictionary.Add(pos, building);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-
-
-
-
-/*
-        foreach (var freeSpot in freeEstateSpots)
-        {
-            var rotation = Quaternion.identity;
-
-            switch (freeSpot.Value)
-            {
-                case Direction.Up:
-                    rotation = Quaternion.Euler(0, 90, 0);
-                    break;
-                case Direction.Down:
-                    rotation = Quaternion.Euler(0, -90, 0);
-                    break;
-                case Direction.Right:
-                    rotation = Quaternion.Euler(0, 180, 0);
-                    break;
-                default:
-                    break;
-            }
-
-            for (int i = 0; i < buildingDemo.buildingSettings.Length; i++)
-            {
-                for (int j = 0; j < buildingDemo.buildingSettings[i].buildingCount; j++)
-                {
-                    List<Vector3Int> tempPositionsBlocked = new List<Vector3Int>();
-                    var halfSize = Mathf.CeilToInt(buildingDemo.buildingSettings[i].buildingSize.x * buildingDemo.buildingSettings[i].buildingSize.y / 3f);
-                    {
-                        // —оздаем здание только в случае успешной проверки
-                        building = buildingDemo.GenerateBuilding(freeSpot.Key, rotation);
-                        buildingCount++;
-                        // ƒобавл€ем здание в словарь только если ключа нет
-                        if (!structuresDictionary.ContainsKey(freeSpot.Key))
-                        {
-                            // ѕровер€ем, что позиции в tempPositionsBlocked не зан€ты
-                            if (tempPositionsBlocked.All(pos => !structuresDictionary.ContainsKey(pos)))
-                            {
-                                // ƒобавл€ем здание в словарь, использу€ позиции tempPositionsBlocked
-                                foreach (var pos in tempPositionsBlocked)
-                                {
-                                    structuresDictionary.Add(pos, building);
-                                }
-
-                                // ¬ыход из цикла, так как здание уже размещено
+                            case Direction.Up:
+                                rotation = Quaternion.Euler(0, 90, 0);
                                 break;
+                            case Direction.Down:
+                                rotation = Quaternion.Euler(0, -90, 0);
+                                break;
+                            case Direction.Right:
+                                rotation = Quaternion.Euler(0, 180, 0);
+                                break;
+                            default:
+                                break;
+                        }
+                        var building = buildingDemo.GenerateBuilding(position, rotation, buildingDemo.buildingSettings[i]);
+                        var collider = building.AddComponent<BoxCollider>();
+                        Vector3 buildingSize = building.transform.localScale * 20;
+                        collider.size = buildingSize;
+
+                        foreach (var existingBuilding in structuresDictionary.Values)
+                        {
+                            Collider existingCollider = existingBuilding.GetComponent<BoxCollider>();
+                            if (existingCollider != null && collider != null)
+                            {
+                                if (existingCollider.bounds.Intersects(collider.bounds))
+                                {
+                                    intersects = true;
+                                    Debug.Log("intersects");
+                                    Destroy(building);
+                                    // freeEstateSpots.Remove(position);
+                                    break;
+                                }
+                                else intersects = false;
                             }
                         }
+
+                        freeEstateSpots.Remove(position);
+                        if (!structuresDictionary.ContainsKey(position))
+                        {
+                            structuresDictionary.Add(position, building);
+                        }
+                    }
+                    catch (InvalidOperationException e)
+                    {
+                        // ќбработка исключени€
+                        Debug.LogError("ћеста дл€ размещени€ зданий закончились: " + e.Message);
                     }
                 }
             }
-        }*/
-    }
-
-    private bool VerifyIfBuildingFits(int halfSize, Dictionary<Vector3Int, Direction> freeEstateSpots, KeyValuePair<Vector3Int, Direction> freeSpot, ref List<Vector3Int> tempPositionsBlocked)
-    {
-        Vector3Int direction = (freeSpot.Value == Direction.Down || freeSpot.Value == Direction.Up) ? Vector3Int.right : new Vector3Int(0, 0, 1);
-
-        for (int i = -halfSize + 1; i < halfSize; i++)
-        {
-            var pos = freeSpot.Key + direction * i;
-
-            // ѕровер€ем, что позици€ находитс€ в пределах словар€ freeEstateSpots и не зан€та
-            if (!freeEstateSpots.ContainsKey(pos) || structuresDictionary.ContainsKey(pos))
-            {
-                // ќчищаем временные позиции и возвращаем false, если проверка не прошла
-                tempPositionsBlocked.Clear();
-                return false;
-            }
-
-            tempPositionsBlocked.Add(pos);
         }
-
-        return true;
     }
 
     private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)
