@@ -233,11 +233,11 @@ MonoBehaviour:
   strategySettings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
   buildingSettings:
   - buildingSize: {x: 2, y: 2}
-    buildingCount: 20
+    buildingCount: 1
   - buildingSize: {x: 1, y: 1}
-    buildingCount: 10
+    buildingCount: 1
   - buildingSize: {x: 3, y: 3}
-    buildingCount: 5
+    buildingCount: 1
 --- !u!4 &555699036
 Transform:
   m_ObjectHideFlags: 0

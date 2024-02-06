@@ -25,66 +25,70 @@ public class StructureHelper : MonoBehaviour
         {
             for (int j = 0; j < buildingDemo.buildingSettings[i].buildingCount; j++)
             {
-                bool intersects = true; 
+                bool intersects = true;
+                int attempts = 0; // Счетчик попыток размещения здания
+
                 while (intersects)
                 {
-                    var position = new Vector3Int() ;
-                    try
+                    if (attempts >= freeEstateSpots.Count)
                     {
-                        position = freeEstateSpots.Last().Key;
-                        var rotation = Quaternion.identity;
+                        Debug.LogError("Невозможно разместить все здания: недостаточно свободного места.");
+                        return;
+                    }
 
-                        switch (freeEstateSpots[position])
-                        {
-                            case Direction.Up:
-                                rotation = Quaternion.Euler(0, 90, 0);
-                                break;
-                            case Direction.Down:
-                                rotation = Quaternion.Euler(0, -90, 0);
-                                break;
-                            case Direction.Right:
-                                rotation = Quaternion.Euler(0, 180, 0);
-                                break;
-                            default:
-                                break;
-                        }
-                        var building = buildingDemo.GenerateBuilding(position, rotation, buildingDemo.buildingSettings[i]);
-                        var collider = building.AddComponent<BoxCollider>();
-                        Vector3 buildingSize = building.transform.localScale * 20;
-                        collider.size = buildingSize;
+                    var position = freeEstateSpots.ElementAt(UnityEngine.Random.Range(0, freeEstateSpots.Count)).Key;
+                    var rotation = Quaternion.identity;
 
-                        foreach (var existingBuilding in structuresDictionary.Values)
+                    switch (freeEstateSpots[position])
+                    {
+                        case Direction.Up:
+                            rotation = Quaternion.Euler(0, 90, 0);
+                            break;
+                        case Direction.Down:
+                            rotation = Quaternion.Euler(0, -90, 0);
+                            break;
+                        case Direction.Right:
+                            rotation = Quaternion.Euler(0, 180, 0);
+                            break;
+                        default:
+                            break;
+                    }
+
+                    var building = buildingDemo.GenerateBuilding(position, rotation, buildingDemo.buildingSettings[i]);
+                    var collider = building.AddComponent<BoxCollider>();
+                    Vector3 buildingSize = building.transform.localScale * 20;
+                    collider.size = buildingSize;
+
+                    intersects = false; // Предполагаем, что здание не пересекается с другими
+
+                    foreach (var existingBuilding in structuresDictionary.Values)
+                    {
+                        Collider existingCollider = existingBuilding.GetComponent<BoxCollider>();
+                        if (existingCollider != null && collider != null)
                         {
-                            Collider existingCollider = existingBuilding.GetComponent<BoxCollider>();
-                            if (existingCollider != null && collider != null)
+                            if (existingCollider.bounds.Intersects(collider.bounds))
                             {
-                                if (existingCollider.bounds.Intersects(collider.bounds))
-                                {
-                                    intersects = true;
-                                    Debug.Log("intersects");
-                                    Destroy(building);
-                                    // freeEstateSpots.Remove(position);
-                                    break;
-                                }
-                                else intersects = false;
+                                intersects = true;
+                                Debug.Log("intersects");
+                                Destroy(building);
+                                break;
                             }
                         }
+                    }
 
-                        freeEstateSpots.Remove(position);
-                        if (!structuresDictionary.ContainsKey(position))
-                        {
-                            structuresDictionary.Add(position, building);
-                        }
-                    }
-                    catch (InvalidOperationException e)
+                    if (!intersects)
                     {
-                        // Обработка исключения
-                        Debug.LogError("Места для размещения зданий закончились: " + e.Message);
+                        // Успешно размещено, выходим из цикла
+                        freeEstateSpots.Remove(position);
+                        structuresDictionary.Add(position, building);
                     }
+
+                    attempts++; // Увеличиваем счетчик попыток
                 }
             }
         }
     }
+
 
     private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)
     {

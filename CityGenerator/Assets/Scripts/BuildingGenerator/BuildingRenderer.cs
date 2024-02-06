@@ -10,7 +10,6 @@ public class BuildingRenderer : MonoBehaviour
     public Transform[] roofPrefab;
     Transform bldgFolder;
 
-    //public MeshCombiner meshCombiner;
     public GameObject Render(Building bldg)
     {
         bldgFolder = new GameObject("Building").transform;
@@ -19,7 +18,6 @@ public class BuildingRenderer : MonoBehaviour
             RenderWing(wing);
         }
 
-        //  meshCombiner.CombineMeshes(); // Вызываем объединение мешей
         return bldgFolder.gameObject;
     }
 
