@@ -12,11 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62a99736b00de941bd47149c38b075a, type: 3}
   m_Name: Settings
   m_EditorClassIdentifier: 
-  Count: 1
-  buildingSize: {x: 2, y: 10}
-  wingStrategy: {fileID: 0}
-  wingsStrategy: {fileID: 0}
+  wingStrategy: {fileID: 11400000, guid: c8312850a96c0bf45b57826ea555f3c1, type: 2}
+  wingsStrategy: {fileID: 11400000, guid: 0bb46f058ad17e34e8b8553d4d676db0, type: 2}
   roofStrategy: {fileID: 11400000, guid: 20f95793485f9074a97fdcca896206ce, type: 2}
-  wallsStrategy: {fileID: 0}
-  storyStrategy: {fileID: 0}
-  storiesStrategy: {fileID: 0}
+  wallsStrategy: {fileID: 11400000, guid: 18a3f2800b7434a47a43d9fc061e7a8f, type: 2}
+  storyStrategy: {fileID: 11400000, guid: 556a8b3fc4e53124c969c627e1213e21, type: 2}
+  storiesStrategy: {fileID: 11400000, guid: d09774ca938f5864e8ba15adcc0b2d7d, type: 2}

@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Building Generation/Story/DefaultStory")]
 public class DefaultStoryStrategy : StoryStrategy
 {
-   public override Story GenerateStory(BuildingStrategiesSettings settings, RectInt bounds, int level){
+   public override Story GenerateStory(BuildingStrategiesSettings strategySettings, BuildingSettings buildingSettings, RectInt bounds){
+        Debug.Log(buildingSettings.numberOfLevels + "truely");
     return new Story(
-        0, 
-        settings.wallsStrategy != null ? 
-        settings.wallsStrategy.GenerateWalls(settings, bounds, level) :
-        ((WallsStrategy)ScriptableObject.CreateInstance<DefaultWallsStrategy>()).GenerateWalls(settings, bounds, level)
+        strategySettings.wallsStrategy != null ?
+        strategySettings.wallsStrategy.GenerateWalls(strategySettings, bounds) :
+        ((WallsStrategy)ScriptableObject.CreateInstance<DefaultWallsStrategy>()).GenerateWalls(strategySettings, bounds)
 
     );
    }

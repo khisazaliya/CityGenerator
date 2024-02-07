@@ -7,11 +7,9 @@ public class Story
     int level;
     Wall[] walls;
 
-    public int Level { get => level; }
     public Wall[] Walls { get => walls; }
 
-    public Story(int level, Wall[] walls){
-        this.level = level;
+    public Story(Wall[] walls){
         this.walls = walls;
     }
 

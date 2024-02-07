@@ -20,5 +20,6 @@ public class PointIfSingle : RoofStrategy
             int max = t.Length;
             return new Roof((RoofType)UnityEngine.Random.Range(1, max));
         }
+
     }
 }

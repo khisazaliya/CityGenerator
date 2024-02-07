@@ -15,8 +15,10 @@ public class BuildingGenerator : MonoBehaviour
             Debug.Log(strategySettings == null);
             ((WingsStrategy)ScriptableObject.CreateInstance<DefaultWingsStrategy>()).GenerateWings(strategySettings, buildingSettings);
 
+
         }
         return new Building(
+           buildingSettings.numberOfLevels,
            buildingSettings.buildingSize.x,
            buildingSettings.buildingSize.y,
            strategySettings.wingsStrategy != null ?

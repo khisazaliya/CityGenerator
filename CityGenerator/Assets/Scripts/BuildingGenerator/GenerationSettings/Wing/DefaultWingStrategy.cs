@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Building Generation/Wing/DefaultWing")]
 public class DefaultWingStrategy : WingStrategy
 {
-    public override  Wing GenerateWing(BuildingStrategiesSettings settings, RectInt bounds, int numberOfStrories){
+    public override  Wing GenerateWing(BuildingStrategiesSettings strategySettings, BuildingSettings buildingSettigns, 
+        RectInt bounds){
+        Debug.Log(buildingSettigns.numberOfLevels + "new inf");
     return new Wing(
         bounds,
-        settings.storiesStrategy != null ? 
-          settings.storiesStrategy.GenerateStories(settings, bounds, numberOfStrories) :
-          ((StoriesStrategy)ScriptableObject.CreateInstance<DefaultStoriesStrategy>()).GenerateStories(settings, bounds, numberOfStrories),
-          settings.roofStrategy != null ? 
-          settings.roofStrategy.GenerateRoof(settings, bounds) :
-          ((RoofStrategy)ScriptableObject.CreateInstance<DefaultRoofStrategy>()).GenerateRoof(settings, bounds)
+        strategySettings.storiesStrategy != null ? 
+          strategySettings.storiesStrategy.GenerateStories(strategySettings, buildingSettigns,  bounds) :
+          ((StoriesStrategy)ScriptableObject.CreateInstance<DefaultStoriesStrategy>()).GenerateStories(strategySettings, buildingSettigns, bounds),
+          strategySettings.roofStrategy != null ? 
+          strategySettings.roofStrategy.GenerateRoof(strategySettings, bounds) :
+          ((RoofStrategy)ScriptableObject.CreateInstance<DefaultRoofStrategy>()).GenerateRoof(strategySettings, bounds)
     );
    }
 }

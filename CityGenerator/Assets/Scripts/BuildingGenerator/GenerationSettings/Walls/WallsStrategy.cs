@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class WallsStrategy : ScriptableObject
 {
-    public abstract Wall[] GenerateWalls(BuildingStrategiesSettings settings, RectInt bounds, int level);
+    public abstract Wall[] GenerateWalls(BuildingStrategiesSettings settings, RectInt bounds);
 }
