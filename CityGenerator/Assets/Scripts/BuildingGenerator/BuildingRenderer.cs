@@ -110,7 +110,7 @@ public class BuildingRenderer : MonoBehaviour
         List<int> entries = new();
         for (int i = 1; i <= numberOfEntries; i++)
         {
-            int currentDoorPosition = wing.Bounds.min.y + doorSpacing * i -1;
+            int currentDoorPosition = wing.Bounds.min.y + doorSpacing * i - 1;
             entries.Add(currentDoorPosition);
             Debug.Log("position " + currentDoorPosition);
         }
@@ -142,7 +142,7 @@ public class BuildingRenderer : MonoBehaviour
                 new Vector3(
                     x * -3f,
                     height,
-                    y * 3f - 0.5f
+                    y * 3f
                     )
                 ),
             Quaternion.Euler(0, 90, 0));
@@ -158,12 +158,12 @@ public class BuildingRenderer : MonoBehaviour
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
-                    x * -3f - 2.5f,
+                    x * -3f - 3f,
                     height,
                     y * -3f
                     )
                 ),
-            Quaternion.identity);
+             Quaternion.identity);
         w.SetParent(storyFolder);
     }
 
