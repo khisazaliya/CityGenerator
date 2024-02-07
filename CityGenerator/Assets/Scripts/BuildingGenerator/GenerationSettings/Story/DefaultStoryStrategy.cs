@@ -6,7 +6,6 @@ using UnityEngine;
 public class DefaultStoryStrategy : StoryStrategy
 {
    public override Story GenerateStory(BuildingStrategiesSettings strategySettings, BuildingSettings buildingSettings, RectInt bounds){
-        Debug.Log(buildingSettings.numberOfLevels + "truely");
     return new Story(
         strategySettings.wallsStrategy != null ?
         strategySettings.wallsStrategy.GenerateWalls(strategySettings, bounds) :

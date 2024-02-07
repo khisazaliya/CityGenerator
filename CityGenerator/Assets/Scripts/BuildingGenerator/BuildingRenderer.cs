@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuildingRenderer : MonoBehaviour
@@ -8,6 +9,7 @@ public class BuildingRenderer : MonoBehaviour
     public Transform floorPrefab;
     public Transform[] wallPrefab;
     public Transform[] roofPrefab;
+    public Vector3 floorSize;
     Transform bldgFolder;
 
 
@@ -45,6 +47,7 @@ public class BuildingRenderer : MonoBehaviour
             {
                 for (int i = 0; i < level; i++)
                 {
+                    if (i == 0)
                     PlaceFloor(x, y, i, storyFolder);
 
                     //south wall
@@ -82,18 +85,23 @@ public class BuildingRenderer : MonoBehaviour
 
     private void PlaceFloor(int x, int y, int level, Transform storyFolder)
     {
+        floorSize = GetPrefabSize(floorPrefab);
         Transform f = Instantiate(floorPrefab, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
 
+    //боковая
     private void PlaceSouthWall(int x, int y, int level, Transform storyFolder, Transform wall)
     {
+        float height;
+        if (level == 0) height = floorSize.y;
+        else height = level * 2 + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
                     x * -3f,
-                    0.3f + level * 2.5f,
+                    height,
                     y * 3f - 0.5f
                     )
                 ),
@@ -103,12 +111,15 @@ public class BuildingRenderer : MonoBehaviour
 
     private void PlaceEastWall(int x, int y, int level, Transform storyFolder, Transform wall)
     {
+        float height;
+        if (level == 0) height = floorSize.y;
+        else height = level*2 + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
                     x * -3f - 2.5f,
-                    0.3f + level * 2.5f,
+                    height,
                     y * -3f
                     )
                 ),
@@ -118,12 +129,15 @@ public class BuildingRenderer : MonoBehaviour
 
     private void PlaceNorthWall(int x, int y, int level, Transform storyFolder, Transform wall)
     {
+        float height;
+        if (level == 0) height = floorSize.y;
+        else height = level * 2 + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
                     x * -3f,
-                    0.3f + level * 2.5f,
+                    height,
                     y * -3f - 3f
                     )
                 ),
@@ -133,12 +147,15 @@ public class BuildingRenderer : MonoBehaviour
 
     private void PlaceWestWall(int x, int y, int level, Transform storyFolder, Transform wall)
     {
+        float height;
+        if (level == 0) height = floorSize.y;
+        else height = level * 2 + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
                     x * -3f,
-                    0.3f + level * 2.5f,
+                   height,
                     y * -3f
                     )
                 ),
@@ -165,7 +182,7 @@ public class BuildingRenderer : MonoBehaviour
             wingFolder.TransformPoint(
                new Vector3(
                        x * -3f + rotationOffset[(int)direction].x,
-                        level * 2.2f + (type == RoofType.Point ? -0.3f : 0f),
+                        level * 2 + floorSize.y,
                         y * -3f + rotationOffset[(int)direction].z
                     )
                 ),
@@ -181,34 +198,33 @@ public class BuildingRenderer : MonoBehaviour
         new Vector3 (-3f, 180, -3f)
     };
 
-    public float GetPrefubSize(RoofType type)
+    public Vector3 GetPrefabSize(Transform prefab)
     {
-        float size = new();
+        Vector3 size = Vector3.zero;
+
+        // Создаем экземпляр префаба
+        GameObject instance = Instantiate(prefab.gameObject, Vector3.zero, Quaternion.identity);
+
+        // Получаем компонент MeshRenderer из объекта экземпляра
+        var renderer = instance.GetComponentInChildren<MeshRenderer>();
+
+        if (renderer != null)
         {
-            // Создаем экземпляр префаба
-            var instance = Instantiate(roofPrefab[0], Vector3.zero, Quaternion.identity);
+            // Получаем размеры объекта
+            size = renderer.bounds.size;
 
-            // Получаем коллайдер из экземпляра префаба
-            Renderer prefabRenderer = roofPrefab[0].GetComponent<MeshRenderer>();
-
-            if (prefabRenderer != null)
-            {
-                // Получаем размеры коллайдера
-                size = prefabRenderer.bounds.size.y;
-
-                // Выводим размеры в консоль
-                Debug.Log("Prefab size: " + size);
-
-                // Вы можете использовать size.x, size.y, size.z для получения конкретных размеров по осям
-            }
-            else
-            {
-                Debug.LogError("Prefab does not have a collider!");
-            }
-
-            // Уничтожаем временный экземпляр префаба
-            Destroy(instance);
-            return size;
+            // Выводим размеры в консоль
+            Debug.Log("Prefab size: " + size);
         }
+        else
+        {
+            Debug.LogError("Prefab does not have a MeshRenderer component!");
+        }
+
+        // Уничтожаем временный экземпляр префаба
+        Destroy(instance);
+
+        return size;
     }
+
 }

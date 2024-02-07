@@ -13,7 +13,6 @@ public class BuildingDemo : MonoBehaviour
     {
 
             Building b = BuildingGenerator.Generate(strategySettings, buildingSettings);
-            Debug.Log(buildingSettings.numberOfLevels + "bldg");
             BuildingRenderer buildingRenderer = GetComponent<BuildingRenderer>();
             renderedBuilding = buildingRenderer.Render(b);
             //renderedBuilding = meshCombiner.CombineMeshes(renderedBuilding);

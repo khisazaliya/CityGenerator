@@ -7,7 +7,6 @@ public class DefaultWingStrategy : WingStrategy
 {
     public override  Wing GenerateWing(BuildingStrategiesSettings strategySettings, BuildingSettings buildingSettigns, 
         RectInt bounds){
-        Debug.Log(buildingSettigns.numberOfLevels + "new inf");
     return new Wing(
         bounds,
         strategySettings.storiesStrategy != null ? 
