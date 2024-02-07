@@ -6,15 +6,21 @@ public class Building
 {
     Vector2Int size;
     Wing[] wings;
+    BuildingType type;
+
+    public int numberOfEntries;
 
     public int level;
     public Vector2Int Size { get { return size; } }
     public Wing[] Wings { get { return wings; } }
 
-    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings) {
+    public BuildingType Type { get => type; }
+
+    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries) {
         level = numberOfLevels;
         size = new Vector2Int(sizeX, sizeY);
         this.wings = wings;
+        this.numberOfEntries = numberOfEntries;
     }
 
     public Building(int sizeX, int sizeY)
@@ -29,4 +35,9 @@ public class Building
         }
         return bldg;
     }
+}
+
+public enum BuildingType
+{
+    Residental
 }

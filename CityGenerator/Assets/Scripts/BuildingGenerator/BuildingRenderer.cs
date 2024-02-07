@@ -8,7 +8,9 @@ public class BuildingRenderer : MonoBehaviour
 {
     public Transform floorPrefab;
     public Transform[] wallPrefab;
+    public Transform[] doorPrefab;
     public Transform[] roofPrefab;
+    public Transform stairPrefab;
     public Vector3 floorSize;
     Transform bldgFolder;
 
@@ -18,41 +20,42 @@ public class BuildingRenderer : MonoBehaviour
         bldgFolder = new GameObject("Building").transform;
         foreach (Wing wing in bldg.Wings)
         {
-            RenderWing(wing, bldg.level);
+            RenderWing(wing, bldg.level, bldg.numberOfEntries);
         }
 
         return bldgFolder.gameObject;
     }
 
-    private void RenderWing(Wing wing, int level)
+    private void RenderWing(Wing wing, int level, int numberOfEntries)
     {
         Transform wingFolder = new GameObject("Wing").transform;
         wingFolder.SetParent(bldgFolder);
         foreach (Story story in wing.Stories)
         {
-            RenderStory(story, wing, wingFolder, level);
+            RenderStory(story, wing, wingFolder, level, numberOfEntries);
         }
         RenderRoof(wing, wingFolder, level);
     }
 
 
 
-    private void RenderStory(Story story, Wing wing, Transform wingFolder, int level)
+    private void RenderStory(Story story, Wing wing, Transform wingFolder, int level, int numberOfEntries)
     {
         Transform storyFolder = new GameObject("Story ").transform;
         storyFolder.SetParent(wingFolder);
+
+        List<int> entries = CalculateEntryIndex(wing, numberOfEntries);
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
             for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
             {
                 for (int i = 0; i < level; i++)
                 {
-                    if (i == 0)
-                    PlaceFloor(x, y, i, storyFolder);
 
                     //south wall
                     if (y == wing.Bounds.min.y)
                     {
+                        if (i == 0) PlaceFloor(x, y, i, storyFolder);
                         Transform wall = wallPrefab[(int)story.Walls[x - wing.Bounds.min.x]];
                         PlaceSouthWall(x, y, i, storyFolder, wall);
                     }
@@ -60,13 +63,29 @@ public class BuildingRenderer : MonoBehaviour
                     //east wall
                     if (x == wing.Bounds.min.x + wing.Bounds.size.x - 1)
                     {
-                        Transform wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x + y - wing.Bounds.min.y]];
+                        Transform wall;
+                        if (i == 0)
+                        {
+                            if (entries.Contains(y))
+                            {
+                                wall = doorPrefab[0];
+                                PlaceStair(x, y, i, storyFolder);
+                            }
+                            else
+                            {
+                                wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x + y - wing.Bounds.min.y]];
+                                PlaceFloor(x, y, i, storyFolder);
+                            }
+                        }
+                        else
+                            wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x + y - wing.Bounds.min.y]];
                         PlaceEastWall(x, y, i, storyFolder, wall);
                     }
 
                     //north wall
                     if (y == wing.Bounds.min.y + wing.Bounds.size.y - 1)
                     {
+                        if (i == 0) PlaceFloor(x, y, i, storyFolder);
                         Transform wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x * 2 + wing.Bounds.size.y - (x - wing.Bounds.min.x + 1)]];
                         PlaceNorthWall(x, y, i, storyFolder, wall);
                     }
@@ -74,6 +93,7 @@ public class BuildingRenderer : MonoBehaviour
                     //west wall
                     if (x == wing.Bounds.min.x)
                     {
+                        if (i == 0) PlaceFloor(x, y, i, storyFolder);
                         Transform wall = wallPrefab[(int)story.Walls[(wing.Bounds.size.x + wing.Bounds.size.y) * 2 - (y - wing.Bounds.min.y + 1)]];
                         PlaceWestWall(x, y, i, storyFolder, wall);
                     }
@@ -83,10 +103,30 @@ public class BuildingRenderer : MonoBehaviour
         }
     }
 
+    public List<int> CalculateEntryIndex(Wing wing, int numberOfEntries)
+    {
+        var doorSpacing = (int)Math.Ceiling((wing.Bounds.size.y - wing.Bounds.min.y) / ((double)numberOfEntries+1));
+        Debug.Log("doorspace " + doorSpacing);
+        List<int> entries = new();
+        for (int i = 1; i <= numberOfEntries; i++)
+        {
+            int currentDoorPosition = wing.Bounds.min.y + doorSpacing * i -1;
+            entries.Add(currentDoorPosition);
+            Debug.Log("position " + currentDoorPosition);
+        }
+        return entries;
+    }
     private void PlaceFloor(int x, int y, int level, Transform storyFolder)
     {
         floorSize = GetPrefabSize(floorPrefab);
         Transform f = Instantiate(floorPrefab, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f)), Quaternion.identity);
+        f.SetParent(storyFolder);
+    }
+
+    private void PlaceStair(int x, int y, int level, Transform storyFolder)
+    {
+        var stairSize = GetPrefabSize(stairPrefab);
+        Transform f = Instantiate(stairPrefab, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
 
@@ -201,27 +241,18 @@ public class BuildingRenderer : MonoBehaviour
     public Vector3 GetPrefabSize(Transform prefab)
     {
         Vector3 size = Vector3.zero;
-
-        // Создаем экземпляр префаба
         GameObject instance = Instantiate(prefab.gameObject, Vector3.zero, Quaternion.identity);
-
-        // Получаем компонент MeshRenderer из объекта экземпляра
         var renderer = instance.GetComponentInChildren<MeshRenderer>();
 
         if (renderer != null)
         {
-            // Получаем размеры объекта
             size = renderer.bounds.size;
-
-            // Выводим размеры в консоль
             Debug.Log("Prefab size: " + size);
         }
         else
         {
             Debug.LogError("Prefab does not have a MeshRenderer component!");
         }
-
-        // Уничтожаем временный экземпляр префаба
         Destroy(instance);
 
         return size;

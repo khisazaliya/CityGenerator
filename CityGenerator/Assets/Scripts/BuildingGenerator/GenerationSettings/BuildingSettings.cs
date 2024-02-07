@@ -11,11 +11,15 @@ public class BuildingSettings
     public Vector2Int buildingSize;
     public int buildingCount;
     public int numberOfLevels;
+    public BuildingType type;
 
-    public BuildingSettings(Vector2Int size, int count, int numberOfLevels)
+    public int numberOfEntries;
+    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries)
     {
         buildingSize = size;
         buildingCount = count;
         this.numberOfLevels = numberOfLevels;
+        this.type = type;
+        this.numberOfEntries = numberOfEntries;
     }
 }

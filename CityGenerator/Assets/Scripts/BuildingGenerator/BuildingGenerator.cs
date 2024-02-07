@@ -23,7 +23,8 @@ public class BuildingGenerator : MonoBehaviour
            buildingSettings.buildingSize.y,
            strategySettings.wingsStrategy != null ?
            strategySettings.wingsStrategy.GenerateWings(strategySettings, buildingSettings) :
-           ((WingsStrategy)ScriptableObject.CreateInstance<DefaultWingsStrategy>()).GenerateWings(strategySettings, buildingSettings)
+           ((WingsStrategy)ScriptableObject.CreateInstance<DefaultWingsStrategy>()).GenerateWings(strategySettings, buildingSettings),
+           buildingSettings.numberOfEntries
        );
     }
 }
