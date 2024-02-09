@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class RoadHelper : MonoBehaviour
 {
-	public GameObject roadStraight, roadCorner, road3way, road4way, roadEnd, Tree3;
+	public GameObject roadStraight, roadCorner, road3way, road4way, roadEnd;
 	Dictionary<Vector3Int, GameObject> roadDictionary = new Dictionary<Vector3Int, GameObject>();
 	HashSet<Vector3Int> fixRoadCandidates = new HashSet<Vector3Int>();
 	public float animationTime = 0.01f;

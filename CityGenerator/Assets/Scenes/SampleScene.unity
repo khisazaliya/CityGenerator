@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &21744238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45.635555
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2224605
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 123.877335
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+      propertyPath: m_Name
+      value: wallWindow1new1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 257785e353916d84d851e9283de7bbec, type: 3}
 --- !u!1 &540249988
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,8 +262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 400002, guid: 586c4c43d2727bd45a7ef177530c10f8, type: 3}
   wallPrefab:
-  - {fileID: -8679921383154817045, guid: 4ad4ade965f2bf84d85c97ac777b9400, type: 3}
-  - {fileID: 400000, guid: b3837b78a14314c479c100d914bbc798, type: 3}
+  - {fileID: -8679921383154817045, guid: 257785e353916d84d851e9283de7bbec, type: 3}
+  - {fileID: 0}
   - {fileID: 400000, guid: 1f2b192365b3dd749bba8db830a73155, type: 3}
   - {fileID: 400002, guid: 595af21be5221584690142ed9f80021b, type: 3}
   - {fileID: 400002, guid: 430d7d8ed5cdfde41908088cd96c7d4a, type: 3}
@@ -236,9 +293,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strategySettings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
   buildingSettings:
-  - buildingSize: {x: 2, y: 14}
+  - buildingSize: {x: 2, y: 9}
     buildingCount: 1
-    numberOfLevels: 5
+    numberOfLevels: 10
     type: 0
     numberOfEntries: 3
   - buildingSize: {x: 1, y: 1}
@@ -394,7 +451,6 @@ MonoBehaviour:
   road3way: {fileID: 5962866701861012061, guid: 315ae3df12eb2cd48be4923c16f3547a, type: 3}
   road4way: {fileID: 9024991216101018872, guid: 42168f3369da5d741b4848f69149e780, type: 3}
   roadEnd: {fileID: 1901475907271895716, guid: d293aa27ae6eca54c97ea18b5e7892a0, type: 3}
-  Tree3: {fileID: 6315202082271303812, guid: 2918e207393839d4da9ffe1bb063b87b, type: 3}
   animationTime: 0.01
 --- !u!4 &920142012
 Transform:
@@ -615,15 +671,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorPrefab: {fileID: 400002, guid: 586c4c43d2727bd45a7ef177530c10f8, type: 3}
-  wallPrefab:
-  - {fileID: 400000, guid: 956036c8d148c8241870e5a31ae1e7a3, type: 3}
-  - {fileID: 400000, guid: f24ff2a0b870b7846b0dc2d4dd1c3dbd, type: 3}
-  - {fileID: 400000, guid: 1f2b192365b3dd749bba8db830a73155, type: 3}
+  wallPrefab: []
   doorPrefab: []
-  roofPrefab:
-  - {fileID: 400002, guid: adf888a5fbb8d464194221d63f51fd13, type: 3}
-  - {fileID: 400002, guid: 89e7ad342438f4a4dbc1e96d6f4eb7af, type: 3}
-  - {fileID: 400002, guid: 3ac29a2820fd760489c1f74381389614, type: 3}
+  roofPrefab: []
   stairPrefab: {fileID: 0}
   floorSize: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
@@ -637,3 +687,4 @@ SceneRoots:
   - {fileID: 920142012}
   - {fileID: 975204353}
   - {fileID: 555699036}
+  - {fileID: 21744238}

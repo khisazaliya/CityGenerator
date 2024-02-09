@@ -176,12 +176,12 @@ public class BuildingRenderer : MonoBehaviour
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
-                    x * -3f,
+                    x * -3f - 3f,
                     height,
                     y * -3f - 3f
                     )
                 ),
-            Quaternion.Euler(0, 90, 0));
+            Quaternion.Euler(0, -90, 0));
         w.SetParent(storyFolder);
     }
 
@@ -195,11 +195,11 @@ public class BuildingRenderer : MonoBehaviour
             storyFolder.TransformPoint(
                 new Vector3(
                     x * -3f,
-                   height,
-                    y * -3f
+                    height,
+                    y * -3f -3f
                     )
                 ),
-            Quaternion.identity);
+            Quaternion.Euler(0, 180, 0));
         w.SetParent(storyFolder);
     }
 
