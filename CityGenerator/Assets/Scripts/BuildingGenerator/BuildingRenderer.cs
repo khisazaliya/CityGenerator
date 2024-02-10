@@ -55,7 +55,7 @@ public class BuildingRenderer : MonoBehaviour
                     //south wall
                     if (y == wing.Bounds.min.y)
                     {
-                        if (i == 0) PlaceFloor(x, y, i, storyFolder);
+                        if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, -90, 0 }, storyFolder);
                         Transform wall = wallPrefab[(int)story.Walls[x - wing.Bounds.min.x]];
                         PlaceSouthWall(x, y, i, storyFolder, wall);
                     }
@@ -74,7 +74,7 @@ public class BuildingRenderer : MonoBehaviour
                             else
                             {
                                 wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x + y - wing.Bounds.min.y]];
-                                PlaceFloor(x, y, i, storyFolder);
+                                PlaceFloor(x * 2, y -1, i, new int[3] { 0, 180, 0 },  storyFolder);
                             }
                         }
                         else
@@ -85,7 +85,7 @@ public class BuildingRenderer : MonoBehaviour
                     //north wall
                     if (y == wing.Bounds.min.y + wing.Bounds.size.y - 1)
                     {
-                        if (i == 0) PlaceFloor(x, y, i, storyFolder);
+                        if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, 90, 0 }, storyFolder);
                         Transform wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x * 2 + wing.Bounds.size.y - (x - wing.Bounds.min.x + 1)]];
                         PlaceNorthWall(x, y, i, storyFolder, wall);
                     }
@@ -93,7 +93,7 @@ public class BuildingRenderer : MonoBehaviour
                     //west wall
                     if (x == wing.Bounds.min.x)
                     {
-                        if (i == 0) PlaceFloor(x, y, i, storyFolder);
+                        if (i == 0) PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
                         Transform wall = wallPrefab[(int)story.Walls[(wing.Bounds.size.x + wing.Bounds.size.y) * 2 - (y - wing.Bounds.min.y + 1)]];
                         PlaceWestWall(x, y, i, storyFolder, wall);
                     }
@@ -116,10 +116,10 @@ public class BuildingRenderer : MonoBehaviour
         }
         return entries;
     }
-    private void PlaceFloor(int x, int y, int level, Transform storyFolder)
+    private void PlaceFloor(int x, int y, int level, int[] angles, Transform storyFolder)
     {
         floorSize = GetPrefabSize(floorPrefab);
-        Transform f = Instantiate(floorPrefab, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f)), Quaternion.identity);
+        Transform f = Instantiate(floorPrefab, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f -3f)), Quaternion.Euler(angles[0], angles[1], angles[2]));
         f.SetParent(storyFolder);
     }
 
