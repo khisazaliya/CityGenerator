@@ -203,22 +203,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e0597a760654044bfb08d9af0c0541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: {fileID: -8679921383154817045, guid: 676628960f681ae45aab79695bb862ac, type: 3}
+  floorPrefab:
+  - {fileID: -8679921383154817045, guid: 676628960f681ae45aab79695bb862ac, type: 3}
+  - {fileID: -8679921383154817045, guid: fdff5777aa2d72b499eebdb7c668c57f, type: 3}
+  - {fileID: -8679921383154817045, guid: a6f0e7a2ec44818479fb15719869ce64, type: 3}
   wallPrefab:
-  - {fileID: -8679921383154817045, guid: ab3d2ab869f3b7041b4005d7b0d216e1, type: 3}
-  - {fileID: 0}
-  - {fileID: 400000, guid: 1f2b192365b3dd749bba8db830a73155, type: 3}
-  - {fileID: 400002, guid: 595af21be5221584690142ed9f80021b, type: 3}
-  - {fileID: 400002, guid: 430d7d8ed5cdfde41908088cd96c7d4a, type: 3}
-  - {fileID: 400002, guid: 5bd7549d4ba97824eb10d08267faab67, type: 3}
+  - {fileID: -8679921383154817045, guid: ff4d8e02e8e4573468e35b95bc2d3eb9, type: 3}
+  - {fileID: -8679921383154817045, guid: 1ee5df07c275e9c4a8517c6882365c68, type: 3}
+  - {fileID: -8679921383154817045, guid: c85aa0f7197c8914193ff9eb5c223c6a, type: 3}
   doorPrefab:
-  - {fileID: -8679921383154817045, guid: 19aa9c472a7ef374fa91486c14dba953, type: 3}
+  - {fileID: -8679921383154817045, guid: c8e6b0d2a843dbe44b843f4115974f41, type: 3}
+  - {fileID: -8679921383154817045, guid: f6a72d05c2a5f9541b7828dcab7d891f, type: 3}
+  - {fileID: -8679921383154817045, guid: b05ff5a6ad7471f4a94e35b985cf5a29, type: 3}
   roofPrefab:
   - {fileID: -8679921383154817045, guid: 5cd62d863467af141acf1a1977b86e06, type: 3}
   - {fileID: -8679921383154817045, guid: e7f32c67c0537fa4abdbf60e512a69e5, type: 3}
   - {fileID: -8679921383154817045, guid: 87a87dfd79c661c48b40e4d6bf26ee9d, type: 3}
-  stairPrefab: {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
+  stairPrefab:
+  - {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
+  - {fileID: -8679921383154817045, guid: fda3108d9d6eefd418e418e4c254367a, type: 3}
+  - {fileID: -8679921383154817045, guid: 1c0b3a7f292fe0e46a00c7fc3fbc096f, type: 3}
   floorSize: {x: 1, y: 1, z: 1}
+  material: 0
 --- !u!114 &555699035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,21 +239,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strategySettings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
   buildingSettings:
-  - buildingSize: {x: 3, y: 10}
-    buildingCount: 1
-    numberOfLevels: 5
+  - buildingSize: {x: 3, y: 9}
+    buildingCount: 2
+    numberOfLevels: 7
     type: 0
     numberOfEntries: 3
-  - buildingSize: {x: 1, y: 1}
-    buildingCount: 0
-    numberOfLevels: 0
+  - buildingSize: {x: 2, y: 12}
+    buildingCount: 2
+    numberOfLevels: 9
     type: 0
-    numberOfEntries: 0
-  - buildingSize: {x: 3, y: 3}
-    buildingCount: 0
-    numberOfLevels: 0
+    numberOfEntries: 4
+  - buildingSize: {x: 2, y: 6}
+    buildingCount: 2
+    numberOfLevels: 5
     type: 0
-    numberOfEntries: 0
+    numberOfEntries: 2
 --- !u!4 &555699036
 Transform:
   m_ObjectHideFlags: 0
@@ -547,63 +553,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1398686624
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 51.132107
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.141469
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 80.458855
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
-      propertyPath: m_Name
-      value: door
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0b8a58d492cf7064fbc2abd102d6b55f, type: 3}
 --- !u!1 &1823135530
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,12 +616,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e0597a760654044bfb08d9af0c0541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: {fileID: 400002, guid: 586c4c43d2727bd45a7ef177530c10f8, type: 3}
+  floorPrefab: []
   wallPrefab: []
   doorPrefab: []
   roofPrefab: []
-  stairPrefab: {fileID: 0}
+  stairPrefab: []
   floorSize: {x: 0, y: 0, z: 0}
+  material: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -684,4 +634,3 @@ SceneRoots:
   - {fileID: 920142012}
   - {fileID: 975204353}
   - {fileID: 555699036}
-  - {fileID: 1398686624}
