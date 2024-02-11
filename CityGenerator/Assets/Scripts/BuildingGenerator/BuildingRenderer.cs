@@ -74,7 +74,7 @@ public class BuildingRenderer : MonoBehaviour
                             else
                             {
                                 wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x + y - wing.Bounds.min.y]];
-                                PlaceFloor(x * 2, y -1, i, new int[3] { 0, 180, 0 },  storyFolder);
+                                PlaceFloor(x +1,  y -1, i, new int[3] { 0, 180, 0 },  storyFolder);
                             }
                         }
                         else
@@ -85,7 +85,7 @@ public class BuildingRenderer : MonoBehaviour
                     //north wall
                     if (y == wing.Bounds.min.y + wing.Bounds.size.y - 1)
                     {
-                        if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, 90, 0 }, storyFolder);
+                        if (i == 0) PlaceFloor(x+1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
                         Transform wall = wallPrefab[(int)story.Walls[wing.Bounds.size.x * 2 + wing.Bounds.size.y - (x - wing.Bounds.min.x + 1)]];
                         PlaceNorthWall(x, y, i, storyFolder, wall);
                     }
@@ -126,7 +126,7 @@ public class BuildingRenderer : MonoBehaviour
     private void PlaceStair(int x, int y, int level, Transform storyFolder)
     {
         var stairSize = GetPrefabSize(stairPrefab);
-        Transform f = Instantiate(stairPrefab, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f)), Quaternion.identity);
+        Transform f = Instantiate(stairPrefab, storyFolder.TransformPoint(new Vector3(x * -4f -1, 0f + level * 2.5f, y * -3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
 
@@ -205,20 +205,76 @@ public class BuildingRenderer : MonoBehaviour
 
     private void RenderRoof(Wing wing, Transform wingFolder, int level)
     {
+        var direction = new RoofDirection();
+        var prefabIndex = 0;
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
             for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
             {
-                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, wing.GetRoof.Direction);
+                if ((y == wing.Bounds.min.y) && (x == wing.Bounds.min.x))
+                {
+                    prefabIndex = 2;
+                    direction = RoofDirection.South; 
+                }
+                else
+                if ((y == wing.Bounds.min.y) && (x == wing.Bounds.max.x - 1))
+                {
+                    prefabIndex = 2;
+                    direction = RoofDirection.East; 
+                }
+                else
+                if ((y == wing.Bounds.max.y - 1) && (x == wing.Bounds.min.x))
+                {
+                    prefabIndex = 2;
+                    direction = RoofDirection.West; 
+                }
+                else
+                if ((y == wing.Bounds.max.y - 1) && (x == wing.Bounds.max.x - 1))
+                {
+                    prefabIndex = 2;
+                    direction = RoofDirection.North; 
+                }
+                else
+                if (y == wing.Bounds.min.y && !(y == wing.Bounds.max.y - 1 || x == wing.Bounds.min.x || x == wing.Bounds.max.x - 1))
+                {
+                    prefabIndex = 1;
+                    direction = RoofDirection.East;
+                }
+                else
+                if (y == wing.Bounds.max.y - 1 && !(y == wing.Bounds.min.y || x == wing.Bounds.min.x || x == wing.Bounds.max.x - 1))
+                {
+                    prefabIndex = 1;
+                    direction = RoofDirection.West;
+                }
+                else
+                if (x == wing.Bounds.min.x  && !(y == wing.Bounds.min.y || y == wing.Bounds.max.y - 1 || x == wing.Bounds.max.x - 1))
+                {
+                    prefabIndex = 1;
+                    direction = RoofDirection.South;
+                }
+                else
+                if (x == wing.Bounds.max.x - 1 && !(y == wing.Bounds.min.y || y == wing.Bounds.max.y - 1 || x == wing.Bounds.min.x))
+                {
+                    prefabIndex = 1;
+                    direction = RoofDirection.North;
+                }
+                else
+                {
+                    prefabIndex = 0;
+                    direction = RoofDirection.North;
+                }
+
+                PlaceRoof(x, y, level, prefabIndex, wingFolder, wing.GetRoof.Type, direction);
+                Debug.Log(wing.GetRoof.Direction + "direction");
             }
         }
     }
 
-    private void PlaceRoof(int x, int y, int level, Transform wingFolder, RoofType type, RoofDirection direction)
+    private void PlaceRoof(int x, int y, int level, int prefabIndex, Transform wingFolder, RoofType type, RoofDirection direction)
     {
         Transform r;
         r = Instantiate(
-            roofPrefab[(int)type],
+            roofPrefab[prefabIndex],
             wingFolder.TransformPoint(
                new Vector3(
                        x * -3f + rotationOffset[(int)direction].x,

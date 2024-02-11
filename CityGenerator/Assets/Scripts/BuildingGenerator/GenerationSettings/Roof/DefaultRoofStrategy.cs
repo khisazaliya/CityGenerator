@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Building Generation/Roof/Default roof")]
 public class DefaultRoofStrategy : RoofStrategy
 {
     public override Roof GenerateRoof(BuildingStrategiesSettings settings, RectInt bounds){
