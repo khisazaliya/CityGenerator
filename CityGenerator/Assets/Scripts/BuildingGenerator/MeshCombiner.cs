@@ -1,43 +1,51 @@
-/*using UnityEngine;
-
+using System.Collections.Generic;
+using UnityEngine;
 
 public class MeshCombiner : MonoBehaviour
 {
-    public GameObject CombineMeshes(GameObject building)
+    public void CombineMeshes(Transform buildingTransform)
     {
-        MeshFilter[] meshFilters = building.GetComponentsInChildren<MeshFilter>();
-        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+        // Получаем все меш-рендереры внутри здания
+        MeshRenderer[] meshRenderers = buildingTransform.GetComponentsInChildren<MeshRenderer>();
 
-        for (int i = 0; i < meshFilters.Length; i++)
+        // Создаем список всех мешей и материалов
+        List<MeshFilter> meshFilters = new List<MeshFilter>();
+        List<Material> materials = new List<Material>();
+
+        foreach (MeshRenderer meshRenderer in meshRenderers)
         {
-            combine[i].mesh = meshFilters[i].sharedMesh;
-            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
-            meshFilters[i].gameObject.SetActive(false);
+            MeshFilter meshFilter = meshRenderer.GetComponent<MeshFilter>();
+
+            // Добавляем меш и материалы в список
+            meshFilters.Add(meshFilter);
+            materials.AddRange(meshRenderer.sharedMaterials);
         }
 
-        // Create a new combined mesh
+        // Создаем новый комбинированный меш
+        CombineInstance[] combineInstances = new CombineInstance[meshFilters.Count];
+        for (int i = 0; i < meshFilters.Count; i++)
+        {
+            combineInstances[i].mesh = meshFilters[i].sharedMesh;
+            combineInstances[i].transform = meshFilters[i].transform.localToWorldMatrix;
+
+            // Очищаем объекты мешей после получения информации
+            Destroy(meshFilters[i].gameObject);
+        }
+
+        // Создаем новый GameObject для комбинированного меша
+        GameObject combinedMeshObject = new GameObject("CombinedMesh");
+        combinedMeshObject.transform.SetParent(buildingTransform);
+
+        // Добавляем MeshFilter и MeshRenderer
+        MeshFilter combinedMeshFilter = combinedMeshObject.AddComponent<MeshFilter>();
+        MeshRenderer combinedMeshRenderer = combinedMeshObject.AddComponent<MeshRenderer>();
+
+        // Создаем новый меш и присваиваем его комбинированному фильтру
         Mesh combinedMesh = new Mesh();
-        combinedMesh.CombineMeshes(combine);
+        combinedMesh.CombineMeshes(combineInstances, false);
+        combinedMeshFilter.sharedMesh = combinedMesh;
 
-        // Create a new GameObject for the combined mesh
-        GameObject combinedObject = new GameObject("CombinedMesh");
-        combinedObject.transform.SetParent(building.transform);
-        combinedObject.transform.localPosition = Vector3.zero;
-
-        // Add a MeshFilter and MeshRenderer to the combined GameObject
-        MeshFilter meshFilter = combinedObject.AddComponent<MeshFilter>();
-        MeshRenderer meshRenderer = combinedObject.AddComponent<MeshRenderer>();
-
-        // Assign the combined mesh to the MeshFilter
-        meshFilter.mesh = combinedMesh;
-
-        // Optional: Assign the material from one of the original objects
-        if (meshFilters.Length > 0)
-        {
-            meshRenderer.material = meshFilters[0].GetComponent<MeshRenderer>().sharedMaterial;
-        }
-        return building;
+        // Присваиваем материалы комбинированному рендереру
+        combinedMeshRenderer.sharedMaterials = materials.ToArray();
     }
 }
-
-*/
