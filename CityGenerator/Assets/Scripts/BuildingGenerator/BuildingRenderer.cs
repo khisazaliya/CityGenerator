@@ -28,9 +28,51 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg.level, bldg.numberOfEntries);
         }
-
+        CombineMeshes(bldgFolder);
         return bldgFolder.gameObject;
     }
+
+    private void CombineMeshes(Transform buildingTransform)
+    {
+        MeshFilter[] meshFilters = buildingTransform.GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combineInstances = new CombineInstance[meshFilters.Length];
+        List<Material> materials = new List<Material>();
+
+        for (int i = 0; i < meshFilters.Length; i++)
+        {
+            if (meshFilters[i].sharedMesh == null) continue;
+
+            CombineInstance combine = new CombineInstance();
+            combine.mesh = meshFilters[i].sharedMesh;
+            combine.transform = meshFilters[i].transform.localToWorldMatrix;
+
+            // Сохраняем материалы модуля
+            Material[] moduleMaterials = meshFilters[i].GetComponent<MeshRenderer>().sharedMaterials;
+            materials.AddRange(moduleMaterials);
+
+            combineInstances[i] = combine;
+        }
+
+        // Создаем новый пустой GameObject для объединенного меша
+        GameObject combinedMeshObject = new GameObject("CombinedMesh");
+        combinedMeshObject.transform.SetParent(buildingTransform);
+
+        // Добавляем MeshFilter и MeshRenderer к объединенному объекту
+        MeshFilter combinedMeshFilter = combinedMeshObject.AddComponent<MeshFilter>();
+        MeshRenderer combinedMeshRenderer = combinedMeshObject.AddComponent<MeshRenderer>();
+
+        // Создаем новый меш и объединяем все подмеши
+        Mesh combinedMesh = new Mesh();
+        combinedMesh.CombineMeshes(combineInstances, true);
+
+        // Применяем объединенный меш к MeshFilter
+        combinedMeshFilter.sharedMesh = combinedMesh;
+
+        // Применяем материалы ко всем подмешам
+        combinedMeshRenderer.sharedMaterials = materials.ToArray();
+    }
+
+
 
     private void RenderWing(Wing wing, int level, int numberOfEntries)
     {
@@ -141,7 +183,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         float height;
         if (level == 0) height = floorSize.y;
-        else height = level * 2 + floorSize.y;
+        else height = level * 2 +0.2f + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
@@ -159,7 +201,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         float height;
         if (level == 0) height = floorSize.y;
-        else height = level*2 + floorSize.y;
+        else height = level* 2 + 0.2f + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
@@ -177,7 +219,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         float height;
         if (level == 0) height = floorSize.y;
-        else height = level * 2 + floorSize.y;
+        else height = level * 2 + 0.2f + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
@@ -195,7 +237,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         float height;
         if (level == 0) height = floorSize.y;
-        else height = level * 2 + floorSize.y;
+        else height = level * 2 + 0.2f + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(

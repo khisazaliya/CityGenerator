@@ -208,9 +208,9 @@ MonoBehaviour:
   - {fileID: -8679921383154817045, guid: fdff5777aa2d72b499eebdb7c668c57f, type: 3}
   - {fileID: -8679921383154817045, guid: a6f0e7a2ec44818479fb15719869ce64, type: 3}
   wallPrefab:
-  - {fileID: -8679921383154817045, guid: ff4d8e02e8e4573468e35b95bc2d3eb9, type: 3}
-  - {fileID: -8679921383154817045, guid: 1ee5df07c275e9c4a8517c6882365c68, type: 3}
-  - {fileID: -8679921383154817045, guid: c85aa0f7197c8914193ff9eb5c223c6a, type: 3}
+  - {fileID: -8679921383154817045, guid: 1546165e59b5f304f8538741729a2993, type: 3}
+  - {fileID: -8679921383154817045, guid: 29dfe7e6844bda949b62f0c9d6c29e86, type: 3}
+  - {fileID: -8679921383154817045, guid: cdb242c45a163f84e840967811c78bc2, type: 3}
   doorPrefab:
   - {fileID: -8679921383154817045, guid: c8e6b0d2a843dbe44b843f4115974f41, type: 3}
   - {fileID: -8679921383154817045, guid: f6a72d05c2a5f9541b7828dcab7d891f, type: 3}
@@ -221,8 +221,8 @@ MonoBehaviour:
   - {fileID: -8679921383154817045, guid: 87a87dfd79c661c48b40e4d6bf26ee9d, type: 3}
   stairPrefab:
   - {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
-  - {fileID: -8679921383154817045, guid: fda3108d9d6eefd418e418e4c254367a, type: 3}
-  - {fileID: -8679921383154817045, guid: 1c0b3a7f292fe0e46a00c7fc3fbc096f, type: 3}
+  - {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
+  - {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
   floorSize: {x: 1, y: 1, z: 1}
   material: 0
 --- !u!114 &555699035
@@ -239,18 +239,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strategySettings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
   buildingSettings:
-  - buildingSize: {x: 3, y: 9}
-    buildingCount: 2
-    numberOfLevels: 7
+  - buildingSize: {x: 3, y: 3}
+    buildingCount: 10
+    numberOfLevels: 2
     type: 0
-    numberOfEntries: 3
+    numberOfEntries: 1
   - buildingSize: {x: 2, y: 12}
-    buildingCount: 2
+    buildingCount: 0
     numberOfLevels: 9
     type: 0
     numberOfEntries: 4
   - buildingSize: {x: 2, y: 6}
-    buildingCount: 2
+    buildingCount: 0
     numberOfLevels: 5
     type: 0
     numberOfEntries: 2
@@ -335,7 +335,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
