@@ -24,17 +24,11 @@ public class BuildingGenerator : MonoBehaviour
     [ContextMenu("Load")]
     public void LoadField()
     {
-        // Загружаем данные из файла settings.json
         string jsonText = File.ReadAllText(Application.streamingAssetsPath + "/settings.json");
-
-        // Создаем обертку для массива
         var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
-
-        // Присваиваем массив из обертки переменной buildingSettings
         buildingSettings = wrapper.buildingSettings;
     }
 
-    // Обертка для массива объектов BuildingSettings
     [System.Serializable]
     private class BuildingSettingsWrapper
     {
@@ -44,20 +38,17 @@ public class BuildingGenerator : MonoBehaviour
     [ContextMenu("Save")]
     public void SaveField()
     {
-        // Создаем список для хранения строк JSON каждого объекта BuildingSettings
-        List<string> jsonList = new List<string>();
+        var wrapper = new BuildingSettingsWrapper();
+        wrapper.buildingSettings = buildingSettings;
+        string json = JsonUtility.ToJson(wrapper, true); 
 
-        // Преобразуем каждый объект BuildingSettings в строку JSON и добавляем в список
-        foreach (BuildingSettings settings in buildingSettings)
-        {
-            string json = JsonUtility.ToJson(settings);
-            jsonList.Add(json);
-        }
+        File.WriteAllText(Application.streamingAssetsPath + "/settings.json", json);
+    }
 
-        // Объединяем все строки JSON в одну, разделяя их символом новой строки
-        string combinedJson = string.Join("\n", jsonList.ToArray());
-
-        // Сохраняем объединенную строку JSON в файл settings.json
-        File.WriteAllText(Application.streamingAssetsPath + "/settings.json", combinedJson);
+    private void SaveFormattedJson(string json)
+    {
+        var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(json);
+        string formattedJson = JsonUtility.ToJson(wrapper, true); 
+        File.WriteAllText(Application.streamingAssetsPath + "/settings.json", formattedJson);
     }
 }
