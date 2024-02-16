@@ -239,9 +239,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strategySettings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
   buildingSettings:
-  - buildingSize: {x: 3, y: 3}
+  - buildingSize: {x: 3, y: 12}
     buildingCount: 10
-    numberOfLevels: 2
+    numberOfLevels: 20
     type: 0
     numberOfEntries: 1
   - buildingSize: {x: 2, y: 12}

@@ -41,7 +41,11 @@ public class MeshCombiner : MonoBehaviour
         MeshRenderer combinedMeshRenderer = combinedMeshObject.AddComponent<MeshRenderer>();
 
         // Создаем новый меш и присваиваем его комбинированному фильтру
+        // Создаем новый меш с указанием формата индексов
         Mesh combinedMesh = new Mesh();
+        combinedMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+
+        // Комбинируем меши
         combinedMesh.CombineMeshes(combineInstances, false);
         combinedMeshFilter.sharedMesh = combinedMesh;
 

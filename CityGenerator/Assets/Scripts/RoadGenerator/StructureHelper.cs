@@ -55,9 +55,22 @@ public class StructureHelper : MonoBehaviour
                     }
 
                     var building = buildingDemo.GenerateBuilding(position, rotation, buildingDemo.buildingSettings[i]);
-                    var collider = building.AddComponent<BoxCollider>();
-                    Vector3 buildingSize = building.transform.localScale * 20;
-                    collider.size = buildingSize;
+                    MeshRenderer buildingRenderer = building.GetComponentInChildren<MeshRenderer>();
+                    GameObject combinedMesh = GameObject.Find("CombinedMesh");
+                    Vector3 combinedMeshSize = new();
+                    if (combinedMesh != null)
+                    {
+                        // Добавляем компонент MeshRenderer
+                        MeshRenderer renderer = combinedMesh.GetComponent<MeshRenderer>();
+                        combinedMeshSize = renderer.bounds.size;
+
+                    }
+                    else
+                    {
+                        Debug.LogError("CombinedMesh object not found!");
+                    }
+                    var collider = combinedMesh.AddComponent<BoxCollider>();
+                    collider.size = combinedMeshSize;
 
                     intersects = false; // Предполагаем, что здание не пересекается с другими
 
@@ -114,10 +127,6 @@ public class StructureHelper : MonoBehaviour
 
     public void Reset()
     {
-        /* foreach (var item in structuresDictionary.Values)
-         {
-             Destroy(item);
-         }*/
         structuresDictionary.Clear();
     }
 }

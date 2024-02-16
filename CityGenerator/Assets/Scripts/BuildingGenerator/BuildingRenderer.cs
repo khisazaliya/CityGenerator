@@ -40,7 +40,7 @@ public class BuildingRenderer : MonoBehaviour
         }
         return bldgFolder.gameObject;
     }
-
+    
     private void RenderWing(Wing wing, int level, int numberOfEntries)
     {
         Transform wingFolder = new GameObject("Wing").transform;
