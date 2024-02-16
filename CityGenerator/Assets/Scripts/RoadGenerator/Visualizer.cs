@@ -12,8 +12,7 @@ public class Visualizer : MonoBehaviour
     public int roadLength = 40;
     private int length = 40;
     private float angle = 90;
-    public BuildingStrategiesSettings[] settings;
-    public BuildingDemo buildingDemo;
+    public BuildingGenerator buildingGenerator;
 
     public int Length
     {
@@ -109,7 +108,7 @@ public class Visualizer : MonoBehaviour
         }
        // yield return new WaitForSeconds(0.1f);
         roadHelper.FixRoad();
-        structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions(), buildingDemo);
+        structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions(), buildingGenerator);
         // yield return new WaitForSeconds(0.8f);
         //   StartCoroutine(structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions()));
 

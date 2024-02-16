@@ -17,13 +17,13 @@ public class StructureHelper : MonoBehaviour
     public float animationTime = 0.01f;
 
     public System.Random rand = new System.Random();
-    public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingDemo buildingDemo)
+    public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator)
     {
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
 
-        for (int i = 0; i < buildingDemo.buildingSettings.Length; i++)
+        for (int i = 0; i < buildingGenerator.buildingSettings.Length; i++)
         {
-            for (int j = 0; j < buildingDemo.buildingSettings[i].buildingCount; j++)
+            for (int j = 0; j < buildingGenerator.buildingSettings[i].buildingCount; j++)
             {
                 bool intersects = true;
                 int attempts = 0; // —четчик попыток размещени€ здани€
@@ -54,7 +54,7 @@ public class StructureHelper : MonoBehaviour
                             break;
                     }
 
-                    var building = buildingDemo.GenerateBuilding(position, rotation, buildingDemo.buildingSettings[i]);
+                    var building = buildingGenerator.GenerateBuilding(position, rotation, buildingGenerator.buildingSettings[i]);
                     MeshRenderer buildingRenderer = building.GetComponentInChildren<MeshRenderer>();
                     GameObject combinedMesh = GameObject.Find("CombinedMesh");
                     Vector3 combinedMeshSize = new();

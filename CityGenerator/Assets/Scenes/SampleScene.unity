@@ -190,7 +190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &555699034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,23 +237,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c1dcadbdc2ff740b77bc2fd6a9be7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strategySettings: {fileID: 11400000, guid: ec00ed2a172b15847a35a086fa0052f7, type: 2}
   buildingSettings:
-  - buildingSize: {x: 3, y: 12}
-    buildingCount: 10
-    numberOfLevels: 20
+  - buildingSize: {x: 1, y: 1}
+    buildingCount: 1
+    numberOfLevels: 1
     type: 0
     numberOfEntries: 1
-  - buildingSize: {x: 2, y: 12}
-    buildingCount: 0
-    numberOfLevels: 9
-    type: 0
-    numberOfEntries: 4
-  - buildingSize: {x: 2, y: 6}
-    buildingCount: 0
-    numberOfLevels: 5
-    type: 0
-    numberOfEntries: 2
 --- !u!4 &555699036
 Transform:
   m_ObjectHideFlags: 0
@@ -587,8 +576,7 @@ MonoBehaviour:
   roadHelper: {fileID: 920142011}
   structureHelper: {fileID: 975204352}
   roadLength: 30
-  settings: []
-  buildingDemo: {fileID: 555699035}
+  buildingGenerator: {fileID: 555699035}
 --- !u!4 &1823135532
 Transform:
   m_ObjectHideFlags: 0
