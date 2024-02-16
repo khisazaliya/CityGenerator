@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingSettings:
-  - buildingSize: {x: 1, y: 1}
+  - buildingSize: {x: 10, y: 1}
     buildingCount: 1
     numberOfLevels: 1
     type: 0

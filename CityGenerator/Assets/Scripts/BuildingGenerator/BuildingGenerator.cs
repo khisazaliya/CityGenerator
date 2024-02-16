@@ -21,30 +21,43 @@ public class BuildingGenerator : MonoBehaviour
     {
     }
 
-
     [ContextMenu("Load")]
     public void LoadField()
     {
+        // Загружаем данные из файла settings.json
         string jsonText = File.ReadAllText(Application.streamingAssetsPath + "/settings.json");
 
-        // Десериализуем JSON-строку в массив объектов BuildingSettings
-        buildingSettings = JsonHelper.FromJson<BuildingSettings>(jsonText);
+        // Создаем обертку для массива
+        var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
 
-        // Проверяем, что массив не пустой
-        if (buildingSettings != null)
-        {
-            Debug.Log("Loaded " + buildingSettings.Length + " BuildingSettings objects from the file.");
-        }
-        else
-        {
-            Debug.LogError("Failed to load BuildingSettings from JSON.");
-        }
+        // Присваиваем массив из обертки переменной buildingSettings
+        buildingSettings = wrapper.buildingSettings;
+    }
+
+    // Обертка для массива объектов BuildingSettings
+    [System.Serializable]
+    private class BuildingSettingsWrapper
+    {
+        public BuildingSettings[] buildingSettings;
     }
 
     [ContextMenu("Save")]
     public void SaveField()
     {
-        // Сохраняем данные переменной BuildingSettings в файл settings.json
-        File.WriteAllText(Application.streamingAssetsPath + "/settings.json", JsonUtility.ToJson(buildingSettings));
+        // Создаем список для хранения строк JSON каждого объекта BuildingSettings
+        List<string> jsonList = new List<string>();
+
+        // Преобразуем каждый объект BuildingSettings в строку JSON и добавляем в список
+        foreach (BuildingSettings settings in buildingSettings)
+        {
+            string json = JsonUtility.ToJson(settings);
+            jsonList.Add(json);
+        }
+
+        // Объединяем все строки JSON в одну, разделяя их символом новой строки
+        string combinedJson = string.Join("\n", jsonList.ToArray());
+
+        // Сохраняем объединенную строку JSON в файл settings.json
+        File.WriteAllText(Application.streamingAssetsPath + "/settings.json", combinedJson);
     }
 }
