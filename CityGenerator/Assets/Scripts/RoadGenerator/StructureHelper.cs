@@ -26,7 +26,7 @@ public class StructureHelper : MonoBehaviour
             for (int j = 0; j < buildingGenerator.buildingSettings[i].buildingCount; j++)
             {
                 bool intersects = true;
-                int attempts = 0; // Счетчик попыток размещения здания
+                int attempts = 0; 
 
                 while (intersects)
                 {
@@ -60,7 +60,6 @@ public class StructureHelper : MonoBehaviour
                     Vector3 combinedMeshSize = new();
                     if (combinedMesh != null)
                     {
-                        // Добавляем компонент MeshRenderer
                         MeshRenderer renderer = combinedMesh.GetComponent<MeshRenderer>();
                         combinedMeshSize = renderer.bounds.size;
 
@@ -72,7 +71,7 @@ public class StructureHelper : MonoBehaviour
                     var collider = combinedMesh.AddComponent<BoxCollider>();
                     collider.size = combinedMeshSize;
 
-                    intersects = false; // Предполагаем, что здание не пересекается с другими
+                    intersects = false; 
 
                     foreach (var existingBuilding in structuresDictionary.Values)
                     {
@@ -91,12 +90,11 @@ public class StructureHelper : MonoBehaviour
 
                     if (!intersects)
                     {
-                        // Успешно размещено, выходим из цикла
                         freeEstateSpots.Remove(position);
                         structuresDictionary.Add(position, building);
                     }
 
-                    attempts++; // Увеличиваем счетчик попыток
+                    attempts++; 
                 }
             }
         }

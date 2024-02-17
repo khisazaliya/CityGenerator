@@ -40,7 +40,7 @@ public class Visualizer : MonoBehaviour
     {
         length = roadLength;
         roadHelper.Reset();
-        structureHelper.Reset();
+      //  structureHelper.Reset();
         var sequence = lsystem.GenerateSentence();
        // var iteration = 
        // StartCoroutine(VisualizeSequence(sequence));

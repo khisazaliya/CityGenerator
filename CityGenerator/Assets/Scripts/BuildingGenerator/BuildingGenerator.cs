@@ -6,11 +6,12 @@ using UnityEngine;
 public class BuildingGenerator : MonoBehaviour
 {
     public BuildingSettings[] buildingSettings;
-    GameObject renderedBuilding;
+    public GameObject renderedBuilding;
 
     public GameObject GenerateBuilding(Vector3 position, Quaternion rotation, BuildingSettings buildingSettings)
     {
         Building b = BuildingBuilder.Build(buildingSettings);
+
         BuildingRenderer buildingRenderer = GetComponent<BuildingRenderer>();
         renderedBuilding = buildingRenderer.Render(b);
         renderedBuilding.transform.SetPositionAndRotation(position, rotation);

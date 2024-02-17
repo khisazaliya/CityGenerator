@@ -15,7 +15,6 @@ public class BuildingRenderer : MonoBehaviour
     public System.Random rand = new System.Random();
     public int material;
     Transform bldgFolder;
-    MeshCombiner meshCombiner = new();
     public BuildingRenderer()
     {
         this.material = (int)rand.Next(0, 2); 
@@ -24,6 +23,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         material = ((int)rand.Next(0, wallPrefab.Length));
         bldgFolder = new GameObject("Building").transform;
+        MeshCombiner meshCombiner = bldgFolder.AddComponent<MeshCombiner>();
         foreach (Wing wing in bldg.Wings)
         {
             RenderWing(wing, bldg.level, bldg.numberOfEntries);
@@ -35,7 +35,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             if (obj.name == objectName)
             {
-                Destroy(obj);
+               DestroyImmediate(obj);
             }
         }
         return bldgFolder.gameObject;
@@ -84,7 +84,7 @@ public class BuildingRenderer : MonoBehaviour
                             if (entries.Contains(y))
                             {
                                 wall = doorPrefab[material];
-                                PlaceStair(x, y, i, storyFolder);
+                                PlaceStair(x +1, y -1, i, storyFolder);
                             }
                             else
                             {
@@ -141,7 +141,7 @@ public class BuildingRenderer : MonoBehaviour
     private void PlaceStair(int x, int y, int level, Transform storyFolder)
     {
         var stairSize = GetPrefabSize(stairPrefab[material]);
-        Transform f = Instantiate(stairPrefab[material], storyFolder.TransformPoint(new Vector3(x * -4f -1, 0f + level * 2.5f, y * -3f)), Quaternion.identity);
+        Transform f = Instantiate(stairPrefab[material], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
 
@@ -324,7 +324,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             Debug.LogError("Prefab does not have a MeshRenderer component!");
         }
-        Destroy(instance);
+        DestroyImmediate(instance);
 
         return size;
     }

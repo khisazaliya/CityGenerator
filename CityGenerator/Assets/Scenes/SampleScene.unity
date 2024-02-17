@@ -503,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975204353}
-  - component: {fileID: 975204352}
+  - component: {fileID: 975204354}
   m_Layer: 0
   m_Name: StructureHelper
   m_TagString: Untagged
@@ -511,22 +511,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &975204352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975204351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 553c73ae3bc20404883af9d7b55ef716, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  naturePrefabs: []
-  randomNaturePlacement: 0
-  randomNaturePlacementThreshold: 0.3
-  animationTime: 0.01
 --- !u!4 &975204353
 Transform:
   m_ObjectHideFlags: 0
@@ -542,6 +526,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975204354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975204351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e991e991640cd438466986be7e7f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  naturePrefabs: []
+  randomNaturePlacement: 0
+  randomNaturePlacementThreshold: 0.3
+  animationTime: 0.01
 --- !u!1 &1823135530
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lsystem: {fileID: 540249989}
   roadHelper: {fileID: 920142011}
-  structureHelper: {fileID: 975204352}
+  structureHelper: {fileID: 975204354}
   roadLength: 30
   buildingGenerator: {fileID: 555699035}
 --- !u!4 &1823135532
@@ -604,11 +604,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e0597a760654044bfb08d9af0c0541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorPrefab: []
-  wallPrefab: []
-  doorPrefab: []
-  roofPrefab: []
-  stairPrefab: []
+  floorPrefab:
+  - {fileID: -8679921383154817045, guid: 676628960f681ae45aab79695bb862ac, type: 3}
+  wallPrefab:
+  - {fileID: -8679921383154817045, guid: 1546165e59b5f304f8538741729a2993, type: 3}
+  doorPrefab:
+  - {fileID: -8679921383154817045, guid: c8e6b0d2a843dbe44b843f4115974f41, type: 3}
+  roofPrefab:
+  - {fileID: -8679921383154817045, guid: e7f32c67c0537fa4abdbf60e512a69e5, type: 3}
+  - {fileID: -8679921383154817045, guid: 87a87dfd79c661c48b40e4d6bf26ee9d, type: 3}
+  - {fileID: -8679921383154817045, guid: 5cd62d863467af141acf1a1977b86e06, type: 3}
+  stairPrefab:
+  - {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
   floorSize: {x: 0, y: 0, z: 0}
   material: 0
 --- !u!1660057539 &9223372036854775807
