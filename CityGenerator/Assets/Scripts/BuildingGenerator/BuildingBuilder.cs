@@ -7,7 +7,6 @@ public class BuildingBuilder : MonoBehaviour
 {
     public static Building Build(BuildingSettings buildingSettings)
     {
-        Debug.Log(buildingSettings + " buildingSettings");
         return new Building(
            buildingSettings.numberOfLevels,
            buildingSettings.buildingSize.x,

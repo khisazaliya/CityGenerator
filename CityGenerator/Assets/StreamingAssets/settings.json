@@ -1,13 +1,11 @@
 {
     "buildingSettings": [
         {
-            "buildingSize": {
-                "x": 20,
-                "y": 1
-            },
+            "x": 12,
+            "y": 15,
             "buildingCount": 1,
             "numberOfLevels": 20,
-            "type": "Residental",
+            "type": 0,
             "numberOfEntries": 2
         }
     ]

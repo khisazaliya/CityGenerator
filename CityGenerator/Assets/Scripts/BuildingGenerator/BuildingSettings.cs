@@ -9,15 +9,25 @@ using UnityEngine;
 [System.Serializable]
 public class BuildingSettings
 {
-    public Vector2Int buildingSize;
+    [Range(1, 50)] 
+    public int x;
+
+    [Range(1, 50)] 
+    public int y;
+    public Vector2Int buildingSize => new Vector2Int(x, y);
+
     public int buildingCount;
+    [Range(0, 50)]
     public int numberOfLevels;
     public BuildingType type;
 
+    [Range(0, 50)]
     public int numberOfEntries;
+
     public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries)
     {
-        buildingSize = size;
+        x = size.x; 
+        y = size.y; 
         buildingCount = count;
         this.numberOfLevels = numberOfLevels;
         this.type = type;
