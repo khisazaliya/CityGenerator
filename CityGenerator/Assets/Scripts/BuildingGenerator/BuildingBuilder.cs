@@ -12,7 +12,8 @@ public class BuildingBuilder : MonoBehaviour
            buildingSettings.buildingSize.x,
            buildingSettings.buildingSize.y,
            GenerateWings(buildingSettings),
-           buildingSettings.numberOfEntries
+           buildingSettings.numberOfEntries,
+           buildingSettings.numberOfBalconies
        );
     }
 

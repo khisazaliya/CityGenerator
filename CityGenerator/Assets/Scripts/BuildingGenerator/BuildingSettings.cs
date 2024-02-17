@@ -24,7 +24,10 @@ public class BuildingSettings
     [Range(0, 50)]
     public int numberOfEntries;
 
-    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries)
+    [Range(0, 50)]
+    public int numberOfBalconies;
+
+    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int numberOfBalconies)
     {
         x = size.x; 
         y = size.y; 
@@ -32,5 +35,6 @@ public class BuildingSettings
         this.numberOfLevels = numberOfLevels;
         this.type = type;
         this.numberOfEntries = numberOfEntries;
+        this.numberOfBalconies = numberOfBalconies;
     }
 }

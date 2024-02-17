@@ -7,7 +7,7 @@ public class BuildingGenerator : MonoBehaviour
 {
     public BuildingSettings[] buildingSettings;
     public GameObject renderedBuilding;
-
+    public BuildingRenderer buildingRenderer;
 
     public GameObject GenerateBuilding(Vector3 position, Quaternion rotation, BuildingSettings buildingSettings)
     {

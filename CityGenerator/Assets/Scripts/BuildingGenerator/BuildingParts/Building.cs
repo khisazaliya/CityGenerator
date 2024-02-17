@@ -10,17 +10,20 @@ public class Building
 
     public int numberOfEntries;
 
+    public int numberOfBalconies;
+
     public int level;
     public Vector2Int Size { get { return size; } }
     public Wing[] Wings { get { return wings; } }
 
     public BuildingType Type { get => type; }
 
-    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries) {
+    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfBalconies) {
         level = numberOfLevels;
         size = new Vector2Int(sizeX, sizeY);
         this.wings = wings;
         this.numberOfEntries = numberOfEntries;
+        this.numberOfBalconies = numberOfBalconies;
     }
 
     public Building(int sizeX, int sizeY)

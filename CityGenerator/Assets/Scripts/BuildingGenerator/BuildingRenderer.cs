@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class BuildingRenderer : MonoBehaviour
 {
-    public Transform[] floorPrefab;
-    public Transform[] wallPrefab;
-    public Transform[] doorPrefab;
-    public Transform[] roofPrefab;
-    public Transform[] stairPrefab;
+    public List<Transform> floorPrefab;
+    public List<Transform> wallPrefab;
+    public List<Transform> doorPrefab;
+    public List<Transform> roofPrefab;
+    public List<Transform> stairPrefab;
+    public List<Transform> balconyPrefab;
     public Vector3 floorSize;
     public System.Random rand = new System.Random();
     Transform bldgFolder;
-    public BuildingRenderer(Transform[] floorPrefab, Transform[] wallPrefab, Transform[] doorPrefab, Transform[] roofPrefab, Transform[] stairPrefab)
+    public BuildingRenderer(List<Transform> floorPrefab, List<Transform> wallPrefab, List<Transform> doorPrefab, List<Transform> roofPrefab, List<Transform> stairPrefab)
     {
         this.floorPrefab = floorPrefab;
         this.wallPrefab = wallPrefab;
@@ -33,7 +34,7 @@ public class BuildingRenderer : MonoBehaviour
         MeshCombiner meshCombiner = bldgFolder.AddComponent<MeshCombiner>();
         foreach (Wing wing in bldg.Wings)
         {
-            RenderWing(wing, bldg.level, bldg.numberOfEntries);
+            RenderWing(wing, bldg);
         }
         meshCombiner.CombineMeshes(bldgFolder);
         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
@@ -48,37 +49,41 @@ public class BuildingRenderer : MonoBehaviour
         return bldgFolder.gameObject;
     }
     
-    private void RenderWing(Wing wing, int level, int numberOfEntries)
+    private void RenderWing(Wing wing, Building bldg)
     {
         Transform wingFolder = new GameObject("Wing").transform;
         wingFolder.SetParent(bldgFolder);
         foreach (Story story in wing.Stories)
         {
-            RenderStory(story, wing, wingFolder, level, numberOfEntries);
+            RenderStory(story, wing, wingFolder, bldg);
         }
-        RenderRoof(wing, wingFolder, level);
+        RenderRoof(wing, wingFolder, bldg.level);
     }
 
 
 
-    private void RenderStory(Story story, Wing wing, Transform wingFolder, int level, int numberOfEntries)
+    private void RenderStory(Story story, Wing wing, Transform wingFolder, Building bldg)
     {
         Transform storyFolder = new GameObject("Story ").transform;
         storyFolder.SetParent(wingFolder);
-
-        List<int> entries = CalculateEntryIndex(wing, numberOfEntries);
+        List<int> balconies = CalculateBalconiesIndex(bldg.Size.y, bldg.numberOfBalconies);
+        List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries);
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
             for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
             {
-                for (int i = 0; i < level; i++)
+                for (int i = 0; i < bldg.level; i++)
                 {
 
                     //south wall
                     if (y == wing.Bounds.min.y)
                     {
-                        if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, -90, 0 }, storyFolder);
                         Transform wall = wallPrefab[0];
+                        if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, -90, 0 }, storyFolder);
+                        if (i>0 && balconies.Contains(x))
+                        {
+                            wall = balconyPrefab[0];
+                        }
                         PlaceSouthWall(x, y, i, storyFolder, wall);
                     }
 
@@ -91,32 +96,47 @@ public class BuildingRenderer : MonoBehaviour
                             if (entries.Contains(y))
                             {
                                 wall = doorPrefab[0];
-                                PlaceStair(x +1, y -1, i, storyFolder);
+                                PlaceStair(x + 1, y - 1, i, storyFolder);
                             }
                             else
                             {
                                 wall = wallPrefab[0];
-                                PlaceFloor(x +1,  y -1, i, new int[3] { 0, 180, 0 },  storyFolder);
+                                PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
                             }
                         }
-                        else
+                        else 
+                        {
+                            if (balconies.Contains(y))
+                            {
+                                wall = balconyPrefab[0];
+                            }
+                            else
                             wall = wallPrefab[0];
+                        }
                         PlaceEastWall(x, y, i, storyFolder, wall);
                     }
 
                     //north wall
                     if (y == wing.Bounds.min.y + wing.Bounds.size.y - 1)
                     {
-                        if (i == 0) PlaceFloor(x+1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
                         Transform wall = wallPrefab[0];
+                        if (i == 0) PlaceFloor(x+1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
+                        if (i > 0 && balconies.Contains(x))
+                        {
+                            wall = balconyPrefab[0];
+                        }
                         PlaceNorthWall(x, y, i, storyFolder, wall);
                     }
 
                     //west wall
                     if (x == wing.Bounds.min.x)
                     {
-                        if (i == 0) PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
                         Transform wall = wallPrefab[0];
+                        if (i == 0) PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
+                        if (i > 0 && balconies.Contains(y))
+                        {
+                            wall = balconyPrefab[0];
+                        }
                         PlaceWestWall(x, y, i, storyFolder, wall);
                     }
 
@@ -125,6 +145,47 @@ public class BuildingRenderer : MonoBehaviour
         }
     }
 
+    public void RenderFirstLevel(Story story, Wing wing, Transform wingFolder, Building bldg)
+    {
+        Transform storyFolder = GameObject.Find("Story ").transform;
+        GameObject objectToDelete = GameObject.Find("Entry ");
+        if (objectToDelete != null)
+        {
+            Destroy(objectToDelete);
+        }
+        Transform wall;
+        Transform entriesFolder = new GameObject("Entry ").transform;
+        List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries);
+        for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
+        {
+            for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
+            {
+                if (entries.Contains(y))
+                {
+                    wall = doorPrefab[0];
+                    PlaceStair(x + 1, y - 1, 0, entriesFolder);
+                }
+                else
+                {
+                    wall = wallPrefab[0];
+                    PlaceFloor(x + 1, y - 1, 0, new int[3] { 0, 180, 0 }, entriesFolder);
+                }
+                PlaceEastWall(x, y, 0, storyFolder, wall);
+            }
+        }
+
+
+    }
+    public List<int> CalculateBalconiesIndex(int bldgSize, int numberOfBalconies)
+    {
+        var balconySpacing = (int)Math.Ceiling(bldgSize / (double)numberOfBalconies + 1);
+        List<int> balconiesIndexes = new List<int>();
+        for (int i = 0; i < numberOfBalconies; i++)
+        {
+            balconiesIndexes.Add(i* balconySpacing);
+        }
+        return balconiesIndexes;
+    }
     public List<int> CalculateEntryIndex(Wing wing, int numberOfEntries)
     {
         var doorSpacing = (int)Math.Ceiling((wing.Bounds.size.y - wing.Bounds.min.y) / ((double)numberOfEntries+1));
@@ -143,10 +204,15 @@ public class BuildingRenderer : MonoBehaviour
         f.SetParent(storyFolder);
     }
 
+    private void PlaceBalcony(int x, int y, int level, Transform storyFolder)
+    {
+        Transform b = Instantiate(balconyPrefab[0], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
+        b.SetParent(storyFolder);
+    }
     private void PlaceStair(int x, int y, int level, Transform storyFolder)
     {
         var stairSize = GetPrefabSize(stairPrefab[0]);
-        Transform f = Instantiate(stairPrefab[0l], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
+        Transform f = Instantiate(stairPrefab[0], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
 
