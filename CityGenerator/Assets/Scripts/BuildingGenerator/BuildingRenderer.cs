@@ -20,8 +20,11 @@ public class BuildingRenderer : MonoBehaviour
     public int stairPrefabIndex = 0;
     public int balconyPrefabIndex = 0;
 
+    public int savedSeedOfBalconies;
+    public int savedNumberOfBalconies;
     public Vector3 floorSize;
     public System.Random rand = new System.Random();
+    List<Tuple<int, int>> balconiesIndexes = new List<Tuple<int, int>>();
     Transform bldgFolder;
     public BuildingRenderer(List<Transform> floorPrefab, List<Transform> wallPrefab, List<Transform> doorPrefab, List<Transform> roofPrefab, List<Transform> stairPrefab)
     {
@@ -38,6 +41,7 @@ public class BuildingRenderer : MonoBehaviour
     }
     public GameObject Render(Building bldg)
     {
+
         bldgFolder = new GameObject("Building").transform;
         MeshCombiner meshCombiner = bldgFolder.AddComponent<MeshCombiner>();
         foreach (Wing wing in bldg.Wings)
@@ -74,7 +78,6 @@ public class BuildingRenderer : MonoBehaviour
     {
         Transform storyFolder = new GameObject("Story ").transform;
         storyFolder.SetParent(wingFolder);
-        List<int> balconies = CalculateBalconiesIndex(bldg.Size.y, bldg.numberOfBalconies);
         List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries);
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
@@ -82,16 +85,12 @@ public class BuildingRenderer : MonoBehaviour
             {
                 for (int i = 0; i < bldg.level; i++)
                 {
-
                     //south wall
                     if (y == wing.Bounds.min.y)
                     {
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, -90, 0 }, storyFolder);
-                        if (i>0 && balconies.Contains(x))
-                        {
-                            PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-                        }
+                        if (PlaceBalcony(bldg, i, x)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
                         PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
                     }
 
@@ -114,10 +113,7 @@ public class BuildingRenderer : MonoBehaviour
                         }
                         else 
                         {
-                            if (balconies.Contains(y))
-                            {
-                                PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-                            }
+                            if (PlaceBalcony(bldg, i, y)) PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
                             else
                             wall = wallPrefabs[wallPrefabIndex];
                         }
@@ -129,10 +125,7 @@ public class BuildingRenderer : MonoBehaviour
                     {
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0) PlaceFloor(x+1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
-                        if (i > 0 && balconies.Contains(x))
-                        {
-                            PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-                        }
+                        if (PlaceBalcony(bldg, i, x)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
                         PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
                     }
 
@@ -141,10 +134,8 @@ public class BuildingRenderer : MonoBehaviour
                     {
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0) PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
-                        if (i > 0 && balconies.Contains(y))
-                        {
-                            PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]); 
-                        }
+                        if (PlaceBalcony(bldg, i, y)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
+  
                         PlaceWestWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
                     }
 
@@ -184,13 +175,27 @@ public class BuildingRenderer : MonoBehaviour
 
 
     }
-    public List<int> CalculateBalconiesIndex(int bldgSize, int numberOfBalconies)
+    public List<Tuple<int, int>> CalculateBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
     {
-        var balconySpacing = (int)Math.Ceiling(bldgSize / (double)numberOfBalconies);
-        List<int> balconiesIndexes = new List<int>();
-        for (int i = 0; i < numberOfBalconies; i++)
+        if (randomSeedOfBalconies == savedSeedOfBalconies && numberOfBalconies == savedNumberOfBalconies) return balconiesIndexes;
+        savedSeedOfBalconies = randomSeedOfBalconies;
+        savedNumberOfBalconies = numberOfBalconies;
+        balconiesIndexes.Clear();
+        var balconySpacing = (int)Math.Ceiling(bldg.Size.y/ (double)numberOfBalconies);
+        if (randomSeedOfBalconies == 0)
         {
-            balconiesIndexes.Add(i* balconySpacing);
+            for (int i = 1; i < bldg.level; i++)
+            {
+                for (int j = 1; j < numberOfBalconies; j++)
+                balconiesIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
+            }
+        }
+        else
+        {
+            for (int i = 1; i < numberOfBalconies; i++)
+            {
+                balconiesIndexes.Add(new Tuple<int, int>(rand.Next(0, randomSeedOfBalconies), rand.Next(0, randomSeedOfBalconies)));
+            }
         }
         return balconiesIndexes;
     }
@@ -212,10 +217,12 @@ public class BuildingRenderer : MonoBehaviour
         f.SetParent(storyFolder);
     }
 
-    private void PlaceBalcony(int x, int y, int level, Transform storyFolder)
+    private bool PlaceBalcony(Building bldg, int level, int place)
     {
-        Transform b = Instantiate(balconyPrefabs[balconyPrefabIndex], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
-        b.SetParent(storyFolder);
+        List<Tuple<int, int>> balconiesIndexes = CalculateBalconiesIndex(bldg, bldg.numberOfBalconies, bldg.randomSeedOfBalconies);
+        Tuple<int, int> pairToCheck = new Tuple<int, int>(2, 2);
+        pairToCheck = new Tuple<int, int>(level, place);
+        return balconiesIndexes.Contains(pairToCheck) ;
     }
     private void PlaceStair(int x, int y, int level, Transform storyFolder)
     {

@@ -7,7 +7,8 @@
             "numberOfLevels": 12,
             "type": 0,
             "numberOfEntries": 4,
-            "numberOfBalconies": 4
+            "MaxNumberOfBalconies": 6,
+            "randomSeedOfBalconies": 10
         }
     ]
 }

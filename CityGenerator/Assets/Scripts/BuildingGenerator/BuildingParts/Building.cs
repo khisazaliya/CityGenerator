@@ -11,6 +11,7 @@ public class Building
     public int numberOfEntries;
 
     public int numberOfBalconies;
+    public int randomSeedOfBalconies;
 
     public int level;
     public Vector2Int Size { get { return size; } }
@@ -18,12 +19,13 @@ public class Building
 
     public BuildingType Type { get => type; }
 
-    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfBalconies) {
+    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies) {
         level = numberOfLevels;
         size = new Vector2Int(sizeX, sizeY);
         this.wings = wings;
         this.numberOfEntries = numberOfEntries;
         this.numberOfBalconies = numberOfBalconies;
+        this.randomSeedOfBalconies = randomSeedOfBalconies;
     }
 
     public Building(int sizeX, int sizeY)
