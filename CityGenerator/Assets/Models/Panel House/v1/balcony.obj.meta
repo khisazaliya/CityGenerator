@@ -1,9 +1,19 @@
 fileFormatVersion: 2
-guid: bd31a8914534a0245ba869f35fb14d09
+guid: eb7a21b7139289d4eb020f63c51c2546
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_balconyMat
+    second: {fileID: 2100000, guid: 80571da6ac21c664a810bb99daf9585f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_roofMat
+    second: {fileID: 2100000, guid: ae05a216b935ee6428ef95995dc2e2c8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

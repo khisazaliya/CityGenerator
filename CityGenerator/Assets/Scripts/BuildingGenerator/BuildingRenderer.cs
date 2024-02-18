@@ -90,7 +90,7 @@ public class BuildingRenderer : MonoBehaviour
                     //east wall
                     if (x == wing.Bounds.min.x + wing.Bounds.size.x - 1)
                     {
-                        Transform wall;
+                        Transform wall =wallPrefab[0];
                         if (i == 0)
                         {
                             if (entries.Contains(y))
@@ -113,7 +113,7 @@ public class BuildingRenderer : MonoBehaviour
                             else
                             wall = wallPrefab[0];
                         }
-                        PlaceEastWall(x, y, i, storyFolder, wallPrefab[0]);
+                        PlaceEastWall(x, y, i, storyFolder, wall);
                     }
 
                     //north wall
@@ -178,7 +178,7 @@ public class BuildingRenderer : MonoBehaviour
     }
     public List<int> CalculateBalconiesIndex(int bldgSize, int numberOfBalconies)
     {
-        var balconySpacing = (int)Math.Ceiling(bldgSize / (double)numberOfBalconies + 1);
+        var balconySpacing = (int)Math.Ceiling(bldgSize / (double)numberOfBalconies);
         List<int> balconiesIndexes = new List<int>();
         for (int i = 0; i < numberOfBalconies; i++)
         {
@@ -237,9 +237,10 @@ public class BuildingRenderer : MonoBehaviour
 
     private void PlaceEastWall(int x, int y, int level, Transform storyFolder, Transform wall)
     {
+
         float height;
         if (level == 0) height = floorSize.y;
-        else height = level* 2 + 0.2f + floorSize.y;
+        else height = level * 2 + 0.2f + floorSize.y;
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
