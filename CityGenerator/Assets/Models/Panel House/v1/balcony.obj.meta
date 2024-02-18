@@ -8,12 +8,32 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cube_Cube_balconyMat
-    second: {fileID: 2100000, guid: 80571da6ac21c664a810bb99daf9585f, type: 2}
+    second: {fileID: 2100000, guid: 0dd42487bd5d3d84c97e1bcdf021c9ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_frameMat
+    second: {fileID: 2100000, guid: 75ce47032d5931e49ab08abb56989b71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_fundament1Mat
+    second: {fileID: 2100000, guid: 0135905f3851c01419b5b16bd5ebfaf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_fundament2Mat
+    second: {fileID: 2100000, guid: 9b4eee7412d2a4849934bb863c50bd7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cube_Cube_glassMat
+    second: {fileID: 2100000, guid: 71e4d5f270a80094e9d470c9159610ad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Cube_Cube_roofMat
-    second: {fileID: 2100000, guid: ae05a216b935ee6428ef95995dc2e2c8, type: 2}
+    second: {fileID: 2100000, guid: 0349a2d87a784904cb7a5ad6d4a65c2b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

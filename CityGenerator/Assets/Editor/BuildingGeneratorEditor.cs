@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(BuildingGenerator))]
 public class BuildingGeneratorEditor : Editor
 {
     private BuildingGenerator buildingGenerator;
     private BuildingSettings previousSettings;
-   // private BuildingRenderer previousRenderer;
     private GameObject tempObject;
 
     private void OnEnable()
@@ -19,7 +19,7 @@ public class BuildingGeneratorEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-
+        BuildingRenderer buildingRenderer = buildingGenerator.buildingRenderer;
         if (previousSettings == null || !AreSettingsEqual(buildingGenerator.buildingSettings[0], previousSettings))
         {
             GenerateNewBuilding();
@@ -42,25 +42,53 @@ public class BuildingGeneratorEditor : Editor
             numberOfBalconies = buildingGenerator.buildingSettings[0].numberOfBalconies
         };
 
-       /* if (tempObject != null)
+      /*  EditorGUILayout.LabelField("Prefab Selection", EditorStyles.boldLabel);
+        buildingRenderer.floorPrefab = (Transform)EditorGUILayout.ObjectField("Floor Prefab", buildingRenderer.floorPrefab, typeof(Transform), false);*/
+
+
+        EditorGUILayout.LabelField("Prefab Selection", EditorStyles.boldLabel);
+
+        // Отображение списков префабов для каждого типа элемента здания
+        buildingRenderer.floorPrefabIndex = EditorGUILayout.Popup("Floor Prefab", buildingRenderer.floorPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
+        buildingRenderer.wallPrefabIndex = EditorGUILayout.Popup("Wall Prefab", buildingRenderer.wallPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.doorPrefabIndex = EditorGUILayout.Popup("Door Prefab", buildingRenderer.doorPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
+        buildingRenderer.roofPrefabIndex = EditorGUILayout.Popup("Roof Prefab", buildingRenderer.roofPrefabIndex, GetPrefabNames(buildingRenderer.roofPrefabs));
+        buildingRenderer.stairPrefabIndex = EditorGUILayout.Popup("Stair Prefab", buildingRenderer.stairPrefabIndex, GetPrefabNames(buildingRenderer.stairPrefabs));
+        buildingRenderer.balconyPrefabIndex = EditorGUILayout.Popup("Balcony Prefab", buildingRenderer.balconyPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
+        // Обработчик изменения полей выбора префабов
+        if (GUI.changed)
         {
-            DestroyImmediate(tempObject);
+            GenerateNewBuilding();
         }
 
-        tempObject = new GameObject("TempBuildingRenderer");
+        /* if (tempObject != null)
+         {
+             DestroyImmediate(tempObject);
+         }
 
-        previousRenderer = tempObject.AddComponent<BuildingRenderer>();
+         tempObject = new GameObject("TempBuildingRenderer");
 
-        if (buildingGenerator.buildingRenderer != null)
-        {
-            previousRenderer.floorPrefab = buildingGenerator.buildingRenderer.floorPrefab;
-            previousRenderer.wallPrefab = buildingGenerator.buildingRenderer.wallPrefab;
-            previousRenderer.doorPrefab = buildingGenerator.buildingRenderer.doorPrefab;
-            previousRenderer.roofPrefab = buildingGenerator.buildingRenderer.roofPrefab;
-            previousRenderer.stairPrefab = buildingGenerator.buildingRenderer.stairPrefab;
-        }*/
+         previousRenderer = tempObject.AddComponent<BuildingRenderer>();
+
+         if (buildingGenerator.buildingRenderer != null)
+         {
+             previousRenderer.floorPrefab = buildingGenerator.buildingRenderer.floorPrefab;
+             previousRenderer.wallPrefab = buildingGenerator.buildingRenderer.wallPrefab;
+             previousRenderer.doorPrefab = buildingGenerator.buildingRenderer.doorPrefab;
+             previousRenderer.roofPrefab = buildingGenerator.buildingRenderer.roofPrefab;
+             previousRenderer.stairPrefab = buildingGenerator.buildingRenderer.stairPrefab;
+         }*/
     }
 
+     private string[] GetPrefabNames(List<Transform> prefabList)
+    {
+        string[] prefabNames = new string[prefabList.Count];
+        for (int i = 0; i < prefabList.Count; i++)
+        {
+            prefabNames[i] = prefabList[i].name;
+        }
+        return prefabNames;
+    }
     private bool AreSettingsEqual(BuildingSettings settings1, BuildingSettings settings2)
     {
         return settings1.buildingSize.Equals(settings2.buildingSize)
@@ -71,7 +99,7 @@ public class BuildingGeneratorEditor : Editor
             && settings1.numberOfBalconies == settings2.numberOfBalconies;
     }
 
-    private bool ArePrefabsEqual(BuildingRenderer render1, BuildingRenderer render2)
+/*    private bool ArePrefabsEqual(BuildingRenderer render1, BuildingRenderer render2)
     {
         return render1.stairPrefab.Equals(render2.stairPrefab)
             && render1.floorPrefab.Equals(render2.floorPrefab)
@@ -79,7 +107,7 @@ public class BuildingGeneratorEditor : Editor
             && render1.wallPrefab.Equals(render2.wallPrefab)
             && render1.roofPrefab.Equals(render2.roofPrefab);
     }
-
+*/
     private void GenerateNewBuilding()
     {
         if (buildingGenerator.renderedBuilding != null)

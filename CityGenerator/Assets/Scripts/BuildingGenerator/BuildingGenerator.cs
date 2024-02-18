@@ -13,7 +13,7 @@ public class BuildingGenerator : MonoBehaviour
     {
         Building b = BuildingBuilder.Build(buildingSettings);
 
-        BuildingRenderer buildingRenderer = GetComponent<BuildingRenderer>();
+        buildingRenderer = GetComponent<BuildingRenderer>();
         renderedBuilding = buildingRenderer.Render(b);
         renderedBuilding.transform.SetPositionAndRotation(position, rotation);
         return renderedBuilding;

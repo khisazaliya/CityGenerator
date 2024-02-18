@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Plane.009_Plane.012_Wall.001Mat
-    second: {fileID: 2100000, guid: 2428ad5a460db654c9fecbbac5ecd209, type: 2}
+    second: {fileID: 2100000, guid: d828d965dd3389d4baf10b61c8029800, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
