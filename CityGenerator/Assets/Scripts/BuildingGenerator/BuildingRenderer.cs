@@ -186,7 +186,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int i = 1; i < bldg.level; i++)
             {
-                for (int j = 1; j < numberOfBalconies; j++)
+                for (int j = 0; j < numberOfBalconies; j++)
                 balconiesIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
             }
         }
