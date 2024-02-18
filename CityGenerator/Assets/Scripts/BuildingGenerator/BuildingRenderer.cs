@@ -82,9 +82,9 @@ public class BuildingRenderer : MonoBehaviour
                         if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, -90, 0 }, storyFolder);
                         if (i>0 && balconies.Contains(x))
                         {
-                            wall = balconyPrefab[0];
+                            PlaceSouthWall(x, y, i, storyFolder, balconyPrefab[0]);
                         }
-                        PlaceSouthWall(x, y, i, storyFolder, wall);
+                        PlaceSouthWall(x, y, i, storyFolder, wallPrefab[0]);
                     }
 
                     //east wall
@@ -108,12 +108,12 @@ public class BuildingRenderer : MonoBehaviour
                         {
                             if (balconies.Contains(y))
                             {
-                                wall = balconyPrefab[0];
+                                PlaceEastWall(x, y, i, storyFolder, balconyPrefab[0]);
                             }
                             else
                             wall = wallPrefab[0];
                         }
-                        PlaceEastWall(x, y, i, storyFolder, wall);
+                        PlaceEastWall(x, y, i, storyFolder, wallPrefab[0]);
                     }
 
                     //north wall
@@ -123,9 +123,9 @@ public class BuildingRenderer : MonoBehaviour
                         if (i == 0) PlaceFloor(x+1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
                         if (i > 0 && balconies.Contains(x))
                         {
-                            wall = balconyPrefab[0];
+                            PlaceNorthWall(x, y, i, storyFolder, balconyPrefab[0]);
                         }
-                        PlaceNorthWall(x, y, i, storyFolder, wall);
+                        PlaceNorthWall(x, y, i, storyFolder, wallPrefab[0]);
                     }
 
                     //west wall
@@ -135,9 +135,9 @@ public class BuildingRenderer : MonoBehaviour
                         if (i == 0) PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
                         if (i > 0 && balconies.Contains(y))
                         {
-                            wall = balconyPrefab[0];
+                            PlaceWestWall(x, y, i, storyFolder, balconyPrefab[0]); 
                         }
-                        PlaceWestWall(x, y, i, storyFolder, wall);
+                        PlaceWestWall(x, y, i, storyFolder, wallPrefab[0]);
                     }
 
                 }
