@@ -102,7 +102,7 @@ public class BuildingRenderer : MonoBehaviour
                         {
                             if (entries.Contains(y))
                             {
-                                wall = doorPrefabs[doorPrefabIndex];
+                                PlaceEastWall(x, y, i, storyFolder, doorPrefabs[doorPrefabIndex]);
                                 PlaceStair(x + 1, y - 1, i, storyFolder);
                             }
                             else
@@ -184,7 +184,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y/ (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 1; i < bldg.level; i++)
+            for (int i = 2; i < bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                 balconiesIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -192,9 +192,9 @@ public class BuildingRenderer : MonoBehaviour
         }
         else
         {
-            for (int i = 1; i < numberOfBalconies; i++)
+            for (int i = 0; i < numberOfBalconies; i++)
             {
-                balconiesIndexes.Add(new Tuple<int, int>(rand.Next(0, randomSeedOfBalconies), rand.Next(0, randomSeedOfBalconies)));
+                balconiesIndexes.Add(new Tuple<int, int>(rand.Next(2, randomSeedOfBalconies), rand.Next(2, randomSeedOfBalconies)));
             }
         }
         return balconiesIndexes;

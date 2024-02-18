@@ -15,7 +15,7 @@ C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-60121
+62496
 Successfully changed project path to: C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
 C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [24768] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 3381618903 [EditorId] 3381618903 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [19824] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 2560668400 [EditorId] 2560668400 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [24768] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 3381618903 [EditorId] 3381618903 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [19824] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 2560668400 [EditorId] 2560668400 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 7 workers.
-Refreshing native plugins compatible for Editor in 27.95 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 17.32 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.18f1 (d29bea25151d)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Resources/UnitySubsystems
@@ -70,46 +70,46 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56424
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56772
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.012984 seconds.
-- Loaded All Assemblies, in  0.747 seconds
+Registered in 0.017768 seconds.
+- Loaded All Assemblies, in  1.162 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.543 seconds
-Domain Reload Profiling: 1287ms
-	BeginReloadAssembly (271ms)
+- Finished resetting the current domain, in  0.795 seconds
+Domain Reload Profiling: 1954ms
+	BeginReloadAssembly (289ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (84ms)
-	RebuildNativeTypeToScriptingClass (24ms)
-	initialDomainReloadingComplete (105ms)
-	LoadAllAssembliesAndSetupDomain (259ms)
-		LoadAssemblies (268ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (205ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (150ms)
+	LoadAllAssembliesAndSetupDomain (489ms)
+		LoadAssemblies (285ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (254ms)
-			TypeCache.Refresh (252ms)
-				TypeCache.ScanAssembly (231ms)
+		AnalyzeDomain (484ms)
+			TypeCache.Refresh (480ms)
+				TypeCache.ScanAssembly (443ms)
 			ScanForSourceGeneratedMonoScriptInfo (1ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (544ms)
+	FinalizeReload (795ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (435ms)
+		SetupLoadedEditorAssemblies (624ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (19ms)
-			SetLoadedEditorAssemblies (9ms)
+			InitializePlatformSupportModulesInManaged (24ms)
+			SetLoadedEditorAssemblies (14ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (5ms)
-			ProcessInitializeOnLoadAttributes (305ms)
-			ProcessInitializeOnLoadMethodAttributes (96ms)
+			BeforeProcessingInitializeOnLoad (6ms)
+			ProcessInitializeOnLoadAttributes (428ms)
+			ProcessInitializeOnLoadMethodAttributes (151ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -117,8 +117,8 @@ Domain Reload Profiling: 1287ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.662 seconds
-Refreshing native plugins compatible for Editor in 5.74 ms, found 3 plugins.
+- Loaded All Assemblies, in  1.785 seconds
+Refreshing native plugins compatible for Editor in 7.02 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -126,47 +126,47 @@ Package Manager log level set to [2]
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.466 seconds
-Domain Reload Profiling: 3125ms
-	BeginReloadAssembly (510ms)
+- Finished resetting the current domain, in  1.781 seconds
+Domain Reload Profiling: 3562ms
+	BeginReloadAssembly (390ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (13ms)
+		DisableScriptedObjects (19ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (31ms)
-	RebuildCommonClasses (177ms)
-	RebuildNativeTypeToScriptingClass (72ms)
-	initialDomainReloadingComplete (128ms)
-	LoadAllAssembliesAndSetupDomain (770ms)
-		LoadAssemblies (849ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (188ms)
+	RebuildNativeTypeToScriptingClass (34ms)
+	initialDomainReloadingComplete (119ms)
+	LoadAllAssembliesAndSetupDomain (1047ms)
+		LoadAssemblies (770ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (316ms)
-			TypeCache.Refresh (280ms)
-				TypeCache.ScanAssembly (250ms)
-			ScanForSourceGeneratedMonoScriptInfo (28ms)
-			ResolveRequiredComponents (6ms)
-	FinalizeReload (1468ms)
+		AnalyzeDomain (505ms)
+			TypeCache.Refresh (443ms)
+				TypeCache.ScanAssembly (403ms)
+			ScanForSourceGeneratedMonoScriptInfo (49ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1782ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1173ms)
+		SetupLoadedEditorAssemblies (1365ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
+			InitializePlatformSupportModulesInManaged (21ms)
 			SetLoadedEditorAssemblies (8ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (122ms)
-			ProcessInitializeOnLoadAttributes (969ms)
-			ProcessInitializeOnLoadMethodAttributes (44ms)
-			AfterProcessingInitializeOnLoad (14ms)
+			BeforeProcessingInitializeOnLoad (159ms)
+			ProcessInitializeOnLoadAttributes (1108ms)
+			ProcessInitializeOnLoadMethodAttributes (54ms)
+			AfterProcessingInitializeOnLoad (15ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
-Refreshing native plugins compatible for Editor in 7.68 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (19ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
+Refreshing native plugins compatible for Editor in 11.58 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3116 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 32 unused Assets / (58.2 KB). Loaded Objects now: 3587.
-Memory consumption went from 133.7 MB to 133.6 MB.
-Total: 17.886400 ms (FindLiveObjects: 0.502600 ms CreateObjectMapping: 0.450800 ms MarkObjects: 16.214100 ms  DeleteObjects: 0.716900 ms)
+Unloading 32 unused Assets / (58.1 KB). Loaded Objects now: 3607.
+Memory consumption went from 148.3 MB to 148.2 MB.
+Total: 9.385600 ms (FindLiveObjects: 0.683100 ms CreateObjectMapping: 0.649600 ms MarkObjects: 7.719700 ms  DeleteObjects: 0.330000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -183,593 +183,371 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 969685.638585 seconds.
-  path: Assets/Models/Panel House/v1/Materials/wall/window.mat
-  artifactKey: Guid(0ec201652778fc142841ecb37a9c2f73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Panel House/v1/Materials/wall/window.mat using Guid(0ec201652778fc142841ecb37a9c2f73) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adf1c66251d5781ed97c57bbbc2ad3cd') in 0.191215 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 4.161005 seconds.
-  path: Assets/Models/Panel House/v1/Materials/balcony/balcony_window.mat
-  artifactKey: Guid(71e4d5f270a80094e9d470c9159610ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Panel House/v1/Materials/balcony/balcony_window.mat using Guid(71e4d5f270a80094e9d470c9159610ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39b2cd1dab081968ca8cf38ba7edee18') in 0.048814 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
-========================================================================
-Received Import Request.
-  Time since last request: 180.544725 seconds.
-  path: Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_1_Albedo.png
-  artifactKey: Guid(a5661d8517db62d47929b5305597ae9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_1_Albedo.png using Guid(a5661d8517db62d47929b5305597ae9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '362eaf32f5369d46fa378417d26fe315') in 0.045492 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_1_Normal.png
-  artifactKey: Guid(bdbc7dc0d1f069e42bf250292093ede1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_1_Normal.png using Guid(bdbc7dc0d1f069e42bf250292093ede1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcf4d1906c575483ea324de2453bf870') in 0.043382 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000056 seconds.
-  path: Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_2_Albedo.png
-  artifactKey: Guid(16e00d1f068c2c44a86edfe13387c761) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_2_Albedo.png using Guid(16e00d1f068c2c44a86edfe13387c761) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e620ecd544b3bb25a798115e8d4b9c47') in 0.023235 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_2_Occlusion.png
-  artifactKey: Guid(d4254e09ad7c1b24e96190e286a9a5ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_2_Occlusion.png using Guid(d4254e09ad7c1b24e96190e286a9a5ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a3f695e676dd5bc56884b6ba913636d') in 0.027202 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_1_Metallic.png
-  artifactKey: Guid(952919a052fbb214d968dae8bdeae96f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/CaptainCatSparrow/PBR_Materials/500_Materials/Textures/Panel/Panel_1_Metallic.png using Guid(952919a052fbb214d968dae8bdeae96f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5286aa268271677a5eec6802f2593b7') in 0.032170 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 682.893466 seconds.
-  path: Assets/Models/Materials/urban-skyboxes
-  artifactKey: Guid(70691a7d16079f645a8e8162d52b6f9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes using Guid(70691a7d16079f645a8e8162d52b6f9d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8508a61c4446872f2f75274a3fc9d4b6') in 0.008037 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 1.012504 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/CNTower
-  artifactKey: Guid(9bd1ba8fe787a5e43a63e78e707db98e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/CNTower using Guid(9bd1ba8fe787a5e43a63e78e707db98e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8615c2da66fd586850d677c79d5cc4c7') in 0.000869 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.030096 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/CNTower/negx.jpg
-  artifactKey: Guid(504394c4b265824438e91d4af1a38de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/CNTower/negx.jpg using Guid(504394c4b265824438e91d4af1a38de1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb1896d1f8d9628e12885df75f1bcec0') in 0.092973 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000037 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/CNTower/posz.jpg
-  artifactKey: Guid(8948398305ae3584a8ac44ba086c07a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/CNTower/posz.jpg using Guid(8948398305ae3584a8ac44ba086c07a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc52e37c8d52ab813d1959d33913c220') in 0.030433 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000054 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/CNTower/posy.jpg
-  artifactKey: Guid(e925b9e8645d6ac4db5242feeefd0052) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/CNTower/posy.jpg using Guid(e925b9e8645d6ac4db5242feeefd0052) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20d711f8e7ac279c57e3ac56acc8ed76') in 0.027286 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/CNTower/negz.jpg
-  artifactKey: Guid(d622049b8116ec44fa081cec662c807d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/CNTower/negz.jpg using Guid(d622049b8116ec44fa081cec662c807d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80fb6b10b31191aca0a6cc371f5e6123') in 0.026669 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/CNTower/posx.jpg
-  artifactKey: Guid(556f384eb43ff0a4682a6a5a1c41e2b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/CNTower/posx.jpg using Guid(556f384eb43ff0a4682a6a5a1c41e2b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9bb3114645e5677f191a3e9fde0b25a') in 0.028216 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 6.921208 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/ForbiddenCity
-  artifactKey: Guid(72807f4d53de3c2459befad8662202a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/ForbiddenCity using Guid(72807f4d53de3c2459befad8662202a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '609b0f15975aa52186088628f0c67f53') in 0.000806 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.026341 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/ForbiddenCity/negx.jpg
-  artifactKey: Guid(9cb3855eaa2487d42b444b45ca625a63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/ForbiddenCity/negx.jpg using Guid(9cb3855eaa2487d42b444b45ca625a63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2751fb609a432ee13a810a1963816794') in 0.027027 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000056 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/ForbiddenCity/posx.jpg
-  artifactKey: Guid(f57718a510445004cb235c66f72ddaa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/ForbiddenCity/posx.jpg using Guid(f57718a510445004cb235c66f72ddaa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dc91c01705f291928a88edc578e2bc8') in 0.024792 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000135 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/ForbiddenCity/posy.jpg
-  artifactKey: Guid(a3732a3cb6e9fe047916092c0f2985e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/ForbiddenCity/posy.jpg using Guid(a3732a3cb6e9fe047916092c0f2985e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84f0663bbeb42dbce00953c604709901') in 0.024680 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 4.160816 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan
-  artifactKey: Guid(9998b9bcc0fc5554fbe83df9aac9cdc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan using Guid(9998b9bcc0fc5554fbe83df9aac9cdc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0870c0f4c91cf56e3983e08225ae43b4') in 0.001021 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.013567 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan/negx.jpg
-  artifactKey: Guid(17c9193c7c0e7224e889a0a45c147afe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan/negx.jpg using Guid(17c9193c7c0e7224e889a0a45c147afe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa0c4f3a6d2d910254dc60a6c562c929') in 0.023022 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000045 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan/posz.jpg
-  artifactKey: Guid(c6dadd2a5a3c64248a5482d1649e89db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan/posz.jpg using Guid(c6dadd2a5a3c64248a5482d1649e89db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8950b2b0b7839af08e35de7c4320d25f') in 0.023971 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000064 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan/negz.jpg
-  artifactKey: Guid(acac92e90c01a8840934e8c71614dc83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan/negz.jpg using Guid(acac92e90c01a8840934e8c71614dc83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5c1823e12d2022345405efaa7770909') in 0.025819 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 3.614402 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan2
-  artifactKey: Guid(3f345f9651a21094c90bb189819362a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan2 using Guid(3f345f9651a21094c90bb189819362a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2bdd80cee6a609ada4d806d32ff29ca') in 0.000828 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.026691 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan2/negx.jpg
-  artifactKey: Guid(94302149496509b44863ae7968913ad7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan2/negx.jpg using Guid(94302149496509b44863ae7968913ad7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '146d41fb2b3136c43b5b3fc6918b07e7') in 0.025674 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan2/posz.jpg
-  artifactKey: Guid(fbc1d7d0c80f66f459fe5252bdff54f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan2/posz.jpg using Guid(fbc1d7d0c80f66f459fe5252bdff54f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '073db8e1423da539ba4dfbb45bb9018b') in 0.029476 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/GamlaStan2/posx.jpg
-  artifactKey: Guid(a99c71bf33e1e7b41bf6964f7699fe5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/GamlaStan2/posx.jpg using Guid(a99c71bf33e1e7b41bf6964f7699fe5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fe9a2aadc4d1c1be50bc1755b8b0797') in 0.030493 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 1.323811 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Medborgarplatsen
-  artifactKey: Guid(485b0be856251f24992e0829ad541429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Medborgarplatsen using Guid(485b0be856251f24992e0829ad541429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91a630ba906b0af734d4996765587bf3') in 0.000928 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.027921 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Medborgarplatsen/negx.jpg
-  artifactKey: Guid(f04956117def6c641b96dc1af57d2960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Medborgarplatsen/negx.jpg using Guid(f04956117def6c641b96dc1af57d2960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '327b0958390172eaf2aebe2bbce2bb0d') in 0.036330 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000360 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Medborgarplatsen/posy.jpg
-  artifactKey: Guid(d6077509923debc4391fc4be50546051) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Medborgarplatsen/posy.jpg using Guid(d6077509923debc4391fc4be50546051) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2474adf66c4fa4e09702b56afb064799') in 0.023533 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Medborgarplatsen/posx.jpg
-  artifactKey: Guid(e695075bb43bc3542a7ced45b4cebb6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Medborgarplatsen/posx.jpg using Guid(e695075bb43bc3542a7ced45b4cebb6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e386d47306088f3bd4d78ed2aa14e9c8') in 0.021826 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 1.606500 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Parliament
-  artifactKey: Guid(2a4d6a7d95702014f81b860452b4e56e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Parliament using Guid(2a4d6a7d95702014f81b860452b4e56e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '711dfbaa28c6cfc7f8d15a233caba7e8') in 0.001001 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.026283 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Parliament/negx.jpg
-  artifactKey: Guid(87ce5ae44bd387f409400d26d15e47e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Parliament/negx.jpg using Guid(87ce5ae44bd387f409400d26d15e47e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd84606e427c895b85ad4503c21a27a8c') in 0.028661 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000065 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Parliament/posz.jpg
-  artifactKey: Guid(cd37fe4125e4f244cb551d8fd426eb3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Parliament/posz.jpg using Guid(cd37fe4125e4f244cb551d8fd426eb3c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79c3d487083b8b4cb78999c04cf13f6f') in 0.026312 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000044 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Parliament/posy.jpg
-  artifactKey: Guid(c489180df2131114c8cfbb00ab4de976) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Parliament/posy.jpg using Guid(c489180df2131114c8cfbb00ab4de976) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '629cd6f00d5d8a52aa0e6c5887f2b232') in 0.024616 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 1.748080 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout
-  artifactKey: Guid(2eb4eb1f7815a184d90a3d454ca0923a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout using Guid(2eb4eb1f7815a184d90a3d454ca0923a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15c8ced3db8990948e603783f104c3a9') in 0.000906 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.014007 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout/negx.jpg
-  artifactKey: Guid(81083312773538349a914a80f8fa4356) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout/negx.jpg using Guid(81083312773538349a914a80f8fa4356) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9ff6ddb4e923ff7c8f7e77c2bcd0dc4') in 0.023707 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000242 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout/posy.jpg
-  artifactKey: Guid(843991bf5461d5945b7c2bc25f5feb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout/posy.jpg using Guid(843991bf5461d5945b7c2bc25f5feb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92252f8215ffbe02c57e91371133a3a2') in 0.025746 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout/posx.jpg
-  artifactKey: Guid(f0c387ca4dfe09748b3408d8bf3f9528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout/posx.jpg using Guid(f0c387ca4dfe09748b3408d8bf3f9528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd073fe32824cffa72facdcf99d85596f') in 0.023339 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 2.817108 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch
-  artifactKey: Guid(eed54497ff5d7fc4192a0c9547d84e95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch using Guid(eed54497ff5d7fc4192a0c9547d84e95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1b43a46600cfd307102e16bdfae63ae') in 0.000687 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.070218 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/negx.jpg
-  artifactKey: Guid(18cb74f2eab698e479bc11b47a74a3dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/negx.jpg using Guid(18cb74f2eab698e479bc11b47a74a3dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca93d821d24bbeaa30e222efbaed1a1a') in 0.038871 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.001252 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/negz.jpg
-  artifactKey: Guid(a5bfa916c032a5245b7b38cf5abc2e65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/negz.jpg using Guid(a5bfa916c032a5245b7b38cf5abc2e65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec1a5b3ddb80479644e2032afecc26e5') in 0.028061 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/posy.jpg
-  artifactKey: Guid(56707b6496cad3749a085b97c662f3d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/posy.jpg using Guid(56707b6496cad3749a085b97c662f3d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '915104d0a043f80afca3c41798bd999b') in 0.026935 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.954498 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/readme.txt
-  artifactKey: Guid(e79e2a77bbf523846b855b365998ec08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch/readme.txt using Guid(e79e2a77bbf523846b855b365998ec08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f2cb6a83ca5a1147ac087858d219683') in 0.002888 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 25.874686 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout/city_skybox.mat
-  artifactKey: Guid(88679ca6985fda34a974eca920219378) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout/city_skybox.mat using Guid(88679ca6985fda34a974eca920219378) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5593d1e6d91864ee3c391899d5bf7e7d') in 0.059895 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 31.208640 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout/negx.jpg
-  artifactKey: Guid(81083312773538349a914a80f8fa4356) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout/negx.jpg using Guid(81083312773538349a914a80f8fa4356) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9dfcd9f7cc503f36a9e373c3d71a2c7') in 0.099195 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 64.241769 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout/negy.jpg
-  artifactKey: Guid(a9fcdef9de57f8249a2f2e486c95bfa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout/negy.jpg using Guid(a9fcdef9de57f8249a2f2e486c95bfa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '009916b7022e294a9489dbde7383f13b') in 0.022458 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 35.377449 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Roundabout/negy.jpg
-  artifactKey: Guid(a9fcdef9de57f8249a2f2e486c95bfa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Roundabout/negy.jpg using Guid(a9fcdef9de57f8249a2f2e486c95bfa6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '484c7d39e92146c73553c0ba7a38b2b7') in 0.030137 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 16.142169 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2
-  artifactKey: Guid(bba483e01a5e38e409aabed0a91d7fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2 using Guid(bba483e01a5e38e409aabed0a91d7fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0dfc2322cc586472c2ad6a3ccb30b07e') in 0.000964 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.020675 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2/negx.jpg
-  artifactKey: Guid(f113262eae8691343bb0ad89d9c7a3ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2/negx.jpg using Guid(f113262eae8691343bb0ad89d9c7a3ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f73a817e31ee81ce8eb4028d05bf0ca') in 0.027523 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2/posx.jpg
-  artifactKey: Guid(ad00d0d6b68259e4791e9d7b65b41371) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2/posx.jpg using Guid(ad00d0d6b68259e4791e9d7b65b41371) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c26f5eff73a77ce0d48566ec247852fe') in 0.028913 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000046 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2/posy.jpg
-  artifactKey: Guid(f94ad74c2a4fd2b4fb88a56d8d809ac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch2/posy.jpg using Guid(f94ad74c2a4fd2b4fb88a56d8d809ac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37a6b1861d0d8d348b0a868719784856') in 0.025648 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 1.844149 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3
-  artifactKey: Guid(4836aab27f39d784e82c3c0a20fcb66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3 using Guid(4836aab27f39d784e82c3c0a20fcb66b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2acdf527c563441491504ff89f6f09e1') in 0.000951 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.057862 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3/negx.jpg
-  artifactKey: Guid(c952d502684e54d48bdfa4a64a5d93c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3/negx.jpg using Guid(c952d502684e54d48bdfa4a64a5d93c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67ad154aa0444c900c7e7f259fd1574e') in 0.026294 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3/negz.jpg
-  artifactKey: Guid(3c73a9c93a6540745a58cf2226302ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3/negz.jpg using Guid(3c73a9c93a6540745a58cf2226302ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '567f53aa0ea6ba75b36b227d1d6de60e') in 0.025052 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000345 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3/posx.jpg
-  artifactKey: Guid(bb9ee86b8b551f448b4b2be3d55dd45d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/SaintLazarusChurch3/posx.jpg using Guid(bb9ee86b8b551f448b4b2be3d55dd45d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16b475d6e61484ceaa4c26e9178f0ea7') in 0.039334 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 1.533373 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen
-  artifactKey: Guid(8282cba114ca07943908e6d0355b30b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen using Guid(8282cba114ca07943908e6d0355b30b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '856b5f34a2595e16337fbbd9b769ded4') in 0.000770 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.041974 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen/negx.jpg
-  artifactKey: Guid(43eb2aa50a6b7a94ca95adc612ee1c79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen/negx.jpg using Guid(43eb2aa50a6b7a94ca95adc612ee1c79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f53f957b7975e24157a10a288592e2e7') in 0.027274 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen/posx.jpg
-  artifactKey: Guid(72713d7d832f79a45bcfd3ceb25f7da8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen/posx.jpg using Guid(72713d7d832f79a45bcfd3ceb25f7da8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3425b6c05beacf12f7bad0590ceebe40') in 0.031012 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000072 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen/posz.jpg
-  artifactKey: Guid(d8b33c8fce529bc468bb98322324db56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen/posz.jpg using Guid(d8b33c8fce529bc468bb98322324db56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c128440fd37b68e4ed68f6ea36509640') in 0.029792 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 7.943289 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2
-  artifactKey: Guid(8f4a03e14e740c744897bf2e9ea690c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2 using Guid(8f4a03e14e740c744897bf2e9ea690c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '731617ede6f0f07a827f1631d3ddc52b') in 0.001100 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.166652 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2/negx.jpg
-  artifactKey: Guid(91e8416dd8ed6804e8003b3ab7b2c56a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2/negx.jpg using Guid(91e8416dd8ed6804e8003b3ab7b2c56a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b3e8e779bd173aeb2bc20abe6b58a01') in 0.033241 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000077 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2/posy.jpg
-  artifactKey: Guid(6915b98de7305df4cb45795b83b512f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2/posy.jpg using Guid(6915b98de7305df4cb45795b83b512f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4068fa6bad354fdd703c13b1aacdb7a0') in 0.025792 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2/posz.jpg
-  artifactKey: Guid(9e2d2d38058ae454f984b4d23217f9e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/Sodermalmsallen2/posz.jpg using Guid(9e2d2d38058ae454f984b4d23217f9e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '166d7461812e379daf24d3428c5fb97b') in 0.025110 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 6.880503 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/UnionSquare
-  artifactKey: Guid(99bcf4354e1761e448bd8979a5edacdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/UnionSquare using Guid(99bcf4354e1761e448bd8979a5edacdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c3a2de224b5f7277a2cc176bc089d52') in 0.000893 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 0
-========================================================================
-Received Import Request.
-  Time since last request: 0.028389 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/UnionSquare/negx.jpg
-  artifactKey: Guid(1ddd293118bdedf4eaa9a50899b2d77c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/UnionSquare/negx.jpg using Guid(1ddd293118bdedf4eaa9a50899b2d77c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9735e907c8723675719fef4cae780377') in 0.023907 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000040 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/UnionSquare/negz.jpg
-  artifactKey: Guid(85c577209b45ab84bb36122974fd3cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/UnionSquare/negz.jpg using Guid(85c577209b45ab84bb36122974fd3cbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba12d8248edd781e42ad3aaf0db88eaf') in 0.028914 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 0.000039 seconds.
-  path: Assets/Models/Materials/urban-skyboxes/UnionSquare/posx.jpg
-  artifactKey: Guid(75eb3e43df658524ea2aca801b4c7cc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/urban-skyboxes/UnionSquare/posx.jpg using Guid(75eb3e43df658524ea2aca801b4c7cc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '279043d6751c8ce4e6c9fc5a981592c7') in 0.024536 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 84.079307 seconds.
-  path: Assets/Models/Materials/kloofendal_misty_morning_puresky_4k.exr
-  artifactKey: Guid(5da8cb7289b403b4e8dce5e945c8896b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/kloofendal_misty_morning_puresky_4k.exr using Guid(5da8cb7289b403b4e8dce5e945c8896b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdfc29bbf4e6f713c72dd023ac3ed977') in 0.023045 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 41.730542 seconds.
-  path: Assets/Models/Materials/kloofendal_misty_morning_puresky_4k.exr
-  artifactKey: Guid(5da8cb7289b403b4e8dce5e945c8896b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/kloofendal_misty_morning_puresky_4k.exr using Guid(5da8cb7289b403b4e8dce5e945c8896b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e0020f89a2fdeb5c6935d0d2b3ae892') in 0.090874 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 22.262592 seconds.
-  path: Assets/Models/Materials/skybox.mat
-  artifactKey: Guid(6b900399ae8087944a6c134fdab6fb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/skybox.mat using Guid(6b900399ae8087944a6c134fdab6fb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4d769a204ac647d0433f9f2ef08572c') in 0.014201 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 184.337581 seconds.
-  path: Assets/Models/Materials/skybox.mat
-  artifactKey: Guid(6b900399ae8087944a6c134fdab6fb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/skybox.mat using Guid(6b900399ae8087944a6c134fdab6fb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2028f9c1c431d6268dfe615c0313d25a') in 0.110890 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 353.537185 seconds.
-  path: Assets/Models/Materials/kloppenheim_01_puresky_4k.exr
-  artifactKey: Guid(74715a3abdcea5945a3b80a1bfb6d311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/kloppenheim_01_puresky_4k.exr using Guid(74715a3abdcea5945a3b80a1bfb6d311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4af4a2de046c0381d5e65ac1fa9bb059') in 0.030903 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
-========================================================================
-Received Import Request.
-  Time since last request: 30.726572 seconds.
-  path: Assets/Models/Materials/kloppenheim_01_puresky_4k.exr
-  artifactKey: Guid(74715a3abdcea5945a3b80a1bfb6d311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/kloppenheim_01_puresky_4k.exr using Guid(74715a3abdcea5945a3b80a1bfb6d311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42c2faf79c58b2969f21da1ccfec75f6') in 0.087011 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 1
-========================================================================
-Received Import Request.
-  Time since last request: 201.543147 seconds.
-  path: Assets/Models/Materials/skybox.mat
-  artifactKey: Guid(6b900399ae8087944a6c134fdab6fb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Models/Materials/skybox.mat using Guid(6b900399ae8087944a6c134fdab6fb79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43303a80e6a196703fac8dcfec34f0a6') in 0.089379 seconds
-Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 2
+  Time since last request: 972070.187650 seconds.
+  path: Assets/Models/Panel House/v1/door1.obj
+  artifactKey: Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Panel House/v1/door1.obj using Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f55eb61572e9347e2c361472e84eaf5') in 0.837438 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 332.700659 seconds.
+  path: Assets/Models/Panel House/v1/wall 1.obj
+  artifactKey: Guid(8ce1d6f5d778cde4485fcedea96f92ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Panel House/v1/wall 1.obj using Guid(8ce1d6f5d778cde4485fcedea96f92ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d77343efd29f35ca5f77c1489c06c00') in 0.083624 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.286 seconds
+Refreshing native plugins compatible for Editor in 6.59 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.483 seconds
+Domain Reload Profiling: 3764ms
+	BeginReloadAssembly (523ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (20ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (115ms)
+	RebuildCommonClasses (123ms)
+	RebuildNativeTypeToScriptingClass (42ms)
+	initialDomainReloadingComplete (96ms)
+	LoadAllAssembliesAndSetupDomain (495ms)
+		LoadAssemblies (779ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (48ms)
+			TypeCache.Refresh (16ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (19ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (2484ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (874ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (6ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (132ms)
+			ProcessInitializeOnLoadAttributes (663ms)
+			ProcessInitializeOnLoadMethodAttributes (44ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (13ms)
+Refreshing native plugins compatible for Editor in 7.37 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3101 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 23 unused Assets / (31.2 KB). Loaded Objects now: 3654.
+Memory consumption went from 152.2 MB to 152.1 MB.
+Total: 8.759200 ms (FindLiveObjects: 0.601500 ms CreateObjectMapping: 0.628700 ms MarkObjects: 7.383900 ms  DeleteObjects: 0.140600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 236.320294 seconds.
+  path: Assets/Models/Panel House/v1/door1.obj
+  artifactKey: Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Panel House/v1/door1.obj using Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc04037258debeb1dfbf7b787b80e3b0') in 0.290387 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 82.887845 seconds.
+  path: Assets/Models/Panel House/v1/door1.obj
+  artifactKey: Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Panel House/v1/door1.obj using Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d955d8431c0e0ea3c3fd7149e3767ab') in 0.062271 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 29.010973 seconds.
+  path: Assets/Models/Panel House/v1/door1.obj
+  artifactKey: Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/Panel House/v1/door1.obj using Guid(84ac01d2a6b45c7409d6bfd88f8f2de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc13377f618fd69b0607ef240c5661be') in 0.047824 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.063 seconds
+Refreshing native plugins compatible for Editor in 6.12 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.583 seconds
+Domain Reload Profiling: 3638ms
+	BeginReloadAssembly (416ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (75ms)
+	RebuildCommonClasses (85ms)
+	RebuildNativeTypeToScriptingClass (35ms)
+	initialDomainReloadingComplete (60ms)
+	LoadAllAssembliesAndSetupDomain (457ms)
+		LoadAssemblies (680ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (43ms)
+			TypeCache.Refresh (17ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (14ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (2584ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (849ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (9ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (120ms)
+			ProcessInitializeOnLoadAttributes (649ms)
+			ProcessInitializeOnLoadMethodAttributes (45ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (13ms)
+Refreshing native plugins compatible for Editor in 7.31 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3101 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 23 unused Assets / (31.1 KB). Loaded Objects now: 3657.
+Memory consumption went from 154.1 MB to 154.1 MB.
+Total: 8.031000 ms (FindLiveObjects: 0.744900 ms CreateObjectMapping: 0.676200 ms MarkObjects: 6.502600 ms  DeleteObjects: 0.105200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.107 seconds
+Refreshing native plugins compatible for Editor in 5.83 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.956 seconds
+Domain Reload Profiling: 3054ms
+	BeginReloadAssembly (327ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (14ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (73ms)
+	RebuildCommonClasses (159ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (86ms)
+	LoadAllAssembliesAndSetupDomain (500ms)
+		LoadAssemblies (635ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (49ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (19ms)
+			ResolveRequiredComponents (13ms)
+	FinalizeReload (1957ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (936ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (9ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (140ms)
+			ProcessInitializeOnLoadAttributes (696ms)
+			ProcessInitializeOnLoadMethodAttributes (55ms)
+			AfterProcessingInitializeOnLoad (20ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
+Refreshing native plugins compatible for Editor in 5.76 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3102 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 23 unused Assets / (31.1 KB). Loaded Objects now: 3660.
+Memory consumption went from 156.3 MB to 156.3 MB.
+Total: 5.084700 ms (FindLiveObjects: 0.499000 ms CreateObjectMapping: 0.152000 ms MarkObjects: 4.340400 ms  DeleteObjects: 0.091000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.049 seconds
+Refreshing native plugins compatible for Editor in 9.21 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.234 seconds
+Domain Reload Profiling: 3279ms
+	BeginReloadAssembly (360ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (14ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (71ms)
+	RebuildCommonClasses (85ms)
+	RebuildNativeTypeToScriptingClass (31ms)
+	initialDomainReloadingComplete (69ms)
+	LoadAllAssembliesAndSetupDomain (499ms)
+		LoadAssemblies (667ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (44ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (17ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (2236ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1003ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (20ms)
+			SetLoadedEditorAssemblies (11ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (141ms)
+			ProcessInitializeOnLoadAttributes (762ms)
+			ProcessInitializeOnLoadMethodAttributes (56ms)
+			AfterProcessingInitializeOnLoad (13ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Refreshing native plugins compatible for Editor in 8.29 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3102 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 23 unused Assets / (31.1 KB). Loaded Objects now: 3663.
+Memory consumption went from 158.2 MB to 158.2 MB.
+Total: 5.048500 ms (FindLiveObjects: 0.497400 ms CreateObjectMapping: 0.154600 ms MarkObjects: 4.287600 ms  DeleteObjects: 0.106700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.040 seconds
+Refreshing native plugins compatible for Editor in 6.04 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.957 seconds
+Domain Reload Profiling: 2993ms
+	BeginReloadAssembly (339ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (13ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (70ms)
+	RebuildCommonClasses (104ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (78ms)
+	LoadAllAssembliesAndSetupDomain (491ms)
+		LoadAssemblies (639ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (47ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (14ms)
+			ResolveRequiredComponents (15ms)
+	FinalizeReload (1958ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (889ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (17ms)
+			SetLoadedEditorAssemblies (12ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (161ms)
+			ProcessInitializeOnLoadAttributes (642ms)
+			ProcessInitializeOnLoadMethodAttributes (45ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+Refreshing native plugins compatible for Editor in 8.40 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3102 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 23 unused Assets / (31.1 KB). Loaded Objects now: 3666.
+Memory consumption went from 160.2 MB to 160.2 MB.
+Total: 7.269200 ms (FindLiveObjects: 0.641700 ms CreateObjectMapping: 0.325400 ms MarkObjects: 6.201200 ms  DeleteObjects: 0.098500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
