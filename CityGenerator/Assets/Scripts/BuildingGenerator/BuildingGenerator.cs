@@ -46,11 +46,4 @@ public class BuildingGenerator : MonoBehaviour
 
         File.WriteAllText(Application.streamingAssetsPath + "/settings.json", json);
     }
-
-    private void SaveFormattedJson(string json)
-    {
-        var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(json);
-        string formattedJson = JsonUtility.ToJson(wrapper, true); 
-        File.WriteAllText(Application.streamingAssetsPath + "/settings.json", formattedJson);
-    }
 }

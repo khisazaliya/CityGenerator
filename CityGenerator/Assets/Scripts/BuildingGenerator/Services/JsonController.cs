@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -19,3 +19,4 @@ public class JsonController : MonoBehaviour
         File.WriteAllText(Application.streamingAssetsPath + "/settings.json", JsonUtility.ToJson(BuildingSettings));
     }
 }
+*/

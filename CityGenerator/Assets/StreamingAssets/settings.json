@@ -6,9 +6,9 @@
             "buildingCount": 1,
             "numberOfLevels": 12,
             "type": 0,
-            "numberOfEntries": 4,
-            "MaxNumberOfBalconies": 28,
-            "randomSeedOfBalconies": 17
+            "numberOfEntries": 3,
+            "MaxNumberOfBalconies": 5,
+            "randomSeedOfBalconies": 0
         }
     ]
 }

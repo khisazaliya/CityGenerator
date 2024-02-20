@@ -3,7 +3,17 @@ guid: 84ac01d2a6b45c7409d6bfd88f8f2de5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane.009_Plane.012_DoorMat
+    second: {fileID: 2100000, guid: ac97efa1b56cdef4286bb0868ee1f9a2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plane.009_Plane.012_Door_roofMat
+    second: {fileID: 2100000, guid: 0349a2d87a784904cb7a5ad6d4a65c2b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

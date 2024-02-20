@@ -362,7 +362,6 @@
 "Assets/Scripts/BuildingGenerator/BuildingRenderer.cs"
 "Assets/Scripts/BuildingGenerator/BuildingSettings.cs"
 "Assets/Scripts/BuildingGenerator/Services/JsonController.cs"
-"Assets/Scripts/BuildingGenerator/Services/JsonHelper.cs"
 "Assets/Scripts/BuildingGenerator/Services/MeshCombiner.cs"
 "Assets/Scripts/CityGenerator/PlacementHelper.cs"
 "Assets/Scripts/RoadGenerator/AgentParameters.cs"
