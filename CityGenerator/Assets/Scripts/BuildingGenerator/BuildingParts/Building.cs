@@ -19,13 +19,16 @@ public class Building
 
     public BuildingType Type { get => type; }
 
-    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies) {
+    public int randomOffsetNorthWall;
+
+    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies, int randomForm) {
         level = numberOfLevels;
         size = new Vector2Int(sizeX, sizeY);
         this.wings = wings;
         this.numberOfEntries = numberOfEntries;
         this.numberOfBalconies = numberOfBalconies;
         this.randomSeedOfBalconies = randomSeedOfBalconies;
+        this.randomOffsetNorthWall = randomForm;
     }
 
     public Building(int sizeX, int sizeY)

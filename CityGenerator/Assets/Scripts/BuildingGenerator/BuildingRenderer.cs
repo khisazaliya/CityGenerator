@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -41,7 +42,6 @@ public class BuildingRenderer : MonoBehaviour
     }
     public GameObject Render(Building bldg)
     {
-
         bldgFolder = new GameObject("Building").transform;
         MeshCombiner meshCombiner = bldgFolder.AddComponent<MeshCombiner>();
         foreach (Wing wing in bldg.Wings)
@@ -79,6 +79,8 @@ public class BuildingRenderer : MonoBehaviour
         Transform storyFolder = new GameObject("Story ").transform;
         storyFolder.SetParent(wingFolder);
         List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries);
+        List<Tuple<int, int>> offsets = GenerateBuildingShape(bldg.Size.x);
+        Debug.Log(offsets[0].Item1 + " " + offsets[0].Item2);
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
             for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
@@ -91,6 +93,7 @@ public class BuildingRenderer : MonoBehaviour
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0) PlaceFloor(x, y-1, i, new int[3] { 0, -90, 0 }, storyFolder);
                         if (PlaceBalcony(bldg, i, x)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
+
                         PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
                     }
 
@@ -117,6 +120,11 @@ public class BuildingRenderer : MonoBehaviour
                             else
                             wall = wallPrefabs[wallPrefabIndex];
                         }
+                        if (bldg.randomOffsetNorthWall > 0)
+                        {
+                            if (y >= wing.Bounds.max.y - offsets[0].Item1 && y <= wing.Bounds.max.y + offsets[0].Item1)
+                                PlaceEastWall(x - (wing.Bounds.max.x - offsets[0].Item2 - 1), y + offsets[0].Item1, i, storyFolder, wall);
+                        }
                         PlaceEastWall(x, y, i, storyFolder, wall);
                     }
 
@@ -126,7 +134,15 @@ public class BuildingRenderer : MonoBehaviour
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0) PlaceFloor(x+1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
                         if (PlaceBalcony(bldg, i, x)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
+                        if (bldg.randomOffsetNorthWall > 0)
+                        {
+                            if (x >= offsets[0].Item1 && x <= offsets[0].Item2)
+                                PlaceNorthWall(x, y + offsets[0].Item1, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                            else PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        }
+                        else
                         PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+
                     }
 
                     //west wall
@@ -135,13 +151,24 @@ public class BuildingRenderer : MonoBehaviour
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0) PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
                         if (PlaceBalcony(bldg, i, y)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-  
                         PlaceWestWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        if (bldg.randomOffsetNorthWall > 0)
+                        {
+                            if (y >= wing.Bounds.max.y - offsets[0].Item1 && y <= wing.Bounds.max.y + offsets[0].Item1)
+                                PlaceWestWall(x + offsets[0].Item1, y + offsets[0].Item1, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        }
                     }
-
                 }
             }
         }
+    }
+
+    public List<Tuple<int, int>> GenerateBuildingShape(int max)
+    {
+        List<Tuple<int, int>> offset = new();
+        offset.Add(new Tuple<int, int>(rand.Next(0, max), rand.Next(0, max)));
+        var sortedTuples = offset.Select(t => Tuple.Create(Math.Min(t.Item1, t.Item2), Math.Max(t.Item1, t.Item2))).ToList();
+        return sortedTuples;
     }
 
     public void RenderFirstLevel(Story story, Wing wing, Transform wingFolder, Building bldg)

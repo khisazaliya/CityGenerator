@@ -32,7 +32,8 @@ public class BuildingGeneratorEditor : Editor
             buildingGenerator.buildingSettings[0].type,
             buildingGenerator.buildingSettings[0].numberOfEntries,
              buildingGenerator.buildingSettings[0].MaxNumberOfBalconies,
-             buildingGenerator.buildingSettings[0].randomSeedOfBalconies)
+             buildingGenerator.buildingSettings[0].randomSeedOfBalconies,
+             buildingGenerator.buildingSettings[0].randomOffsetNorthWall)
         {
             x = buildingGenerator.buildingSettings[0].buildingSize.x,
             y = buildingGenerator.buildingSettings[0].buildingSize.y,
@@ -41,7 +42,9 @@ public class BuildingGeneratorEditor : Editor
             type = buildingGenerator.buildingSettings[0].type,
             numberOfEntries = buildingGenerator.buildingSettings[0].numberOfEntries,
             MaxNumberOfBalconies = buildingGenerator.buildingSettings[0].MaxNumberOfBalconies,
-            randomSeedOfBalconies = buildingGenerator.buildingSettings[0].randomSeedOfBalconies
+            randomSeedOfBalconies = buildingGenerator.buildingSettings[0].randomSeedOfBalconies,
+            randomOffsetNorthWall = buildingGenerator.buildingSettings[0].randomOffsetNorthWall
+
         };
 
         EditorGUILayout.LabelField("Prefab Selection", EditorStyles.boldLabel);

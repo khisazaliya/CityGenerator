@@ -29,7 +29,11 @@ public class BuildingSettings
 
     [Range(0, 50)]
     public int randomSeedOfBalconies;
-    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies)
+
+    [Range(0, 50)]
+    public int randomOffsetNorthWall;
+    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies,
+        int randomForm)
     {
         x = size.x; 
         y = size.y; 
@@ -39,5 +43,6 @@ public class BuildingSettings
         this.numberOfEntries = numberOfEntries;
         this.MaxNumberOfBalconies = numberOfBalconies;
         this.randomSeedOfBalconies = randomSeedOfBalconies;
+        this.randomOffsetNorthWall = randomForm;
     }
 }

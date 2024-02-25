@@ -1,14 +1,14 @@
 {
     "buildingSettings": [
         {
-            "x": 4,
-            "y": 15,
+            "x": 10,
+            "y": 10,
             "buildingCount": 1,
-            "numberOfLevels": 12,
+            "numberOfLevels": 7,
             "type": 0,
             "numberOfEntries": 3,
-            "MaxNumberOfBalconies": 5,
-            "randomSeedOfBalconies": 0
+            "MaxNumberOfBalconies": 0,
+            "randomSeedOfBalconies": 16
         }
     ]
 }
