@@ -108,13 +108,11 @@ public class BuildingRenderer : MonoBehaviour
                             }
                             else
                             {
-                                wall = wallPrefabs[wallPrefabIndex];
-                                if (bldg.depthOffsetNorthWall>0)
-                                {
-                                    if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
-                                        PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1) + 1, y + bldg.depthOffsetNorthWall - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
-                                        PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
-                                }
+                                if (IsNorthOffsetCorrect(bldg, wing) &&
+                           y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
+                                    PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1) + 1, y + bldg.depthOffsetNorthWall - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
+                                PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
+
                             }
                         }
                         else
@@ -123,7 +121,7 @@ public class BuildingRenderer : MonoBehaviour
                             else
                                 wall = wallPrefabs[wallPrefabIndex];
                         }
-                        if (bldg.depthOffsetNorthWall>0)
+                        if (IsNorthOffsetCorrect(bldg, wing))
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                                 PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wall);
@@ -137,17 +135,14 @@ public class BuildingRenderer : MonoBehaviour
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0)
                         {
-                            if (bldg.minOffsetNorthWall > 0 && bldg.minOffsetNorthWall < wing.Bounds.max.x &&
-                                bldg.maxOffsetNorthWall > 0 && bldg.maxOffsetNorthWall < wing.Bounds.max.x)
-                            {
-                                 if (x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
-                                    PlaceFloor(x + 1, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 90, 0 }, storyFolder);
-                                else
-                                    PlaceFloor(x + 1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
-                            }
+                            if (IsNorthOffsetCorrect(bldg, wing) && 
+                                x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
+                                PlaceFloor(x + 1, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 90, 0 }, storyFolder);
+                            else
+                                PlaceFloor(x + 1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
                         }
                         if (PlaceBalcony(bldg, i, x)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-                        if (bldg.depthOffsetNorthWall>0)
+                        if (IsNorthOffsetCorrect(bldg, wing))
                         {
                             if (x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
                                 PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
@@ -164,16 +159,13 @@ public class BuildingRenderer : MonoBehaviour
                         Transform wall = wallPrefabs[wallPrefabIndex];
                         if (i == 0)
                         {
-                            if (bldg.depthOffsetNorthWall>0)
-                            {
-                                if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
-                                    PlaceFloor(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 0, 0 }, storyFolder);
-                                    PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
-                            }
+                            if (IsNorthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
+                                PlaceFloor(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 0, 0 }, storyFolder);
+                            PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
                         }
                         if (PlaceBalcony(bldg, i, y)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
                         PlaceWestWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
-                        if (bldg.depthOffsetNorthWall>0)
+                        if (IsNorthOffsetCorrect(bldg, wing))
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                                 PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
@@ -184,6 +176,12 @@ public class BuildingRenderer : MonoBehaviour
         }
     }
 
+
+    public bool IsNorthOffsetCorrect(Building bldg, Wing wing)
+    {
+        return bldg.depthOffsetNorthWall > 0 && bldg.minOffsetNorthWall > 0 && bldg.minOffsetNorthWall < wing.Bounds.max.x &&
+                             bldg.maxOffsetNorthWall > 0 && bldg.maxOffsetNorthWall < wing.Bounds.size.x && bldg.maxOffsetNorthWall >= bldg.minOffsetNorthWall;
+    }
     public List<Tuple<int, int>> GenerateBuildingShape(int max)
     {
         List<Tuple<int, int>> offset = new();
