@@ -33,8 +33,10 @@ public class BuildingSettings
     public int minOffsetNorthWall;
 
     public int maxOffsetNorthWall;
+
+    public int depthOffsetNorthWall;
     public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies,
-        int minOffsetNorthWall, int maxOffsetNorthWall)
+        int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall)
     {
         x = size.x; 
         y = size.y; 
@@ -46,5 +48,6 @@ public class BuildingSettings
         this.randomSeedOfBalconies = randomSeedOfBalconies;
         this.minOffsetNorthWall = minOffsetNorthWall;
         this.maxOffsetNorthWall = maxOffsetNorthWall;
+        this.depthOffsetNorthWall = depthOffsetNorthWall;
     }
 }

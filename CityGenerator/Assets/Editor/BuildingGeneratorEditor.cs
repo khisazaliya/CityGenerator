@@ -34,7 +34,8 @@ public class BuildingGeneratorEditor : Editor
              buildingGenerator.buildingSettings[0].MaxNumberOfBalconies,
              buildingGenerator.buildingSettings[0].randomSeedOfBalconies,
              buildingGenerator.buildingSettings[0].minOffsetNorthWall,
-             buildingGenerator.buildingSettings[0].maxOffsetNorthWall)
+             buildingGenerator.buildingSettings[0].maxOffsetNorthWall,
+             buildingGenerator.buildingSettings[0].depthOffsetNorthWall)
         {
             x = buildingGenerator.buildingSettings[0].buildingSize.x,
             y = buildingGenerator.buildingSettings[0].buildingSize.y,
@@ -45,7 +46,8 @@ public class BuildingGeneratorEditor : Editor
             MaxNumberOfBalconies = buildingGenerator.buildingSettings[0].MaxNumberOfBalconies,
             randomSeedOfBalconies = buildingGenerator.buildingSettings[0].randomSeedOfBalconies,
             minOffsetNorthWall = buildingGenerator.buildingSettings[0].minOffsetNorthWall,
-            maxOffsetNorthWall = buildingGenerator.buildingSettings[0].maxOffsetNorthWall
+            maxOffsetNorthWall = buildingGenerator.buildingSettings[0].maxOffsetNorthWall,
+            depthOffsetNorthWall = buildingGenerator.buildingSettings[0].depthOffsetNorthWall
 
         };
 
