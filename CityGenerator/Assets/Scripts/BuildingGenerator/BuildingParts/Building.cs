@@ -25,8 +25,18 @@ public class Building
 
     public int depthOffsetNorthWall;
 
+    public int northWallHeight;
+
+    public int minOffsetSouthWall;
+
+    public int maxOffsetSouthWall;
+
+    public int depthOffsetSouthWall;
+
+    public int southWallHeight;
     public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies, int minOffsetNorthWall,
-        int maxOffsetNorthWall, int depthOffsetNorthWall) {
+        int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight, int minOffsetSouthWall,
+        int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight) {
         level = numberOfLevels;
         size = new Vector2Int(sizeX, sizeY);
         this.wings = wings;
@@ -36,6 +46,11 @@ public class Building
         this.minOffsetNorthWall = minOffsetNorthWall;
         this.maxOffsetNorthWall = maxOffsetNorthWall;
         this.depthOffsetNorthWall = depthOffsetNorthWall;
+        this.northWallHeight = northWallHeight;
+        this.minOffsetSouthWall = minOffsetSouthWall;
+        this.maxOffsetSouthWall = maxOffsetSouthWall;
+        this.depthOffsetSouthWall = depthOffsetSouthWall;
+        this.southWallHeight = southWallHeight;
     }
 
     public Building(int sizeX, int sizeY)

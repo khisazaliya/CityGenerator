@@ -70,7 +70,10 @@ public class BuildingRenderer : MonoBehaviour
             RenderStory(story, wing, wingFolder, bldg);
         }
         RenderRoof(wing, wing.Bounds.min.x, wing.Bounds.max.x, wing.Bounds.min.y, wing.Bounds.max.y, wingFolder, bldg.level);
-        if (IsNorthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall+1, wing.Bounds.max.y, wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.level);
+        if (IsNorthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall+1, wing.Bounds.max.y,
+            wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.northWallHeight);
+        if (IsSouthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetSouthWall, bldg.maxOffsetSouthWall + 1,
+            wing.Bounds.min.y - bldg.depthOffsetSouthWall, wing.Bounds.min.y, wingFolder, bldg.southWallHeight);
     }
 
     private void RenderStory(Story story, Wing wing, Transform wingFolder, Building bldg)
@@ -90,10 +93,23 @@ public class BuildingRenderer : MonoBehaviour
                     if (y == wing.Bounds.min.y)
                     {
                         Transform wall = wallPrefabs[wallPrefabIndex];
-                        if (i == 0) PlaceFloor(x, y - 1, i, new int[3] { 0, -90, 0 }, storyFolder);
+                        if (i == 0)
+                        {
+                            if (IsSouthOffsetCorrect(bldg, wing) &&
+                               x >= bldg.minOffsetSouthWall && x <= bldg.maxOffsetSouthWall)
+                                PlaceFloor(x, wing.Bounds.min.y - bldg.depthOffsetSouthWall-1, i, new int[3] { 0, -90, 0 }, storyFolder);
+                            else
+                                PlaceFloor(x, y - 1, i, new int[3] { 0, -90, 0 }, storyFolder);
+                        }
                         if (PlaceBalcony(bldg, i, x)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-
-                        PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
+                        {
+                            if (x >= bldg.minOffsetSouthWall && x <= bldg.maxOffsetSouthWall)
+                                PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                            else PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        }
+                        else
+                            PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
                     }
 
                     //east wall
@@ -105,7 +121,10 @@ public class BuildingRenderer : MonoBehaviour
                             if (IsNorthOffsetCorrect(bldg, wing) &&
                            y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                                 PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1) + 1, y + bldg.depthOffsetNorthWall - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
-                                PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
+
+                            if (IsSouthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
+                                    PlaceFloor(x - (wing.Bounds.min.x + bldg.maxOffsetSouthWall - 1) + 1, y - wing.Bounds.max.y-1, i, new int[3] { 0, 180, 0 }, storyFolder);
+                            PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
                             if (entries.Contains(y))
                             {
                                 PlaceEastWall(x, y, i, storyFolder, doorPrefabs[doorPrefabIndex]);
@@ -118,10 +137,15 @@ public class BuildingRenderer : MonoBehaviour
                             else
                                 wall = wallPrefabs[wallPrefabIndex];
                         }
-                        if (IsNorthOffsetCorrect(bldg, wing))
+                        if (IsNorthOffsetCorrect(bldg, wing) && i < bldg.northWallHeight)
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                                 PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wall);
+                        }
+                        if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
+                        {
+                            if (y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
+                                PlaceEastWall(x - (wing.Bounds.min.x + bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wall);
                         }
                         PlaceEastWall(x, y, i, storyFolder, wall);
                     }
@@ -139,7 +163,7 @@ public class BuildingRenderer : MonoBehaviour
                                 PlaceFloor(x + 1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
                         }
                         if (PlaceBalcony(bldg, i, x)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-                        if (IsNorthOffsetCorrect(bldg, wing))
+                        if (IsNorthOffsetCorrect(bldg, wing) && i < bldg.northWallHeight)
                         {
                             if (x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
                                 PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
@@ -158,14 +182,21 @@ public class BuildingRenderer : MonoBehaviour
                         {
                             if (IsNorthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                                 PlaceFloor(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 0, 0 }, storyFolder);
+                            if (IsSouthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
+                                PlaceFloor(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, new int[3] { 0, 0, 0 }, storyFolder);
                             PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
                         }
                         if (PlaceBalcony(bldg, i, y)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
                         PlaceWestWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
-                        if (IsNorthOffsetCorrect(bldg, wing))
+                        if (IsNorthOffsetCorrect(bldg, wing) && i < bldg.northWallHeight)
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                                 PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        }
+                        if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
+                        {
+                            if (y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
+                                PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
                         }
                     }
 
@@ -176,9 +207,16 @@ public class BuildingRenderer : MonoBehaviour
 
     public bool IsNorthOffsetCorrect(Building bldg, Wing wing)
     {
-        if (bldg.depthOffsetNorthWall > wing.Bounds.max.x) bldg.depthOffsetNorthWall = wing.Bounds.max.x;
-        return bldg.depthOffsetNorthWall > 0 && bldg.minOffsetNorthWall > 0 && bldg.minOffsetNorthWall < wing.Bounds.max.x &&
+        if (bldg.depthOffsetNorthWall > wing.Bounds.max.y) bldg.depthOffsetNorthWall = wing.Bounds.max.y;
+        return bldg.depthOffsetNorthWall >= 0 && bldg.minOffsetNorthWall >= 0 && bldg.minOffsetNorthWall < wing.Bounds.max.x &&
                              bldg.maxOffsetNorthWall > 0 && bldg.maxOffsetNorthWall < wing.Bounds.size.x && bldg.maxOffsetNorthWall >= bldg.minOffsetNorthWall;
+    }
+
+    public bool IsSouthOffsetCorrect(Building bldg, Wing wing)
+    {
+        if (bldg.depthOffsetSouthWall > wing.Bounds.max.y) bldg.depthOffsetSouthWall = wing.Bounds.max.y;
+        return bldg.depthOffsetSouthWall >= 0 && bldg.minOffsetSouthWall >= 0 && bldg.minOffsetSouthWall < wing.Bounds.max.x &&
+                             bldg.maxOffsetSouthWall > 0 && bldg.maxOffsetSouthWall < wing.Bounds.size.x && bldg.maxOffsetSouthWall >= bldg.minOffsetSouthWall;
     }
     public List<Tuple<int, int>> GenerateBuildingShape(int max)
     {

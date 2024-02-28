@@ -35,7 +35,12 @@ public class BuildingGeneratorEditor : Editor
              buildingGenerator.buildingSettings[0].randomSeedOfBalconies,
              buildingGenerator.buildingSettings[0].minOffsetNorthWall,
              buildingGenerator.buildingSettings[0].maxOffsetNorthWall,
-             buildingGenerator.buildingSettings[0].depthOffsetNorthWall)
+             buildingGenerator.buildingSettings[0].depthOffsetNorthWall,
+             buildingGenerator.buildingSettings[0].northWallHeight,
+             buildingGenerator.buildingSettings[0].minOffsetSouthWall,
+             buildingGenerator.buildingSettings[0].maxOffsetSouthWall,
+             buildingGenerator.buildingSettings[0].depthOffsetSouthWall,
+             buildingGenerator.buildingSettings[0].southWallHeight)
         {
             x = buildingGenerator.buildingSettings[0].buildingSize.x,
             y = buildingGenerator.buildingSettings[0].buildingSize.y,
@@ -47,7 +52,12 @@ public class BuildingGeneratorEditor : Editor
             randomSeedOfBalconies = buildingGenerator.buildingSettings[0].randomSeedOfBalconies,
             minOffsetNorthWall = buildingGenerator.buildingSettings[0].minOffsetNorthWall,
             maxOffsetNorthWall = buildingGenerator.buildingSettings[0].maxOffsetNorthWall,
-            depthOffsetNorthWall = buildingGenerator.buildingSettings[0].depthOffsetNorthWall
+            depthOffsetNorthWall = buildingGenerator.buildingSettings[0].depthOffsetNorthWall,
+            northWallHeight = buildingGenerator.buildingSettings[0].northWallHeight,
+            minOffsetSouthWall = buildingGenerator.buildingSettings[0].minOffsetSouthWall,
+            maxOffsetSouthWall = buildingGenerator.buildingSettings[0].maxOffsetSouthWall,
+            depthOffsetSouthWall = buildingGenerator.buildingSettings[0].depthOffsetSouthWall,
+            southWallHeight = buildingGenerator.buildingSettings[0].southWallHeight
 
         };
 

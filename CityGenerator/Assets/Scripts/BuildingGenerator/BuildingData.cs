@@ -17,7 +17,12 @@ public class BuildingData : MonoBehaviour
            buildingSettings.randomSeedOfBalconies,
            buildingSettings.minOffsetNorthWall,
             buildingSettings.maxOffsetNorthWall,
-            buildingSettings.depthOffsetNorthWall
+            buildingSettings.depthOffsetNorthWall,
+            buildingSettings.northWallHeight,
+            buildingSettings.minOffsetSouthWall,
+            buildingSettings.maxOffsetSouthWall,
+            buildingSettings.depthOffsetSouthWall,
+            buildingSettings.southWallHeight
        );
     }
 
