@@ -14,18 +14,76 @@ public class BuildingRenderer : MonoBehaviour
     public List<Transform> stairPrefabs;
     public List<Transform> balconyPrefabs;
 
-    public int floorPrefabIndex = 0;
-    public int wallPrefabIndex = 0;
-    public int doorPrefabIndex = 0;
-    public int roofPrefabIndex = 0;
-    public int stairPrefabIndex = 0;
-    public int balconyPrefabIndex = 0;
+    [HideInInspector] public int floorSouthPrefabIndex = 0;
+    [HideInInspector] public int wallSouthPrefabIndex = 0;
+    [HideInInspector] public int doorSouthPrefabIndex = 0;
+    [HideInInspector] public int roofSouthPrefabIndex = 0;
+    [HideInInspector] public int stairSouthPrefabIndex = 0;
+    [HideInInspector] public int balconySouthPrefabIndex = 0;
 
-    public int savedSeedOfBalconies;
-    public int savedNumberOfBalconies;
-    public Vector3 floorSize;
+    [HideInInspector] public int savedSeedOfSouthBalconies;
+    [HideInInspector] public int savedNumberOfSouthBalconies;
+
+    [HideInInspector] public int floorNorthPrefabIndex = 0;
+    [HideInInspector] public int wallNorthPrefabIndex = 0;
+    [HideInInspector] public int doorNorthPrefabIndex = 0;
+    [HideInInspector] public int roofNorthPrefabIndex = 0;
+    [HideInInspector] public int stairNorthPrefabIndex = 0;
+    [HideInInspector] public int balconyNorthPrefabIndex = 0;
+
+    [HideInInspector] public int savedSeedOfNorthBalconies;
+    [HideInInspector] public int savedNumberOfNorthBalconies;
+
+    [HideInInspector] public int floorEastPrefabIndex = 0;
+    [HideInInspector] public int wallEastPrefabIndex = 0;
+    [HideInInspector] public int doorEastPrefabIndex = 0;
+    [HideInInspector] public int roofEastPrefabIndex = 0;
+    [HideInInspector] public int stairEastPrefabIndex = 0;
+    [HideInInspector] public int balconyEastPrefabIndex = 0;
+
+    [HideInInspector] public int savedSeedOfEastBalconies;
+    [HideInInspector] public int savedNumberOfEastBalconies;
+
+    [HideInInspector] public int floorWestPrefabIndex = 0;
+    [HideInInspector] public int wallWestPrefabIndex = 0;
+    [HideInInspector] public int doorWestPrefabIndex = 0;
+    [HideInInspector] public int roofWestPrefabIndex = 0;
+    [HideInInspector] public int stairWestPrefabIndex = 0;
+    [HideInInspector] public int balconyWestPrefabIndex = 0;
+
+    [HideInInspector] public int savedSeedOfWestBalconies;
+    [HideInInspector] public int savedNumberOfWestBalconies;
+
+    [HideInInspector] public int floorSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int wallSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int doorSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int stairSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int balconySouthOffsetPrefabIndex = 0;
+
+
+    [HideInInspector] public int floorNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int wallNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int doorNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int stairNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int balconyNorthOffsetPrefabIndex = 0;
+
+    [HideInInspector] public int floorEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int wallEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int doorEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int stairEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int balconyEastOffsetPrefabIndex = 0;
+
+
+    [HideInInspector] public Vector3 floorSize;
+
     public System.Random rand = new System.Random();
-    List<Tuple<int, int>> balconiesIndexes = new List<Tuple<int, int>>();
+    List<Tuple<int, int>> balconiesSouthIndexes = new List<Tuple<int, int>>();
+    List<Tuple<int, int>> balconiesNorthIndexes = new List<Tuple<int, int>>();
+    List<Tuple<int, int>> balconiesWestIndexes = new List<Tuple<int, int>>();
+    List<Tuple<int, int>> balconiesEastIndexes = new List<Tuple<int, int>>();
     Transform bldgFolder;
     public BuildingRenderer(List<Transform> floorPrefab, List<Transform> wallPrefab, List<Transform> doorPrefab, List<Transform> roofPrefab, List<Transform> stairPrefab)
     {
@@ -70,10 +128,12 @@ public class BuildingRenderer : MonoBehaviour
             RenderStory(story, wing, wingFolder, bldg);
         }
         RenderRoof(wing, wing.Bounds.min.x, wing.Bounds.max.x, wing.Bounds.min.y, wing.Bounds.max.y, wingFolder, bldg.level);
-        if (IsNorthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall+1, wing.Bounds.max.y,
-            wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.northWallHeight);
+        if (IsNorthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall+1, 
+            wing.Bounds.max.y, wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.northWallHeight);
         if (IsSouthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetSouthWall, bldg.maxOffsetSouthWall + 1,
             wing.Bounds.min.y - bldg.depthOffsetSouthWall, wing.Bounds.min.y, wingFolder, bldg.southWallHeight);
+        if (IsEastOffsetCorrect(bldg, wing)) RenderRoof(wing, wing.Bounds.max.x, wing.Bounds.max.x + bldg.depthOffsetEastWall, 
+            bldg.minOffsetEastWall, bldg.maxOffsetEastWall + 1, wingFolder, bldg.eastWallHeight);
     }
 
     private void RenderStory(Story story, Wing wing, Transform wingFolder, Building bldg)
@@ -82,7 +142,6 @@ public class BuildingRenderer : MonoBehaviour
         storyFolder.SetParent(wingFolder);
         List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries);
         List<Tuple<int, int>> offsets = GenerateBuildingShape(bldg.Size.x);
-        Debug.Log(offsets[0].Item1 + " " + offsets[0].Item2);
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
             for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
@@ -92,111 +151,166 @@ public class BuildingRenderer : MonoBehaviour
                     //south wall
                     if (y == wing.Bounds.min.y)
                     {
-                        Transform wall = wallPrefabs[wallPrefabIndex];
+                        Transform wall = wallPrefabs[wallSouthPrefabIndex];
                         if (i == 0)
                         {
                             if (IsSouthOffsetCorrect(bldg, wing) &&
                                x >= bldg.minOffsetSouthWall && x <= bldg.maxOffsetSouthWall)
-                                PlaceFloor(x, wing.Bounds.min.y - bldg.depthOffsetSouthWall-1, i, new int[3] { 0, -90, 0 }, storyFolder);
+                                PlaceFloor(x, wing.Bounds.min.y - bldg.depthOffsetSouthWall-1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[floorSouthOffsetPrefabIndex]);
                             else
-                                PlaceFloor(x, y - 1, i, new int[3] { 0, -90, 0 }, storyFolder);
+                                PlaceFloor(x, y - 1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[floorSouthPrefabIndex]);
+                            if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
+                            {
+                                if (x >= wing.Bounds.max.x - bldg.depthOffsetEastWall && x <= wing.Bounds.max.x + bldg.minOffsetEastWall)
+                                    PlaceFloor(x + bldg.depthOffsetEastWall, bldg.minOffsetEastWall-1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[floorSouthOffsetPrefabIndex]);
+                            }
                         }
-                        if (PlaceBalcony(bldg, i, x)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
+
                         if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
                         {
                             if (x >= bldg.minOffsetSouthWall && x <= bldg.maxOffsetSouthWall)
-                                PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
-                            else PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                                PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[wallSouthOffsetPrefabIndex]);
+                            else
+                            {
+                                PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallSouthPrefabIndex]);
+                                if (PlaceSouthBalcony(bldg, i, x, bldg.numberOfSouthBalconies, bldg.randomSeedOfSouthBalconies, balconiesSouthIndexes)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[balconySouthPrefabIndex]);
+                            }
                         }
                         else
-                            PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        {
+                            PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[wallSouthPrefabIndex]);
+                            if (PlaceSouthBalcony(bldg, i, x, bldg.numberOfSouthBalconies, bldg.randomSeedOfSouthBalconies, balconiesSouthIndexes)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[balconySouthPrefabIndex]);
+                        }
+                        if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
+                        {
+                            if (x >= wing.Bounds.max.x - bldg.depthOffsetEastWall && x <= wing.Bounds.max.x + bldg.minOffsetEastWall)
+                                PlaceSouthWall(x + bldg.depthOffsetEastWall, -bldg.minOffsetEastWall, i, storyFolder, wallPrefabs[wallEastOffsetPrefabIndex]);
+                        }
                     }
 
                     //east wall
                     if (x == wing.Bounds.min.x + wing.Bounds.size.x - 1)
                     {
-                        Transform wall = wallPrefabs[wallPrefabIndex];
+                        Transform wall = wallPrefabs[wallEastPrefabIndex];
                         if (i == 0)
                         {
                             if (IsNorthOffsetCorrect(bldg, wing) &&
                            y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
-                                PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1) + 1, y + bldg.depthOffsetNorthWall - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
+                                PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1) + 1, y + bldg.depthOffsetNorthWall - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[floorNorthOffsetPrefabIndex]);
 
                             if (IsSouthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
-                                    PlaceFloor(x - (wing.Bounds.min.x + bldg.maxOffsetSouthWall - 1) + 1, y - wing.Bounds.max.y-1, i, new int[3] { 0, 180, 0 }, storyFolder);
-                            PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder);
-                            if (entries.Contains(y))
+                                    PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1) + 1, y - wing.Bounds.max.y-1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[floorSouthOffsetPrefabIndex]);
+
+                            if (IsEastOffsetCorrect(bldg, wing) && y >= wing.Bounds.min.y + bldg.minOffsetEastWall && y <= wing.Bounds.min.y + bldg.maxOffsetEastWall)
                             {
-                                PlaceEastWall(x, y, i, storyFolder, doorPrefabs[doorPrefabIndex]);
-                                PlaceStair(x + 1, y - 1, i, storyFolder);
+                                PlaceFloor(x + bldg.depthOffsetEastWall + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[floorSouthOffsetPrefabIndex]);
+                                if (entries.Contains(y))
+                                {
+                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, doorPrefabs[doorEastPrefabIndex]);
+                                    PlaceStair(x + bldg.depthOffsetEastWall + 1, y - 1, i, storyFolder);
+                                }
                             }
-                        }
-                        else
-                        {
-                            if (PlaceBalcony(bldg, i, y)) PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
                             else
-                                wall = wallPrefabs[wallPrefabIndex];
+                            {
+                                PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[floorEastPrefabIndex]);
+                                if (entries.Contains(y))
+                                {
+                                    PlaceEastWall(x, y, i, storyFolder, doorPrefabs[doorEastPrefabIndex]);
+                                    PlaceStair(x + 1, y - 1, i, storyFolder);
+                                }
+                            }
                         }
                         if (IsNorthOffsetCorrect(bldg, wing) && i < bldg.northWallHeight)
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
-                                PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wall);
+                                PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallNorthOffsetPrefabIndex]);
                         }
                         if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
-                                PlaceEastWall(x - (wing.Bounds.min.x + bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wall);
+                                PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[wallSouthOffsetPrefabIndex]);
                         }
-                        PlaceEastWall(x, y, i, storyFolder, wall);
+
+                        if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
+                        {
+                            if (y >= wing.Bounds.min.y + bldg.minOffsetEastWall && y <= wing.Bounds.min.y + bldg.maxOffsetEastWall)
+                                PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[wallEastOffsetPrefabIndex]);
+                            else PlaceEastWall(x, y, i, storyFolder, wall);
+                        }
+                        else
+                        {
+                            PlaceEastWall(x, y, i, storyFolder, wall);
+                            if (PlaceEastBalcony(bldg, i, y, bldg.numberOfEastBalconies, bldg.randomSeedOfEastBalconies, balconiesEastIndexes)) PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[balconyEastPrefabIndex]);
+                        }
                     }
 
                     //north wall
                     if (y == wing.Bounds.min.y + wing.Bounds.size.y - 1)
                     {
-                        Transform wall = wallPrefabs[wallPrefabIndex];
+                        Transform wall = wallPrefabs[wallNorthPrefabIndex];
                         if (i == 0)
                         {
-                            if (IsNorthOffsetCorrect(bldg, wing) && 
-                                x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
-                                PlaceFloor(x + 1, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 90, 0 }, storyFolder);
+                            if (IsNorthOffsetCorrect(bldg, wing) &&  x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
+                                PlaceFloor(x + 1, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 90, 0 }, storyFolder, floorPrefabs[floorNorthOffsetPrefabIndex]);
                             else
-                                PlaceFloor(x + 1, y, i, new int[3] { 0, 90, 0 }, storyFolder);
+                                PlaceFloor(x + 1, y, i, new int[3] { 0, 90, 0 }, storyFolder, floorPrefabs[floorNorthPrefabIndex]);
+                            if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
+                            {
+                                if (x >= wing.Bounds.max.x - bldg.depthOffsetEastWall && x <= wing.Bounds.max.x + bldg.minOffsetEastWall)
+                                    PlaceFloor(x + bldg.depthOffsetEastWall + 1, bldg.maxOffsetEastWall, i, new int[3] { 0, 90, 0 }, storyFolder, floorPrefabs[floorSouthOffsetPrefabIndex]);
+                            }
                         }
-                        if (PlaceBalcony(bldg, i, x)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
                         if (IsNorthOffsetCorrect(bldg, wing) && i < bldg.northWallHeight)
                         {
                             if (x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
-                                PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
-                            else PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                                PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallNorthOffsetPrefabIndex]);
+                            else
+                            {
+                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallNorthPrefabIndex]);
+                                if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyNorthPrefabIndex]);
+                            }
                         }
                         else
-                            PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        {
+                            PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallNorthPrefabIndex]);
+                            if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyNorthPrefabIndex]);
+                        }
+                        if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
+                        {
+                            if (x >= wing.Bounds.max.x - bldg.depthOffsetEastWall && x <= wing.Bounds.max.x + bldg.minOffsetEastWall)
+                                PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[wallEastOffsetPrefabIndex]);
+                        }
+                        else
+                        {
+                            PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[wallNorthPrefabIndex]);
+                            if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[balconyNorthPrefabIndex]);
+                        }
 
                     }
 
                     //west wall
                     if (x == wing.Bounds.min.x)
                     {
-                        Transform wall = wallPrefabs[wallPrefabIndex];
+                        Transform wall = wallPrefabs[wallWestPrefabIndex];
                         if (i == 0)
                         {
                             if (IsNorthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
-                                PlaceFloor(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 0, 0 }, storyFolder);
+                                PlaceFloor(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 0, 0 }, storyFolder, floorPrefabs[floorNorthOffsetPrefabIndex]);
                             if (IsSouthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
-                                PlaceFloor(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, new int[3] { 0, 0, 0 }, storyFolder);
-                            PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder);
+                                PlaceFloor(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, new int[3] { 0, 0, 0 }, storyFolder, floorPrefabs[floorSouthOffsetPrefabIndex]);
+                            PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder, floorPrefabs[floorWestPrefabIndex]);
                         }
-                        if (PlaceBalcony(bldg, i, y)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[balconyPrefabIndex]);
-                        PlaceWestWall(x, y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                        if (PlaceWestBalcony(bldg, i, y, bldg.numberOfWestBalconies, bldg.randomSeedOfWestBalconies, balconiesWestIndexes)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[balconyWestPrefabIndex]);
+                        PlaceWestWall(x, y, i, storyFolder, wallPrefabs[wallWestPrefabIndex]);
                         if (IsNorthOffsetCorrect(bldg, wing) && i < bldg.northWallHeight)
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
-                                PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                                PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[wallNorthOffsetPrefabIndex]);
                         }
                         if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
-                                PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[wallPrefabIndex]);
+                                PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[wallSouthOffsetPrefabIndex]);
                         }
                     }
 
@@ -208,15 +322,23 @@ public class BuildingRenderer : MonoBehaviour
     public bool IsNorthOffsetCorrect(Building bldg, Wing wing)
     {
         if (bldg.depthOffsetNorthWall > wing.Bounds.max.y) bldg.depthOffsetNorthWall = wing.Bounds.max.y;
-        return bldg.depthOffsetNorthWall >= 0 && bldg.minOffsetNorthWall >= 0 && bldg.minOffsetNorthWall < wing.Bounds.max.x &&
-                             bldg.maxOffsetNorthWall > 0 && bldg.maxOffsetNorthWall < wing.Bounds.size.x && bldg.maxOffsetNorthWall >= bldg.minOffsetNorthWall;
+        return bldg.depthOffsetNorthWall > 0 && bldg.minOffsetNorthWall >= 0 && bldg.minOffsetNorthWall <= wing.Bounds.max.x &&
+                             bldg.maxOffsetNorthWall >= 0 && bldg.maxOffsetNorthWall < wing.Bounds.size.x && bldg.maxOffsetNorthWall >= bldg.minOffsetNorthWall;
     }
 
     public bool IsSouthOffsetCorrect(Building bldg, Wing wing)
     {
         if (bldg.depthOffsetSouthWall > wing.Bounds.max.y) bldg.depthOffsetSouthWall = wing.Bounds.max.y;
-        return bldg.depthOffsetSouthWall >= 0 && bldg.minOffsetSouthWall >= 0 && bldg.minOffsetSouthWall < wing.Bounds.max.x &&
-                             bldg.maxOffsetSouthWall > 0 && bldg.maxOffsetSouthWall < wing.Bounds.size.x && bldg.maxOffsetSouthWall >= bldg.minOffsetSouthWall;
+        return bldg.depthOffsetSouthWall > 0 && bldg.minOffsetSouthWall >= 0 && bldg.minOffsetSouthWall <= wing.Bounds.max.x &&
+                             bldg.maxOffsetSouthWall >= 0 && bldg.maxOffsetSouthWall < wing.Bounds.size.x && bldg.maxOffsetSouthWall >= bldg.minOffsetSouthWall;
+    }
+
+    public bool IsEastOffsetCorrect(Building bldg, Wing wing)
+    {
+        if (bldg.depthOffsetEastWall > wing.Bounds.max.y) bldg.depthOffsetEastWall = wing.Bounds.max.y;
+        if (bldg.maxOffsetEastWall > wing.Bounds.max.y) bldg.maxOffsetEastWall = wing.Bounds.max.y-1;
+        return bldg.depthOffsetEastWall > 0 && bldg.minOffsetEastWall >= 0 && bldg.minOffsetEastWall <= wing.Bounds.max.x &&
+                             bldg.maxOffsetEastWall >= 0 && bldg.maxOffsetEastWall < wing.Bounds.size.x && bldg.maxOffsetEastWall >= bldg.minOffsetEastWall;
     }
     public List<Tuple<int, int>> GenerateBuildingShape(int max)
     {
@@ -226,60 +348,103 @@ public class BuildingRenderer : MonoBehaviour
         return sortedTuples;
     }
 
-    public void RenderFirstLevel(Story story, Wing wing, Transform wingFolder, Building bldg)
+    public List<Tuple<int, int>> CalculateSouthBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
     {
-        Transform storyFolder = GameObject.Find("Story ").transform;
-        GameObject objectToDelete = GameObject.Find("Entry ");
-        if (objectToDelete != null)
-        {
-            Destroy(objectToDelete);
-        }
-        Transform wall;
-        Transform entriesFolder = new GameObject("Entry ").transform;
-        List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries);
-        for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
-        {
-            for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
-            {
-                if (entries.Contains(y))
-                {
-                    wall = doorPrefabs[doorPrefabIndex];
-                    PlaceStair(x + 1, y - 1, 0, entriesFolder);
-                }
-                else
-                {
-                    wall = wallPrefabs[wallPrefabIndex];
-                    PlaceFloor(x + 1, y - 1, 0, new int[3] { 0, 180, 0 }, entriesFolder);
-                }
-                PlaceEastWall(x, y, 0, storyFolder, wall);
-            }
-        }
-
-
-    }
-    public List<Tuple<int, int>> CalculateBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
-    {
-        if (randomSeedOfBalconies == savedSeedOfBalconies && numberOfBalconies == savedNumberOfBalconies) return balconiesIndexes;
-        savedSeedOfBalconies = randomSeedOfBalconies;
-        savedNumberOfBalconies = numberOfBalconies;
-        balconiesIndexes.Clear();
+        if (randomSeedOfBalconies == savedSeedOfSouthBalconies && numberOfBalconies == savedNumberOfSouthBalconies) return balconiesSouthIndexes;
+        savedSeedOfSouthBalconies = randomSeedOfBalconies;
+        savedNumberOfSouthBalconies = numberOfBalconies;
+        balconiesSouthIndexes.Clear();
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
             for (int i = 2; i < bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
-                    balconiesIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
+                    balconiesSouthIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
             }
         }
         else
         {
             for (int i = 0; i < numberOfBalconies; i++)
             {
-                balconiesIndexes.Add(new Tuple<int, int>(rand.Next(2, randomSeedOfBalconies), rand.Next(2, randomSeedOfBalconies)));
+                balconiesSouthIndexes.Add(new Tuple<int, int>(rand.Next(2, 2+randomSeedOfBalconies), rand.Next(2, 2 + randomSeedOfBalconies)));
             }
         }
-        return balconiesIndexes;
+        return balconiesSouthIndexes;
+    }
+
+    public List<Tuple<int, int>> CalculateNorthBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
+    {
+        if (randomSeedOfBalconies == savedSeedOfNorthBalconies && numberOfBalconies == savedNumberOfNorthBalconies) return balconiesNorthIndexes;
+        savedSeedOfNorthBalconies = randomSeedOfBalconies;
+        savedNumberOfNorthBalconies = numberOfBalconies;
+        balconiesNorthIndexes.Clear();
+        var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
+        if (randomSeedOfBalconies == 0)
+        {
+            for (int i = 2; i < bldg.level; i++)
+            {
+                for (int j = 0; j < numberOfBalconies; j++)
+                    balconiesNorthIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < numberOfBalconies; i++)
+            {
+                balconiesNorthIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(2, 2 + randomSeedOfBalconies)));
+            }
+        }
+        return balconiesNorthIndexes;
+    }
+    public List<Tuple<int, int>> CalculateWestBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
+    {
+        if (randomSeedOfBalconies == savedSeedOfWestBalconies && numberOfBalconies == savedNumberOfWestBalconies) return balconiesWestIndexes;
+        savedSeedOfWestBalconies = randomSeedOfBalconies;
+        savedNumberOfWestBalconies = numberOfBalconies;
+        balconiesWestIndexes.Clear();
+        var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
+        if (randomSeedOfBalconies == 0)
+        {
+            for (int i = 2; i < bldg.level; i++)
+            {
+                for (int j = 0; j < numberOfBalconies; j++)
+                    balconiesWestIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < numberOfBalconies; i++)
+            {
+                balconiesWestIndexes.Add(new Tuple<int, int>(rand.Next(2, 2+randomSeedOfBalconies), rand.Next(2, 2+randomSeedOfBalconies)));
+            }
+        }
+        return balconiesWestIndexes;
+    }
+
+    public List<Tuple<int, int>> CalculateEastBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
+    {
+        if (randomSeedOfBalconies == savedSeedOfEastBalconies && numberOfBalconies == savedNumberOfEastBalconies) return balconiesEastIndexes;
+        savedSeedOfEastBalconies = randomSeedOfBalconies;
+        savedNumberOfEastBalconies = numberOfBalconies;
+        balconiesEastIndexes.Clear();
+        var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
+        if (randomSeedOfBalconies == 0)
+        {
+            for (int i = 2; i < bldg.level; i++)
+            {
+                for (int j = 0; j < numberOfBalconies; j++)
+                    balconiesEastIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < numberOfBalconies; i++)
+            {
+                balconiesEastIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(2, 2 + randomSeedOfBalconies)));
+            }
+        }
+        return balconiesEastIndexes;
     }
     public List<int> CalculateEntryIndex(Wing wing, int numberOfEntries)
     {
@@ -292,24 +457,45 @@ public class BuildingRenderer : MonoBehaviour
         }
         return entries;
     }
-    private void PlaceFloor(int x, int y, int level, int[] angles, Transform storyFolder)
+    private void PlaceFloor(int x, int y, int level, int[] angles, Transform storyFolder, Transform floor)
     {
-        floorSize = GetPrefabSize(floorPrefabs[floorPrefabIndex]);
-        Transform f = Instantiate(floorPrefabs[floorPrefabIndex], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.Euler(angles[0], angles[1], angles[2]));
+        floorSize = GetPrefabSize(floor);
+        Transform f = Instantiate(floor, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.Euler(angles[0], angles[1], angles[2]));
         f.SetParent(storyFolder);
     }
 
-    private bool PlaceBalcony(Building bldg, int level, int place)
+    private bool PlaceSouthBalcony(Building bldg, int level, int place, int number, int random, List<Tuple<int, int>> balconiesIndexes)
     {
-        List<Tuple<int, int>> balconiesIndexes = CalculateBalconiesIndex(bldg, bldg.numberOfBalconies, bldg.randomSeedOfBalconies);
+        balconiesIndexes = CalculateSouthBalconiesIndex(bldg, number, random);
+        Tuple<int, int> pairToCheck = new Tuple<int, int>(2, 2);
+        pairToCheck = new Tuple<int, int>(level, place);
+        return balconiesIndexes.Contains(pairToCheck);
+    }
+    private bool PlaceNorthBalcony(Building bldg, int level, int place, int number, int random, List<Tuple<int, int>> balconiesIndexes)
+    {
+        balconiesIndexes = CalculateNorthBalconiesIndex(bldg, number, random);
+        Tuple<int, int> pairToCheck = new Tuple<int, int>(2, 2);
+        pairToCheck = new Tuple<int, int>(level, place);
+        return balconiesIndexes.Contains(pairToCheck);
+    }
+    private bool PlaceWestBalcony(Building bldg, int level, int place, int number, int random, List<Tuple<int, int>> balconiesIndexes)
+    {
+        balconiesIndexes = CalculateWestBalconiesIndex(bldg, number, random);
+        Tuple<int, int> pairToCheck = new Tuple<int, int>(2, 2);
+        pairToCheck = new Tuple<int, int>(level, place);
+        return balconiesIndexes.Contains(pairToCheck);
+    }
+    private bool PlaceEastBalcony(Building bldg, int level, int place, int number, int random, List<Tuple<int, int>> balconiesIndexes)
+    {
+        balconiesIndexes = CalculateEastBalconiesIndex(bldg, number, random);
         Tuple<int, int> pairToCheck = new Tuple<int, int>(2, 2);
         pairToCheck = new Tuple<int, int>(level, place);
         return balconiesIndexes.Contains(pairToCheck);
     }
     private void PlaceStair(int x, int y, int level, Transform storyFolder)
     {
-        var stairSize = GetPrefabSize(stairPrefabs[stairPrefabIndex]);
-        Transform f = Instantiate(stairPrefabs[stairPrefabIndex], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
+        var stairSize = GetPrefabSize(stairPrefabs[stairSouthPrefabIndex]);
+        Transform f = Instantiate(stairPrefabs[stairSouthPrefabIndex], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
 

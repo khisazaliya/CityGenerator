@@ -13,8 +13,14 @@ public class BuildingData : MonoBehaviour
            buildingSettings.buildingSize.y,
            GenerateWings(buildingSettings),
            buildingSettings.numberOfEntries,
-           buildingSettings.MaxNumberOfBalconies,
-           buildingSettings.randomSeedOfBalconies,
+           buildingSettings.MaxNumberOfSouthBalconies,
+           buildingSettings.randomSeedOfSouthBalconies,
+           buildingSettings.MaxNumberOfNorthBalconies,
+           buildingSettings.randomSeedOfNorthBalconies,
+           buildingSettings.MaxNumberOfWestBalconies,
+           buildingSettings.randomSeedOfWestBalconies,
+           buildingSettings.MaxNumberOfEastBalconies,
+           buildingSettings.randomSeedOfEastBalconies,
            buildingSettings.minOffsetNorthWall,
             buildingSettings.maxOffsetNorthWall,
             buildingSettings.depthOffsetNorthWall,
@@ -22,7 +28,11 @@ public class BuildingData : MonoBehaviour
             buildingSettings.minOffsetSouthWall,
             buildingSettings.maxOffsetSouthWall,
             buildingSettings.depthOffsetSouthWall,
-            buildingSettings.southWallHeight
+            buildingSettings.southWallHeight,
+            buildingSettings.minOffsetEastWall,
+            buildingSettings.maxOffsetEastWall,
+            buildingSettings.depthOffsetEastWall,
+            buildingSettings.eastWallHeight
        );
     }
 

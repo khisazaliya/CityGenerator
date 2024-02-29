@@ -10,8 +10,17 @@ public class Building
 
     public int numberOfEntries;
 
-    public int numberOfBalconies;
-    public int randomSeedOfBalconies;
+    public int numberOfSouthBalconies;
+    public int randomSeedOfSouthBalconies;
+
+    public int numberOfNorthBalconies;
+    public int randomSeedOfNorthBalconies;
+
+    public int numberOfWestBalconies;
+    public int randomSeedOfWestBalconies;
+
+    public int numberOfEastBalconies;
+    public int randomSeedOfEastBalconies;
 
     public int level;
     public Vector2Int Size { get { return size; } }
@@ -34,15 +43,34 @@ public class Building
     public int depthOffsetSouthWall;
 
     public int southWallHeight;
-    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies, int minOffsetNorthWall,
-        int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight, int minOffsetSouthWall,
-        int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight) {
+
+    public int minOffsetEastWall;
+
+    public int maxOffsetEastWall;
+
+    public int depthOffsetEastWall;
+
+    public int eastWallHeight;
+    public Building(int numberOfLevels, int sizeX, int sizeY, Wing[] wings, int numberOfEntries, int numberOfSouthBalconies, int randomSeedOfSouthBalconies,
+        int numberOfNorthBalconies, int randomSeedOfNorthBalconies,
+        int numberOfWestBalconies, int randomSeedOfWestBalconies,
+        int numberOfEastBalconies, int randomSeedOfEastBalconies, 
+        int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight, 
+        int minOffsetSouthWall, int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight,
+        int minOffsetEastWall, int maxOffsetEastWall, int depthOffsetEastWall, int eastWallHeight
+        ) {
         level = numberOfLevels;
         size = new Vector2Int(sizeX, sizeY);
         this.wings = wings;
         this.numberOfEntries = numberOfEntries;
-        this.numberOfBalconies = numberOfBalconies;
-        this.randomSeedOfBalconies = randomSeedOfBalconies;
+        this.numberOfSouthBalconies = numberOfSouthBalconies;
+        this.randomSeedOfSouthBalconies = randomSeedOfSouthBalconies;
+        this.numberOfNorthBalconies = numberOfNorthBalconies;
+        this.randomSeedOfNorthBalconies = randomSeedOfNorthBalconies;
+        this.numberOfWestBalconies = numberOfWestBalconies;
+        this.randomSeedOfWestBalconies = randomSeedOfWestBalconies;
+        this.numberOfEastBalconies = numberOfEastBalconies;
+        this.randomSeedOfEastBalconies = randomSeedOfEastBalconies;
         this.minOffsetNorthWall = minOffsetNorthWall;
         this.maxOffsetNorthWall = maxOffsetNorthWall;
         this.depthOffsetNorthWall = depthOffsetNorthWall;
@@ -51,6 +79,10 @@ public class Building
         this.maxOffsetSouthWall = maxOffsetSouthWall;
         this.depthOffsetSouthWall = depthOffsetSouthWall;
         this.southWallHeight = southWallHeight;
+        this.minOffsetEastWall = minOffsetEastWall;
+        this.maxOffsetEastWall = maxOffsetEastWall;
+        this.depthOffsetEastWall = depthOffsetEastWall;
+        this.eastWallHeight = eastWallHeight;
     }
 
     public Building(int sizeX, int sizeY)
