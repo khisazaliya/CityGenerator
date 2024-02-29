@@ -66,7 +66,9 @@ public class BuildingGeneratorEditor : Editor
         EditorGUILayout.LabelField("Prefab Selection", EditorStyles.boldLabel);
 
         buildingRenderer.floorSouthPrefabIndex = EditorGUILayout.Popup("South Floor Prefab", buildingRenderer.floorSouthPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
-        buildingRenderer.wallSouthPrefabIndex = EditorGUILayout.Popup("South Wall Prefab", buildingRenderer.wallSouthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall0SouthPrefabIndex = EditorGUILayout.Popup("South Wall 0 Prefab", buildingRenderer.wall0SouthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall1SouthPrefabIndex = EditorGUILayout.Popup("South Wall 1 Prefab", buildingRenderer.wall1SouthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall2SouthPrefabIndex = EditorGUILayout.Popup("South Wall 2 Prefab", buildingRenderer.wall2SouthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.doorSouthPrefabIndex = EditorGUILayout.Popup("South Door Prefab", buildingRenderer.doorSouthPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.roofPrefabIndex = EditorGUILayout.Popup("Roof Prefab", buildingRenderer.roofPrefabIndex, GetPrefabNames(buildingRenderer.roofPrefabs));
         buildingRenderer.roofBoundPrefabIndex = EditorGUILayout.Popup("Roof Bound Prefab", buildingRenderer.roofBoundPrefabIndex, GetPrefabNames(buildingRenderer.roofBoundPrefabs));
@@ -75,25 +77,33 @@ public class BuildingGeneratorEditor : Editor
         buildingRenderer.balconySouthPrefabIndex = EditorGUILayout.Popup("South Balcony Prefab", buildingRenderer.balconySouthPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
 
         buildingRenderer.floorNorthPrefabIndex = EditorGUILayout.Popup("North Floor Prefab", buildingRenderer.floorNorthPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
-        buildingRenderer.wallNorthPrefabIndex = EditorGUILayout.Popup("North Wall Prefab", buildingRenderer.wallNorthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall0NorthPrefabIndex = EditorGUILayout.Popup("North Wall 0 Prefab", buildingRenderer.wall0NorthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall1NorthPrefabIndex = EditorGUILayout.Popup("North Wall 1 Prefab", buildingRenderer.wall1NorthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall2NorthPrefabIndex = EditorGUILayout.Popup("North Wall 2 Prefab", buildingRenderer.wall2NorthPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.doorNorthPrefabIndex = EditorGUILayout.Popup("North Door Prefab", buildingRenderer.doorNorthPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.stairNorthPrefabIndex = EditorGUILayout.Popup("North Stair Prefab", buildingRenderer.stairNorthPrefabIndex, GetPrefabNames(buildingRenderer.stairPrefabs));
         buildingRenderer.balconyNorthPrefabIndex = EditorGUILayout.Popup("North Balcony Prefab", buildingRenderer.balconyNorthPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
 
         buildingRenderer.floorWestPrefabIndex = EditorGUILayout.Popup("West Floor Prefab", buildingRenderer.floorWestPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
-        buildingRenderer.wallWestPrefabIndex = EditorGUILayout.Popup("West Wall Prefab", buildingRenderer.wallWestPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall0WestPrefabIndex = EditorGUILayout.Popup("West Wall 0 Prefab", buildingRenderer.wall0WestPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall1WestPrefabIndex = EditorGUILayout.Popup("West Wall 1 Prefab", buildingRenderer.wall1WestPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall2WestPrefabIndex = EditorGUILayout.Popup("West Wall 2 Prefab", buildingRenderer.wall2WestPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.doorWestPrefabIndex = EditorGUILayout.Popup("West Door Prefab", buildingRenderer.doorWestPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.stairWestPrefabIndex = EditorGUILayout.Popup("West Stair Prefab", buildingRenderer.stairWestPrefabIndex, GetPrefabNames(buildingRenderer.stairPrefabs));
         buildingRenderer.balconyWestPrefabIndex = EditorGUILayout.Popup("West Balcony Prefab", buildingRenderer.balconyWestPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
 
         buildingRenderer.floorEastPrefabIndex = EditorGUILayout.Popup("East Floor Prefab", buildingRenderer.floorEastPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
-        buildingRenderer.wallEastPrefabIndex = EditorGUILayout.Popup("East Wall Prefab", buildingRenderer.wallEastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall0EastPrefabIndex = EditorGUILayout.Popup("East Wall 0 Prefab", buildingRenderer.wall0EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall1EastPrefabIndex = EditorGUILayout.Popup("East Wall 1 Prefab", buildingRenderer.wall1EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall2EastPrefabIndex = EditorGUILayout.Popup("East Wall 2 Prefab", buildingRenderer.wall2EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.doorEastPrefabIndex = EditorGUILayout.Popup("East Door Prefab", buildingRenderer.doorEastPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.stairEastPrefabIndex = EditorGUILayout.Popup("East Stair Prefab", buildingRenderer.stairEastPrefabIndex, GetPrefabNames(buildingRenderer.stairPrefabs));
         buildingRenderer.balconyEastPrefabIndex = EditorGUILayout.Popup("East Balcony Prefab", buildingRenderer.balconyEastPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
 
         buildingRenderer.floorSouthOffsetPrefabIndex = EditorGUILayout.Popup("South Offset Floor Prefab", buildingRenderer.floorSouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
-        buildingRenderer.wallSouthOffsetPrefabIndex = EditorGUILayout.Popup("South Offset Wall Prefab", buildingRenderer.wallSouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall0SouthOffsetPrefabIndex = EditorGUILayout.Popup("South Offset Wall 0 Prefab", buildingRenderer.wall0SouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall1SouthOffsetPrefabIndex = EditorGUILayout.Popup("South Offset Wall 1 Prefab", buildingRenderer.wall0SouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall2SouthOffsetPrefabIndex = EditorGUILayout.Popup("South Offset Wall 2 Prefab", buildingRenderer.wall0SouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.doorSouthOffsetPrefabIndex = EditorGUILayout.Popup("South Offset Door Prefab", buildingRenderer.doorSouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.roofSouthOffsetPrefabIndex = EditorGUILayout.Popup("Roof SouthOffset Prefab", buildingRenderer.roofSouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.roofPrefabs));
         buildingRenderer.roofSouthOffsetBoundPrefabIndex = EditorGUILayout.Popup("Roof SouthOffset Bound Prefab", buildingRenderer.roofSouthOffsetBoundPrefabIndex, GetPrefabNames(buildingRenderer.roofBoundPrefabs));
@@ -102,7 +112,9 @@ public class BuildingGeneratorEditor : Editor
         buildingRenderer.balconySouthOffsetPrefabIndex = EditorGUILayout.Popup("South Offset Balcony Prefab", buildingRenderer.balconySouthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
 
         buildingRenderer.floorNorthOffsetPrefabIndex = EditorGUILayout.Popup("North Offset Floor Prefab", buildingRenderer.floorNorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
-        buildingRenderer.wallNorthOffsetPrefabIndex = EditorGUILayout.Popup("North Offset Wall Prefab", buildingRenderer.wallNorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall0NorthOffsetPrefabIndex = EditorGUILayout.Popup("North Offset Wall 0 Prefab", buildingRenderer.wall0NorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall1NorthOffsetPrefabIndex = EditorGUILayout.Popup("North Offset Wall 1 Prefab", buildingRenderer.wall1NorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall2NorthOffsetPrefabIndex = EditorGUILayout.Popup("North Offset Wall 2 Prefab", buildingRenderer.wall2NorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.doorNorthOffsetPrefabIndex = EditorGUILayout.Popup("North Offset Door Prefab", buildingRenderer.doorNorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.roofNorthOffsetPrefabIndex = EditorGUILayout.Popup("Roof NorthOffset Prefab", buildingRenderer.roofNorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.roofPrefabs));
         buildingRenderer.roofNorthOffsetBoundPrefabIndex = EditorGUILayout.Popup("Roof NorthOffset Bound Prefab", buildingRenderer.roofNorthOffsetBoundPrefabIndex, GetPrefabNames(buildingRenderer.roofBoundPrefabs));
@@ -111,7 +123,9 @@ public class BuildingGeneratorEditor : Editor
         buildingRenderer.balconyNorthOffsetPrefabIndex = EditorGUILayout.Popup("North Offset Balcony Prefab", buildingRenderer.balconyNorthOffsetPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
 
         buildingRenderer.floorEastOffsetPrefabIndex = EditorGUILayout.Popup("East Offset Floor Prefab", buildingRenderer.floorEastOffsetPrefabIndex, GetPrefabNames(buildingRenderer.floorPrefabs));
-        buildingRenderer.wallEastOffsetPrefabIndex = EditorGUILayout.Popup("East Offset Wall Prefab", buildingRenderer.wallEastOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall0EastOffsetPrefabIndex = EditorGUILayout.Popup("East Offset Wall 0 Prefab", buildingRenderer.wall0EastOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall1EastOffsetPrefabIndex = EditorGUILayout.Popup("East Offset Wall 1 Prefab", buildingRenderer.wall1EastOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wall2EastOffsetPrefabIndex = EditorGUILayout.Popup("East Offset Wall 2 Prefab", buildingRenderer.wall2EastOffsetPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.doorEastOffsetPrefabIndex = EditorGUILayout.Popup("East Offset Door Prefab", buildingRenderer.doorEastOffsetPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.roofEastOffsetPrefabIndex = EditorGUILayout.Popup("Roof EastOffset Prefab", buildingRenderer.roofEastOffsetPrefabIndex, GetPrefabNames(buildingRenderer.roofPrefabs));
         buildingRenderer.roofEastOffsetBoundPrefabIndex = EditorGUILayout.Popup("Roof EastOffset Bound Prefab", buildingRenderer.roofEastOffsetBoundPrefabIndex, GetPrefabNames(buildingRenderer.roofBoundPrefabs));
