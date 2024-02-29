@@ -11,70 +11,10 @@ public class BuildingRenderer : MonoBehaviour
     public List<Transform> wallPrefabs;
     public List<Transform> doorPrefabs;
     public List<Transform> roofPrefabs;
+    public List<Transform> roofBoundPrefabs;
+    public List<Transform> roofCornerPrefabs;
     public List<Transform> stairPrefabs;
     public List<Transform> balconyPrefabs;
-
-    [HideInInspector] public int floorSouthPrefabIndex = 0;
-    [HideInInspector] public int wallSouthPrefabIndex = 0;
-    [HideInInspector] public int doorSouthPrefabIndex = 0;
-    [HideInInspector] public int roofSouthPrefabIndex = 0;
-    [HideInInspector] public int stairSouthPrefabIndex = 0;
-    [HideInInspector] public int balconySouthPrefabIndex = 0;
-
-    [HideInInspector] public int savedSeedOfSouthBalconies;
-    [HideInInspector] public int savedNumberOfSouthBalconies;
-
-    [HideInInspector] public int floorNorthPrefabIndex = 0;
-    [HideInInspector] public int wallNorthPrefabIndex = 0;
-    [HideInInspector] public int doorNorthPrefabIndex = 0;
-    [HideInInspector] public int roofNorthPrefabIndex = 0;
-    [HideInInspector] public int stairNorthPrefabIndex = 0;
-    [HideInInspector] public int balconyNorthPrefabIndex = 0;
-
-    [HideInInspector] public int savedSeedOfNorthBalconies;
-    [HideInInspector] public int savedNumberOfNorthBalconies;
-
-    [HideInInspector] public int floorEastPrefabIndex = 0;
-    [HideInInspector] public int wallEastPrefabIndex = 0;
-    [HideInInspector] public int doorEastPrefabIndex = 0;
-    [HideInInspector] public int roofEastPrefabIndex = 0;
-    [HideInInspector] public int stairEastPrefabIndex = 0;
-    [HideInInspector] public int balconyEastPrefabIndex = 0;
-
-    [HideInInspector] public int savedSeedOfEastBalconies;
-    [HideInInspector] public int savedNumberOfEastBalconies;
-
-    [HideInInspector] public int floorWestPrefabIndex = 0;
-    [HideInInspector] public int wallWestPrefabIndex = 0;
-    [HideInInspector] public int doorWestPrefabIndex = 0;
-    [HideInInspector] public int roofWestPrefabIndex = 0;
-    [HideInInspector] public int stairWestPrefabIndex = 0;
-    [HideInInspector] public int balconyWestPrefabIndex = 0;
-
-    [HideInInspector] public int savedSeedOfWestBalconies;
-    [HideInInspector] public int savedNumberOfWestBalconies;
-
-    [HideInInspector] public int floorSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wallSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int doorSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int stairSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int balconySouthOffsetPrefabIndex = 0;
-
-
-    [HideInInspector] public int floorNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wallNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int doorNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int stairNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int balconyNorthOffsetPrefabIndex = 0;
-
-    [HideInInspector] public int floorEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int wallEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int doorEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int stairEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int balconyEastOffsetPrefabIndex = 0;
 
 
     [HideInInspector] public Vector3 floorSize;
@@ -128,11 +68,11 @@ public class BuildingRenderer : MonoBehaviour
             RenderStory(story, wing, wingFolder, bldg);
         }
         RenderRoof(wing, wing.Bounds.min.x, wing.Bounds.max.x, wing.Bounds.min.y, wing.Bounds.max.y, wingFolder, bldg.level);
-        if (IsNorthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall+1, 
+        if (IsNorthOffsetCorrect(bldg, wing)) RenderNorthOffsetRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall+1, 
             wing.Bounds.max.y, wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.northWallHeight);
-        if (IsSouthOffsetCorrect(bldg, wing)) RenderRoof(wing, bldg.minOffsetSouthWall, bldg.maxOffsetSouthWall + 1,
+        if (IsSouthOffsetCorrect(bldg, wing)) RenderSouthOffsetRoof(wing, bldg.minOffsetSouthWall, bldg.maxOffsetSouthWall + 1,
             wing.Bounds.min.y - bldg.depthOffsetSouthWall, wing.Bounds.min.y, wingFolder, bldg.southWallHeight);
-        if (IsEastOffsetCorrect(bldg, wing)) RenderRoof(wing, wing.Bounds.max.x, wing.Bounds.max.x + bldg.depthOffsetEastWall, 
+        if (IsEastOffsetCorrect(bldg, wing)) RenderEastOffsetRoof(wing, wing.Bounds.max.x, wing.Bounds.max.x + bldg.depthOffsetEastWall, 
             bldg.minOffsetEastWall, bldg.maxOffsetEastWall + 1, wingFolder, bldg.eastWallHeight);
     }
 
@@ -576,74 +516,271 @@ public class BuildingRenderer : MonoBehaviour
     private void RenderRoof(Wing wing, int minX, int maxX, int minY, int maxY, Transform wingFolder, int level)
     {
         var direction = new RoofDirection();
-        var prefabIndex = 0;
+        Transform prefab;
         for (int x = minX; x < maxX; x++)
         {
             for (int y = minY; y < maxY; y++)
             {
                 if ((y == minY) && (x == minX))
                 {
-                    prefabIndex = 2;
+                    prefab = roofCornerPrefabs[roofCornerPrefabIndex];
                     direction = RoofDirection.South;
                 }
                 else
                 if ((y == minY) && (x == maxX - 1))
                 {
-                    prefabIndex = 2;
+                    prefab = roofCornerPrefabs[roofCornerPrefabIndex];
                     direction = RoofDirection.East;
                 }
                 else
                 if ((y == maxY - 1) && (x == minX))
                 {
-                    prefabIndex = 2;
+                    prefab = roofCornerPrefabs[roofCornerPrefabIndex];
                     direction = RoofDirection.West;
                 }
                 else
                 if ((y == maxY - 1) && (x == maxX - 1))
                 {
-                    prefabIndex = 2;
+                    prefab = roofCornerPrefabs[roofCornerPrefabIndex];
                     direction = RoofDirection.North;
                 }
                 else
                 if (y == minY && !(y == maxY - 1 || x == minX || x == maxX - 1))
                 {
-                    prefabIndex = 1;
+                    prefab = roofBoundPrefabs[roofBoundPrefabIndex];
                     direction = RoofDirection.East;
                 }
                 else
                 if (y == maxY - 1 && !(y == minY || x == minX || x == maxX - 1))
                 {
-                    prefabIndex = 1;
+                    prefab = roofBoundPrefabs[roofBoundPrefabIndex];
                     direction = RoofDirection.West;
                 }
                 else
                 if (x == minX && !(y == minY || y == maxY - 1 || x == maxX - 1))
                 {
-                    prefabIndex = 1;
+                    prefab = roofBoundPrefabs[roofBoundPrefabIndex];
                     direction = RoofDirection.South;
                 }
                 else
                 if (x == maxX - 1 && !(y == minY || y == maxY - 1 || x == minX))
                 {
-                    prefabIndex = 1;
+                    prefab = roofBoundPrefabs[roofBoundPrefabIndex];
                     direction = RoofDirection.North;
                 }
                 else
                 {
-                    prefabIndex = 0;
+                    prefab = roofPrefabs[roofPrefabIndex];
                     direction = RoofDirection.North;
                 }
 
-                PlaceRoof(x, y, level, prefabIndex, wingFolder, wing.GetRoof.Type, direction);
+                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
             }
         }
     }
 
-    private void PlaceRoof(int x, int y, int level, int prefabIndex, Transform wingFolder, RoofType type, RoofDirection direction)
+    private void RenderNorthOffsetRoof(Wing wing, int minX, int maxX, int minY, int maxY, Transform wingFolder, int level)
+    {
+        var direction = new RoofDirection();
+        Transform prefab;
+        for (int x = minX; x < maxX; x++)
+        {
+            for (int y = minY; y < maxY; y++)
+            {
+                if ((y == minY) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[roofNorthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.South;
+                }
+                else
+                if ((y == minY) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[roofNorthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.East;
+                }
+                else
+                if ((y == maxY - 1) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[roofNorthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.West;
+                }
+                else
+                if ((y == maxY - 1) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[roofNorthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+                else
+                if (y == minY && !(y == maxY - 1 || x == minX || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofNorthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.East;
+                }
+                else
+                if (y == maxY - 1 && !(y == minY || x == minX || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofNorthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.West;
+                }
+                else
+                if (x == minX && !(y == minY || y == maxY - 1 || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofNorthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.South;
+                }
+                else
+                if (x == maxX - 1 && !(y == minY || y == maxY - 1 || x == minX))
+                {
+                    prefab = roofBoundPrefabs[roofNorthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+                else
+                {
+                    prefab = roofPrefabs[roofNorthOffsetPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+
+                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
+            }
+        }
+    }
+
+    private void RenderSouthOffsetRoof(Wing wing, int minX, int maxX, int minY, int maxY, Transform wingFolder, int level)
+    {
+        var direction = new RoofDirection();
+        Transform prefab;
+        for (int x = minX; x < maxX; x++)
+        {
+            for (int y = minY; y < maxY; y++)
+            {
+                if ((y == minY) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[roofSouthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.South;
+                }
+                else
+                if ((y == minY) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[roofSouthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.East;
+                }
+                else
+                if ((y == maxY - 1) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[roofSouthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.West;
+                }
+                else
+                if ((y == maxY - 1) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[roofSouthOffsetCornerPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+                else
+                if (y == minY && !(y == maxY - 1 || x == minX || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofSouthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.East;
+                }
+                else
+                if (y == maxY - 1 && !(y == minY || x == minX || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofSouthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.West;
+                }
+                else
+                if (x == minX && !(y == minY || y == maxY - 1 || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofSouthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.South;
+                }
+                else
+                if (x == maxX - 1 && !(y == minY || y == maxY - 1 || x == minX))
+                {
+                    prefab = roofBoundPrefabs[roofSouthOffsetBoundPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+                else
+                {
+                    prefab = roofPrefabs[roofSouthOffsetPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+
+                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
+            }
+        }
+    }
+    private void RenderEastOffsetRoof(Wing wing, int minX, int maxX, int minY, int maxY, Transform wingFolder, int level)
+    {
+        var direction = new RoofDirection();
+        Transform prefab;
+        for (int x = minX; x < maxX; x++)
+        {
+            for (int y = minY; y < maxY; y++)
+            {
+                if ((y == minY) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[roofEastOffsetCornerPrefabIndex];
+                    direction = RoofDirection.South;
+                }
+                else
+                if ((y == minY) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[roofEastOffsetCornerPrefabIndex];
+                    direction = RoofDirection.East;
+                }
+                else
+                if ((y == maxY - 1) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[roofEastOffsetCornerPrefabIndex];
+                    direction = RoofDirection.West;
+                }
+                else
+                if ((y == maxY - 1) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[roofEastOffsetCornerPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+                else
+                if (y == minY && !(y == maxY - 1 || x == minX || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofEastOffsetBoundPrefabIndex];
+                    direction = RoofDirection.East;
+                }
+                else
+                if (y == maxY - 1 && !(y == minY || x == minX || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofEastOffsetBoundPrefabIndex];
+                    direction = RoofDirection.West;
+                }
+                else
+                if (x == minX && !(y == minY || y == maxY - 1 || x == maxX - 1))
+                {
+                    prefab = roofBoundPrefabs[roofEastOffsetBoundPrefabIndex];
+                    direction = RoofDirection.South;
+                }
+                else
+                if (x == maxX - 1 && !(y == minY || y == maxY - 1 || x == minX))
+                {
+                    prefab = roofBoundPrefabs[roofEastOffsetBoundPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+                else
+                {
+                    prefab = roofPrefabs[roofEastOffsetPrefabIndex];
+                    direction = RoofDirection.North;
+                }
+
+                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
+            }
+        }
+    }
+
+    private void PlaceRoof(int x, int y, int level, Transform wingFolder, RoofType type, RoofDirection direction, Transform prefab)
     {
         Transform r;
         r = Instantiate(
-            roofPrefabs[prefabIndex],
+            prefab,
             wingFolder.TransformPoint(
                new Vector3(
                        x * -3f + rotationOffset[(int)direction].x,
@@ -681,5 +818,70 @@ public class BuildingRenderer : MonoBehaviour
 
         return size;
     }
+    [HideInInspector] public int floorSouthPrefabIndex = 0;
+    [HideInInspector] public int wallSouthPrefabIndex = 0;
+    [HideInInspector] public int doorSouthPrefabIndex = 0;
+    [HideInInspector] public int roofPrefabIndex = 0;
+    [HideInInspector] public int roofBoundPrefabIndex = 0;
+    [HideInInspector] public int roofCornerPrefabIndex = 0;
+    [HideInInspector] public int stairSouthPrefabIndex = 0;
+    [HideInInspector] public int balconySouthPrefabIndex = 0;
 
+    [HideInInspector] public int savedSeedOfSouthBalconies;
+    [HideInInspector] public int savedNumberOfSouthBalconies;
+
+    [HideInInspector] public int floorNorthPrefabIndex = 0;
+    [HideInInspector] public int wallNorthPrefabIndex = 0;
+    [HideInInspector] public int doorNorthPrefabIndex = 0;
+    [HideInInspector] public int stairNorthPrefabIndex = 0;
+    [HideInInspector] public int balconyNorthPrefabIndex = 0;
+
+    [HideInInspector] public int savedSeedOfNorthBalconies;
+    [HideInInspector] public int savedNumberOfNorthBalconies;
+
+    [HideInInspector] public int floorEastPrefabIndex = 0;
+    [HideInInspector] public int wallEastPrefabIndex = 0;
+    [HideInInspector] public int doorEastPrefabIndex = 0;
+    [HideInInspector] public int stairEastPrefabIndex = 0;
+    [HideInInspector] public int balconyEastPrefabIndex = 0;
+
+    [HideInInspector] public int savedSeedOfEastBalconies;
+    [HideInInspector] public int savedNumberOfEastBalconies;
+
+    [HideInInspector] public int floorWestPrefabIndex = 0;
+    [HideInInspector] public int wallWestPrefabIndex = 0;
+    [HideInInspector] public int doorWestPrefabIndex = 0;
+    [HideInInspector] public int stairWestPrefabIndex = 0;
+    [HideInInspector] public int balconyWestPrefabIndex = 0;
+
+    [HideInInspector] public int savedSeedOfWestBalconies;
+    [HideInInspector] public int savedNumberOfWestBalconies;
+
+    [HideInInspector] public int floorSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int wallSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int doorSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofSouthOffsetBoundPrefabIndex = 0;
+    [HideInInspector] public int roofSouthOffsetCornerPrefabIndex = 0;
+    [HideInInspector] public int stairSouthOffsetPrefabIndex = 0;
+    [HideInInspector] public int balconySouthOffsetPrefabIndex = 0;
+
+
+    [HideInInspector] public int floorNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int wallNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int doorNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofNorthOffsetBoundPrefabIndex = 0;
+    [HideInInspector] public int roofNorthOffsetCornerPrefabIndex = 0;
+    [HideInInspector] public int stairNorthOffsetPrefabIndex = 0;
+    [HideInInspector] public int balconyNorthOffsetPrefabIndex = 0;
+
+    [HideInInspector] public int floorEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int wallEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int doorEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int roofEastOffsetBoundPrefabIndex = 0;
+    [HideInInspector] public int roofEastOffsetCornerPrefabIndex = 0;
+    [HideInInspector] public int stairEastOffsetPrefabIndex = 0;
+    [HideInInspector] public int balconyEastOffsetPrefabIndex = 0;
 }

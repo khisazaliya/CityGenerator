@@ -608,9 +608,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -13.36136, y: 3.3564296, z: -6.575304}
+    m_Target: {x: -10.167926, y: 4.8016295, z: -8.384565}
     speed: 2
-    m_Value: {x: -13.36136, y: 3.3564296, z: -6.575304}
+    m_Value: {x: -10.167926, y: 4.8016295, z: -8.384565}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -656,13 +656,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.15734918, y: -0.6919651, z: 0.145607, w: -0.6928983}
+    m_Target: {x: -0.1764062, y: -0.6941849, z: 0.17011909, w: -0.6804405}
     speed: 2
-    m_Value: {x: -0.15799797, y: -0.6900618, z: 0.14629303, w: -0.69097733}
+    m_Value: {x: -0.17723984, y: -0.6911975, z: 0.17047733, w: -0.6795363}
   m_Size:
-    m_Target: 18.958185
+    m_Target: 17.901777
     speed: 2
-    m_Value: 18.958185
+    m_Value: 17.130888
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -724,8 +724,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 805a0000
-      m_LastClickedID: 23168
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: 30fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -927,7 +927,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Editor
+    - Assets/Models/Panel House/v1
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -935,17 +935,17 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Editor
+  - Assets/Models/Panel House/v1
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\\u0410\u0437\u0430\u043B\u0438\u044F\\Documents\\git
     repos\\CityGenerator\\CityGenerator"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 15}
-    m_SelectedIDs: 405c0000
-    m_LastClickedID: 23616
-    m_ExpandedIDs: 00000000f45b0000f65b0000f85b0000fa5b0000fc5b0000fe5b0000005c0000025c0000045c0000065c0000085c00000a5c00004a5c000000ca9a3b
+    scrollPos: {x: 0, y: 63}
+    m_SelectedIDs: 505c0000
+    m_LastClickedID: 23632
+    m_ExpandedIDs: 00000000f45b0000f65b0000f85b0000fa5b0000fc5b0000fe5b0000005c0000025c0000045c0000065c0000085c00000a5c0000445c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1943,7 +1943,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 685
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
