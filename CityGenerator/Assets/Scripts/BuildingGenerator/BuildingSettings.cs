@@ -25,6 +25,9 @@ public class BuildingSettings
     public int numberOfEntries;
 
     [Range(0, 50)]
+    public int offsetOfEntries;
+
+    [Range(0, 50)]
     public int MaxNumberOfSouthBalconies;
 
     [Range(0, 50)]
@@ -74,7 +77,7 @@ public class BuildingSettings
     public int depthOffsetEastWall;
 
     public int eastWallHeight;
-    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int numberOfBalconies, int randomSeedOfBalconies,
+    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int offsetOfEntries,  int numberOfBalconies, int randomSeedOfBalconies,
         int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight,
         int minOffsetSouthWall, int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight)
     {
@@ -84,6 +87,7 @@ public class BuildingSettings
         this.numberOfLevels = numberOfLevels;
         this.type = type;
         this.numberOfEntries = numberOfEntries;
+        this.offsetOfEntries = offsetOfEntries;
         this.MaxNumberOfSouthBalconies = numberOfBalconies;
         this.randomSeedOfSouthBalconies = randomSeedOfBalconies;
         this.minOffsetNorthWall = minOffsetNorthWall;

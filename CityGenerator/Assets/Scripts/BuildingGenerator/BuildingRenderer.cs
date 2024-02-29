@@ -140,7 +140,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         Transform storyFolder = new GameObject("Story ").transform;
         storyFolder.SetParent(wingFolder);
-        List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries);
+        List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries, bldg);
         List<Tuple<int, int>> offsets = GenerateBuildingShape(bldg.Size.x);
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
@@ -206,7 +206,7 @@ public class BuildingRenderer : MonoBehaviour
                                 PlaceFloor(x + bldg.depthOffsetEastWall + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[floorSouthOffsetPrefabIndex]);
                                 if (entries.Contains(y))
                                 {
-                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, doorPrefabs[doorEastPrefabIndex]);
+                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, doorPrefabs[doorEastOffsetPrefabIndex]);
                                     PlaceStair(x + bldg.depthOffsetEastWall + 1, y - 1, i, storyFolder);
                                 }
                             }
@@ -446,13 +446,13 @@ public class BuildingRenderer : MonoBehaviour
         }
         return balconiesEastIndexes;
     }
-    public List<int> CalculateEntryIndex(Wing wing, int numberOfEntries)
+    public List<int> CalculateEntryIndex(Wing wing, int numberOfEntries, Building bldg)
     {
         var doorSpacing = (int)Math.Ceiling((wing.Bounds.size.y - wing.Bounds.min.y) / ((double)numberOfEntries + 1));
         List<int> entries = new();
         for (int i = 1; i <= numberOfEntries; i++)
         {
-            int currentDoorPosition = wing.Bounds.min.y + doorSpacing * i - 1;
+            int currentDoorPosition = wing.Bounds.min.y + doorSpacing * i - 1 + bldg.offsetOfEntries;
             entries.Add(currentDoorPosition);
         }
         return entries;

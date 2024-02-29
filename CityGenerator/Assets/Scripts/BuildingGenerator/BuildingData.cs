@@ -13,6 +13,7 @@ public class BuildingData : MonoBehaviour
            buildingSettings.buildingSize.y,
            GenerateWings(buildingSettings),
            buildingSettings.numberOfEntries,
+           buildingSettings.offsetOfEntries,
            buildingSettings.MaxNumberOfSouthBalconies,
            buildingSettings.randomSeedOfSouthBalconies,
            buildingSettings.MaxNumberOfNorthBalconies,
