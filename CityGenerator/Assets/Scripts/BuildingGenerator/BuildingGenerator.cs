@@ -8,7 +8,7 @@ public class BuildingGenerator : MonoBehaviour
     public BuildingSettings[] buildingSettings;
     public GameObject renderedBuilding;
     public BuildingRenderer buildingRenderer;
-
+    public SimplifyChildren SimplifyChildren;
     public GameObject GenerateBuilding(Vector3 position, Quaternion rotation, BuildingSettings buildingSettings)
     {
         Building b = BuildingData.Build(buildingSettings);

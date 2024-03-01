@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityMeshSimplifier;
 
 public class BuildingRenderer : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg);
         }
+        bldgFolder.AddComponent<LODGeneratorHelper>();
         meshCombiner.CombineMeshes(bldgFolder);
         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
         string objectName = "Wing";
@@ -360,14 +362,14 @@ public class BuildingRenderer : MonoBehaviour
     public bool IsNorthOffsetCorrect(Building bldg, Wing wing)
     {
         if (bldg.depthOffsetNorthWall > wing.Bounds.max.y) bldg.depthOffsetNorthWall = wing.Bounds.max.y;
-        return bldg.depthOffsetNorthWall > 0 && bldg.minOffsetNorthWall >= 0 && bldg.minOffsetNorthWall <= wing.Bounds.max.x &&
+        return bldg.northWallHeight > 0 && bldg.depthOffsetNorthWall > 0 && bldg.minOffsetNorthWall >= 0 && bldg.minOffsetNorthWall <= wing.Bounds.max.x &&
                              bldg.maxOffsetNorthWall >= 0 && bldg.maxOffsetNorthWall < wing.Bounds.size.x && bldg.maxOffsetNorthWall >= bldg.minOffsetNorthWall;
     }
 
     public bool IsSouthOffsetCorrect(Building bldg, Wing wing)
     {
         if (bldg.depthOffsetSouthWall > wing.Bounds.max.y) bldg.depthOffsetSouthWall = wing.Bounds.max.y;
-        return bldg.depthOffsetSouthWall > 0 && bldg.minOffsetSouthWall >= 0 && bldg.minOffsetSouthWall <= wing.Bounds.max.x &&
+        return bldg.northWallHeight > 0 && bldg.depthOffsetSouthWall > 0 && bldg.minOffsetSouthWall >= 0 && bldg.minOffsetSouthWall <= wing.Bounds.max.x &&
                              bldg.maxOffsetSouthWall >= 0 && bldg.maxOffsetSouthWall < wing.Bounds.size.x && bldg.maxOffsetSouthWall >= bldg.minOffsetSouthWall;
     }
 
@@ -375,7 +377,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         if (bldg.depthOffsetEastWall > wing.Bounds.max.x) bldg.depthOffsetEastWall = wing.Bounds.max.x;
         if (bldg.maxOffsetEastWall > wing.Bounds.max.y) bldg.maxOffsetEastWall = wing.Bounds.max.y-1;
-        return bldg.depthOffsetEastWall > 0 && bldg.minOffsetEastWall >= 0 && bldg.minOffsetEastWall <= wing.Bounds.max.y &&
+        return bldg.northWallHeight>0 &&  bldg.depthOffsetEastWall > 0 && bldg.minOffsetEastWall >= 0 && bldg.minOffsetEastWall <= wing.Bounds.max.y &&
                              bldg.maxOffsetEastWall >= 0 && bldg.maxOffsetEastWall < wing.Bounds.size.y && bldg.maxOffsetEastWall >= bldg.minOffsetEastWall;
     }
     public List<Tuple<int, int>> GenerateBuildingShape(int max)
