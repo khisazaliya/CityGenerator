@@ -5,11 +5,11 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
+    smallestOccluder: 0.5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: b847a7dea433810438ce3a9676a96e99
+  m_OcclusionCullingData: {fileID: 36300000, guid: 5ab5a544125ea7c438ab2b61ea335aac, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -154,20 +154,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingSettings:
-  - x: 4
-    y: 10
+  - x: 3
+    y: 2
     buildingCount: 1
-    numberOfLevels: 4
+    numberOfLevels: 2
     type: 0
-    numberOfEntries: 2
-    offsetOfEntries: 0
-    MaxNumberOfSouthBalconies: 0
-    randomSeedOfSouthBalconies: 0
-    MaxNumberOfNorthBalconies: 0
-    randomSeedOfNorthBalconies: 0
-    MaxNumberOfWestBalconies: 0
-    randomSeedOfWestBalconies: 0
-    MaxNumberOfEastBalconies: 0
+    numberOfEntries: 1
+    offsetOfEntries: 2
+    MaxNumberOfSouthBalconies: 2
+    randomSeedOfSouthBalconies: 4
+    MaxNumberOfNorthBalconies: 6
+    randomSeedOfNorthBalconies: 5
+    MaxNumberOfWestBalconies: 5
+    randomSeedOfWestBalconies: 2
+    MaxNumberOfEastBalconies: 1
     randomSeedOfEastBalconies: 0
     minOffsetNorthWall: 1
     maxOffsetNorthWall: 1
@@ -183,7 +183,6 @@ MonoBehaviour:
     eastWallHeight: -2
   renderedBuilding: {fileID: 0}
   buildingRenderer: {fileID: 277586143}
-  SimplifyChildren: {fileID: 0}
 --- !u!4 &277586142
 Transform:
   m_ObjectHideFlags: 0
@@ -215,8 +214,12 @@ MonoBehaviour:
   - {fileID: -8679921383154817045, guid: 676628960f681ae45aab79695bb862ac, type: 3}
   wallPrefabs:
   - {fileID: -8679921383154817045, guid: 8ce1d6f5d778cde4485fcedea96f92ca, type: 3}
-  - {fileID: -8679921383154817045, guid: ff4d8e02e8e4573468e35b95bc2d3eb9, type: 3}
-  - {fileID: -8679921383154817045, guid: 80688be669ab7a8469395a2965cee82f, type: 3}
+  - {fileID: -8679921383154817045, guid: 816229d58cd35f74a980dc0095b050ab, type: 3}
+  - {fileID: -8679921383154817045, guid: 94c2d9b1c5dade64d878ac2af167f4d6, type: 3}
+  - {fileID: -8679921383154817045, guid: de37d4b57025ceb46ad1c6eb270c45dc, type: 3}
+  wallDoorsPrefabs:
+  - {fileID: -8679921383154817045, guid: 9229a25e77326494f9685869279f59f3, type: 3}
+  - {fileID: -8679921383154817045, guid: 94c2d9b1c5dade64d878ac2af167f4d6, type: 3}
   doorPrefabs:
   - {fileID: -8679921383154817045, guid: 84ac01d2a6b45c7409d6bfd88f8f2de5, type: 3}
   roofPrefabs:
@@ -230,10 +233,11 @@ MonoBehaviour:
   - {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
   balconyPrefabs:
   - {fileID: -8679921383154817045, guid: eb7a21b7139289d4eb020f63c51c2546, type: 3}
+  - {fileID: -8679921383154817045, guid: 4845edea76d32124082e7545d1039325, type: 3}
   floorSize: {x: 0.000001, y: 0.5, z: 3}
   floorSouthPrefabIndex: 0
   wall0SouthPrefabIndex: 2
-  wall1SouthPrefabIndex: 2
+  wall1SouthPrefabIndex: 1
   wall2SouthPrefabIndex: 2
   doorSouthPrefabIndex: 0
   roofPrefabIndex: 0
@@ -241,39 +245,40 @@ MonoBehaviour:
   roofCornerPrefabIndex: 0
   stairSouthPrefabIndex: 1
   balconySouthPrefabIndex: 0
-  savedSeedOfSouthBalconies: 0
-  savedNumberOfSouthBalconies: 0
+  savedSeedOfSouthBalconies: 4
+  savedNumberOfSouthBalconies: 2
   floorNorthPrefabIndex: 0
-  wall0NorthPrefabIndex: 2
-  wall1NorthPrefabIndex: 2
-  wall2NorthPrefabIndex: 2
+  wall0NorthPrefabIndex: 3
+  wall1NorthPrefabIndex: 1
+  wall2NorthPrefabIndex: 1
   doorNorthPrefabIndex: 0
   stairNorthPrefabIndex: 0
   balconyNorthPrefabIndex: 0
-  savedSeedOfNorthBalconies: 0
-  savedNumberOfNorthBalconies: 0
+  savedSeedOfNorthBalconies: 5
+  savedNumberOfNorthBalconies: 6
   floorEastPrefabIndex: 0
   wall0EastPrefabIndex: 2
-  wall1EastPrefabIndex: 2
-  wall2EastPrefabIndex: 2
+  wall1EastPrefabIndex: 3
+  wall2EastPrefabIndex: 1
+  wallDoorPrefabIndex: 0
   doorEastPrefabIndex: 0
   stairEastPrefabIndex: 0
-  balconyEastPrefabIndex: 0
+  balconyEastPrefabIndex: 1
   savedSeedOfEastBalconies: 0
-  savedNumberOfEastBalconies: 0
+  savedNumberOfEastBalconies: 1
   floorWestPrefabIndex: 0
-  wall0WestPrefabIndex: 2
-  wall1WestPrefabIndex: 2
-  wall2WestPrefabIndex: 2
+  wall0WestPrefabIndex: 1
+  wall1WestPrefabIndex: 1
+  wall2WestPrefabIndex: 1
   doorWestPrefabIndex: 0
   stairWestPrefabIndex: 0
   balconyWestPrefabIndex: 0
-  savedSeedOfWestBalconies: 0
-  savedNumberOfWestBalconies: 0
+  savedSeedOfWestBalconies: 2
+  savedNumberOfWestBalconies: 5
   floorSouthOffsetPrefabIndex: 0
-  wall0SouthOffsetPrefabIndex: 1
-  wall1SouthOffsetPrefabIndex: 1
-  wall2SouthOffsetPrefabIndex: 1
+  wall0SouthOffsetPrefabIndex: 2
+  wall1SouthOffsetPrefabIndex: 2
+  wall2SouthOffsetPrefabIndex: 2
   doorSouthOffsetPrefabIndex: 0
   roofSouthOffsetPrefabIndex: 0
   roofSouthOffsetBoundPrefabIndex: 0
@@ -282,7 +287,7 @@ MonoBehaviour:
   balconySouthOffsetPrefabIndex: 0
   floorNorthOffsetPrefabIndex: 0
   wall0NorthOffsetPrefabIndex: 1
-  wall1NorthOffsetPrefabIndex: 0
+  wall1NorthOffsetPrefabIndex: 1
   wall2NorthOffsetPrefabIndex: 1
   doorNorthOffsetPrefabIndex: 0
   roofNorthOffsetPrefabIndex: 0
@@ -291,9 +296,9 @@ MonoBehaviour:
   stairNorthOffsetPrefabIndex: 0
   balconyNorthOffsetPrefabIndex: 0
   floorEastOffsetPrefabIndex: 0
-  wall0EastOffsetPrefabIndex: 2
-  wall1EastOffsetPrefabIndex: 2
-  wall2EastOffsetPrefabIndex: 2
+  wall0EastOffsetPrefabIndex: 1
+  wall1EastOffsetPrefabIndex: 1
+  wall2EastOffsetPrefabIndex: 1
   doorEastOffsetPrefabIndex: 0
   roofEastOffsetPrefabIndex: 0
   roofEastOffsetBoundPrefabIndex: 0
@@ -479,13 +484,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142669179}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.04512295, y: -0.023748621, z: -0.0010730044, w: 0.99869853}
+  m_LocalPosition: {x: -21.3, y: 5.3, z: -51.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -5.174, y: -2.724, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

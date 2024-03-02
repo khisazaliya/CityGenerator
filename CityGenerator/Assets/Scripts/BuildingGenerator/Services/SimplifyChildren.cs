@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 public class SimplifyChildren : MonoBehaviour
 {
@@ -35,4 +35,4 @@ public class SimplifyChildren : MonoBehaviour
         // Create our final mesh and apply it back to our mesh filter
         meshFilter.sharedMesh = meshSimplifier.ToMesh();
     }
-}
+}*/

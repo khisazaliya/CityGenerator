@@ -15,7 +15,7 @@ C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57227
+52269
 Successfully changed project path to: C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
 C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ C:/Users/Азалия/Documents/git repos/CityGenerator/CityGenerator
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [29548] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 442056133 [EditorId] 442056133 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [3288] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 711615240 [EditorId] 711615240 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [29548] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 442056133 [EditorId] 442056133 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [3288] Host "[IP] 192.168.1.159 [Port] 0 [Flags] 2 [Guid] 711615240 [EditorId] 711615240 [Version] 1048832 [Id] WindowsEditor(7,azaliya-laptop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 7 workers.
-Refreshing native plugins compatible for Editor in 22.09 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 37.80 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.18f1 (d29bea25151d)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Resources/UnitySubsystems
@@ -70,46 +70,46 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56196
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56040
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.019122 seconds.
-- Loaded All Assemblies, in  1.131 seconds
+Registered in 0.022277 seconds.
+- Loaded All Assemblies, in  1.382 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.934 seconds
-Domain Reload Profiling: 2061ms
-	BeginReloadAssembly (295ms)
+- Finished resetting the current domain, in  1.010 seconds
+Domain Reload Profiling: 2388ms
+	BeginReloadAssembly (343ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (2ms)
-	RebuildCommonClasses (190ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (160ms)
-	LoadAllAssembliesAndSetupDomain (454ms)
-		LoadAssemblies (289ms)
+	RebuildCommonClasses (271ms)
+	RebuildNativeTypeToScriptingClass (60ms)
+	initialDomainReloadingComplete (222ms)
+	LoadAllAssembliesAndSetupDomain (481ms)
+		LoadAssemblies (340ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (449ms)
-			TypeCache.Refresh (445ms)
-				TypeCache.ScanAssembly (408ms)
+		AnalyzeDomain (474ms)
+			TypeCache.Refresh (471ms)
+				TypeCache.ScanAssembly (436ms)
 			ScanForSourceGeneratedMonoScriptInfo (1ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (935ms)
+	FinalizeReload (1011ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (733ms)
+		SetupLoadedEditorAssemblies (786ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (35ms)
-			SetLoadedEditorAssemblies (19ms)
+			InitializePlatformSupportModulesInManaged (37ms)
+			SetLoadedEditorAssemblies (20ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (8ms)
-			ProcessInitializeOnLoadAttributes (507ms)
-			ProcessInitializeOnLoadMethodAttributes (163ms)
+			BeforeProcessingInitializeOnLoad (9ms)
+			ProcessInitializeOnLoadAttributes (585ms)
+			ProcessInitializeOnLoadMethodAttributes (134ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -117,8 +117,8 @@ Domain Reload Profiling: 2061ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.812 seconds
-Refreshing native plugins compatible for Editor in 6.41 ms, found 3 plugins.
+- Loaded All Assemblies, in  1.847 seconds
+Refreshing native plugins compatible for Editor in 11.97 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -126,47 +126,47 @@ Package Manager log level set to [2]
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.288 seconds
-Domain Reload Profiling: 3095ms
-	BeginReloadAssembly (629ms)
+- Finished resetting the current domain, in  2.924 seconds
+Domain Reload Profiling: 4767ms
+	BeginReloadAssembly (420ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (20ms)
+		DisableScriptedObjects (15ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (71ms)
-	RebuildCommonClasses (96ms)
-	RebuildNativeTypeToScriptingClass (27ms)
-	initialDomainReloadingComplete (112ms)
-	LoadAllAssembliesAndSetupDomain (941ms)
-		LoadAssemblies (883ms)
+		CreateAndSetChildDomain (61ms)
+	RebuildCommonClasses (156ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (124ms)
+	LoadAllAssembliesAndSetupDomain (1114ms)
+		LoadAssemblies (865ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (483ms)
-			TypeCache.Refresh (442ms)
-				TypeCache.ScanAssembly (418ms)
-			ScanForSourceGeneratedMonoScriptInfo (29ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (1289ms)
+		AnalyzeDomain (499ms)
+			TypeCache.Refresh (434ms)
+				TypeCache.ScanAssembly (391ms)
+			ScanForSourceGeneratedMonoScriptInfo (49ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (2926ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (970ms)
+		SetupLoadedEditorAssemblies (2324ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (14ms)
-			SetLoadedEditorAssemblies (9ms)
+			InitializePlatformSupportModulesInManaged (43ms)
+			SetLoadedEditorAssemblies (13ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (123ms)
-			ProcessInitializeOnLoadAttributes (762ms)
-			ProcessInitializeOnLoadMethodAttributes (50ms)
-			AfterProcessingInitializeOnLoad (12ms)
+			BeforeProcessingInitializeOnLoad (196ms)
+			ProcessInitializeOnLoadAttributes (1972ms)
+			ProcessInitializeOnLoadMethodAttributes (84ms)
+			AfterProcessingInitializeOnLoad (17ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
-Refreshing native plugins compatible for Editor in 9.53 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (22ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.15 seconds
+Refreshing native plugins compatible for Editor in 16.86 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3115 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 32 unused Assets / (58.6 KB). Loaded Objects now: 3606.
-Memory consumption went from 148.4 MB to 148.4 MB.
-Total: 9.250300 ms (FindLiveObjects: 0.699600 ms CreateObjectMapping: 0.563000 ms MarkObjects: 7.550200 ms  DeleteObjects: 0.433300 ms)
+Unloading 3372 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 35 unused Assets / (59.9 KB). Loaded Objects now: 3860.
+Memory consumption went from 153.4 MB to 153.4 MB.
+Total: 37.172400 ms (FindLiveObjects: 20.029900 ms CreateObjectMapping: 0.242000 ms MarkObjects: 12.909700 ms  DeleteObjects: 3.985800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -183,9 +183,729 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 1958907.787146 seconds.
-  path: Assets/Scripts/BuildingGenerator/BuildingRenderer.cs
-  artifactKey: Guid(10e0597a760654044bfb08d9af0c0541) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/BuildingGenerator/BuildingRenderer.cs using Guid(10e0597a760654044bfb08d9af0c0541) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bec44b56f8506624841c7a19a92c1868') in 0.006219 seconds
+  Time since last request: 122748.875943 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5e4b58e4e286e320d0794f55dfed5353') in 2.116616 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 76
+========================================================================
+Received Import Request.
+  Time since last request: 6.359678 seconds.
+  path: Assets/Models/medieval/walls/textures/wall_DefaultMaterial_AlbedoTransparency 2.png
+  artifactKey: Guid(b0eb3b1d8c169554ebc924f93fb091e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wall_DefaultMaterial_AlbedoTransparency 2.png using Guid(b0eb3b1d8c169554ebc924f93fb091e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cbf1082e74a1514aefde9ba115cd427') in 0.056967 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000057 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_patern_SpecularSmoothness.png
+  artifactKey: Guid(afd4005d443318f42ad7255b6344d9c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_patern_SpecularSmoothness.png using Guid(afd4005d443318f42ad7255b6344d9c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5892aed33d340f7a93b673fd61b69737') in 0.034910 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_window_SpecularSmoothness.png
+  artifactKey: Guid(e10a1da702c3ee6459e4c9644580c85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_window_SpecularSmoothness.png using Guid(e10a1da702c3ee6459e4c9644580c85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1900c368fd21cb951ae2f742d9e599b') in 0.039766 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_patern_Normal.png
+  artifactKey: Guid(62691bf559f43354aafc7c50747de264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_patern_Normal.png using Guid(62691bf559f43354aafc7c50747de264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '451d7750421fa472f7cc446547be586e') in 0.038022 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_Normal.png
+  artifactKey: Guid(5bbbaa17af08c6047ab860b93833705f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_Normal.png using Guid(5bbbaa17af08c6047ab860b93833705f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89fd8727c8e8fd938fbd9d7b9bb23943') in 0.045158 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000063 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_AlbedoTransparency.png
+  artifactKey: Guid(e4f9c205da6495e498b758a832e46012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_AlbedoTransparency.png using Guid(e4f9c205da6495e498b758a832e46012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '068b8e237925b64ffdbc114bdc7d0809') in 0.041191 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_patern_AlbedoTransparency.png
+  artifactKey: Guid(59481c465e03c3944ab9dc5bc1682aa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_patern_AlbedoTransparency.png using Guid(59481c465e03c3944ab9dc5bc1682aa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c825189d722bb7c28d699d5b9a434ea4') in 0.034034 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_window_AlbedoTransparency.png
+  artifactKey: Guid(fa6773f840c3d33469ce8e146f4e4786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2_low_wood_window_AlbedoTransparency.png using Guid(fa6773f840c3d33469ce8e146f4e4786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10e7f5e60a012f3cecf8cad1d672d353') in 0.032367 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 25.982429 seconds.
+  path: Assets/Models/medieval/walls/textures/wallMedieval2.mat
+  artifactKey: Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/wallMedieval2.mat using Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eae0a1b44987b4d4bfaeea3bc0346914') in 0.020591 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 85.188267 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a686f36fc81da9ab04f80b72302cc0ea') in 0.056364 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 41.100114 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c624b9702b0f427598023d2a730617b2') in 0.240615 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 46
+========================================================================
+Received Import Request.
+  Time since last request: 9.478171 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1f88f0cb650ff9dc2648ce47a6787c3') in 0.253624 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 49
+========================================================================
+Received Import Request.
+  Time since last request: 10.801488 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bde5324770679dcd7edc4ff8b47157bc') in 0.248716 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 52
+========================================================================
+Received Import Request.
+  Time since last request: 26.156365 seconds.
+  path: Assets/Models/medieval/walls/textures/woodWall1.mat
+  artifactKey: Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/textures/woodWall1.mat using Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29366addb3a9faefd15d5e72284851c2') in 0.018121 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 45.757379 seconds.
+  path: Assets/Models/medieval/walls/woodWall1.mat
+  artifactKey: Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1.mat using Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21831b79e070b8ce43246321b270b914') in 0.018836 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 62.662211 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_AlbedoTransparency.png
+  artifactKey: Guid(0fa586f51b0a50546bb031c34af72c87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_AlbedoTransparency.png using Guid(0fa586f51b0a50546bb031c34af72c87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08d8b7de8f97e56d5ff4a845c8af4726') in 0.026750 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_patern_SpecularSmoothness.png
+  artifactKey: Guid(e1b0dd5b7a34b6e459bdc9f2109e3293) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_patern_SpecularSmoothness.png using Guid(e1b0dd5b7a34b6e459bdc9f2109e3293) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b06c91d1276b8df3c4722804b66b8b2') in 0.028466 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_AlbedoTransparency.png
+  artifactKey: Guid(8eebe3ed8fa812f48ad822b75bb571ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_AlbedoTransparency.png using Guid(8eebe3ed8fa812f48ad822b75bb571ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ec2e0361239155b87840ada3f0972d3') in 0.030492 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_MetallicSmoothness.png
+  artifactKey: Guid(36e7fbac8b5ffb54d977bca1606fe088) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_MetallicSmoothness.png using Guid(36e7fbac8b5ffb54d977bca1606fe088) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9097996d364d4b22fe11b0ea0e9a749') in 0.033230 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_patern_AlbedoTransparency.png
+  artifactKey: Guid(16378db2b0f3ef34eb673a24ae3aef12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_patern_AlbedoTransparency.png using Guid(16378db2b0f3ef34eb673a24ae3aef12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '019359fd3eeb6a18e3d86a4d5a5b06a2') in 0.026708 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_Normal.png
+  artifactKey: Guid(10b7c6cea250d3745ba24c044470e358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_Normal.png using Guid(10b7c6cea250d3745ba24c044470e358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'baa444e0e42503ecd78b739f9f405e58') in 0.024270 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 31.439239 seconds.
+  path: Assets/Models/medieval/walls/woodWall1
+  artifactKey: Guid(d917c3e9ed5bfba42991d51b1d0bb267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1 using Guid(d917c3e9ed5bfba42991d51b1d0bb267) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3cf4fb4e95e9b5817a04a8097b38daa') in 0.001033 seconds
 Number of updated asset objects reloaded before import = 0
 Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 8.874196 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fda5a1ab9c4e6f602c97ae02059af744') in 0.233257 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 52
+========================================================================
+Received Import Request.
+  Time since last request: 20.267605 seconds.
+  path: Assets/Models/medieval/walls/woodwall2.mat
+  artifactKey: Guid(9f7f8b7bf4088bf40bccc1abdc8ac4ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodwall2.mat using Guid(9f7f8b7bf4088bf40bccc1abdc8ac4ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '241cb9040ecd0158e93d4c99ab184404') in 0.016959 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 10.204512 seconds.
+  path: Assets/Models/medieval/walls/woodwall2
+  artifactKey: Guid(a80e75b0c1f7f824d95000a0daa75b42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodwall2 using Guid(a80e75b0c1f7f824d95000a0daa75b42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2eb13b513a1d4d4cea8a7e7c7c86a753') in 0.004440 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 42.073871 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f2b3639778031c63eaac22ac1952e39') in 0.216116 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 52
+========================================================================
+Received Import Request.
+  Time since last request: 14.627216 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a7c8d2f82f5355ed21247109340e028') in 0.194283 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 52
+========================================================================
+Received Import Request.
+  Time since last request: 10.296179 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad01ce90a6bc48b2dc9654eccf94721b') in 0.190043 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 51
+========================================================================
+Received Import Request.
+  Time since last request: 12.538117 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3e5c52e096439cfef38728f399e91222') in 0.180951 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 51
+========================================================================
+Received Import Request.
+  Time since last request: 58.154113 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/woodFrame.mat
+  artifactKey: Guid(a3479c5756965d247ae071421ae5cf4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/woodFrame.mat using Guid(a3479c5756965d247ae071421ae5cf4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eed303f5e0f29ed538392871309aaa89') in 0.016354 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 22.890602 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c4d807842477e85c1ae4db185684cd6') in 0.196824 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 51
+========================================================================
+Received Import Request.
+  Time since last request: 5.308435 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9c017b6fb960b0ddefcc30054cec83f') in 0.167430 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 50
+========================================================================
+Received Import Request.
+  Time since last request: 134.745133 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b9db2975b7238061b35003b3ac27506') in 0.207989 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 59
+========================================================================
+Received Import Request.
+  Time since last request: 1.811086 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval2.obj
+  artifactKey: Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval2.obj using Guid(de37d4b57025ceb46ad1c6eb270c45dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63d0ae14373dd51fdb9d20913d1ab44f') in 0.237674 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 59
+========================================================================
+Received Import Request.
+  Time since last request: 418.635125 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2a105f2bca1e276efddd78278cb630c') in 0.126692 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 28
+========================================================================
+Received Import Request.
+  Time since last request: 30.050052 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69dbc4abb6edd6ce5c2f40be897d0835') in 0.139136 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 20.054113 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3642b2f9a48a297c73430f2d808aec0b') in 0.108139 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 30
+========================================================================
+Received Import Request.
+  Time since last request: 42.919165 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '19381c9e3a2d313f7d9566cc12f33931') in 0.205208 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 250.718024 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eed53a923318a3ad32532d96f0916e4b') in 0.198991 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 28
+========================================================================
+Received Import Request.
+  Time since last request: 84.318695 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4090d090764d5cea3c44dc3f94795dfe') in 0.120239 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 28
+========================================================================
+Received Import Request.
+  Time since last request: 306.274902 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/woodFrame.mat
+  artifactKey: Guid(a3479c5756965d247ae071421ae5cf4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/woodFrame.mat using Guid(a3479c5756965d247ae071421ae5cf4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd07f2b5b0940c9bb199bdbb30afa2cbf') in 0.044958 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.853761 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/woodWall1.mat
+  artifactKey: Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/woodWall1.mat using Guid(5109f65f8a233d845914fbca9eb5e8ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b0a0db9d48c5a19d88752ad3452a155') in 0.045801 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 5.092521 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1f03a0a19b0f80eebf901d5ea26e04d') in 0.118865 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 34
+========================================================================
+Received Import Request.
+  Time since last request: 10.669421 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '609bf1787266ee9e4a958519c248a720') in 0.121449 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 34
+========================================================================
+Received Import Request.
+  Time since last request: 43.126423 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b33edcb0b276cfc9af0a6ac0a9bc3eb6') in 0.226973 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 88.187067 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1f084f952ac63bd3c0dc33fb10b97cf') in 0.107934 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 28
+========================================================================
+Received Import Request.
+  Time since last request: 11.235684 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a32c7fe848e6d8f044efb92bac5d11b') in 0.124326 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 12.919626 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a165148e7839a7dd3caed9739b70fd3') in 0.141025 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 33
+========================================================================
+Received Import Request.
+  Time since last request: 24.420549 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff17b09b28f8d35fc5ed82d09fda0292') in 0.135519 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 36
+========================================================================
+Received Import Request.
+  Time since last request: 9.067493 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '570719f94d732780402991683ef62e21') in 0.127803 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 39
+========================================================================
+Received Import Request.
+  Time since last request: 37.685824 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_Normal.png
+  artifactKey: Guid(244dd04de71fd214bbb793616ecbeba1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_Normal.png using Guid(244dd04de71fd214bbb793616ecbeba1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aac4f8d7088b7a26cec618a1249046b4') in 0.080634 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_Normal.png
+  artifactKey: Guid(10b7c6cea250d3745ba24c044470e358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/woodWall1/wallMedieval2_low_wood_window_Normal.png using Guid(10b7c6cea250d3745ba24c044470e358) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3c59a50325f65f46143e715b6ba3e0c') in 0.019400 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 12.603561 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc4dcec3f576da35b4dfd8334b73889d') in 0.111560 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 39
+========================================================================
+Received Import Request.
+  Time since last request: 8.371097 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5c12987d63effca21245471465f1492') in 0.115240 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 38
+========================================================================
+Received Import Request.
+  Time since last request: 91.115633 seconds.
+  path: Assets/Scripts/BuildingGenerator/BuildingRenderer.cs
+  artifactKey: Guid(10e0597a760654044bfb08d9af0c0541) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/BuildingGenerator/BuildingRenderer.cs using Guid(10e0597a760654044bfb08d9af0c0541) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61558d8af99f020cd0f3667599bc2d04') in 0.001651 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  2.229 seconds
+Refreshing native plugins compatible for Editor in 54.20 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.301 seconds
+Domain Reload Profiling: 6527ms
+	BeginReloadAssembly (770ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (34ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (302ms)
+	RebuildCommonClasses (61ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (53ms)
+	LoadAllAssembliesAndSetupDomain (1324ms)
+		LoadAssemblies (1481ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (76ms)
+			TypeCache.Refresh (34ms)
+				TypeCache.ScanAssembly (2ms)
+			ScanForSourceGeneratedMonoScriptInfo (21ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (4302ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (675ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (22ms)
+			SetLoadedEditorAssemblies (9ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (110ms)
+			ProcessInitializeOnLoadAttributes (492ms)
+			ProcessInitializeOnLoadMethodAttributes (32ms)
+			AfterProcessingInitializeOnLoad (9ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
+Refreshing native plugins compatible for Editor in 12.35 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3356 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 26 unused Assets / (32.8 KB). Loaded Objects now: 3910.
+Memory consumption went from 157.5 MB to 157.4 MB.
+Total: 6.609500 ms (FindLiveObjects: 0.624200 ms CreateObjectMapping: 0.388100 ms MarkObjects: 5.501300 ms  DeleteObjects: 0.093900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.903 seconds
+Refreshing native plugins compatible for Editor in 14.55 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.877 seconds
+Domain Reload Profiling: 2777ms
+	BeginReloadAssembly (268ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (60ms)
+	RebuildCommonClasses (65ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (57ms)
+	LoadAllAssembliesAndSetupDomain (493ms)
+		LoadAssemblies (580ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (63ms)
+			TypeCache.Refresh (16ms)
+				TypeCache.ScanAssembly (0ms)
+			ScanForSourceGeneratedMonoScriptInfo (30ms)
+			ResolveRequiredComponents (15ms)
+	FinalizeReload (1878ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (653ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (15ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (93ms)
+			ProcessInitializeOnLoadAttributes (494ms)
+			ProcessInitializeOnLoadMethodAttributes (35ms)
+			AfterProcessingInitializeOnLoad (12ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (12ms)
+Refreshing native plugins compatible for Editor in 9.66 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 26 unused Assets / (32.7 KB). Loaded Objects now: 3913.
+Memory consumption went from 159.7 MB to 159.6 MB.
+Total: 6.982400 ms (FindLiveObjects: 0.503100 ms CreateObjectMapping: 0.318900 ms MarkObjects: 6.071100 ms  DeleteObjects: 0.087700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 883.049514 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3.obj
+  artifactKey: Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3.obj using Guid(9229a25e77326494f9685869279f59f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '505571b0b939435138ea9230188c593c') in 0.469013 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 38
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.755 seconds
+Refreshing native plugins compatible for Editor in 8.14 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.842 seconds
+Domain Reload Profiling: 2593ms
+	BeginReloadAssembly (240ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (9ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (55ms)
+	RebuildNativeTypeToScriptingClass (19ms)
+	initialDomainReloadingComplete (49ms)
+	LoadAllAssembliesAndSetupDomain (387ms)
+		LoadAssemblies (481ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (40ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (13ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (1843ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (585ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (11ms)
+			SetLoadedEditorAssemblies (6ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (96ms)
+			ProcessInitializeOnLoadAttributes (434ms)
+			ProcessInitializeOnLoadMethodAttributes (29ms)
+			AfterProcessingInitializeOnLoad (9ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Refreshing native plugins compatible for Editor in 7.47 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3356 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 26 unused Assets / (32.6 KB). Loaded Objects now: 3916.
+Memory consumption went from 161.4 MB to 161.3 MB.
+Total: 4.461900 ms (FindLiveObjects: 0.505600 ms CreateObjectMapping: 0.180300 ms MarkObjects: 3.700900 ms  DeleteObjects: 0.073400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.840 seconds
+Refreshing native plugins compatible for Editor in 9.13 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.425 seconds
+Domain Reload Profiling: 2261ms
+	BeginReloadAssembly (293ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (12ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (67ms)
+	RebuildCommonClasses (66ms)
+	RebuildNativeTypeToScriptingClass (18ms)
+	initialDomainReloadingComplete (74ms)
+	LoadAllAssembliesAndSetupDomain (384ms)
+		LoadAssemblies (498ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (39ms)
+			TypeCache.Refresh (16ms)
+				TypeCache.ScanAssembly (1ms)
+			ScanForSourceGeneratedMonoScriptInfo (11ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1426ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (595ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (6ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (97ms)
+			ProcessInitializeOnLoadAttributes (437ms)
+			ProcessInitializeOnLoadMethodAttributes (31ms)
+			AfterProcessingInitializeOnLoad (10ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 8.35 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 26 unused Assets / (32.7 KB). Loaded Objects now: 3919.
+Memory consumption went from 163.6 MB to 163.5 MB.
+Total: 3.655100 ms (FindLiveObjects: 0.516700 ms CreateObjectMapping: 0.201300 ms MarkObjects: 2.866800 ms  DeleteObjects: 0.068100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 6d391050e5a25f67b0a2c618074f2cd9 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 300.171933 seconds.
+  path: Assets/Models/medieval/walls/wallMedieval3 1.obj
+  artifactKey: Guid(2980468334020a04f9e1111a1a771b14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Models/medieval/walls/wallMedieval3 1.obj using Guid(2980468334020a04f9e1111a1a771b14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8ab2ecf38992ca8be8d839b64c930c5') in 0.304557 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 38

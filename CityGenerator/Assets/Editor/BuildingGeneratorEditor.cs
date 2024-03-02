@@ -96,6 +96,7 @@ public class BuildingGeneratorEditor : Editor
         buildingRenderer.wall0EastPrefabIndex = EditorGUILayout.Popup("East Wall 0 Prefab", buildingRenderer.wall0EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.wall1EastPrefabIndex = EditorGUILayout.Popup("East Wall 1 Prefab", buildingRenderer.wall1EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingRenderer.wall2EastPrefabIndex = EditorGUILayout.Popup("East Wall 2 Prefab", buildingRenderer.wall2EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
+        buildingRenderer.wallDoorPrefabIndex = EditorGUILayout.Popup("Wall door Prefab", buildingRenderer.wallDoorPrefabIndex, GetPrefabNames(buildingRenderer.wallDoorsPrefabs));
         buildingRenderer.doorEastPrefabIndex = EditorGUILayout.Popup("East Door Prefab", buildingRenderer.doorEastPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingRenderer.stairEastPrefabIndex = EditorGUILayout.Popup("East Stair Prefab", buildingRenderer.stairEastPrefabIndex, GetPrefabNames(buildingRenderer.stairPrefabs));
         buildingRenderer.balconyEastPrefabIndex = EditorGUILayout.Popup("East Balcony Prefab", buildingRenderer.balconyEastPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));

@@ -10,6 +10,7 @@ public class BuildingRenderer : MonoBehaviour
 {
     public List<Transform> floorPrefabs;
     public List<Transform> wallPrefabs;
+    public List<Transform> wallDoorsPrefabs;
     public List<Transform> doorPrefabs;
     public List<Transform> roofPrefabs;
     public List<Transform> roofBoundPrefabs;
@@ -232,13 +233,17 @@ public class BuildingRenderer : MonoBehaviour
                         }
                         else
                         {
-                            if (i  == 0)
-                                PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall0EastPrefabIndex]);
-                            else if (i % 2 == 1)
-                                PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall1EastPrefabIndex]);
+                            if (i ==0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[wallDoorPrefabIndex]);
                             else
-                                PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall2EastPrefabIndex]);
-                            if (PlaceEastBalcony(bldg, i, y, bldg.numberOfEastBalconies, bldg.randomSeedOfEastBalconies, balconiesEastIndexes)) PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[balconyEastPrefabIndex]);
+                            {
+                                if (i == 0)
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall0EastPrefabIndex]);
+                                else if (i % 2 == 1)
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall1EastPrefabIndex]);
+                                else
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall2EastPrefabIndex]);
+                                if (PlaceEastBalcony(bldg, i, y, bldg.numberOfEastBalconies, bldg.randomSeedOfEastBalconies, balconiesEastIndexes)) PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[balconyEastPrefabIndex]);
+                            }
                         }
                     }
 
@@ -397,7 +402,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 2; i < bldg.level; i++)
+            for (int i = 1; i < bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                     balconiesSouthIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -422,7 +427,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 2; i < bldg.level; i++)
+            for (int i = 1; i < bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                     balconiesNorthIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -446,7 +451,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 2; i < bldg.level; i++)
+            for (int i = 1; i < bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                     balconiesWestIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -471,7 +476,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 2; i < bldg.level; i++)
+            for (int i = 1; i < bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                     balconiesEastIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -947,6 +952,7 @@ public class BuildingRenderer : MonoBehaviour
     [HideInInspector] public int wall0EastPrefabIndex = 0;
     [HideInInspector] public int wall1EastPrefabIndex = 0;
     [HideInInspector] public int wall2EastPrefabIndex = 0;
+    [HideInInspector] public int wallDoorPrefabIndex = 0;
     [HideInInspector] public int doorEastPrefabIndex = 0;
     [HideInInspector] public int stairEastPrefabIndex = 0;
     [HideInInspector] public int balconyEastPrefabIndex = 0;
