@@ -172,7 +172,7 @@ public class BuildingRenderer : MonoBehaviour
                                 if (entries.Contains(y))
                                 {
                                     PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, doorPrefabs[doorEastOffsetPrefabIndex]);
-                                    PlaceStair(x + bldg.depthOffsetEastWall + 1, y - 1, i, storyFolder);
+                                    PlaceStair(x + bldg.depthOffsetEastWall + 1, y - 1, i, storyFolder, stairPrefabs[stairEastPrefabIndex]);
                                 }
                             }
                             else
@@ -181,7 +181,7 @@ public class BuildingRenderer : MonoBehaviour
                                 if (entries.Contains(y))
                                 {
                                     PlaceEastWall(x, y, i, storyFolder, doorPrefabs[doorEastPrefabIndex]);
-                                    PlaceStair(x + 1, y - 1, i, storyFolder);
+                                    PlaceStair(x + 1, y - 1, i, storyFolder, stairPrefabs[stairEastPrefabIndex]);
                                 }
                             }
                         }
@@ -223,8 +223,9 @@ public class BuildingRenderer : MonoBehaviour
                             }
                             else
                             {
-                                if (i == 0)
-                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall0EastPrefabIndex]);
+                                if (i == 0  && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[wallDoorPrefabIndex]);
+                                else if (i == 0)
+                                PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall0EastPrefabIndex]);
                                 else if (i % 2 == 1)
                                     PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall1EastPrefabIndex]);
                                 else
@@ -233,10 +234,9 @@ public class BuildingRenderer : MonoBehaviour
                         }
                         else
                         {
-                            if (i ==0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[wallDoorPrefabIndex]);
-                            else
                             {
-                                if (i == 0)
+                                if (i == 0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[wallDoorPrefabIndex]);
+                                else if (i == 0)
                                     PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall0EastPrefabIndex]);
                                 else if (i % 2 == 1)
                                     PlaceEastWall(x, y, i, storyFolder, wallPrefabs[wall1EastPrefabIndex]);
@@ -537,10 +537,10 @@ public class BuildingRenderer : MonoBehaviour
         pairToCheck = new Tuple<int, int>(level, place);
         return balconiesIndexes.Contains(pairToCheck);
     }
-    private void PlaceStair(int x, int y, int level, Transform storyFolder)
+    private void PlaceStair(int x, int y, int level, Transform storyFolder, Transform stair)
     {
         var stairSize = GetPrefabSize(stairPrefabs[stairSouthPrefabIndex]);
-        Transform f = Instantiate(stairPrefabs[stairSouthPrefabIndex], storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
+        Transform f = Instantiate(stair, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
 
@@ -626,7 +626,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if (y == 1 ||y==0)
+                if (y == 1 || y == 0  || x == 1 || x == 0)
                 {
                     prefab = roofCornerPrefabs[roofCornerPrefabIndex];
                     direction = RoofDirection.North;
@@ -671,7 +671,7 @@ public class BuildingRenderer : MonoBehaviour
                 if (x == minX && !(y == minY || y == maxY - 1 || x == maxX - 1))
                 {
                     prefab = roofBoundPrefabs[roofBoundPrefabIndex];
-                    direction = RoofDirection.South;
+                    direction = RoofDirection.West;
                 }
                 else
                 if (x == maxX - 1 && !(y == minY || y == maxY - 1 || x == minX))
@@ -698,10 +698,10 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if ((y == minY) && (x == minX))
+                if (y == minY || x == minX || y == maxY-1 || x == maxX-1)
                 {
                     prefab = roofCornerPrefabs[roofNorthOffsetCornerPrefabIndex];
-                    direction = RoofDirection.South;
+                    direction = RoofDirection.West;
                 }
                 else
                 if ((y == minY) && (x == maxX - 1))
