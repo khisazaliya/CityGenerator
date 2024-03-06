@@ -489,6 +489,7 @@ public class BuildingRenderer : MonoBehaviour
                 balconiesEastIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
             }
         }
+        bldg.balconyLocations = balconiesEastIndexes;
         return balconiesEastIndexes;
     }
     public List<int> CalculateEntryIndex(Wing wing, int numberOfEntries, Building bldg)

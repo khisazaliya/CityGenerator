@@ -108,7 +108,7 @@ public class Visualizer : MonoBehaviour
         }
        // yield return new WaitForSeconds(0.1f);
         roadHelper.FixRoad();
-        structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions(), buildingGenerator);
+        structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions(), buildingGenerator, roadHelper.roadDictionary);
         // yield return new WaitForSeconds(0.8f);
         //   StartCoroutine(structureHelper.PlaceStructuresAroundRoad(roadHelper.GetRoadPositions()));
 

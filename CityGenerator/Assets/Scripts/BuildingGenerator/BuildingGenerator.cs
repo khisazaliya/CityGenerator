@@ -45,7 +45,10 @@ public class BuildingGenerator : MonoBehaviour
             // Если файл существует, сначала считываем уже сохраненные данные
             string jsonText = File.ReadAllText(filePath);
             var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
-            allSettings.AddRange(wrapper.buildingSettings);
+            if (wrapper != null && wrapper.buildingSettings != null)
+            {
+                allSettings.AddRange(wrapper.buildingSettings);
+            }
         }
 
         // Добавляем новые данные о здании в список
@@ -59,6 +62,7 @@ public class BuildingGenerator : MonoBehaviour
         string json = JsonUtility.ToJson(newWrapper, true);
         File.WriteAllText(filePath, json);
     }
+
 
     [ContextMenu("Clear")]
     private void ClearSettingsFile()

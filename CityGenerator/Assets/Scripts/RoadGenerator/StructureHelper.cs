@@ -17,7 +17,7 @@ public class StructureHelper : MonoBehaviour
     public float animationTime = 0.01f;
 
     public System.Random rand = new System.Random();
-    public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator)
+    public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator, Dictionary<Vector3Int, GameObject> roadDictionary)
     {
         buildingGenerator.LoadField();
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
@@ -56,7 +56,9 @@ public class StructureHelper : MonoBehaviour
                     }
 
                     var building = buildingGenerator.GenerateBuilding(position, rotation, buildingGenerator.buildingSettings[i]);
-                    var buildingCollider = building.GetComponentInChildren<Collider>();
+                  //  var buildingCollider = building.GetComponentInChildren<Collider>();
+                    var childObject = building.transform.GetChild(0); 
+                    var buildingCollider = childObject.gameObject.AddComponent<BoxCollider>();
 
                     intersects = false;
 
@@ -69,6 +71,20 @@ public class StructureHelper : MonoBehaviour
                             {
                                 intersects = true;
                                 Debug.Log("Intersects with existing building");
+                                Destroy(building);
+                                break;
+                            }
+                        }
+                    }
+                    foreach (var road in roadDictionary.Values)
+                    {
+                        var existingCollider = road.GetComponentInChildren<BoxCollider>();
+                        if (existingCollider != null && buildingCollider != null)
+                        {
+                            if (existingCollider.bounds.Intersects(buildingCollider.bounds))
+                            {
+                                intersects = true;
+                                Debug.Log("Intersects with road");
                                 Destroy(building);
                                 break;
                             }

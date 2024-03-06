@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,9 @@ public class Building
 
     public int numberOfEastBalconies;
     public int randomSeedOfEastBalconies;
+
+    public List<Tuple<int, int>> balconyLocations = new List<Tuple<int, int>>();
+    public List<Vector3Int> entryLocations = new List<Vector3Int>();
 
     public int level;
     public Vector2Int Size { get { return size; } }

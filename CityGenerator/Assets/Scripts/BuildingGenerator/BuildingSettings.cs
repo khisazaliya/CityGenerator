@@ -77,6 +77,9 @@ public class BuildingSettings
     public int depthOffsetEastWall;
 
     public int eastWallHeight;
+    public List<Tuple<int, int>> balconyLocations = new List<Tuple<int, int>>();
+    public List<Vector3Int> entryLocations = new List<Vector3Int>();
+
     public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int offsetOfEntries,  int numberOfBalconies, int randomSeedOfBalconies,
         int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight,
         int minOffsetSouthWall, int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight)
