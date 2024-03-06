@@ -19,6 +19,7 @@ public class StructureHelper : MonoBehaviour
     public System.Random rand = new System.Random();
     public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator)
     {
+        buildingGenerator.LoadField();
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
 
         for (int i = 0; i < buildingGenerator.buildingSettings.Length; i++)
@@ -26,7 +27,7 @@ public class StructureHelper : MonoBehaviour
             for (int j = 0; j < buildingGenerator.buildingSettings[i].buildingCount; j++)
             {
                 bool intersects = true;
-                int attempts = 0; 
+                int attempts = 0;
 
                 while (intersects)
                 {
@@ -55,33 +56,19 @@ public class StructureHelper : MonoBehaviour
                     }
 
                     var building = buildingGenerator.GenerateBuilding(position, rotation, buildingGenerator.buildingSettings[i]);
-                    MeshRenderer buildingRenderer = building.GetComponentInChildren<MeshRenderer>();
-                    GameObject combinedMesh = GameObject.Find("CombinedMesh");
-                    Vector3 combinedMeshSize = new();
-                    if (combinedMesh != null)
-                    {
-                        MeshRenderer renderer = combinedMesh.GetComponent<MeshRenderer>();
-                        combinedMeshSize = renderer.bounds.size;
+                    var buildingCollider = building.GetComponentInChildren<Collider>();
 
-                    }
-                    else
-                    {
-                        Debug.LogError("CombinedMesh object not found!");
-                    }
-                    var collider = combinedMesh.AddComponent<BoxCollider>();
-                    collider.size = combinedMeshSize;
-
-                    intersects = false; 
+                    intersects = false;
 
                     foreach (var existingBuilding in structuresDictionary.Values)
                     {
-                        Collider existingCollider = existingBuilding.GetComponent<BoxCollider>();
-                        if (existingCollider != null && collider != null)
+                        var existingCollider = existingBuilding.GetComponentInChildren<Collider>();
+                        if (existingCollider != null && buildingCollider != null && existingBuilding != building)
                         {
-                            if (existingCollider.bounds.Intersects(collider.bounds))
+                            if (existingCollider.bounds.Intersects(buildingCollider.bounds))
                             {
                                 intersects = true;
-                                Debug.Log("intersects");
+                                Debug.Log("Intersects with existing building");
                                 Destroy(building);
                                 break;
                             }
@@ -94,11 +81,12 @@ public class StructureHelper : MonoBehaviour
                         structuresDictionary.Add(position, building);
                     }
 
-                    attempts++; 
+                    attempts++;
                 }
             }
         }
     }
+
 
 
     private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class BuildingGenerator : MonoBehaviour
@@ -30,19 +31,54 @@ public class BuildingGenerator : MonoBehaviour
         buildingSettings = wrapper.buildingSettings;
     }
 
+    [ContextMenu("Save")]
+    public void SaveField()
+    {
+        string filePath = Application.streamingAssetsPath + "/settings.json";
+
+        // Создаем список для хранения всех сохраненных данных о зданиях
+        List<BuildingSettings> allSettings = new List<BuildingSettings>();
+
+        // Проверяем, существует ли файл
+        if (File.Exists(filePath))
+        {
+            // Если файл существует, сначала считываем уже сохраненные данные
+            string jsonText = File.ReadAllText(filePath);
+            var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
+            allSettings.AddRange(wrapper.buildingSettings);
+        }
+
+        // Добавляем новые данные о здании в список
+        allSettings.AddRange(buildingSettings);
+
+        // Обновляем данные в обертке
+        var newWrapper = new BuildingSettingsWrapper();
+        newWrapper.buildingSettings = allSettings.ToArray();
+
+        // Сохраняем данные в файле
+        string json = JsonUtility.ToJson(newWrapper, true);
+        File.WriteAllText(filePath, json);
+    }
+
+    [ContextMenu("Clear")]
+    private void ClearSettingsFile()
+    {
+        string filePath = Application.streamingAssetsPath + "/settings.json";
+
+        if (File.Exists(filePath))
+        {
+            File.WriteAllText(filePath, "");
+            Debug.Log("Settings file cleared successfully.");
+        }
+        else
+        {
+            Debug.LogWarning("Settings file not found.");
+        }
+    }
+
     [System.Serializable]
     private class BuildingSettingsWrapper
     {
         public BuildingSettings[] buildingSettings;
-    }
-
-    [ContextMenu("Save")]
-    public void SaveField()
-    {
-        var wrapper = new BuildingSettingsWrapper();
-        wrapper.buildingSettings = buildingSettings;
-        string json = JsonUtility.ToJson(wrapper, true); 
-
-        File.WriteAllText(Application.streamingAssetsPath + "/settings.json", json);
     }
 }

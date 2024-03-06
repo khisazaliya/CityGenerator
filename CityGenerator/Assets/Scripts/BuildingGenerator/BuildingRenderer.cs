@@ -49,7 +49,7 @@ public class BuildingRenderer : MonoBehaviour
             RenderWing(wing, bldg);
         }
         bldgFolder.AddComponent<LODGeneratorHelper>();
-        meshCombiner.CombineMeshes(bldgFolder);
+       meshCombiner.CombineMeshes(bldgFolder);
         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
         string objectName = "Wing";
         foreach (GameObject obj in objects)
@@ -382,7 +382,7 @@ public class BuildingRenderer : MonoBehaviour
     {
         if (bldg.depthOffsetEastWall > wing.Bounds.max.x) bldg.depthOffsetEastWall = wing.Bounds.max.x;
         if (bldg.maxOffsetEastWall > wing.Bounds.max.y) bldg.maxOffsetEastWall = wing.Bounds.max.y-1;
-        return bldg.northWallHeight>0 &&  bldg.depthOffsetEastWall > 0 && bldg.minOffsetEastWall >= 0 && bldg.minOffsetEastWall <= wing.Bounds.max.y &&
+        return bldg.eastWallHeight>0 &&  bldg.depthOffsetEastWall > 0 && bldg.minOffsetEastWall >= 0 && bldg.minOffsetEastWall <= wing.Bounds.max.y &&
                              bldg.maxOffsetEastWall >= 0 && bldg.maxOffsetEastWall < wing.Bounds.size.y && bldg.maxOffsetEastWall >= bldg.minOffsetEastWall;
     }
     public List<Tuple<int, int>> GenerateBuildingShape(int max)
