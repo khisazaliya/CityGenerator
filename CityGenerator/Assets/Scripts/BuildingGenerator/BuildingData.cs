@@ -8,10 +8,10 @@ public class BuildingData : MonoBehaviour
     public static Building Build(BuildingSettings buildingSettings)
     {
         return new Building(
-           buildingSettings.numberOfLevels,
            buildingSettings.buildingSize.x,
            buildingSettings.buildingSize.y,
            GenerateWings(buildingSettings),
+           buildingSettings.type,
            buildingSettings.numberOfEntries,
            buildingSettings.offsetOfEntries,
            buildingSettings.MaxNumberOfSouthBalconies,
@@ -22,6 +22,9 @@ public class BuildingData : MonoBehaviour
            buildingSettings.randomSeedOfWestBalconies,
            buildingSettings.MaxNumberOfEastBalconies,
            buildingSettings.randomSeedOfEastBalconies,
+           buildingSettings.balconyLocations,
+           buildingSettings.entryLocations,
+           buildingSettings.numberOfLevels,
            buildingSettings.minOffsetNorthWall,
             buildingSettings.maxOffsetNorthWall,
             buildingSettings.depthOffsetNorthWall,
@@ -33,7 +36,89 @@ public class BuildingData : MonoBehaviour
             buildingSettings.minOffsetEastWall,
             buildingSettings.maxOffsetEastWall,
             buildingSettings.depthOffsetEastWall,
-            buildingSettings.eastWallHeight
+            buildingSettings.eastWallHeight,
+              buildingSettings.floorSouthPrefabIndex,
+        buildingSettings.wall0SouthPrefabIndex,
+        buildingSettings.wall1SouthPrefabIndex,
+        buildingSettings.wall2SouthPrefabIndex,
+        buildingSettings.doorSouthPrefabIndex,
+        buildingSettings.roofPrefabIndex,
+        buildingSettings.roofBoundPrefabIndex,
+        buildingSettings.roofCornerPrefabIndex,
+        buildingSettings.stairSouthPrefabIndex,
+        buildingSettings.balconySouthPrefabIndex,
+
+        buildingSettings.savedSeedOfSouthBalconies,
+        buildingSettings.savedNumberOfSouthBalconies,
+
+        buildingSettings.floorNorthPrefabIndex,
+        buildingSettings.wall0NorthPrefabIndex,
+        buildingSettings.wall1NorthPrefabIndex,
+        buildingSettings.wall2NorthPrefabIndex,
+        buildingSettings.doorNorthPrefabIndex,
+        buildingSettings.stairNorthPrefabIndex,
+        buildingSettings.balconyNorthPrefabIndex,
+
+        buildingSettings.savedSeedOfNorthBalconies,
+        buildingSettings.savedNumberOfNorthBalconies,
+
+        buildingSettings.floorEastPrefabIndex,
+        buildingSettings.wall0EastPrefabIndex,
+        buildingSettings.wall1EastPrefabIndex,
+        buildingSettings.wall2EastPrefabIndex,
+        buildingSettings.wallDoorPrefabIndex,
+        buildingSettings.doorEastPrefabIndex,
+        buildingSettings.stairEastPrefabIndex,
+        buildingSettings.balconyEastPrefabIndex,
+
+        buildingSettings.savedSeedOfEastBalconies,
+        buildingSettings.savedNumberOfEastBalconies,
+
+        buildingSettings.floorWestPrefabIndex,
+        buildingSettings.wall0WestPrefabIndex,
+        buildingSettings.wall1WestPrefabIndex,
+        buildingSettings.wall2WestPrefabIndex,
+        buildingSettings.doorWestPrefabIndex,
+        buildingSettings.stairWestPrefabIndex,
+        buildingSettings.balconyWestPrefabIndex,
+
+        buildingSettings.savedSeedOfWestBalconies,
+        buildingSettings.savedNumberOfWestBalconies,
+
+        buildingSettings.floorSouthOffsetPrefabIndex,
+        buildingSettings.wall0SouthOffsetPrefabIndex,
+        buildingSettings.wall1SouthOffsetPrefabIndex,
+        buildingSettings.wall2SouthOffsetPrefabIndex,
+        buildingSettings.doorSouthOffsetPrefabIndex,
+        buildingSettings.roofSouthOffsetPrefabIndex,
+        buildingSettings.roofSouthOffsetBoundPrefabIndex,
+        buildingSettings.roofSouthOffsetCornerPrefabIndex,
+        buildingSettings.stairSouthOffsetPrefabIndex,
+        buildingSettings.balconySouthOffsetPrefabIndex,
+
+
+        buildingSettings.floorNorthOffsetPrefabIndex,
+        buildingSettings.wall0NorthOffsetPrefabIndex,
+        buildingSettings.wall1NorthOffsetPrefabIndex,
+        buildingSettings.wall2NorthOffsetPrefabIndex,
+        buildingSettings.doorNorthOffsetPrefabIndex,
+        buildingSettings.roofNorthOffsetPrefabIndex,
+        buildingSettings.roofNorthOffsetBoundPrefabIndex,
+        buildingSettings.roofNorthOffsetCornerPrefabIndex,
+        buildingSettings.stairNorthOffsetPrefabIndex,
+        buildingSettings.balconyNorthOffsetPrefabIndex,
+
+        buildingSettings.floorEastOffsetPrefabIndex,
+        buildingSettings.wall0EastOffsetPrefabIndex,
+        buildingSettings.wall1EastOffsetPrefabIndex,
+        buildingSettings.wall2EastOffsetPrefabIndex,
+        buildingSettings.doorEastOffsetPrefabIndex,
+        buildingSettings.roofEastOffsetPrefabIndex,
+        buildingSettings.roofEastOffsetBoundPrefabIndex,
+        buildingSettings.roofEastOffsetCornerPrefabIndex,
+        buildingSettings.stairEastOffsetPrefabIndex,
+        buildingSettings.balconyEastOffsetPrefabIndex
+
        );
     }
 
