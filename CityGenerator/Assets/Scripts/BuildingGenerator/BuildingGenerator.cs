@@ -5,8 +5,7 @@ using UnityEngine;
 public class BuildingGenerator : MonoBehaviour
 {
     public List<BuildingSettings> buildingSettings;
-    public List<PrefabIndexes> prefabIndexesList; // Список для хранения индексов префабов
-    private int currentBuildingIndex = 0;
+    public List<PrefabIndexes> prefabIndexesList; 
     public GameObject renderedBuilding;
     public BuildingRenderer buildingRenderer;
 
@@ -51,19 +50,15 @@ public class BuildingGenerator : MonoBehaviour
                 allSettings.AddRange(wrapper.buildingSettings);
         }
 
-        // Добавляем текущие настройки в список всех настроек
         allSettings.AddRange(buildingSettings);
-
-        // Создаем новый объект-обертку для списка всех настроек
         BuildingSettingsWrapper newWrapper = new BuildingSettingsWrapper
         {
             buildingSettings = allSettings
         };
-
-        // Преобразуем объект-обертку в JSON и сохраняем его в файл
-        string json = JsonUtility.ToJson(newWrapper);
+        string json = JsonUtility.ToJson(newWrapper, true);
         File.WriteAllText(filePath, json);
     }
+
 
     [ContextMenu("Clear")]
     private void ClearSettingsFile()

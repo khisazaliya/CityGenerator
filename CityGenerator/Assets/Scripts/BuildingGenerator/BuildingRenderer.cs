@@ -18,6 +18,17 @@ public class BuildingRenderer : MonoBehaviour
     public List<Transform> stairPrefabs;
     public List<Transform> balconyPrefabs;
 
+    public int savedSeedOfEastBalconies;
+    public int savedNumberOfEastBalconies;
+
+    public int savedSeedOfWestBalconies;
+    public int savedNumberOfWestBalconies;
+
+    public int savedSeedOfNorthBalconies;
+    public int savedNumberOfNorthBalconies;
+
+    public int savedSeedOfSouthBalconies;
+    public int savedNumberOfSouthBalconies;
 
     [HideInInspector] public Vector3 floorSize;
 
@@ -395,9 +406,9 @@ public class BuildingRenderer : MonoBehaviour
 
     public List<Tuple<int, int>> CalculateSouthBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
     {
-        if (randomSeedOfBalconies == bldg.savedSeedOfSouthBalconies && numberOfBalconies == bldg.savedNumberOfSouthBalconies) return balconiesSouthIndexes;
-        bldg.savedSeedOfSouthBalconies = randomSeedOfBalconies;
-        bldg.savedNumberOfSouthBalconies = numberOfBalconies;
+        if (randomSeedOfBalconies == savedSeedOfSouthBalconies && numberOfBalconies == savedNumberOfSouthBalconies) return balconiesSouthIndexes;
+        savedSeedOfSouthBalconies = randomSeedOfBalconies;
+        savedNumberOfSouthBalconies = numberOfBalconies;
         balconiesSouthIndexes.Clear();
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
@@ -420,9 +431,9 @@ public class BuildingRenderer : MonoBehaviour
 
     public List<Tuple<int, int>> CalculateNorthBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
     {
-        if (randomSeedOfBalconies == bldg.savedSeedOfNorthBalconies && numberOfBalconies == bldg.savedNumberOfNorthBalconies) return balconiesNorthIndexes;
-        bldg.savedSeedOfNorthBalconies = randomSeedOfBalconies;
-        bldg.savedNumberOfNorthBalconies = numberOfBalconies;
+        if (randomSeedOfBalconies == savedSeedOfNorthBalconies && numberOfBalconies == savedNumberOfNorthBalconies) return balconiesNorthIndexes;
+        savedSeedOfNorthBalconies = randomSeedOfBalconies;
+        savedNumberOfNorthBalconies = numberOfBalconies;
         balconiesNorthIndexes.Clear();
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
@@ -444,9 +455,9 @@ public class BuildingRenderer : MonoBehaviour
     }
     public List<Tuple<int, int>> CalculateWestBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
     {
-        if (randomSeedOfBalconies == bldg.savedSeedOfWestBalconies && numberOfBalconies == bldg.savedNumberOfWestBalconies) return balconiesWestIndexes;
-        bldg.savedSeedOfWestBalconies = randomSeedOfBalconies;
-        bldg.savedNumberOfWestBalconies = numberOfBalconies;
+        if (randomSeedOfBalconies == savedSeedOfWestBalconies && numberOfBalconies ==savedNumberOfWestBalconies) return balconiesWestIndexes;
+        savedSeedOfWestBalconies = randomSeedOfBalconies;
+       savedNumberOfWestBalconies = numberOfBalconies;
         balconiesWestIndexes.Clear();
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
@@ -469,9 +480,9 @@ public class BuildingRenderer : MonoBehaviour
 
     public List<Tuple<int, int>> CalculateEastBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
     {
-        if (randomSeedOfBalconies == bldg.savedSeedOfEastBalconies && numberOfBalconies == bldg.savedNumberOfEastBalconies) return balconiesEastIndexes;
-        bldg.savedSeedOfEastBalconies = randomSeedOfBalconies;
-        bldg.savedNumberOfEastBalconies = numberOfBalconies;
+        if (randomSeedOfBalconies == savedSeedOfEastBalconies && numberOfBalconies == savedNumberOfEastBalconies) return balconiesEastIndexes;
+        savedSeedOfEastBalconies = randomSeedOfBalconies;
+        savedNumberOfEastBalconies = numberOfBalconies;
         balconiesEastIndexes.Clear();
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
