@@ -376,6 +376,8 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Editor/BuildingGeneratorEditor.cs"
 "Assets/Editor/ExportObjects.cs"
+"Assets/Editor/LoadFolderPathWindow.cs"
+"Assets/Editor/VisualizerEditor.cs"
 -langversion:9.0
 
 /deterministic

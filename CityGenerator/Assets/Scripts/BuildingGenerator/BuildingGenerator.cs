@@ -1,18 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 public class BuildingGenerator : MonoBehaviour
 {
     public List<BuildingSettings> buildingSettings;
-    public List<PrefabIndexes> prefabIndexesList; 
     public GameObject renderedBuilding;
     public BuildingRenderer buildingRenderer;
+    [SerializeField]
+    public string loadFilePath = "";
+    private string saveFilePath = "";
 
     private void Awake()
     {
         buildingSettings = new List<BuildingSettings>();
-        prefabIndexesList = new List<PrefabIndexes>();
     }
 
     public GameObject GenerateBuilding(Vector3 position, Quaternion rotation, BuildingSettings buildingSettings)
@@ -28,23 +30,41 @@ public class BuildingGenerator : MonoBehaviour
     [ContextMenu("Load")]
     public void LoadField()
     {
-        string filePath = Application.streamingAssetsPath + "/settings.json";
-        if (File.Exists(filePath))
+        if (string.IsNullOrEmpty(loadFilePath))
         {
-            string jsonText = File.ReadAllText(filePath);
-            var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
-            buildingSettings = wrapper.buildingSettings;
+            // Если путь к файлу не указан, запросить его у пользователя
+            loadFilePath = EditorUtility.OpenFilePanel("Load Building Settings", "", "json");
+            if (string.IsNullOrEmpty(loadFilePath)) return; // Если пользователь не выбрал файл, выйти из метода
         }
+
+        string jsonText = File.ReadAllText(loadFilePath);
+        var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
+        buildingSettings = wrapper.buildingSettings;
+    }
+
+    public void SetLoadFilePath(string path)
+    {
+        loadFilePath = path;
     }
 
     [ContextMenu("Save")]
     public void SaveField()
     {
-        string filePath = Application.streamingAssetsPath + "/settings.json";
-        List<BuildingSettings> allSettings = new List<BuildingSettings>();
-        if (File.Exists(filePath))
+        if (string.IsNullOrEmpty(saveFilePath))
         {
-            string jsonText = File.ReadAllText(filePath);
+            // Предложить пользователю ввести имя файла для сохранения
+            saveFilePath = EditorUtility.SaveFilePanel("Save Settings", "", "settings", "json");
+            if (string.IsNullOrEmpty(saveFilePath))
+            {
+                Debug.LogWarning("Save operation cancelled.");
+                return;
+            }
+        }
+
+        List<BuildingSettings> allSettings = new List<BuildingSettings>();
+        if (File.Exists(saveFilePath))
+        {
+            string jsonText = File.ReadAllText(saveFilePath);
             var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
             if (wrapper != null && wrapper.buildingSettings != null)
                 allSettings.AddRange(wrapper.buildingSettings);
@@ -56,23 +76,51 @@ public class BuildingGenerator : MonoBehaviour
             buildingSettings = allSettings
         };
         string json = JsonUtility.ToJson(newWrapper, true);
-        File.WriteAllText(filePath, json);
+        File.WriteAllText(saveFilePath, json);
     }
 
-
-    [ContextMenu("Clear")]
-    private void ClearSettingsFile()
+    [ContextMenu("Save As New File")]
+    public void SaveAsNewFile()
     {
-        string filePath = Application.streamingAssetsPath + "/settings.json";
-        if (File.Exists(filePath))
+        // Запросить у пользователя путь и имя файла для сохранения
+        saveFilePath = EditorUtility.SaveFilePanel("Save Settings As New File", "", "settings", "json");
+        if (string.IsNullOrEmpty(saveFilePath))
         {
-            File.WriteAllText(filePath, "");
-            Debug.Log("Settings file cleared successfully.");
+            Debug.LogWarning("Save operation cancelled.");
+            return;
         }
-        else
+
+        SaveField(); // Вызвать сохранение, используя выбранный путь
+    }
+
+    [ContextMenu("Add Building Settings To File")]
+    public void AddBuildingSettingsToFile()
+    {
+        // Запросить у пользователя путь и имя файла, в который будут добавлены настройки
+        string filePath = EditorUtility.OpenFilePanel("Add Building Settings To File", "", "json");
+        if (string.IsNullOrEmpty(filePath))
         {
-            Debug.LogWarning("Settings file not found.");
+            Debug.LogWarning("Operation cancelled.");
+            return;
         }
+
+        // Прочитать существующие настройки из выбранного файла
+        string jsonText = File.ReadAllText(filePath);
+        var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
+        List<BuildingSettings> existingSettings = wrapper.buildingSettings;
+
+        // Добавить текущие настройки в существующие
+        existingSettings.AddRange(buildingSettings);
+
+        // Создать новый объект-обертку для настроек и сохранить его в файл
+        BuildingSettingsWrapper newWrapper = new BuildingSettingsWrapper
+        {
+            buildingSettings = existingSettings
+        };
+        string json = JsonUtility.ToJson(newWrapper, true);
+        File.WriteAllText(filePath, json);
+
+        Debug.Log("Building settings added to file: " + filePath);
     }
 
     private class BuildingSettingsWrapper

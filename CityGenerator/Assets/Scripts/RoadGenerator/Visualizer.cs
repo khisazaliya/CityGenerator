@@ -13,7 +13,8 @@ public class Visualizer : MonoBehaviour
     private int length = 40;
     private float angle = 90;
     public BuildingGenerator buildingGenerator;
-
+    [SerializeField]
+    public string loadFolderPath = "";
     public int Length
     {
         get
