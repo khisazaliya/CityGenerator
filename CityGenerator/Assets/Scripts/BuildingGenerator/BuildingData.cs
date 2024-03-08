@@ -80,3 +80,10 @@ public class BuildingData : MonoBehaviour
         return new Roof();
     }
 }
+[System.Serializable]
+public class BuildingFileData
+{
+    public PrefabIndexes prefabIndexes;
+    public List<BuildingSettings> buildingSettings;
+}
+

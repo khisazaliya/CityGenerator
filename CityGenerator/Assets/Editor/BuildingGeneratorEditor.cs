@@ -22,7 +22,7 @@ public class BuildingGeneratorEditor : Editor
         BuildingRenderer buildingRenderer = buildingGenerator.buildingRenderer;
         if (previousSettings == null || !AreSettingsEqual(buildingGenerator.buildingSettings[0], previousSettings))
         {
-            buildingGenerator.SaveField();
+          //  buildingGenerator.SaveField();
             GenerateNewBuilding();
             EditorUtility.SetDirty(target);
         }
@@ -138,26 +138,6 @@ public class BuildingGeneratorEditor : Editor
         {
             GenerateNewBuilding();
         }
-        if (GUILayout.Button("Save Prefab Indexes"))
-        {
-            SavePrefabIndexes();
-        }
-
-        if (GUILayout.Button("Load Prefab Indexes"))
-        {
-            LoadPrefabIndexes();
-        }
-    }
-
-    private void SavePrefabIndexes()
-    {
-        buildingGenerator.SaveField();
-        EditorUtility.SetDirty(target);
-    }
-
-    private void LoadPrefabIndexes()
-    {
-        buildingGenerator.LoadField();
     }
     private string[] GetPrefabNames(List<Transform> prefabList)
     {

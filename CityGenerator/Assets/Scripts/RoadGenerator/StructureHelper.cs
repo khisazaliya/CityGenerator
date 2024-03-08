@@ -22,7 +22,7 @@ public class StructureHelper : MonoBehaviour
         buildingGenerator.LoadField();
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
 
-        for (int i = 0; i < buildingGenerator.buildingSettings.Length; i++)
+        for (int i = 0; i < buildingGenerator.buildingSettings.Count; i++)
         {
             for (int j = 0; j < buildingGenerator.buildingSettings[i].buildingCount; j++)
             {

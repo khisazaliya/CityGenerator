@@ -367,6 +367,7 @@
 "Assets/Scripts/BuildingGenerator/BuildingParts/Wing.cs"
 "Assets/Scripts/BuildingGenerator/BuildingRenderer.cs"
 "Assets/Scripts/BuildingGenerator/BuildingSettings.cs"
+"Assets/Scripts/BuildingGenerator/PrefabIndexes.cs"
 "Assets/Scripts/BuildingGenerator/Services/GpuInstancingEnabler.cs"
 "Assets/Scripts/BuildingGenerator/Services/JsonController.cs"
 "Assets/Scripts/BuildingGenerator/Services/MeshCombiner.cs"
