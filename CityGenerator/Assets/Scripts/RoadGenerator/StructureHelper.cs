@@ -62,50 +62,43 @@ public class StructureHelper : MonoBehaviour
                     var buildingCollider = childObject.gameObject.AddComponent<BoxCollider>();
 
                     intersects = false;
+                    var buildingColliders = structuresDictionary.Values.Select(b => b.GetComponentInChildren<Collider>()).ToList();
+                    var allColliders = new List<Collider>();
+                    allColliders.AddRange(structuresDictionary.Values.Select(b => b.GetComponentInChildren<Collider>()));
+                    allColliders.AddRange(roadDictionary.Values.Select(r => r.GetComponentInChildren<BoxCollider>()));
 
-                    foreach (var existingBuilding in structuresDictionary.Values)
+                    for (int k = 0; k < allColliders.Count; k++)
                     {
-                        var existingCollider = existingBuilding.GetComponentInChildren<Collider>();
-                        if (existingCollider != null && buildingCollider != null && existingBuilding != building)
-                        {
-                            if (existingCollider.bounds.Intersects(buildingCollider.bounds))
-                            {
-                                intersects = true;
-                                Debug.Log("Intersects with existing building");
-                                Destroy(building);
-                                break;
-                            }
-                        }
-                    }
-                    foreach (var road in roadDictionary.Values)
-                    {
-                        var existingCollider = road.GetComponentInChildren<BoxCollider>();
+                        var existingCollider = allColliders[k];
                         if (existingCollider != null && buildingCollider != null)
                         {
                             if (existingCollider.bounds.Intersects(buildingCollider.bounds))
                             {
                                 intersects = true;
-                                Debug.Log("Intersects with road");
+                                if (structuresDictionary.ContainsValue(allColliders[k].gameObject))
+                                {
+                                    Debug.Log("Intersects with existing building");
+                                }
+                                else
+                                {
+                                    Debug.Log("Intersects with road");
+                                }
                                 Destroy(building);
                                 break;
                             }
                         }
                     }
-
-                    if (randomNaturePlacement)
-                    {
-                        var random = UnityEngine.Random.value;
-                        if (random < randomNaturePlacementThreshold)
-                        {
-                            var nature = SpawnPrefab(naturePrefabs[UnityEngine.Random.Range(0, naturePrefabs.Length)], position, rotation);
-                            if (!structuresDictionary.ContainsKey(position))
-                                structuresDictionary.Add(position, nature);
-                            break;
-                        }
-                    }
                     if (!intersects)
                     {
-                        freeEstateSpots.Remove(position);
+                       /* freeEstateSpots.Remove(position);
+                        if (randomNaturePlacement)
+                        {
+                          *//*  var random = UnityEngine.Random.value;
+                            if (random < randomNaturePlacementThreshold)*//*
+                            {
+                                var nature = SpawnPrefab(naturePrefabs[UnityEngine.Random.Range(0, naturePrefabs.Length)], position, rotation);
+                            }
+                        }*/
                         if (!structuresDictionary.ContainsKey(position))
                             structuresDictionary.Add(position, building);
                     }
