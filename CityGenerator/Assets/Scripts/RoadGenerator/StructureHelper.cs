@@ -16,6 +16,7 @@ public class StructureHelper : MonoBehaviour
     public Dictionary<Vector3Int, GameObject> natureDictionary = new Dictionary<Vector3Int, GameObject>();
     public float animationTime = 0.01f;
 
+
     public System.Random rand = new System.Random();
     public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator, Dictionary<Vector3Int, GameObject> roadDictionary)
     {
@@ -56,8 +57,8 @@ public class StructureHelper : MonoBehaviour
                     }
 
                     var building = buildingGenerator.GenerateBuilding(position, rotation, buildingGenerator.buildingSettings[i]);
-                  //  var buildingCollider = building.GetComponentInChildren<Collider>();
-                    var childObject = building.transform.GetChild(0); 
+                    //  var buildingCollider = building.GetComponentInChildren<Collider>();
+                    var childObject = building.transform.GetChild(0);
                     var buildingCollider = childObject.gameObject.AddComponent<BoxCollider>();
 
                     intersects = false;
@@ -91,10 +92,22 @@ public class StructureHelper : MonoBehaviour
                         }
                     }
 
+                    if (randomNaturePlacement)
+                    {
+                        var random = UnityEngine.Random.value;
+                        if (random < randomNaturePlacementThreshold)
+                        {
+                            var nature = SpawnPrefab(naturePrefabs[UnityEngine.Random.Range(0, naturePrefabs.Length)], position, rotation);
+                            if (!structuresDictionary.ContainsKey(position))
+                                structuresDictionary.Add(position, nature);
+                            break;
+                        }
+                    }
                     if (!intersects)
                     {
                         freeEstateSpots.Remove(position);
-                        structuresDictionary.Add(position, building);
+                        if (!structuresDictionary.ContainsKey(position))
+                            structuresDictionary.Add(position, building);
                     }
 
                     attempts++;
@@ -104,13 +117,17 @@ public class StructureHelper : MonoBehaviour
     }
 
 
-
+    private GameObject SpawnPrefab(GameObject prefab, Vector3Int position, Quaternion rotation)
+    {
+        var newStructure = Instantiate(prefab, position, rotation, transform);
+        return newStructure;
+    }
     private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)
     {
         Dictionary<Vector3Int, Direction> freeSpaces = new Dictionary<Vector3Int, Direction>();
         foreach (var position in roadPositions)
         {
-            var neighbourDirections = PlacementHelper.FindNeighbour(position, roadPositions);
+            var neighbourDirections = PlacementHelper.FindNeighbour(position, roadPositions, new Vector3Int(1, 1));
             foreach (Direction direction in Enum.GetValues(typeof(Direction)))
             {
                 if (neighbourDirections.Contains(direction) == false)

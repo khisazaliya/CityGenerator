@@ -22,35 +22,32 @@ public class RoadHelper : MonoBehaviour
 		{
 			rotation = Quaternion.Euler(0, 90, 0);
 		}
+		Vector3Int step = direction * Vector3Int.RoundToInt(road3way.transform.localScale);
 		for (int i = 0; i < length; i++)
 		{
-			var position = Vector3Int.RoundToInt(startPosition + direction * i);
+			var position = Vector3Int.RoundToInt(startPosition + step * i);
 			fixRoadCandidates.Add(position);
 			if (roadDictionary.ContainsKey(position))
 			{
 				continue;
 			}
 			var road = Instantiate(roadStraight, position, rotation, transform);
-			//road.AddComponent<FallTween>();
 			roadDictionary.Add(position, road);
-			var childObject = road.transform.GetChild(0); // Здесь предполагается, что дочерний объект находится на первой позиции в списке дочерних объектов
-
-			// Добавляем BoxCollider к дочернему объекту дороги
+			var childObject = road.transform.GetChild(0);
 			var roadCollider = childObject.gameObject.AddComponent<BoxCollider>();
 			if (i == 0 || i <= length - 1)
 			{
 				fixRoadCandidates.Add(position);
 			}
-			//yield return new WaitForSeconds(animationTime);
+		
 		}
-	//	finishedCoroutine?.Invoke();
 	}
 
 	public void FixRoad()
 	{
 		foreach (var position in fixRoadCandidates)
 		{
-			List<Direction> neighbourDirections = PlacementHelper.FindNeighbour(position, roadDictionary.Keys);
+			List<Direction> neighbourDirections = PlacementHelper.FindNeighbour(position, roadDictionary.Keys, Vector3Int.RoundToInt(road3way.transform.localScale));
 
 			Quaternion rotation = Quaternion.identity;
 			if (neighbourDirections.Count == 1)
@@ -68,11 +65,9 @@ public class RoadHelper : MonoBehaviour
 				{
 					rotation = Quaternion.Euler(0, -90, 0);
 				}
-				//попробовать провtrрять по номеру в словаре, если начальные номера - одни префабы, иначе - другие
+				Destroy(roadDictionary[position]);
 				roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
-				var childObject = roadDictionary[position].transform.GetChild(0); // Здесь предполагается, что дочерний объект находится на первой позиции в списке дочерних объектов
-
-				// Добавляем BoxCollider к дочернему объекту дороги
+				var childObject = roadDictionary[position].transform.GetChild(0); 
 				var roadCollider = childObject.gameObject.AddComponent<BoxCollider>();
 			}
 			else if (neighbourDirections.Count == 2)
@@ -97,11 +92,10 @@ public class RoadHelper : MonoBehaviour
 				{
 					rotation = Quaternion.Euler(0, -90, 0);
 				}
+				Destroy(roadDictionary[position]);
 				roadDictionary[position] = Instantiate(roadCorner, position, rotation, transform);
-				roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
-				var childObject = roadDictionary[position].transform.GetChild(0); // Здесь предполагается, что дочерний объект находится на первой позиции в списке дочерних объектов
-
-				// Добавляем BoxCollider к дочернему объекту дороги
+			//	roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
+				var childObject = roadDictionary[position].transform.GetChild(0); 
 				var roadCollider = childObject.gameObject.AddComponent<BoxCollider>();
 			}
 			else if (neighbourDirections.Count == 3)
@@ -126,21 +120,18 @@ public class RoadHelper : MonoBehaviour
 				{
 					rotation = Quaternion.Euler(0, -90, 0);
 				}
+				Destroy(roadDictionary[position]);
 				roadDictionary[position] = Instantiate(road3way, position, rotation, transform);
-				roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
-				var childObject = roadDictionary[position].transform.GetChild(0); // Здесь предполагается, что дочерний объект находится на первой позиции в списке дочерних объектов
-
-				// Добавляем BoxCollider к дочернему объекту дороги
+		//		roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
+				var childObject = roadDictionary[position].transform.GetChild(0); 
 				var roadCollider = childObject.gameObject.AddComponent<BoxCollider>();
 			}
 			else
 			{
 				Destroy(roadDictionary[position]);
 				roadDictionary[position] = Instantiate(road4way, position, rotation, transform);
-				roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
-				var childObject = roadDictionary[position].transform.GetChild(0); // Здесь предполагается, что дочерний объект находится на первой позиции в списке дочерних объектов
-
-				// Добавляем BoxCollider к дочернему объекту дороги
+			//	roadDictionary[position] = Instantiate(roadEnd, position, rotation, transform);
+				var childObject = roadDictionary[position].transform.GetChild(0);
 				var roadCollider = childObject.gameObject.AddComponent<BoxCollider>();
 			}
 		}

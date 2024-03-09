@@ -5,22 +5,22 @@ using UnityEngine;
 public static class PlacementHelper
 {
     public static System.Random rand = new System.Random();
-    public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection)
+    public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection, Vector3Int roadSize)
     {
         List<Direction> neighbourDirections = new List<Direction>();
-        if (collection.Contains(position + Vector3Int.right))
+        if (collection.Contains(position + Vector3Int.right*roadSize))
         {
             neighbourDirections.Add(Direction.Right);
         }
-        if (collection.Contains(position - Vector3Int.right))
+        if (collection.Contains(position - Vector3Int.right* roadSize))
         {
             neighbourDirections.Add(Direction.Left);
         }
-        if (collection.Contains(position + new Vector3Int(0, 0, 1)))
+        if (collection.Contains(position + new Vector3Int(0, 0, 1)* roadSize))
         {
             neighbourDirections.Add(Direction.Up);
         }
-        if (collection.Contains(position - new Vector3Int(0, 0, 1)))
+        if (collection.Contains(position - new Vector3Int(0, 0, 1)* roadSize))
         {
             neighbourDirections.Add(Direction.Down);
         }
