@@ -30,7 +30,7 @@ public class StructureHelper : MonoBehaviour
                 bool intersects = true;
                 int attempts = 0;
 
-                while (intersects)
+                //while (intersects)
                 {
                     if (attempts >= freeEstateSpots.Count)
                     {
@@ -57,53 +57,59 @@ public class StructureHelper : MonoBehaviour
                     }
 
                     var building = buildingGenerator.GenerateBuilding(position, rotation, buildingGenerator.buildingSettings[i]);
-                    //  var buildingCollider = building.GetComponentInChildren<Collider>();
                     var childObject = building.transform.GetChild(0);
                     var buildingCollider = childObject.gameObject.AddComponent<BoxCollider>();
 
                     intersects = false;
                     var buildingColliders = structuresDictionary.Values.Select(b => b.GetComponentInChildren<Collider>()).ToList();
-                    var allColliders = new List<Collider>();
-                    allColliders.AddRange(structuresDictionary.Values.Select(b => b.GetComponentInChildren<Collider>()));
-                    allColliders.AddRange(roadDictionary.Values.Select(r => r.GetComponentInChildren<BoxCollider>()));
-
-                    for (int k = 0; k < allColliders.Count; k++)
+                    for (int k = 0; k < buildingColliders.Count; k++)
                     {
-                        var existingCollider = allColliders[k];
-                        if (existingCollider != null && buildingCollider != null)
+                        var existingCollider = buildingColliders[k];
+                        if (existingCollider != null && buildingCollider != null && structuresDictionary.ElementAt(k).Value != building)
                         {
                             if (existingCollider.bounds.Intersects(buildingCollider.bounds))
                             {
                                 intersects = true;
-                                if (structuresDictionary.ContainsValue(allColliders[k].gameObject))
-                                {
-                                    Debug.Log("Intersects with existing building");
-                                }
-                                else
-                                {
-                                    Debug.Log("Intersects with road");
-                                }
+                                Debug.Log("Intersects with existing building");
                                 Destroy(building);
                                 break;
                             }
                         }
                     }
+                    foreach (var road in roadDictionary.Values)
+                    {
+                        var existingCollider = road.GetComponentInChildren<BoxCollider>();
+                        if (existingCollider != null && buildingCollider != null)
+                        {
+                            if (existingCollider.bounds.Intersects(buildingCollider.bounds))
+                            {
+                                intersects = true;
+                                Debug.Log("Intersects with road");
+                                Destroy(building);
+                                break;
+                            }
+                        }
+                    }
+
+                    if (randomNaturePlacement)
+                    {
+                        var random = UnityEngine.Random.value;
+                        if (random < randomNaturePlacementThreshold)
+                        for (int l=0; l<2; l++)
+                        {
+                            var nature = SpawnPrefab(naturePrefabs[UnityEngine.Random.Range(0, naturePrefabs.Length)], position + new Vector3Int(10, 0, 10), rotation);
+                        }
+                    }
                     if (!intersects)
                     {
-                       /* freeEstateSpots.Remove(position);
-                        if (randomNaturePlacement)
-                        {
-                          *//*  var random = UnityEngine.Random.value;
-                            if (random < randomNaturePlacementThreshold)*//*
-                            {
-                                var nature = SpawnPrefab(naturePrefabs[UnityEngine.Random.Range(0, naturePrefabs.Length)], position, rotation);
-                            }
-                        }*/
+                        freeEstateSpots.Remove(position);
+                      
                         if (!structuresDictionary.ContainsKey(position))
                             structuresDictionary.Add(position, building);
                     }
 
                     attempts++;
+                    //  }
                 }
             }
         }
@@ -120,7 +126,7 @@ public class StructureHelper : MonoBehaviour
         Dictionary<Vector3Int, Direction> freeSpaces = new Dictionary<Vector3Int, Direction>();
         foreach (var position in roadPositions)
         {
-            var neighbourDirections = PlacementHelper.FindNeighbour(position, roadPositions, new Vector3Int(1, 1));
+            var neighbourDirections = PlacementHelper.FindNeighbour(position, roadPositions);
             foreach (Direction direction in Enum.GetValues(typeof(Direction)))
             {
                 if (neighbourDirections.Contains(direction) == false)

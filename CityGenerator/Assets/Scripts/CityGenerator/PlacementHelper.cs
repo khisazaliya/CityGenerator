@@ -5,22 +5,22 @@ using UnityEngine;
 public static class PlacementHelper
 {
     public static System.Random rand = new System.Random();
-    public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection, Vector3Int roadSize)
+    public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection)
     {
         List<Direction> neighbourDirections = new List<Direction>();
-        if (collection.Contains(position + Vector3Int.right*roadSize))
+        if (collection.Contains(position + Vector3Int.right))
         {
             neighbourDirections.Add(Direction.Right);
         }
-        if (collection.Contains(position - Vector3Int.right* roadSize))
+        if (collection.Contains(position - Vector3Int.right))
         {
             neighbourDirections.Add(Direction.Left);
         }
-        if (collection.Contains(position + new Vector3Int(0, 0, 1)* roadSize))
+        if (collection.Contains(position + new Vector3Int(0, 0, 1)))
         {
             neighbourDirections.Add(Direction.Up);
         }
-        if (collection.Contains(position - new Vector3Int(0, 0, 1)* roadSize))
+        if (collection.Contains(position - new Vector3Int(0, 0, 1)))
         {
             neighbourDirections.Add(Direction.Down);
         }
@@ -34,9 +34,9 @@ public static class PlacementHelper
             case Direction.Up:
                 return new Vector3Int(0, 0, (rand.Next(3, 12)));
             case Direction.Down:
-                return new Vector3Int(0, 0, (rand.Next(-10, -1)));
+                return new Vector3Int(0, 0, (rand.Next(-12, -3)));
             case Direction.Left:
-                return new Vector3Int(rand.Next(-10,-1), 0, 0);
+                return new Vector3Int(rand.Next(-12,-3), 0, 0);
             case Direction.Right:
                 return new Vector3Int(rand.Next(3, 12), 0, 0);
             default:

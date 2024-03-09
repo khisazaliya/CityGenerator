@@ -22,7 +22,7 @@ public class RoadHelper : MonoBehaviour
 		{
 			rotation = Quaternion.Euler(0, 90, 0);
 		}
-		Vector3Int step = direction * Vector3Int.RoundToInt(road3way.transform.localScale);
+		Vector3Int step = direction * 2;
 		for (int i = 0; i < length; i++)
 		{
 			var position = Vector3Int.RoundToInt(startPosition + step * i);
@@ -47,7 +47,7 @@ public class RoadHelper : MonoBehaviour
 	{
 		foreach (var position in fixRoadCandidates)
 		{
-			List<Direction> neighbourDirections = PlacementHelper.FindNeighbour(position, roadDictionary.Keys, Vector3Int.RoundToInt(road3way.transform.localScale));
+			List<Direction> neighbourDirections = PlacementHelper.FindNeighbour(position, roadDictionary.Keys);
 
 			Quaternion rotation = Quaternion.identity;
 			if (neighbourDirections.Count == 1)
