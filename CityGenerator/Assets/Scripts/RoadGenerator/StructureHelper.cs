@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityMeshSimplifier;
 
 public class StructureHelper : MonoBehaviour
 {
@@ -18,14 +19,17 @@ public class StructureHelper : MonoBehaviour
 
 
     public System.Random rand = new System.Random();
+    // —оздаем словарь дл€ хранени€ LODGroup дл€ каждого здани€
+    Dictionary<GameObject, LODGroup> buildingLODGroups = new Dictionary<GameObject, LODGroup>();
+
     public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator, Dictionary<Vector3Int, GameObject> roadDictionary)
     {
         buildingGenerator.LoadField();
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
 
-        for (int i = 0; i < buildingGenerator.buildingSettings.Count; i++)
+        foreach (var buildingSetting in buildingGenerator.buildingSettings)
         {
-            for (int j = 0; j < buildingGenerator.buildingSettings[i].buildingCount; j++)
+            for (int j = 0; j < buildingSetting.buildingCount; j++)
             {
                 bool intersects = true;
                 int attempts = 0;
@@ -56,16 +60,15 @@ public class StructureHelper : MonoBehaviour
                             break;
                     }
 
-                    var building = buildingGenerator.GenerateBuilding(position, rotation, buildingGenerator.buildingSettings[i]);
+                    var building = buildingGenerator.GenerateBuilding(position, rotation, buildingSetting);
                     var childObject = building.transform.GetChild(0);
                     var buildingCollider = childObject.gameObject.AddComponent<BoxCollider>();
 
                     intersects = false;
-                    var buildingColliders = structuresDictionary.Values.Select(b => b.GetComponentInChildren<Collider>()).ToList();
-                    for (int k = 0; k < buildingColliders.Count; k++)
+                    foreach (var existingBuilding in structuresDictionary.Values)
                     {
-                        var existingCollider = buildingColliders[k];
-                        if (existingCollider != null && buildingCollider != null && structuresDictionary.ElementAt(k).Value != building)
+                        var existingCollider = existingBuilding.GetComponentInChildren<Collider>();
+                        if (existingCollider != null && buildingCollider != null && existingBuilding != building)
                         {
                             if (existingCollider.bounds.Intersects(buildingCollider.bounds))
                             {
@@ -76,45 +79,71 @@ public class StructureHelper : MonoBehaviour
                             }
                         }
                     }
-                    foreach (var road in roadDictionary.Values)
-                    {
-                        var existingCollider = road.GetComponentInChildren<BoxCollider>();
-                        if (existingCollider != null && buildingCollider != null)
-                        {
-                            if (existingCollider.bounds.Intersects(buildingCollider.bounds))
-                            {
-                                intersects = true;
-                                Debug.Log("Intersects with road");
-                                Destroy(building);
-                                break;
-                            }
-                        }
-                    }
 
                     if (randomNaturePlacement)
                     {
                         var random = UnityEngine.Random.value;
                         if (random < randomNaturePlacementThreshold)
-                        for (int l=0; l<2; l++)
                         {
-                            var nature = SpawnPrefab(naturePrefabs[UnityEngine.Random.Range(0, naturePrefabs.Length)], position + new Vector3Int(10, 0, 10), rotation);
+                            for (int l = 0; l < 2; l++)
+                            {
+                                var nature = SpawnPrefab(naturePrefabs[UnityEngine.Random.Range(0, naturePrefabs.Length)], position + new Vector3Int(10, 0, 10), rotation);
+                            }
                         }
                     }
+
                     if (!intersects)
                     {
                         freeEstateSpots.Remove(position);
-                      
+                        GenerateLODs(building);
                         if (!structuresDictionary.ContainsKey(position))
+                        {
                             structuresDictionary.Add(position, building);
+                        }
                     }
 
                     attempts++;
-                    //  }
                 }
             }
         }
     }
 
+    private void GenerateLODs(GameObject building)
+    {
+        if (!buildingLODGroups.ContainsKey(building))
+        {
+            //GenerateLODs(building);
+            LODLevel[] levels = new LODLevel[]
+            {
+                            new LODLevel(0.5f,  1f),
+                            new LODLevel(0.01f, 0.4f)
+            };
+
+            bool autoCollectRenderers = true;
+            SimplificationOptions simplificationOptions = new SimplificationOptions()
+            {
+                PreserveBorderEdges = true,
+                PreserveUVSeamEdges = false,
+                PreserveUVFoldoverEdges = false,
+                PreserveSurfaceCurvature = false,
+                EnableSmartLink = true,
+                VertexLinkDistance = 0.00001,
+                MaxIterationCount = 100,
+                Agressiveness = 1.0,
+                ManualUVComponentCount = false,
+                UVComponentCount = 2
+            };
+
+            string saveAssetsPath = "Assets/Buildings";
+            LODGroup lodGroup = LODGenerator.GenerateLODs(building, levels, autoCollectRenderers, simplificationOptions, saveAssetsPath);
+            buildingLODGroups.Add(building, lodGroup);
+        }
+        else
+        {
+            // »спользуем уже существующие LODs дл€ этого здани€
+            buildingLODGroups[building].gameObject.SetActive(true);
+        }
+    }
 
     private GameObject SpawnPrefab(GameObject prefab, Vector3Int position, Quaternion rotation)
     {

@@ -59,43 +59,17 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg);
         }
-       if (Application.isPlaying)
+        meshCombiner.CombineMeshes(bldgFolder);
+        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+        string objectName = "Wing";
+        foreach (GameObject obj in objects)
         {
-            LODLevel[] levels = new LODLevel[]
+            if (obj.name == objectName)
             {
-             new LODLevel(0.5f,  1f),
-             new LODLevel(0.3f, 0.65f),
-             new LODLevel(0.1f, 0.4f)
-            };
-            bool autoCollectRenderers = true;
-            SimplificationOptions simplificationOptions = new SimplificationOptions()
-            {
-                PreserveBorderEdges = true,
-                PreserveUVSeamEdges = false,
-                PreserveUVFoldoverEdges = false,
-                PreserveSurfaceCurvature = false,
-                EnableSmartLink = true,
-                VertexLinkDistance = 0.00001,
-                MaxIterationCount = 100,
-                Agressiveness = 1.0,
-                ManualUVComponentCount = false,
-                UVComponentCount = 2
-            };
-
-            string saveAssetsPath = "Assets/Buildings";
-            meshCombiner.CombineMeshes(bldgFolder);
-            GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-            string objectName = "Wing";
-            foreach (GameObject obj in objects)
-            {
-                if (obj.name == objectName)
-                {
-                    DestroyImmediate(obj);
-                }
+                DestroyImmediate(obj);
             }
-            LODGroup lodGroup = LODGenerator.GenerateLODs(GameObject.Find("CombinedMesh"), levels, autoCollectRenderers, simplificationOptions, saveAssetsPath);
         }
-            return bldgFolder.gameObject;
+        return bldgFolder.gameObject;
     }
 
     private void RenderWing(Wing wing, Building bldg)
