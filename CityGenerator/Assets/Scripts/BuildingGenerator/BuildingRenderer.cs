@@ -59,18 +59,43 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg);
         }
-        bldgFolder.AddComponent<LODGeneratorHelper>();
-       meshCombiner.CombineMeshes(bldgFolder);
-        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-        string objectName = "Wing";
-        foreach (GameObject obj in objects)
+       if (Application.isPlaying)
         {
-            if (obj.name == objectName)
+            LODLevel[] levels = new LODLevel[]
             {
-                DestroyImmediate(obj);
+             new LODLevel(0.5f,  1f),
+             new LODLevel(0.3f, 0.65f),
+             new LODLevel(0.1f, 0.4f)
+            };
+            bool autoCollectRenderers = true;
+            SimplificationOptions simplificationOptions = new SimplificationOptions()
+            {
+                PreserveBorderEdges = true,
+                PreserveUVSeamEdges = false,
+                PreserveUVFoldoverEdges = false,
+                PreserveSurfaceCurvature = false,
+                EnableSmartLink = true,
+                VertexLinkDistance = 0.00001,
+                MaxIterationCount = 100,
+                Agressiveness = 1.0,
+                ManualUVComponentCount = false,
+                UVComponentCount = 2
+            };
+
+            string saveAssetsPath = "Assets/Buildings";
+            meshCombiner.CombineMeshes(bldgFolder);
+            GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+            string objectName = "Wing";
+            foreach (GameObject obj in objects)
+            {
+                if (obj.name == objectName)
+                {
+                    DestroyImmediate(obj);
+                }
             }
+            LODGroup lodGroup = LODGenerator.GenerateLODs(GameObject.Find("CombinedMesh"), levels, autoCollectRenderers, simplificationOptions, saveAssetsPath);
         }
-        return bldgFolder.gameObject;
+            return bldgFolder.gameObject;
     }
 
     private void RenderWing(Wing wing, Building bldg)
@@ -81,12 +106,12 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderStory(story, wing, wingFolder, bldg);
         }
-        RenderRoof(wing, wing.Bounds.min.x, wing.Bounds.max.x, wing.Bounds.min.y, wing.Bounds.max.y, wingFolder, bldg.level,  bldg);
-        if (IsNorthOffsetCorrect(bldg, wing)) RenderNorthOffsetRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall+1, 
+        RenderRoof(wing, wing.Bounds.min.x, wing.Bounds.max.x, wing.Bounds.min.y, wing.Bounds.max.y, wingFolder, bldg.level, bldg);
+        if (IsNorthOffsetCorrect(bldg, wing)) RenderNorthOffsetRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall + 1,
             wing.Bounds.max.y, wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.northWallHeight > bldg.level ? bldg.level : bldg.northWallHeight, bldg);
         if (IsSouthOffsetCorrect(bldg, wing)) RenderSouthOffsetRoof(wing, bldg.minOffsetSouthWall, bldg.maxOffsetSouthWall + 1,
             wing.Bounds.min.y - bldg.depthOffsetSouthWall, wing.Bounds.min.y, wingFolder, bldg.southWallHeight > bldg.level ? bldg.level : bldg.southWallHeight, bldg);
-        if (IsEastOffsetCorrect(bldg, wing)) RenderEastOffsetRoof(wing, wing.Bounds.max.x, wing.Bounds.max.x + bldg.depthOffsetEastWall, 
+        if (IsEastOffsetCorrect(bldg, wing)) RenderEastOffsetRoof(wing, wing.Bounds.max.x, wing.Bounds.max.x + bldg.depthOffsetEastWall,
             bldg.minOffsetEastWall, bldg.maxOffsetEastWall + 1, wingFolder, bldg.eastWallHeight > bldg.level ? bldg.level : bldg.eastWallHeight, bldg);
     }
 
@@ -109,13 +134,13 @@ public class BuildingRenderer : MonoBehaviour
                         {
                             if (IsSouthOffsetCorrect(bldg, wing) &&
                                x >= bldg.minOffsetSouthWall && x <= bldg.maxOffsetSouthWall)
-                                PlaceFloor(x, wing.Bounds.min.y - bldg.depthOffsetSouthWall-1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
+                                PlaceFloor(x, wing.Bounds.min.y - bldg.depthOffsetSouthWall - 1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
                             else
                                 PlaceFloor(x, y - 1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[bldg.floorSouthPrefabIndex]);
                             if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
                             {
                                 if (x >= wing.Bounds.max.x - bldg.depthOffsetEastWall && x <= wing.Bounds.max.x + bldg.minOffsetEastWall)
-                                    PlaceFloor(x + bldg.depthOffsetEastWall, bldg.minOffsetEastWall-1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
+                                    PlaceFloor(x + bldg.depthOffsetEastWall, bldg.minOffsetEastWall - 1, i, new int[3] { 0, -90, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
                             }
                         }
 
@@ -175,7 +200,7 @@ public class BuildingRenderer : MonoBehaviour
                                 PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1) + 1, y + bldg.depthOffsetNorthWall - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[bldg.floorNorthOffsetPrefabIndex]);
 
                             if (IsSouthOffsetCorrect(bldg, wing) && y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
-                                    PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1) + 1, y - wing.Bounds.max.y-1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
+                                PlaceFloor(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1) + 1, y - wing.Bounds.max.y - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
 
                             if (IsEastOffsetCorrect(bldg, wing) && y >= wing.Bounds.min.y + bldg.minOffsetEastWall && y <= wing.Bounds.min.y + bldg.maxOffsetEastWall)
                             {
@@ -229,14 +254,14 @@ public class BuildingRenderer : MonoBehaviour
                                     PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall0EastOffsetPrefabIndex]);
                                 else if (i % 2 == 1)
                                     PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall1EastOffsetPrefabIndex]);
-                                else 
+                                else
                                     PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex]);
                             }
                             else
                             {
-                                if (i == 0  && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[bldg.wallDoorPrefabIndex]);
+                                if (i == 0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[bldg.wallDoorPrefabIndex]);
                                 else if (i == 0)
-                                PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0EastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0EastPrefabIndex]);
                                 else if (i % 2 == 1)
                                     PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1EastPrefabIndex]);
                                 else
@@ -263,7 +288,7 @@ public class BuildingRenderer : MonoBehaviour
                     {
                         if (i == 0)
                         {
-                            if (IsNorthOffsetCorrect(bldg, wing) &&  x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
+                            if (IsNorthOffsetCorrect(bldg, wing) && x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
                                 PlaceFloor(x + 1, y + bldg.depthOffsetNorthWall, i, new int[3] { 0, 90, 0 }, storyFolder, floorPrefabs[bldg.floorNorthOffsetPrefabIndex]);
                             else
                                 PlaceFloor(x + 1, y, i, new int[3] { 0, 90, 0 }, storyFolder, floorPrefabs[bldg.floorNorthPrefabIndex]);
@@ -392,8 +417,8 @@ public class BuildingRenderer : MonoBehaviour
     public bool IsEastOffsetCorrect(Building bldg, Wing wing)
     {
         if (bldg.depthOffsetEastWall > wing.Bounds.max.x) bldg.depthOffsetEastWall = wing.Bounds.max.x;
-        if (bldg.maxOffsetEastWall > wing.Bounds.max.y) bldg.maxOffsetEastWall = wing.Bounds.max.y-1;
-        return bldg.eastWallHeight>0 &&  bldg.depthOffsetEastWall > 0 && bldg.minOffsetEastWall >= 0 && bldg.minOffsetEastWall <= wing.Bounds.max.y &&
+        if (bldg.maxOffsetEastWall > wing.Bounds.max.y) bldg.maxOffsetEastWall = wing.Bounds.max.y - 1;
+        return bldg.eastWallHeight > 0 && bldg.depthOffsetEastWall > 0 && bldg.minOffsetEastWall >= 0 && bldg.minOffsetEastWall <= wing.Bounds.max.y &&
                              bldg.maxOffsetEastWall >= 0 && bldg.maxOffsetEastWall < wing.Bounds.size.y && bldg.maxOffsetEastWall >= bldg.minOffsetEastWall;
     }
     public List<Tuple<int, int>> GenerateBuildingShape(int max)
@@ -423,7 +448,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int i = 0; i < numberOfBalconies; i++)
             {
-                balconiesSouthIndexes.Add(new Tuple<int, int>(rand.Next(2, 2+randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
+                balconiesSouthIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
             }
         }
         return balconiesSouthIndexes;
@@ -455,9 +480,9 @@ public class BuildingRenderer : MonoBehaviour
     }
     public List<Tuple<int, int>> CalculateWestBalconiesIndex(Building bldg, int numberOfBalconies, int randomSeedOfBalconies)
     {
-        if (randomSeedOfBalconies == savedSeedOfWestBalconies && numberOfBalconies ==savedNumberOfWestBalconies) return balconiesWestIndexes;
+        if (randomSeedOfBalconies == savedSeedOfWestBalconies && numberOfBalconies == savedNumberOfWestBalconies) return balconiesWestIndexes;
         savedSeedOfWestBalconies = randomSeedOfBalconies;
-       savedNumberOfWestBalconies = numberOfBalconies;
+        savedNumberOfWestBalconies = numberOfBalconies;
         balconiesWestIndexes.Clear();
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
@@ -472,7 +497,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int i = 0; i < numberOfBalconies; i++)
             {
-                balconiesWestIndexes.Add(new Tuple<int, int>(rand.Next(2, 2+randomSeedOfBalconies), rand.Next(0, 2+randomSeedOfBalconies)));
+                balconiesWestIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
             }
         }
         return balconiesWestIndexes;
@@ -638,7 +663,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if (y == 1 || y == 0  || x == 1 || x == 0)
+                if (y == 1 || y == 0 || x == 1 || x == 0)
                 {
                     prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
                     direction = RoofDirection.North;
@@ -710,7 +735,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if (y == minY || x == minX || y == maxY-1 || x == maxX-1)
+                if (y == minY || x == minX || y == maxY - 1 || x == maxX - 1)
                 {
                     prefab = roofCornerPrefabs[bldg.roofNorthOffsetCornerPrefabIndex];
                     direction = RoofDirection.West;
@@ -941,85 +966,85 @@ public class BuildingRenderer : MonoBehaviour
 
         return size;
     }
-  /*  [HideInInspector] public int floorSouthPrefabIndex = 0;
-    [HideInInspector] public int wall0SouthPrefabIndex = 0;
-    [HideInInspector] public int wall1SouthPrefabIndex = 0;
-    [HideInInspector] public int wall2SouthPrefabIndex = 0;
-    [HideInInspector] public int doorSouthPrefabIndex = 0;
-    [HideInInspector] public int roofPrefabIndex = 0;
-    [HideInInspector] public int roofBoundPrefabIndex = 0;
-    [HideInInspector] public int roofCornerPrefabIndex = 0;
-    [HideInInspector] public int stairSouthPrefabIndex = 0;
-    [HideInInspector] public int balconySouthPrefabIndex = 0;
+    /*  [HideInInspector] public int floorSouthPrefabIndex = 0;
+      [HideInInspector] public int wall0SouthPrefabIndex = 0;
+      [HideInInspector] public int wall1SouthPrefabIndex = 0;
+      [HideInInspector] public int wall2SouthPrefabIndex = 0;
+      [HideInInspector] public int doorSouthPrefabIndex = 0;
+      [HideInInspector] public int roofPrefabIndex = 0;
+      [HideInInspector] public int roofBoundPrefabIndex = 0;
+      [HideInInspector] public int roofCornerPrefabIndex = 0;
+      [HideInInspector] public int stairSouthPrefabIndex = 0;
+      [HideInInspector] public int balconySouthPrefabIndex = 0;
 
-    [HideInInspector] public int savedSeedOfSouthBalconies;
-    [HideInInspector] public int savedNumberOfSouthBalconies;
+      [HideInInspector] public int savedSeedOfSouthBalconies;
+      [HideInInspector] public int savedNumberOfSouthBalconies;
 
-    [HideInInspector] public int floorNorthPrefabIndex = 0;
-    [HideInInspector] public int wall0NorthPrefabIndex = 0;
-    [HideInInspector] public int wall1NorthPrefabIndex = 0;
-    [HideInInspector] public int wall2NorthPrefabIndex = 0;
-    [HideInInspector] public int doorNorthPrefabIndex = 0;
-    [HideInInspector] public int stairNorthPrefabIndex = 0;
-    [HideInInspector] public int balconyNorthPrefabIndex = 0;
+      [HideInInspector] public int floorNorthPrefabIndex = 0;
+      [HideInInspector] public int wall0NorthPrefabIndex = 0;
+      [HideInInspector] public int wall1NorthPrefabIndex = 0;
+      [HideInInspector] public int wall2NorthPrefabIndex = 0;
+      [HideInInspector] public int doorNorthPrefabIndex = 0;
+      [HideInInspector] public int stairNorthPrefabIndex = 0;
+      [HideInInspector] public int balconyNorthPrefabIndex = 0;
 
-    [HideInInspector] public int savedSeedOfNorthBalconies;
-    [HideInInspector] public int savedNumberOfNorthBalconies;
+      [HideInInspector] public int savedSeedOfNorthBalconies;
+      [HideInInspector] public int savedNumberOfNorthBalconies;
 
-    [HideInInspector] public int floorEastPrefabIndex = 0;
-    [HideInInspector] public int wall0EastPrefabIndex = 0;
-    [HideInInspector] public int wall1EastPrefabIndex = 0;
-    [HideInInspector] public int wall2EastPrefabIndex = 0;
-    [HideInInspector] public int wallDoorPrefabIndex = 0;
-    [HideInInspector] public int doorEastPrefabIndex = 0;
-    [HideInInspector] public int stairEastPrefabIndex = 0;
-    [HideInInspector] public int balconyEastPrefabIndex = 0;
+      [HideInInspector] public int floorEastPrefabIndex = 0;
+      [HideInInspector] public int wall0EastPrefabIndex = 0;
+      [HideInInspector] public int wall1EastPrefabIndex = 0;
+      [HideInInspector] public int wall2EastPrefabIndex = 0;
+      [HideInInspector] public int wallDoorPrefabIndex = 0;
+      [HideInInspector] public int doorEastPrefabIndex = 0;
+      [HideInInspector] public int stairEastPrefabIndex = 0;
+      [HideInInspector] public int balconyEastPrefabIndex = 0;
 
-    [HideInInspector] public int savedSeedOfEastBalconies;
-    [HideInInspector] public int savedNumberOfEastBalconies;
+      [HideInInspector] public int savedSeedOfEastBalconies;
+      [HideInInspector] public int savedNumberOfEastBalconies;
 
-    [HideInInspector] public int floorWestPrefabIndex = 0;
-    [HideInInspector] public int wall0WestPrefabIndex = 0;
-    [HideInInspector] public int wall1WestPrefabIndex = 0;
-    [HideInInspector] public int wall2WestPrefabIndex = 0;
-    [HideInInspector] public int doorWestPrefabIndex = 0;
-    [HideInInspector] public int stairWestPrefabIndex = 0;
-    [HideInInspector] public int balconyWestPrefabIndex = 0;
+      [HideInInspector] public int floorWestPrefabIndex = 0;
+      [HideInInspector] public int wall0WestPrefabIndex = 0;
+      [HideInInspector] public int wall1WestPrefabIndex = 0;
+      [HideInInspector] public int wall2WestPrefabIndex = 0;
+      [HideInInspector] public int doorWestPrefabIndex = 0;
+      [HideInInspector] public int stairWestPrefabIndex = 0;
+      [HideInInspector] public int balconyWestPrefabIndex = 0;
 
-    [HideInInspector] public int savedSeedOfWestBalconies;
-    [HideInInspector] public int savedNumberOfWestBalconies;
+      [HideInInspector] public int savedSeedOfWestBalconies;
+      [HideInInspector] public int savedNumberOfWestBalconies;
 
-    [HideInInspector] public int floorSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall0SouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall1SouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall2SouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int doorSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofSouthOffsetBoundPrefabIndex = 0;
-    [HideInInspector] public int roofSouthOffsetCornerPrefabIndex = 0;
-    [HideInInspector] public int stairSouthOffsetPrefabIndex = 0;
-    [HideInInspector] public int balconySouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int floorSouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall0SouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall1SouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall2SouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int doorSouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int roofSouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int roofSouthOffsetBoundPrefabIndex = 0;
+      [HideInInspector] public int roofSouthOffsetCornerPrefabIndex = 0;
+      [HideInInspector] public int stairSouthOffsetPrefabIndex = 0;
+      [HideInInspector] public int balconySouthOffsetPrefabIndex = 0;
 
 
-    [HideInInspector] public int floorNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall0NorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall1NorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall2NorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int doorNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofNorthOffsetBoundPrefabIndex = 0;
-    [HideInInspector] public int roofNorthOffsetCornerPrefabIndex = 0;
-    [HideInInspector] public int stairNorthOffsetPrefabIndex = 0;
-    [HideInInspector] public int balconyNorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int floorNorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall0NorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall1NorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall2NorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int doorNorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int roofNorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int roofNorthOffsetBoundPrefabIndex = 0;
+      [HideInInspector] public int roofNorthOffsetCornerPrefabIndex = 0;
+      [HideInInspector] public int stairNorthOffsetPrefabIndex = 0;
+      [HideInInspector] public int balconyNorthOffsetPrefabIndex = 0;
 
-    [HideInInspector] public int floorEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall0EastOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall1EastOffsetPrefabIndex = 0;
-    [HideInInspector] public int wall2EastOffsetPrefabIndex = 0;
-    [HideInInspector] public int doorEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int roofEastOffsetBoundPrefabIndex = 0;
-    [HideInInspector] public int roofEastOffsetCornerPrefabIndex = 0;
-    [HideInInspector] public int stairEastOffsetPrefabIndex = 0;
-    [HideInInspector] public int balconyEastOffsetPrefabIndex = 0;*/
+      [HideInInspector] public int floorEastOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall0EastOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall1EastOffsetPrefabIndex = 0;
+      [HideInInspector] public int wall2EastOffsetPrefabIndex = 0;
+      [HideInInspector] public int doorEastOffsetPrefabIndex = 0;
+      [HideInInspector] public int roofEastOffsetPrefabIndex = 0;
+      [HideInInspector] public int roofEastOffsetBoundPrefabIndex = 0;
+      [HideInInspector] public int roofEastOffsetCornerPrefabIndex = 0;
+      [HideInInspector] public int stairEastOffsetPrefabIndex = 0;
+      [HideInInspector] public int balconyEastOffsetPrefabIndex = 0;*/
 }
