@@ -1,44 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class PlacementHelper
 {
     public static System.Random rand = new System.Random();
-    public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection)
+    public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection, int roadModuleSize)
     {
         List<Direction> neighbourDirections = new List<Direction>();
-        if (collection.Contains(position + Vector3Int.right))
+    
+        // ѕровер€ем соседние клетки по горизонтали
+        if (collection.Contains(position + Vector3Int.right * roadModuleSize))
         {
             neighbourDirections.Add(Direction.Right);
         }
-        if (collection.Contains(position - Vector3Int.right))
+        if (collection.Contains(position - Vector3Int.right * roadModuleSize))
         {
             neighbourDirections.Add(Direction.Left);
         }
-        if (collection.Contains(position + new Vector3Int(0, 0, 1)))
+
+        // ѕровер€ем соседние клетки по вертикали
+        if (collection.Contains(position + new Vector3Int(0, 0, roadModuleSize)))
         {
             neighbourDirections.Add(Direction.Up);
         }
-        if (collection.Contains(position - new Vector3Int(0, 0, 1)))
+        if (collection.Contains(position - new Vector3Int(0, 0, roadModuleSize)))
         {
             neighbourDirections.Add(Direction.Down);
         }
+
         return neighbourDirections;
     }
 
-    internal static Vector3Int GetOffsetFromDirection(Direction direction)
+
+
+    internal static Vector3Int GetOffsetFromDirection(Direction direction, int roadScale)
     {
         switch (direction)
         {
             case Direction.Up:
-                return new Vector3Int(0, 0, (rand.Next(3, 12)));
+                return new Vector3Int(0, 0, (rand.Next(3 + roadScale, 12 + roadScale)));
             case Direction.Down:
-                return new Vector3Int(0, 0, (rand.Next(-12, -3)));
+                return new Vector3Int(0, 0, (rand.Next(-12 - roadScale, -3 - roadScale)));
             case Direction.Left:
-                return new Vector3Int(rand.Next(-12,-3), 0, 0);
+                return new Vector3Int(rand.Next(-12 - roadScale, -3 - roadScale), 0, 0);
             case Direction.Right:
-                return new Vector3Int(rand.Next(3, 12), 0, 0);
+                return new Vector3Int(rand.Next(3 + roadScale, 12 + roadScale), 0, 0);
             default:
                 break;
         }

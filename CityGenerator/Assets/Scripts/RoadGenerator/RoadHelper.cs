@@ -22,10 +22,9 @@ public class RoadHelper : MonoBehaviour
 		{
 			rotation = Quaternion.Euler(0, 90, 0);
 		}
-		Vector3Int step = direction * 2;
 		for (int i = 0; i < length; i++)
 		{
-			var position = Vector3Int.RoundToInt(startPosition + step * i);
+			var position = Vector3Int.RoundToInt(startPosition + direction * i) * (int)roadStraight.transform.localScale.x;
 			fixRoadCandidates.Add(position);
 			if (roadDictionary.ContainsKey(position))
 			{
@@ -39,15 +38,16 @@ public class RoadHelper : MonoBehaviour
 			{
 				fixRoadCandidates.Add(position);
 			}
-		
+
 		}
 	}
+
 
 	public void FixRoad()
 	{
 		foreach (var position in fixRoadCandidates)
 		{
-			List<Direction> neighbourDirections = PlacementHelper.FindNeighbour(position, roadDictionary.Keys);
+			List<Direction> neighbourDirections = PlacementHelper.FindNeighbour(position, roadDictionary.Keys, (int)roadStraight.transform.localScale.x);
 
 			Quaternion rotation = Quaternion.identity;
 			if (neighbourDirections.Count == 1)

@@ -22,10 +22,10 @@ public class StructureHelper : MonoBehaviour
     // —оздаем словарь дл€ хранени€ LODGroup дл€ каждого здани€
     Dictionary<GameObject, LODGroup> buildingLODGroups = new Dictionary<GameObject, LODGroup>();
 
-    public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator, Dictionary<Vector3Int, GameObject> roadDictionary)
+    public void PlaceStructuresAroundRoad(List<Vector3Int> roadPositions, BuildingGenerator buildingGenerator, Dictionary<Vector3Int, GameObject> roadDictionary, int roadWidth)
     {
         buildingGenerator.LoadField();
-        Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions);
+        Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions, roadWidth);
 
         foreach (var buildingSetting in buildingGenerator.buildingSettings)
         {
@@ -95,7 +95,7 @@ public class StructureHelper : MonoBehaviour
                     if (!intersects)
                     {
                         freeEstateSpots.Remove(position);
-                        GenerateLODs(building);
+                      //  GenerateLODs(building);
                         if (!structuresDictionary.ContainsKey(position))
                         {
                             structuresDictionary.Add(position, building);
@@ -115,15 +115,15 @@ public class StructureHelper : MonoBehaviour
             //GenerateLODs(building);
             LODLevel[] levels = new LODLevel[]
             {
-                            new LODLevel(0.5f,  1f),
-                            new LODLevel(0.01f, 0.4f)
+                            new LODLevel(0.5f, 0.5f, 1f, true, true),
+                            new LODLevel(0.01f, 0.5f, 0.4f, true, true)
             };
 
             bool autoCollectRenderers = true;
             SimplificationOptions simplificationOptions = new SimplificationOptions()
             {
                 PreserveBorderEdges = true,
-                PreserveUVSeamEdges = false,
+                PreserveUVSeamEdges = true,
                 PreserveUVFoldoverEdges = false,
                 PreserveSurfaceCurvature = false,
                 EnableSmartLink = true,
@@ -143,6 +143,7 @@ public class StructureHelper : MonoBehaviour
             // »спользуем уже существующие LODs дл€ этого здани€
             buildingLODGroups[building].gameObject.SetActive(true);
         }
+      //  Destroy(GameObject.Find("Wing"));
     }
 
     private GameObject SpawnPrefab(GameObject prefab, Vector3Int position, Quaternion rotation)
@@ -150,17 +151,18 @@ public class StructureHelper : MonoBehaviour
         var newStructure = Instantiate(prefab, position, rotation, transform);
         return newStructure;
     }
-    private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions)
+    private Dictionary<Vector3Int, Direction> FindFreeSpacesAroundRoad(List<Vector3Int> roadPositions, int roadWidth)
     {
         Dictionary<Vector3Int, Direction> freeSpaces = new Dictionary<Vector3Int, Direction>();
         foreach (var position in roadPositions)
         {
-            var neighbourDirections = PlacementHelper.FindNeighbour(position, roadPositions);
+          //  var neighbourDirections = PlacementHelper.FindNeighbour(position, roadPositions, roadWidth);
+            var neighbourDirections = PlacementHelper.FindNeighbour(position, roadPositions, roadWidth);
             foreach (Direction direction in Enum.GetValues(typeof(Direction)))
             {
                 if (neighbourDirections.Contains(direction) == false)
                 {
-                    var newPosition = position + PlacementHelper.GetOffsetFromDirection(direction);
+                    var newPosition = position + PlacementHelper.GetOffsetFromDirection(direction, roadWidth);
                     if (freeSpaces.ContainsKey(newPosition))
                     {
                         continue;
