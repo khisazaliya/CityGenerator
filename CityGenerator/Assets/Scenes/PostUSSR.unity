@@ -15,15 +15,15 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+  m_FogColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 1}
   m_FogMode: 2
-  m_FogDensity: 0.05
+  m_FogDensity: 0.02
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientGroundColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+  m_AmbientIntensity: 1.93
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: c1c961cbd00909b45b34d97fd7df5cbf, type: 2}
@@ -36,8 +36,8 @@ RenderSettings:
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
-  m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 1350023959}
+  m_CustomReflection: {fileID: 8900000, guid: 74715a3abdcea5945a3b80a1bfb6d311, type: 3}
+  m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0.023287013, g: 0.102448754, b: 0.18863028, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: bea552728616e484eaea7a1a9909c23d, type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -12394,7 +12394,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 5
+      value: 11.69
       mode: 0
       spread: 0
       speed:
@@ -33295,7 +33295,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -44848,7 +44848,7 @@ Transform:
   m_GameObject: {fileID: 1350023958}
   serializedVersion: 2
   m_LocalRotation: {x: 0.30072096, y: 0.8831382, z: -0.31594652, w: -0.17266092}
-  m_LocalPosition: {x: -2.6514978, y: 3.1745355, z: -3.9346535}
+  m_LocalPosition: {x: -12.25, y: 11.27, z: -2.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65601,7 +65601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1898327593
 Transform:
   m_ObjectHideFlags: 0

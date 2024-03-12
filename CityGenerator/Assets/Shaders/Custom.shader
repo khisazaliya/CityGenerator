@@ -1,62 +1,66 @@
-Shader "Custom/LODShader" {
-    Properties {
-        _MainTex ("Texture", 2D) = "white" {}
-        _Color ("Color", Color) = (1,1,1,1)
-        _Cutoff ("Alpha Cutoff", Range(0,1)) = 0.5
-        _LODThreshold ("LOD Threshold", Range(0,1)) = 0.5
-    }
-    SubShader {
-        Tags { "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-        Blend SrcAlpha OneMinusSrcAlpha
-        LOD 100
-        
-        Cull Front
-        ZWrite On
-        ZTest LEqual
-
-        Pass {
-            CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
-
-            #include "UnityCG.cginc"
-
-            struct appdata {
-                float4 vertex : POSITION;
-                float3 normal : NORMAL;
-            };
-
-            struct v2f {
-                float4 pos : SV_POSITION;
-                float4 color : COLOR;
-            };
-
-            float4 _Color;
-            float _Cutoff;
-            float _LODThreshold;
-
-            v2f vert(appdata v) {
-                v2f o;
-                o.pos = UnityObjectToClipPos(v.vertex);
-                o.color = _Color;
-                return o;
-            }
-
-            half4 frag(v2f i) : SV_Target {
-                // Определяем уровень детализации по расстоянию от камеры
-                float dist = distance(_WorldSpaceCameraPos, mul(unity_ObjectToWorld, i.pos));
-                float lodFactor = saturate(dist / _LODThreshold);
-
-                // Если объект находится дальше заданного порога, делаем его менее прозрачным
-                if (lodFactor > _Cutoff) {
-                    return half4(i.color.rgb, 1 - (_Cutoff / lodFactor));
-                }
-                
-                // Иначе рисуем объект с полной непрозрачностью
-                return i.color;
-            }
-            ENDCG
-        }
-    }
-    FallBack "Diffuse"
+Shader "CustomFog"
+{
+Properties
+{
+_FogStart("Fog Start", float) = 0 //объявляем наши новые переменные для тумана
+_FogEnd ("Fog End", float) = 50
+}
+SubShader
+{
+Tags{ "RenderType" = "Opaque" }
+Fog{ Mode off }
+Pass
+{
+CGPROGRAM
+#pragma vertex vert
+#pragma fragment frag
+#pragma multi_compile _ LIGHTMAP_ON
+#include "UnityCG.cginc"
+half _FogStart;  //определяем новые переменные в рамках CGPROGRAM
+half _FogEnd;
+struct appdata
+{
+float4 vertex : POSITION;
+float4 color : COLOR;
+float4 uv : TEXCOORD1;
+};
+struct v2f
+{
+float4 pos : SV_POSITION;
+float4 uv : TEXCOORD1;
+half fog : TEXCOORD2;  //добавляем новую переменную для расчета расстояния отображения тумана и последующей передачи в fragment функцию
+float4 color : COLOR;
+half3 viewDir : TEXCOORD3;
+};
+v2f vert(appdata v)
+{
+v2f o;
+o.color = v.color;
+o.pos = UnityObjectToClipPos(v.vertex);
+//lightmaps
+o.uv.xy = v.uv.xy * unity_LightmapST.xy + unity_LightmapST.zw;
+//fog высчитываем положение тумана в зависимости от заданных значений
+half fogz = UnityObjectToViewPos(v.vertex).z;
+o.fog = saturate((fogz + _FogStart) / (_FogStart - _FogEnd));
+float3 worldPos = mul(unity_ObjectToWorld, v.vertex).xyz;
+o.viewDir = -(normalize(UnityWorldSpaceViewDir(worldPos)));
+return o;
+}
+half4 frag(v2f i) : COLOR
+{
+UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
+fixed4 c = i.color * 0.5;
+//lightmaps
+#ifdef LIGHTMAP_ON
+  fixed4 lm = UNITY_SAMPLE_TEX2D(unity_Lightmap, i.uv.xy);
+c.rgb *= lm.rgb * 4;
+#endif
+//fog заменяем плавно цвет поверхности на цвет кубомапы (он же наш туман). Кубомапу нужно задать в настройках освещение (Lighting > Scene > Environment Reflection > Source = Custom > Cubemap = Ваша кубомапа)
+half4 fogCube = UNITY_SAMPLE_TEXCUBE(unity_SpecCube0, i.viewDir);
+return lerp(c, fogCube, i.fog);
+}
+ENDCG
+}
+}
+Fallback "Mobile/VertexLit"
 }
