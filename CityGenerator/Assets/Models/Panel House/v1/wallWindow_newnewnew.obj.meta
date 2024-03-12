@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: WallWindow1_low_Wood_Wall_Double_Cross_01_GlassMat
-    second: {fileID: 2100000, guid: 0ec201652778fc142841ecb37a9c2f73, type: 2}
+    second: {fileID: 2100000, guid: 26928252df0d28d4b9adac70703d362c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

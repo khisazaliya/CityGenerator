@@ -165,7 +165,7 @@ Material:
     - _ZWrite: 0
     - __dirty: 1
     m_Colors:
-    - _Color: {r: 0.2805714, g: 0.51529133, b: 0.6132076, a: 1}
+    - _Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 0}
     - _DiffuseScatteringCol: {r: 0.254717, g: 0.12135102, b: 0.12135102, a: 0}

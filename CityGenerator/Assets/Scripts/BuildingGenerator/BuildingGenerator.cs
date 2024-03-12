@@ -12,6 +12,7 @@ public class BuildingGenerator : MonoBehaviour
     public string loadFilePath = "";
     private string saveFilePath = "";
 
+  
     private void Awake()
     {
         buildingSettings = new List<BuildingSettings>();
@@ -32,7 +33,6 @@ public class BuildingGenerator : MonoBehaviour
     {
         if (string.IsNullOrEmpty(loadFilePath))
         {
-            // Если путь к файлу не указан, запросить его у пользователя
             loadFilePath = EditorUtility.OpenFilePanel("Load Building Settings", "", "json");
             if (string.IsNullOrEmpty(loadFilePath)) return; // Если пользователь не выбрал файл, выйти из метода
         }
@@ -52,7 +52,6 @@ public class BuildingGenerator : MonoBehaviour
     {
         if (string.IsNullOrEmpty(saveFilePath))
         {
-            // Предложить пользователю ввести имя файла для сохранения
             saveFilePath = EditorUtility.SaveFilePanel("Save Settings", "", "settings", "json");
             if (string.IsNullOrEmpty(saveFilePath))
             {
@@ -82,7 +81,6 @@ public class BuildingGenerator : MonoBehaviour
     [ContextMenu("Save As New File")]
     public void SaveAsNewFile()
     {
-        // Запросить у пользователя путь и имя файла для сохранения
         saveFilePath = EditorUtility.SaveFilePanel("Save Settings As New File", "", "settings", "json");
         if (string.IsNullOrEmpty(saveFilePath))
         {
@@ -90,29 +88,23 @@ public class BuildingGenerator : MonoBehaviour
             return;
         }
 
-        SaveField(); // Вызвать сохранение, используя выбранный путь
+        SaveField(); 
     }
 
     [ContextMenu("Add Building Settings To File")]
     public void AddBuildingSettingsToFile()
     {
-        // Запросить у пользователя путь и имя файла, в который будут добавлены настройки
         string filePath = EditorUtility.OpenFilePanel("Add Building Settings To File", "", "json");
         if (string.IsNullOrEmpty(filePath))
         {
             Debug.LogWarning("Operation cancelled.");
             return;
         }
-
-        // Прочитать существующие настройки из выбранного файла
         string jsonText = File.ReadAllText(filePath);
         var wrapper = JsonUtility.FromJson<BuildingSettingsWrapper>(jsonText);
         List<BuildingSettings> existingSettings = wrapper.buildingSettings;
 
-        // Добавить текущие настройки в существующие
         existingSettings.AddRange(buildingSettings);
-
-        // Создать новый объект-обертку для настроек и сохранить его в файл
         BuildingSettingsWrapper newWrapper = new BuildingSettingsWrapper
         {
             buildingSettings = existingSettings
@@ -122,7 +114,7 @@ public class BuildingGenerator : MonoBehaviour
 
         Debug.Log("Building settings added to file: " + filePath);
     }
-
+  
     private class BuildingSettingsWrapper
     {
         public List<BuildingSettings> buildingSettings;

@@ -16,7 +16,7 @@ public class StructureHelper : MonoBehaviour
     public Dictionary<Vector3Int, GameObject> structuresDictionary = new Dictionary<Vector3Int, GameObject>();
     public Dictionary<Vector3Int, GameObject> natureDictionary = new Dictionary<Vector3Int, GameObject>();
     public float animationTime = 0.01f;
-
+  
 
     public System.Random rand = new System.Random();
     // —оздаем словарь дл€ хранени€ LODGroup дл€ каждого здани€
