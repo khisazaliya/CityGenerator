@@ -34,7 +34,7 @@ public class StructureHelper : MonoBehaviour
                 bool intersects = true;
                 int attempts = 0;
 
-                //while (intersects)
+                while (intersects)
                 {
                     if (attempts >= freeEstateSpots.Count)
                     {

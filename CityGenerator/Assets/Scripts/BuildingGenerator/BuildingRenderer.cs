@@ -65,8 +65,8 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg);
         }
-        /*  meshCombiner.CombineMeshes(bldgFolder);
-          GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+        meshCombiner.CombineMeshes(bldgFolder);
+        /*  GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
           string objectName = "Wing";
           foreach (GameObject obj in objects)
           {

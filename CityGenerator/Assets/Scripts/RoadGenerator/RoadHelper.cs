@@ -25,6 +25,7 @@ public class RoadHelper : MonoBehaviour
 		for (int i = 0; i < length; i++)
 		{
 			var position = Vector3Int.RoundToInt(startPosition + direction * i) * (int)roadStraight.transform.localScale.x;
+			Debug.Log((int)roadStraight.transform.localScale.x + "scale");
 			fixRoadCandidates.Add(position);
 			if (roadDictionary.ContainsKey(position))
 			{
