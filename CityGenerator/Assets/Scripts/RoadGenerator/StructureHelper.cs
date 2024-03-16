@@ -27,6 +27,20 @@ public class StructureHelper : MonoBehaviour
         buildingGenerator.LoadField();
         Dictionary<Vector3Int, Direction> freeEstateSpots = FindFreeSpacesAroundRoad(roadPositions, roadWidth);
 
+        HashSet<Collider> allColliders = new HashSet<Collider>();
+        foreach (var building in structuresDictionary.Values)
+        {
+            var collider = building.GetComponentInChildren<Collider>();
+            if (collider != null)
+                allColliders.Add(collider);
+        }
+        foreach (var road in roadDictionary.Values)
+        {
+            var collider = road.GetComponentInChildren<BoxCollider>();
+            if (collider != null)
+                allColliders.Add(collider);
+        }
+
         foreach (var buildingSetting in buildingGenerator.buildingSettings)
         {
             for (int j = 0; j < buildingSetting.buildingCount; j++)
@@ -56,31 +70,30 @@ public class StructureHelper : MonoBehaviour
                         case Direction.Right:
                             rotation = Quaternion.Euler(0, 180, 0);
                             break;
-                        default:
-                            break;
                     }
 
                     var building = buildingGenerator.GenerateBuilding(position, rotation, buildingSetting);
+                    GenerateLODs(building);
                     var childObject = building.transform.GetChild(0);
                     var buildingCollider = childObject.gameObject.AddComponent<BoxCollider>();
 
                     intersects = false;
-                    foreach (var existingBuilding in structuresDictionary.Values)
+
+                    foreach (var collider in allColliders)
                     {
-                        var existingCollider = existingBuilding.GetComponentInChildren<Collider>();
-                        if (existingCollider != null && buildingCollider != null && existingBuilding != building)
+                        if (collider != null && buildingCollider != null && collider.bounds.Intersects(buildingCollider.bounds))
                         {
-                            if (existingCollider.bounds.Intersects(buildingCollider.bounds))
-                            {
-                                intersects = true;
+                            intersects = true;
+                            if (structuresDictionary.ContainsValue(collider.gameObject))
                                 Debug.Log("Intersects with existing building");
-                                Destroy(building);
-                                break;
-                            }
+                            else
+                                Debug.Log("Intersects with road");
+                            Destroy(building);
+                            break;
                         }
                     }
 
-                    if (randomNaturePlacement)
+                    if (randomNaturePlacement && !intersects)
                     {
                         var random = UnityEngine.Random.value;
                         if (random < randomNaturePlacementThreshold)
@@ -95,11 +108,7 @@ public class StructureHelper : MonoBehaviour
                     if (!intersects)
                     {
                         freeEstateSpots.Remove(position);
-                      //  GenerateLODs(building);
-                        if (!structuresDictionary.ContainsKey(position))
-                        {
-                            structuresDictionary.Add(position, building);
-                        }
+                        structuresDictionary.Add(position, building);
                     }
 
                     attempts++;

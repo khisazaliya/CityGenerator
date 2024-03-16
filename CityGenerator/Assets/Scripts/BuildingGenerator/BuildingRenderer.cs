@@ -65,8 +65,8 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg);
         }
-        meshCombiner.CombineMeshes(bldgFolder);
-        /*  GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+       /* meshCombiner.CombineMeshes(bldgFolder);
+        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
           string objectName = "Wing";
           foreach (GameObject obj in objects)
           {
@@ -578,7 +578,7 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, 90, 0));
         w.SetParent(storyFolder);
-        if (UnityEngine.Random.Range(0f, 100f) < probability)
+        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
@@ -601,7 +601,7 @@ public class BuildingRenderer : MonoBehaviour
                 ),
              Quaternion.identity);
         w.SetParent(storyFolder);
-        if (UnityEngine.Random.Range(0f, 100f) < probability)
+        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
@@ -623,7 +623,7 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, -90, 0));
         w.SetParent(storyFolder);
-        if (UnityEngine.Random.Range(0f, 100f) < probability)
+        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
@@ -645,7 +645,7 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, 180, 0));
         w.SetParent(storyFolder);
-        if (UnityEngine.Random.Range(0f, 100f) < probability)
+        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
