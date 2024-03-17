@@ -18,7 +18,7 @@ MonoBehaviour:
   negX: 4
   posZ: 4
   negZ: 4
-  attributes: 02000000
+  attributes: 03000000
   validNeighbours:
     posX:
     - {fileID: 11400000}
