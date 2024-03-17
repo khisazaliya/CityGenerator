@@ -14,10 +14,9 @@ public class WaveFunctionCollapse : MonoBehaviour
     public Dictionary<Vector2, Cell> activeCells = new Dictionary<Vector2, Cell>();
     public List<Cell> cellsAffected = new List<Cell>();
     public Weights weights;
-    public GameObject borderPrefab;
-    public GameObject buildingPrefab;
     public BuildingGenerator buildingGenerator;
     public List<Transform> places = new();
+    public List<GameObject> buildings = new List<GameObject>();
     [HideInInspector] public System.Random rand = new();
     void Start()
     {
@@ -26,6 +25,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     public void InitializeWaveFunction()
     {
         ClearAll();
+        places.Clear();
         for (int x = 0, y = 0; x < size.x; x++)
         {
             for (int z = 0; z < size.y; z++)
@@ -62,7 +62,7 @@ public class WaveFunctionCollapse : MonoBehaviour
 
         StartCollapse();
     }
-    private void CreateBorder()
+   /* private void CreateBorder()
     {
         for (int x = 0; x < size.x; x++)
         {
@@ -74,7 +74,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             DoInstantiate(borderPrefab, new Vector3(-1 * gridOffset, 0, z * gridOffset + startPosition.z), Quaternion.identity, this.transform);
             DoInstantiate(borderPrefab, new Vector3(size.x * gridOffset + startPosition.x, 0, z * gridOffset + startPosition.z), Quaternion.identity, this.transform);
         }
-    }
+    }*/
 
     private void DoInstantiate(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent)
     {
@@ -344,25 +344,52 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     public void PlaceBuildings()
     {
+        // Очистим список зданий перед началом
+        buildings.Clear();
+
+        // Проверяем, что список мест заполнен
+        if (places.Count == 0)
+        {
+            Debug.LogWarning("List of places is empty. Make sure it is properly initialized before calling PlaceBuildings().");
+            return;
+        }
+
+        // Загружаем поле зданий
         buildingGenerator.LoadField();
 
         foreach (var buildingSetting in buildingGenerator.buildingSettings)
         {
             for (int j = 0; j < buildingSetting.buildingCount; j++)
             {
+                // Если есть доступные места
                 if (places.Count > 0)
                 {
-                    var index = rand.Next(0, places.Count);
-                    if (places[index] != null)
-                    {
-                        var building = buildingGenerator.GenerateBuilding(places[index].position, Quaternion.identity, buildingSetting);
-                    }
-                    if (places[index] != null)
-                    {
-                        places.RemoveAt(index);
-                    }
+                    // Выбираем случайное место
+                    int index = rand.Next(0, places.Count);
+
+                    // Позиция для размещения здания
+                    Vector3 position = places[index].position;
+
+                    // Генерируем здание
+                    var building = buildingGenerator.GenerateBuilding(position, Quaternion.identity, buildingSetting);
+
+                    // Добавляем здание в список зданий
+                    buildings.Add(building);
+
+                    // Удаляем место, на котором размещено здание, чтобы не использовать его повторно
+                    places.RemoveAt(index);
                 }
             }
+        }
+    }
+    public void RandomizeBuildingPositions()
+    {
+        List<Transform> newPositions = new List<Transform>(places);
+        foreach (var building in buildings)
+        {
+            int index = Random.Range(0, newPositions.Count);
+            building.transform.position = newPositions[index].position;
+            newPositions.RemoveAt(index);
         }
     }
 

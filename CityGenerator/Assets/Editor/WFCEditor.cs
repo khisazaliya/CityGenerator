@@ -31,6 +31,10 @@ public class WFCEditor : Editor
         {
             waveFunctionCollapse.PlaceBuildings();
         }
+        if (GUILayout.Button("Randomize buildings positions"))
+        {
+            waveFunctionCollapse.RandomizeBuildingPositions();
+        }
         if (GUILayout.Button("Destroy buildings"))
         {
             waveFunctionCollapse.DestroyBuildings();
