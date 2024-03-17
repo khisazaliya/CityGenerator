@@ -373,6 +373,7 @@
 "Assets/Scripts/BuildingGenerator/PrefabIndexes.cs"
 "Assets/Scripts/BuildingGenerator/Services/GpuInstancingEnabler.cs"
 "Assets/Scripts/BuildingGenerator/Services/JsonController.cs"
+"Assets/Scripts/BuildingGenerator/Services/LODGeneratorService.cs"
 "Assets/Scripts/BuildingGenerator/Services/MeshCombiner.cs"
 "Assets/Scripts/BuildingGenerator/Services/MeshSimplifier.cs"
 "Assets/Scripts/BuildingGenerator/Services/SimplifyChildren.cs"

@@ -18,6 +18,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     public List<Transform> places = new();
     public List<Vector3> oldPlaces = new();
     public List<GameObject> buildings = new List<GameObject>();
+    public LODGeneratorService LODGeneratorService = new();
     [HideInInspector] public System.Random rand = new();
     void Start()
     {
@@ -380,6 +381,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     Vector3 position = places[index].position + new Vector3(rotationOffset2[rotationIndex].x, 1, rotationOffset2[rotationIndex].z);
                     oldPlaces.Add(position);
                     var building = buildingGenerator.GenerateBuilding(position, Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f),  buildingSetting);
+                    //LODGeneratorService.GenerateLODs(building);
                     //building.transform.RotateAround(position, Vector3.up, rotationOffset[rotationIndex]);
                     building.transform.position = position;
                     buildings.Add(building);
