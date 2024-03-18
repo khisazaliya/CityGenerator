@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4204829758841142775
+--- !u!1 &9057981780642714201
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7609053228131262332}
-  - component: {fileID: 6740260198148698291}
+  - component: {fileID: 8409019962048422256}
+  - component: {fileID: 2101391609311237358}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -17,28 +17,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7609053228131262332
+--- !u!4 &8409019962048422256
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204829758841142775}
+  m_GameObject: {fileID: 9057981780642714201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 184.9325, y: 21.781866, z: 189.19006}
+  m_LocalPosition: {x: 78.154396, y: -10.551554, z: 77.6182}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6740260198148698291
+--- !u!114 &2101391609311237358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4204829758841142775}
+  m_GameObject: {fileID: 9057981780642714201}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b59836f66091a74690ea44c90677d1b, type: 3}
@@ -46,14 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCollapsed: 0
   possiblePrototypes:
-  - {fileID: 11400000, guid: c2859a21a944dd245b6d2f566be6f7c2, type: 2}
-  - {fileID: 11400000, guid: 92d98b559dc95c54bbe3de966818544f, type: 2}
-  - {fileID: 11400000, guid: ecad197d6b97a614e8222f9d59cb80bc, type: 2}
-  - {fileID: 11400000, guid: 8f8fdcae312207142962fa2f06bd34af, type: 2}
-  - {fileID: 11400000, guid: f2116412c8bc7df469eb55e605952145, type: 2}
-  - {fileID: 11400000, guid: bc6be80524081344388ca7f5be6af6fc, type: 2}
-  - {fileID: 11400000, guid: 378ea3324475c6842b8c2c63bf8772df, type: 2}
-  - {fileID: 11400000, guid: 32caecbd37dd8a0448e4f28d3cdcc793, type: 2}
   - {fileID: 11400000, guid: ba51365edabe8b346ada96c0416be163, type: 2}
   - {fileID: 11400000, guid: cd1cf984ef98e84488d0b09d8c67f738, type: 2}
   - {fileID: 11400000, guid: 564d34b2bd4d9124cbf4800cff8cf4d8, type: 2}
@@ -66,7 +58,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3194976812315ef4cadabad828925384, type: 2}
   - {fileID: 11400000, guid: 92293ce6807e54e44b30cc40036f26ce, type: 2}
   - {fileID: 11400000, guid: 108e2c2dbfd71954f8e4b5ecc62a645c, type: 2}
-  prototypeWeights: 01000000010000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  - {fileID: 11400000, guid: c2859a21a944dd245b6d2f566be6f7c2, type: 2}
+  - {fileID: 11400000, guid: 92d98b559dc95c54bbe3de966818544f, type: 2}
+  - {fileID: 11400000, guid: ecad197d6b97a614e8222f9d59cb80bc, type: 2}
+  - {fileID: 11400000, guid: 8f8fdcae312207142962fa2f06bd34af, type: 2}
+  - {fileID: 11400000, guid: f2116412c8bc7df469eb55e605952145, type: 2}
+  - {fileID: 11400000, guid: bc6be80524081344388ca7f5be6af6fc, type: 2}
+  - {fileID: 11400000, guid: 378ea3324475c6842b8c2c63bf8772df, type: 2}
+  - {fileID: 11400000, guid: 32caecbd37dd8a0448e4f28d3cdcc793, type: 2}
+  prototypeWeights: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   coords: {x: 0, y: 0}
   posZneighbour: {fileID: 0}
   negZneighbour: {fileID: 0}

@@ -388,6 +388,8 @@
 "Assets/Scripts/RoadGenerator/StructureHelper.cs"
 "Assets/Scripts/RoadGenerator/Visualizer.cs"
 "Assets/Scripts/WFC/Cell.cs"
+"Assets/Scripts/WFC/CellData.cs"
+"Assets/Scripts/WFC/CellManager.cs"
 "Assets/Scripts/WFC/DebugUtils.cs"
 "Assets/Scripts/WFC/ListExtensions.cs"
 "Assets/Scripts/WFC/MapGenerator.cs"
