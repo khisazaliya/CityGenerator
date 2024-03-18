@@ -15,9 +15,18 @@ public class WaveFunctionCollapse : MonoBehaviour
     public List<Cell> cellsAffected = new List<Cell>();
     public Weights weights;
     public BuildingGenerator buildingGenerator;
-    public List<Transform> places = new();
-    public List<Vector3> oldPlaces = new();
-    public List<GameObject> buildings = new List<GameObject>();
+    [HideInInspector] public List<Transform> places = new();
+    [HideInInspector] public List<Transform> streetElementsPlaces = new();
+    [HideInInspector] public List<Vector3> oldBuildingsPlaces = new();
+    [HideInInspector] public List<Vector3> oldStreetElementsPlaces = new();
+    [HideInInspector] public List<GameObject> buildings = new List<GameObject>();
+    [HideInInspector] public List<Vector3> oldNaturesPlaces = new();
+    [HideInInspector] public List<GameObject> natures = new List<GameObject>();
+    [HideInInspector] public List<GameObject> streetElements = new List<GameObject>();
+    public List<GameObject> naturePrefabs = new List<GameObject>();
+    public int natureCount;
+    public int streetElementsCount;
+    public List<GameObject> streetPrefabs = new List<GameObject>();
     public LODGeneratorService LODGeneratorService = new();
     [HideInInspector] public System.Random rand = new();
     void Start()
@@ -28,8 +37,13 @@ public class WaveFunctionCollapse : MonoBehaviour
     {
         ClearAll();
         places.Clear();
-        oldPlaces.Clear();
+        oldBuildingsPlaces.Clear();
         buildings.Clear();
+        oldNaturesPlaces.Clear();
+        natures.Clear();
+        streetElementsPlaces.Clear();
+        oldStreetElementsPlaces.Clear();
+        streetElements.Clear();
         for (int x = 0, y = 0; x < size.x; x++)
         {
             for (int z = 0; z < size.y; z++)
@@ -65,13 +79,17 @@ public class WaveFunctionCollapse : MonoBehaviour
             c.GenerateWeight(weights);
 
         StartCollapse();
+       // CreateBorder();
     }
-    /* private void CreateBorder()
+/*     private void CreateBorder()
      {
-         for (int x = 0; x < size.x; x++)
+        for (int x = 0; x < size.x; x++)
          {
-             DoInstantiate(borderPrefab, new Vector3(x * gridOffset + startPosition.x, 0, -1 * gridOffset + startPosition.z), Quaternion.identity, this.transform);
-             DoInstantiate(borderPrefab, new Vector3(x * gridOffset + startPosition.x, 0, size.y * gridOffset + startPosition.z), Quaternion.identity, this.transform);
+            Cell cell = GetCell(x * gridOffset + startPosition.x, -1 * gridOffset + startPosition.z);
+            if (cell.possiblePrototypes[0].attributes.Contains(Attribute.Crossroad))
+                DoInstantiate(borderIntersectionPrefab, new Vector3(x * gridOffset + startPosition.x, 0, -1 * gridOffset + startPosition.z), Quaternion.identity, this.transform);
+            else
+            DoInstantiate(borderPrefab, new Vector3(x * gridOffset + startPosition.x, 0, size.y * gridOffset + startPosition.z), Quaternion.identity, this.transform);
          }
          for (int z = 0; z < size.y; z++)
          {
@@ -161,6 +179,8 @@ public class WaveFunctionCollapse : MonoBehaviour
         cell.possiblePrototypes.Add(finalPrototype);
         GameObject finalPrefab = Instantiate(finalPrototype.prefab, cell.transform, true);
         if (finalPrototype.attributes[0].Equals(Attribute.Building)) places.Add(finalPrefab.transform);
+        else
+            streetElementsPlaces.Add(finalPrefab.transform);
         finalPrefab.transform.Rotate(new Vector3(0f, finalPrototype.meshRotation * 90, 0f), Space.Self);
         finalPrefab.transform.localPosition = Vector3.zero;
         cell.name = cell.coords.ToString() + "_" + collapsed.ToString();
@@ -363,7 +383,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     };
         if (places.Count == 0)
         {
-            Debug.LogWarning("List of places is empty. Make sure it is properly initialized before calling PlaceBuildings().");
+            Debug.LogWarning("List of free places is empty");
             return;
         }
 
@@ -379,7 +399,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     int index = rand.Next(0, places.Count);
                     int rotationIndex = rand.Next(0, 4);
                     Vector3 position = places[index].position + new Vector3(rotationOffset2[rotationIndex].x, 1, rotationOffset2[rotationIndex].z);
-                    oldPlaces.Add(position);
+                    oldBuildingsPlaces.Add(position);
                     var building = buildingGenerator.GenerateBuilding(position, Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f),  buildingSetting);
                     //LODGeneratorService.GenerateLODs(building);
                     //building.transform.RotateAround(position, Vector3.up, rotationOffset[rotationIndex]);
@@ -391,9 +411,33 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
     }
 
+    public void PlaceNature()
+    {
+        if (places.Count == 0)
+        {
+            Debug.LogWarning("List of free places is empty");
+            return;
+        }
+        if (places.Count > 0)
+        {
+            for (int i = 0; i < natureCount; i++)
+            {
+                int natureIndex = rand.Next(0, naturePrefabs.Count);
+                int index = rand.Next(0, places.Count);
+                GameObject nature = (GameObject)PrefabUtility.InstantiatePrefab(naturePrefabs[natureIndex] as GameObject);
+                natures.Add(nature);
+                nature.name = "Nature";
+                nature.transform.position = places[index].position;
+                oldNaturesPlaces.Add(places[index].position);
+                places.RemoveAt(index);
+            }
+        }
+
+    }
+
     public void RandomizeBuildingPositions()
     {
-        List<Vector3> newPositions = new List<Vector3>(oldPlaces);
+        List<Vector3> newPositions = new List<Vector3>(oldBuildingsPlaces);
         foreach (var building in buildings)
         {
             int index = Random.Range(0, newPositions.Count);
@@ -405,11 +449,90 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
     }
 
+    public void RandomizeNaturePositions()
+    {
+        List<Vector3> newPositions = new List<Vector3>(oldNaturesPlaces);
+        foreach (var nature in natures)
+        {
+            int index = Random.Range(0, newPositions.Count);
+            if (index < newPositions.Count)
+            {
+                nature.transform.position = newPositions[index];
+                newPositions.RemoveAt(index);
+            }
+        }
+    }
 
+    public void RandomizeStreetElementsPositions()
+    {
+        List<Vector3> newPositions = new List<Vector3>(oldStreetElementsPlaces);
+        foreach (var streetElement in streetElements)
+        {
+            int index = Random.Range(0, newPositions.Count);
+            if (index < newPositions.Count)
+            {
+                streetElement.transform.position = newPositions[index];
+                newPositions.RemoveAt(index);
+            }
+        }
+    }
+
+    public void PlaceStreetElements()
+    {
+        if (streetElementsPlaces.Count == 0)
+        {
+            Debug.LogWarning("List of free places is empty");
+            return;
+        }
+        if (streetElementsPlaces.Count > 0)
+        {
+            for (int i=0; i< streetElementsCount; i++)
+            {
+                int streetElementIndex = rand.Next(0, streetPrefabs.Count);
+                int index = rand.Next(0, streetElementsPlaces.Count);
+                GameObject streetElement = (GameObject)PrefabUtility.InstantiatePrefab(streetPrefabs[streetElementIndex] as GameObject);
+                streetElements.Add(streetElement);
+                streetElement.name = "StreetElement";
+                streetElement.transform.position = streetElementsPlaces[index].position + new Vector3(gridOffset / 2, 0, gridOffset / 2);
+                oldStreetElementsPlaces.Add(streetElementsPlaces[index].position);
+                streetElementsPlaces.RemoveAt(index);
+            }
+        }
+
+    }
     public void DestroyBuildings()
     {
+        buildings.Clear();
         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
         string objectName = "Building";
+        foreach (GameObject obj in objects)
+        {
+            if (obj.name == objectName)
+            {
+                DestroyImmediate(obj);
+            }
+        }
+    }
+
+    public void DestroyNature()
+    {
+        natures.Clear();
+        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+        string objectName = "Nature"; 
+        foreach (GameObject obj in objects)
+        {
+            if (obj.name == objectName)
+            {
+                DestroyImmediate(obj);
+            }
+        }
+    }
+
+    public void DestroyStreetElements()
+    {
+        natures.Clear();
+        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+        string objectName = "StreetElement";
         foreach (GameObject obj in objects)
         {
             if (obj.name == objectName)

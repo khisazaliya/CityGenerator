@@ -35,6 +35,34 @@ public class WFCEditor : Editor
         {
             waveFunctionCollapse.RandomizeBuildingPositions();
         }
+        if (GUILayout.Button("Destroy buildings"))
+        {
+            waveFunctionCollapse.DestroyBuildings();
+        }
+        if (GUILayout.Button("Place nature"))
+        {
+            waveFunctionCollapse.PlaceNature();
+        }
+        if (GUILayout.Button("Randomize nature positions"))
+        {
+            waveFunctionCollapse.RandomizeNaturePositions();
+        }
+        if (GUILayout.Button("Destroy nature"))
+        {
+            waveFunctionCollapse.DestroyNature();
+        }
+        if (GUILayout.Button("Place street elements"))
+        {
+            waveFunctionCollapse.PlaceStreetElements();
+        }
+        if (GUILayout.Button("Randomize street elements positions"))
+        {
+            waveFunctionCollapse.RandomizeStreetElementsPositions();
+        }
+        if (GUILayout.Button("Destroy street elements"))
+        {
+            waveFunctionCollapse.DestroyStreetElements();
+        }
         if (GUILayout.Button("Generate LODs"))
         {
             waveFunctionCollapse.LODGeneratorService.GenerateLODs(waveFunctionCollapse.buildings);
@@ -42,10 +70,6 @@ public class WFCEditor : Editor
         if (GUILayout.Button("Destroy LODs"))
         {
             waveFunctionCollapse.LODGeneratorService.DestroyLODs(waveFunctionCollapse.buildings);
-        }
-        if (GUILayout.Button("Destroy buildings"))
-        {
-            waveFunctionCollapse.DestroyBuildings();
         }
     }
 }
