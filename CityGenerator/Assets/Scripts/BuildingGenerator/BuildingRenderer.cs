@@ -685,10 +685,16 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if (y == 1 || y == 0 || x == 1 || x == 0)
+                if ((y == minY) && (x == minX))
                 {
                     prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
-                    direction = RoofDirection.North;
+                    direction = RoofDirection.South;
+                }
+                else
+                if ((y == minY) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
+                    direction = RoofDirection.East;
                 }
                 else
                 if ((y == minY) && (x == minX))
@@ -730,7 +736,7 @@ public class BuildingRenderer : MonoBehaviour
                 if (x == minX && !(y == minY || y == maxY - 1 || x == maxX - 1))
                 {
                     prefab = roofBoundPrefabs[bldg.roofBoundPrefabIndex];
-                    direction = RoofDirection.West;
+                    direction = RoofDirection.South;
                 }
                 else
                 if (x == maxX - 1 && !(y == minY || y == maxY - 1 || x == minX))
@@ -757,7 +763,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if (y == minY || x == minX || y == maxY - 1 || x == maxX - 1)
+                if (y == minY  || y == maxY - 1 )
                 {
                     prefab = roofCornerPrefabs[bldg.roofNorthOffsetCornerPrefabIndex];
                     direction = RoofDirection.West;
