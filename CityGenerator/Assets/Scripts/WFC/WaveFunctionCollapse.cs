@@ -398,9 +398,11 @@ public class WaveFunctionCollapse : MonoBehaviour
                 {
                     int index = rand.Next(0, places.Count);
                     int rotationIndex = rand.Next(0, 4);
-                    Vector3 position = places[index].position + new Vector3(rotationOffset2[rotationIndex].x, 1, rotationOffset2[rotationIndex].z);
+                    Vector3 position = places[index].position + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
+                    //Vector3 position = places[index].position;
                     oldBuildingsPlaces.Add(position);
                     var building = buildingGenerator.GenerateBuilding(position, Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f),  buildingSetting);
+                   // var building = buildingGenerator.GenerateBuilding(position, Quaternion.identity, buildingSetting);
                     //LODGeneratorService.GenerateLODs(building);
                     //building.transform.RotateAround(position, Vector3.up, rotationOffset[rotationIndex]);
                     building.transform.position = position;
