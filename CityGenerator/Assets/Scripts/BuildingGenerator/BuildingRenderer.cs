@@ -129,43 +129,45 @@ public class BuildingRenderer : MonoBehaviour
                             if (x >= bldg.minOffsetSouthWall && x <= bldg.maxOffsetSouthWall)
                             {
                                 if (i == 0)
-                                    PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[bldg.wall0SouthOffsetPrefabIndex]);
+                                    PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[bldg.wall0SouthOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[bldg.wall1SouthOffsetPrefabIndex]);
+                                    PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[bldg.wall1SouthOffsetPrefabIndex], bldg);
                                 else
-                                    PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[bldg.wall2SouthOffsetPrefabIndex]);
+                                    PlaceSouthWall(x, y + bldg.depthOffsetSouthWall, i, storyFolder, wallPrefabs[bldg.wall2SouthOffsetPrefabIndex], bldg);
                             }
                             else
                             {
                                 if (i == 0)
-                                    PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0SouthPrefabIndex]);
+                                    PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0SouthPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1SouthPrefabIndex]);
+                                    PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1SouthPrefabIndex], bldg);
                                 else
-                                    PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2SouthPrefabIndex]);
-                                if (PlaceSouthBalcony(bldg, i, x, bldg.numberOfSouthBalconies, bldg.randomSeedOfSouthBalconies, balconiesSouthIndexes)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconySouthPrefabIndex]);
+                                    PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2SouthPrefabIndex], bldg);
+                                if (PlaceSouthBalcony(bldg, i, x, bldg.numberOfSouthBalconies, bldg.randomSeedOfSouthBalconies, balconiesSouthIndexes))
+                                    PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconySouthPrefabIndex], bldg);
                             }
                         }
                         else
                         {
                             if (i == 0)
-                                PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0SouthPrefabIndex]);
+                                PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0SouthPrefabIndex], bldg);
                             else if (i % 2 == 1)
-                                PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1SouthPrefabIndex]);
+                                PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1SouthPrefabIndex], bldg);
                             else
-                                PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2SouthPrefabIndex]);
-                            if (PlaceSouthBalcony(bldg, i, x, bldg.numberOfSouthBalconies, bldg.randomSeedOfSouthBalconies, balconiesSouthIndexes)) PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconySouthPrefabIndex]);
+                                PlaceSouthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2SouthPrefabIndex], bldg);
+                            if (PlaceSouthBalcony(bldg, i, x, bldg.numberOfSouthBalconies, bldg.randomSeedOfSouthBalconies, balconiesSouthIndexes))
+                                PlaceSouthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconySouthPrefabIndex], bldg);
                         }
                         if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
                         {
                             if (x >= wing.Bounds.max.x - bldg.depthOffsetEastWall && x <= wing.Bounds.max.x + bldg.minOffsetEastWall)
                             {
                                 if (i == 0)
-                                    PlaceSouthWall(x + bldg.depthOffsetEastWall, -bldg.minOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall0EastOffsetPrefabIndex]);
+                                    PlaceSouthWall(x + bldg.depthOffsetEastWall, -bldg.minOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall0EastOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceSouthWall(x + bldg.depthOffsetEastWall, -bldg.minOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall1EastOffsetPrefabIndex]);
+                                    PlaceSouthWall(x + bldg.depthOffsetEastWall, -bldg.minOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall1EastOffsetPrefabIndex], bldg);
                                 else
-                                    PlaceSouthWall(x + bldg.depthOffsetEastWall, -bldg.minOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex]);
+                                    PlaceSouthWall(x + bldg.depthOffsetEastWall, -bldg.minOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex], bldg);
                             }
                         }
                     }
@@ -187,7 +189,7 @@ public class BuildingRenderer : MonoBehaviour
                                 PlaceFloor(x + bldg.depthOffsetEastWall + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
                                 if (entries.Contains(y))
                                 {
-                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, doorPrefabs[bldg.doorEastOffsetPrefabIndex]);
+                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, doorPrefabs[bldg.doorEastOffsetPrefabIndex], bldg);
                                     PlaceStair(x + bldg.depthOffsetEastWall + 1, y - 1, i, storyFolder, stairPrefabs[bldg.stairEastPrefabIndex], bldg);
                                 }
                             }
@@ -196,7 +198,7 @@ public class BuildingRenderer : MonoBehaviour
                                 PlaceFloor(x + 1, y - 1, i, new int[3] { 0, 180, 0 }, storyFolder, floorPrefabs[bldg.floorEastPrefabIndex]);
                                 if (entries.Contains(y))
                                 {
-                                    PlaceEastWall(x, y, i, storyFolder, doorPrefabs[bldg.doorEastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, doorPrefabs[bldg.doorEastPrefabIndex], bldg);
                                     PlaceStair(x + 1, y - 1, i, storyFolder, stairPrefabs[bldg.stairEastPrefabIndex], bldg);
                                 }
                             }
@@ -206,11 +208,11 @@ public class BuildingRenderer : MonoBehaviour
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                             {
                                 if (i == 0)
-                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall0NorthOffsetPrefabIndex]);
+                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall0NorthOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall1NorthOffsetPrefabIndex]);
+                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall1NorthOffsetPrefabIndex], bldg);
                                 else
-                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall2NorthOffsetPrefabIndex]);
+                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetNorthWall - 1), y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall2NorthOffsetPrefabIndex], bldg);
                             }
                         }
                         if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
@@ -218,11 +220,11 @@ public class BuildingRenderer : MonoBehaviour
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
                             {
                                 if (i == 0)
-                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall0SouthOffsetPrefabIndex]);
+                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall0SouthOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall1SouthOffsetPrefabIndex]);
+                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall1SouthOffsetPrefabIndex], bldg);
                                 else
-                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall2SouthOffsetPrefabIndex]);
+                                    PlaceEastWall(x - (wing.Bounds.max.x - bldg.maxOffsetSouthWall - 1), y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall2SouthOffsetPrefabIndex], bldg);
                             }
                         }
 
@@ -231,38 +233,37 @@ public class BuildingRenderer : MonoBehaviour
                             if (y >= wing.Bounds.min.y + bldg.minOffsetEastWall && y <= wing.Bounds.min.y + bldg.maxOffsetEastWall)
                             {
                                 if (i == 0)
-                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall0EastOffsetPrefabIndex]);
+                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall0EastOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall1EastOffsetPrefabIndex]);
+                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall1EastOffsetPrefabIndex], bldg);
                                 else
-                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex]);
+                                    PlaceEastWall(x + bldg.depthOffsetEastWall, y, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex], bldg);
                             }
                             else
                             {
-                                if (i == 0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[bldg.wallDoorPrefabIndex]);
+                                if (i == 0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[bldg.wallDoorPrefabIndex], bldg);
                                 else if (i == 0)
-                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0EastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0EastPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1EastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1EastPrefabIndex], bldg);
                                 else
-                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2EastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2EastPrefabIndex], bldg);
                             }
                         }
                         else
                         {
                             {
 
-                                if (i == 0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[bldg.wallDoorPrefabIndex]);
+                                if (i == 0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[bldg.wallDoorPrefabIndex], bldg);
                                 else if (i == 0)
-                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0EastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0EastPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1EastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1EastPrefabIndex], bldg);
                                 else
-                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2EastPrefabIndex]);
+                                    PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2EastPrefabIndex], bldg);
                                 if (PlaceEastBalcony(bldg, i, y, bldg.numberOfEastBalconies, bldg.randomSeedOfEastBalconies, balconiesEastIndexes))
                                 {
-                                    PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyEastPrefabIndex]);
-
+                                    PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyEastPrefabIndex], bldg);
                                 }
                             }
                         }
@@ -288,53 +289,53 @@ public class BuildingRenderer : MonoBehaviour
                             if (x >= bldg.minOffsetNorthWall && x <= bldg.maxOffsetNorthWall)
                             {
                                 if (i == 0)
-                                    PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall0NorthOffsetPrefabIndex]);
+                                    PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall0NorthOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall1NorthOffsetPrefabIndex]);
+                                    PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall1NorthOffsetPrefabIndex], bldg);
                                 else
-                                    PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall2NorthOffsetPrefabIndex]);
+                                    PlaceNorthWall(x, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall2NorthOffsetPrefabIndex], bldg);
                             }
                             else
                             {
                                 if (i == 0)
-                                    PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex]);
+                                    PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1NorthPrefabIndex]);
-                                else PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex]);
-                                if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex]);
+                                    PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1NorthPrefabIndex], bldg);
+                                else PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex], bldg);
+                                if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex], bldg);
                             }
                         }
                         else
                         {
                             if (i == 0)
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex]);
+                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex], bldg);
                             else if (i % 2 == 1)
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1NorthPrefabIndex]);
+                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1NorthPrefabIndex], bldg);
                             else
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex]);
-                            if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex]);
+                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex], bldg);
+                            if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex], bldg);
                         }
                         if (IsEastOffsetCorrect(bldg, wing) && i < bldg.eastWallHeight)
                         {
                             if (x >= wing.Bounds.max.x - bldg.depthOffsetEastWall && x <= wing.Bounds.max.x + bldg.minOffsetEastWall)
                             {
                                 if (i == 0)
-                                    PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall0EastOffsetPrefabIndex]);
+                                    PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall0EastOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall1EastOffsetPrefabIndex]);
+                                    PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall1EastOffsetPrefabIndex], bldg);
                                 else
-                                    PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex]);
+                                    PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex], bldg);
                             }
                         }
                         else
                         {
                             if (i == 0)
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex]);
+                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex], bldg);
                             else if (i % 2 == 1)
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1NorthPrefabIndex]);
+                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1NorthPrefabIndex], bldg);
                             else
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex]);
-                            if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex]);
+                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex], bldg);
+                            if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex], bldg);
                         }
 
                     }
@@ -350,21 +351,21 @@ public class BuildingRenderer : MonoBehaviour
                                 PlaceFloor(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, new int[3] { 0, 0, 0 }, storyFolder, floorPrefabs[bldg.floorSouthOffsetPrefabIndex]);
                             PlaceFloor(x, y, i, new int[3] { 0, 0, 0 }, storyFolder, floorPrefabs[bldg.floorWestPrefabIndex]);
                         }
-                        if (PlaceWestBalcony(bldg, i, y, bldg.numberOfWestBalconies, bldg.randomSeedOfWestBalconies, balconiesWestIndexes)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyWestPrefabIndex]);
+                        if (PlaceWestBalcony(bldg, i, y, bldg.numberOfWestBalconies, bldg.randomSeedOfWestBalconies, balconiesWestIndexes)) PlaceWestWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyWestPrefabIndex], bldg);
                         if (i == 0)
-                            PlaceWestWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0WestPrefabIndex]);
+                            PlaceWestWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0WestPrefabIndex], bldg);
                         else if (i % 2 == 1)
-                            PlaceWestWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1WestPrefabIndex]);
-                        else PlaceWestWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2WestPrefabIndex]);
+                            PlaceWestWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1WestPrefabIndex], bldg);
+                        else PlaceWestWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2WestPrefabIndex], bldg);
                         if (IsNorthOffsetCorrect(bldg, wing) && i < bldg.northWallHeight)
                         {
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetNorthWall && y <= wing.Bounds.max.y + bldg.minOffsetNorthWall)
                             {
                                 if (i == 0)
-                                    PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall0NorthOffsetPrefabIndex]);
+                                    PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall0NorthOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall1NorthOffsetPrefabIndex]);
-                                else PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall2NorthOffsetPrefabIndex]);
+                                    PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall1NorthOffsetPrefabIndex], bldg);
+                                else PlaceWestWall(x + bldg.minOffsetNorthWall, y + bldg.depthOffsetNorthWall, i, storyFolder, wallPrefabs[bldg.wall2NorthOffsetPrefabIndex], bldg);
                             }
                         }
                         if (IsSouthOffsetCorrect(bldg, wing) && i < bldg.southWallHeight)
@@ -372,10 +373,10 @@ public class BuildingRenderer : MonoBehaviour
                             if (y >= wing.Bounds.max.y - bldg.depthOffsetSouthWall && y <= wing.Bounds.max.y + bldg.minOffsetSouthWall)
                             {
                                 if (i == 0)
-                                    PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall0SouthOffsetPrefabIndex]);
+                                    PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall0SouthOffsetPrefabIndex], bldg);
                                 else if (i % 2 == 1)
-                                    PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall1SouthOffsetPrefabIndex]);
-                                else PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall2SouthOffsetPrefabIndex]);
+                                    PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall1SouthOffsetPrefabIndex], bldg);
+                                else PlaceWestWall(x + bldg.minOffsetSouthWall, y - wing.Bounds.max.y, i, storyFolder, wallPrefabs[bldg.wall2SouthOffsetPrefabIndex], bldg);
                             }
                         }
                     }
@@ -499,7 +500,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int i = 1; i <= bldg.level + 1; i++)
             {
-                for (int j = 1; j < numberOfBalconies; j++)
+                for (int j = 0; j < numberOfBalconies; j++)
                     balconiesEastIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
             }
         }
@@ -567,7 +568,7 @@ public class BuildingRenderer : MonoBehaviour
     }
 
     //боковая
-    private void PlaceSouthWall(int x, int y, int level, Transform storyFolder, Transform wall)
+    private void PlaceSouthWall(int x, int y, int level, Transform storyFolder, Transform wall, Building bldg)
     {
         float height;
         if (level == 0) height = floorSize.y;
@@ -583,6 +584,18 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, 90, 0));
         w.SetParent(storyFolder);
+        if (level == bldg.level - 1)
+        {
+            try
+            {
+                var stair = w.Find("stair_Cube.051").gameObject;
+                DestroyImmediate(stair);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+        }
         if (level > 0 &&  ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
@@ -590,7 +603,7 @@ public class BuildingRenderer : MonoBehaviour
     }
 
 
-    private void PlaceEastWall(int x, int y, int level, Transform storyFolder, Transform wall)
+    private void PlaceEastWall(int x, int y, int level, Transform storyFolder, Transform wall, Building bldg)
     {
         float height;
         if (level == 0) height = floorSize.y;
@@ -606,13 +619,25 @@ public class BuildingRenderer : MonoBehaviour
                 ),
              Quaternion.identity);
         w.SetParent(storyFolder);
+        if (level == bldg.level-1)
+        {
+            try
+            {
+                var stair = w.Find("stair_Cube.051").gameObject;
+                DestroyImmediate(stair);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+        }
         if (level > 0 && ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
     }
 
-    private void PlaceNorthWall(int x, int y, int level, Transform storyFolder, Transform wall)
+    private void PlaceNorthWall(int x, int y, int level, Transform storyFolder, Transform wall, Building bldg)
     {
         float height;
         if (level == 0) height = floorSize.y;
@@ -628,13 +653,25 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, -90, 0));
         w.SetParent(storyFolder);
+        if (level == bldg.level - 1)
+        {
+            try
+            {
+                var stair = w.Find("stair_Cube.051").gameObject;
+                DestroyImmediate(stair);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+        }
         if (level > 0 && ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
     }
 
-    private void PlaceWestWall(int x, int y, int level, Transform storyFolder, Transform wall)
+    private void PlaceWestWall(int x, int y, int level, Transform storyFolder, Transform wall, Building bldg)
     {
         float height;
         if (level == 0) height = floorSize.y;
@@ -650,6 +687,18 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, 180, 0));
         w.SetParent(storyFolder);
+        if (level == bldg.level - 1)
+        {
+            try
+            {
+                var stair = w.Find("stair_Cube.051").gameObject;
+                DestroyImmediate(stair);
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
+        }
         if (level > 0 && ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
