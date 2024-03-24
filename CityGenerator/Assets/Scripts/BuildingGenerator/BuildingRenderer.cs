@@ -88,7 +88,7 @@ public class BuildingRenderer : MonoBehaviour
             RenderStory(story, wing, wingFolder, bldg);
         }
         RenderRoof(wing, wing.Bounds.min.x, wing.Bounds.max.x, wing.Bounds.min.y, wing.Bounds.max.y, wingFolder, bldg.level, bldg);
-        PlaceRoofElements(wing.Bounds.min.x, wing.Bounds.min.y, wing.Bounds.max.x, wing.Bounds.max.y, bldg.level, wingFolder, bldg);
+        if (bldg.randomSeedOfRoofElements !=0) PlaceRoofElements(wing.Bounds.min.x, wing.Bounds.min.y, wing.Bounds.max.x, wing.Bounds.max.y, bldg.level, wingFolder, bldg);
         if (IsNorthOffsetCorrect(bldg, wing)) RenderNorthOffsetRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall + 1,
             wing.Bounds.max.y, wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.northWallHeight > bldg.level ? bldg.level : bldg.northWallHeight, bldg);
         if (IsSouthOffsetCorrect(bldg, wing)) RenderSouthOffsetRoof(wing, bldg.minOffsetSouthWall, bldg.maxOffsetSouthWall + 1,
@@ -1043,7 +1043,6 @@ public class BuildingRenderer : MonoBehaviour
 
     private void PlaceRoofElements(int minX, int minY, int maxX, int maxY, int level, Transform wingFolder, Building bldg)
     {
-
         Transform re;
         var x = minX -bldg.randomSeedOfRoofElements;
         var y = minY - bldg.randomSeedOfRoofElements;

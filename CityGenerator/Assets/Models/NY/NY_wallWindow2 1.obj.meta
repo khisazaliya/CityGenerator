@@ -18,7 +18,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wal
-    second: {fileID: 2100000, guid: 55971b4a0b2864041bd631108f7c435e, type: 2}
+    second: {fileID: 2100000, guid: d06ee98ee12e6a043b2e51ba80fbeb72, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
