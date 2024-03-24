@@ -15,7 +15,7 @@ public class BuildingGeneratorEditor : Editor
     {
         buildingGenerator = (BuildingGenerator)target;
         previousSettings = null;
-       // previousRenderer = null;
+        // previousRenderer = null;
     }
 
     public override void OnInspectorGUI()
@@ -24,7 +24,7 @@ public class BuildingGeneratorEditor : Editor
         BuildingRenderer buildingRenderer = buildingGenerator.buildingRenderer;
         if (previousSettings == null || !AreSettingsEqual(buildingGenerator.buildingSettings[0], previousSettings))
         {
-          //  buildingGenerator.SaveField();
+            //  buildingGenerator.SaveField();
             GenerateNewBuilding();
             EditorUtility.SetDirty(target);
         }
@@ -49,6 +49,7 @@ public class BuildingGeneratorEditor : Editor
             buildingGenerator.buildingSettings[0].offsetOfEntries,
              buildingGenerator.buildingSettings[0].MaxNumberOfSouthBalconies,
              buildingGenerator.buildingSettings[0].randomSeedOfSouthBalconies,
+             buildingGenerator.buildingSettings[0].randomSeedOfRoofElements,
              buildingGenerator.buildingSettings[0].minOffsetNorthWall,
              buildingGenerator.buildingSettings[0].maxOffsetNorthWall,
              buildingGenerator.buildingSettings[0].depthOffsetNorthWall,
@@ -67,6 +68,7 @@ public class BuildingGeneratorEditor : Editor
             offsetOfEntries = buildingGenerator.buildingSettings[0].offsetOfEntries,
             MaxNumberOfSouthBalconies = buildingGenerator.buildingSettings[0].MaxNumberOfSouthBalconies,
             randomSeedOfSouthBalconies = buildingGenerator.buildingSettings[0].randomSeedOfSouthBalconies,
+            randomSeedOfRoofElements = buildingGenerator.buildingSettings[0].randomSeedOfRoofElements,
             minOffsetNorthWall = buildingGenerator.buildingSettings[0].minOffsetNorthWall,
             maxOffsetNorthWall = buildingGenerator.buildingSettings[0].maxOffsetNorthWall,
             depthOffsetNorthWall = buildingGenerator.buildingSettings[0].depthOffsetNorthWall,
@@ -88,6 +90,7 @@ public class BuildingGeneratorEditor : Editor
         buildingGenerator.buildingSettings[0].roofPrefabIndex = EditorGUILayout.Popup("Roof Prefab", buildingGenerator.buildingSettings[0].roofPrefabIndex, GetPrefabNames(buildingRenderer.roofPrefabs));
         buildingGenerator.buildingSettings[0].roofBoundPrefabIndex = EditorGUILayout.Popup("Roof Bound Prefab", buildingGenerator.buildingSettings[0].roofBoundPrefabIndex, GetPrefabNames(buildingRenderer.roofBoundPrefabs));
         buildingGenerator.buildingSettings[0].roofCornerPrefabIndex = EditorGUILayout.Popup("Roof Corner Prefab", buildingGenerator.buildingSettings[0].roofCornerPrefabIndex, GetPrefabNames(buildingRenderer.roofCornerPrefabs));
+        buildingGenerator.buildingSettings[0].roofElementPrefabIndex = EditorGUILayout.Popup("Roof Element Prefab", buildingGenerator.buildingSettings[0].roofElementPrefabIndex, GetPrefabNames(buildingRenderer.roofElementPrefabs));
         buildingGenerator.buildingSettings[0].stairSouthPrefabIndex = EditorGUILayout.Popup("South Stair Prefab", buildingGenerator.buildingSettings[0].stairSouthPrefabIndex, GetPrefabNames(buildingRenderer.stairPrefabs));
         buildingGenerator.buildingSettings[0].balconySouthPrefabIndex = EditorGUILayout.Popup("South Balcony Prefab", buildingGenerator.buildingSettings[0].balconySouthPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));
 
@@ -111,7 +114,7 @@ public class BuildingGeneratorEditor : Editor
         buildingGenerator.buildingSettings[0].wall0EastPrefabIndex = EditorGUILayout.Popup("East Wall 0 Prefab", buildingGenerator.buildingSettings[0].wall0EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingGenerator.buildingSettings[0].wall1EastPrefabIndex = EditorGUILayout.Popup("East Wall 1 Prefab", buildingGenerator.buildingSettings[0].wall1EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
         buildingGenerator.buildingSettings[0].wall2EastPrefabIndex = EditorGUILayout.Popup("East Wall 2 Prefab", buildingGenerator.buildingSettings[0].wall2EastPrefabIndex, GetPrefabNames(buildingRenderer.wallPrefabs));
-        buildingGenerator.buildingSettings[0].wallDoorPrefabIndex = EditorGUILayout.Popup("Wall door Prefab",  buildingGenerator.buildingSettings[0].wallDoorPrefabIndex, GetPrefabNames(buildingRenderer.wallDoorsPrefabs));
+        buildingGenerator.buildingSettings[0].wallDoorPrefabIndex = EditorGUILayout.Popup("Wall door Prefab", buildingGenerator.buildingSettings[0].wallDoorPrefabIndex, GetPrefabNames(buildingRenderer.wallDoorsPrefabs));
         buildingGenerator.buildingSettings[0].doorEastPrefabIndex = EditorGUILayout.Popup("East Door Prefab", buildingGenerator.buildingSettings[0].doorEastPrefabIndex, GetPrefabNames(buildingRenderer.doorPrefabs));
         buildingGenerator.buildingSettings[0].stairEastPrefabIndex = EditorGUILayout.Popup("East Stair Prefab", buildingGenerator.buildingSettings[0].stairEastPrefabIndex, GetPrefabNames(buildingRenderer.stairPrefabs));
         buildingGenerator.buildingSettings[0].balconyEastPrefabIndex = EditorGUILayout.Popup("East Balcony Prefab", buildingGenerator.buildingSettings[0].balconyEastPrefabIndex, GetPrefabNames(buildingRenderer.balconyPrefabs));

@@ -22,6 +22,7 @@ public class BuildingData : MonoBehaviour
            buildingSettings.randomSeedOfWestBalconies,
            buildingSettings.MaxNumberOfEastBalconies,
            buildingSettings.randomSeedOfEastBalconies,
+           buildingSettings.randomSeedOfRoofElements,
            buildingSettings.balconyLocations,
            buildingSettings.entryLocations,
            buildingSettings.numberOfLevels,
@@ -171,4 +172,3 @@ public class BuildingFileData
     public PrefabIndexes prefabIndexes;
     public List<BuildingSettings> buildingSettings;
 }
-

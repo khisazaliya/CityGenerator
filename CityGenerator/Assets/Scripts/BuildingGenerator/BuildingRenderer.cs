@@ -15,6 +15,7 @@ public class BuildingRenderer : MonoBehaviour
     public List<Transform> roofPrefabs;
     public List<Transform> roofBoundPrefabs;
     public List<Transform> roofCornerPrefabs;
+    public List<Transform> roofElementPrefabs;
     public List<Transform> stairPrefabs;
     public List<Transform> balconyPrefabs;
 
@@ -87,6 +88,7 @@ public class BuildingRenderer : MonoBehaviour
             RenderStory(story, wing, wingFolder, bldg);
         }
         RenderRoof(wing, wing.Bounds.min.x, wing.Bounds.max.x, wing.Bounds.min.y, wing.Bounds.max.y, wingFolder, bldg.level, bldg);
+        PlaceRoofElements(wing.Bounds.min.x, wing.Bounds.min.y, wing.Bounds.max.x, wing.Bounds.max.y, bldg.level, wingFolder, bldg);
         if (IsNorthOffsetCorrect(bldg, wing)) RenderNorthOffsetRoof(wing, bldg.minOffsetNorthWall, bldg.maxOffsetNorthWall + 1,
             wing.Bounds.max.y, wing.Bounds.max.y + bldg.depthOffsetNorthWall, wingFolder, bldg.northWallHeight > bldg.level ? bldg.level : bldg.northWallHeight, bldg);
         if (IsSouthOffsetCorrect(bldg, wing)) RenderSouthOffsetRoof(wing, bldg.minOffsetSouthWall, bldg.maxOffsetSouthWall + 1,
@@ -596,7 +598,7 @@ public class BuildingRenderer : MonoBehaviour
                 return;
             }
         }
-        if (level > 0 &&  ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
+        if (level > 0 && ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
@@ -619,7 +621,7 @@ public class BuildingRenderer : MonoBehaviour
                 ),
              Quaternion.identity);
         w.SetParent(storyFolder);
-        if (level == bldg.level-1)
+        if (level == bldg.level - 1)
         {
             try
             {
@@ -706,7 +708,7 @@ public class BuildingRenderer : MonoBehaviour
     }
     public void ChangeWindowMaterial(Transform wall)
     {
-        Transform windowTransform = wall ;
+        Transform windowTransform = wall;
         try
         {
             windowTransform = wall.GetChild(1);
@@ -825,7 +827,7 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if (y == minY  || y == maxY - 1 )
+                if (y == minY || y == maxY - 1)
                 {
                     prefab = roofCornerPrefabs[bldg.roofNorthOffsetCornerPrefabIndex];
                     direction = RoofDirection.West;
@@ -1038,6 +1040,28 @@ public class BuildingRenderer : MonoBehaviour
         new Vector3 (-3f, 180, -3f)
     };
 
+
+    private void PlaceRoofElements(int minX, int minY, int maxX, int maxY, int level, Transform wingFolder, Building bldg)
+    {
+
+        Transform re;
+        var x = minX -bldg.randomSeedOfRoofElements;
+        var y = minY - bldg.randomSeedOfRoofElements;
+                if (x >= maxX) x = maxX;
+                if (y>= maxY) y = maxY;
+                re = Instantiate(
+                 roofElementPrefabs[bldg.roofElementPrefabIndex],
+                 wingFolder.TransformPoint(
+                    new Vector3(
+                     x ,
+                      level * 2 + roofPrefabs[bldg.roofPrefabIndex].localScale.y - 0.3f,
+                      y 
+                  )
+              ),
+          Quaternion.identity
+          );;
+        re.SetParent(wingFolder);
+    }
     public Vector3 GetPrefabSize(Transform prefab)
     {
         Vector3 size = Vector3.zero;
@@ -1056,5 +1080,5 @@ public class BuildingRenderer : MonoBehaviour
 
         return size;
     }
- 
+
 }

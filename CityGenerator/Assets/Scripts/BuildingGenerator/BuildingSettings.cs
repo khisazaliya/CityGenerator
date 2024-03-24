@@ -9,10 +9,10 @@ using UnityEngine;
 [System.Serializable]
 public class BuildingSettings
 {
-    [Range(1, 50)] 
+    [Range(1, 50)]
     public int x;
 
-    [Range(1, 50)] 
+    [Range(1, 50)]
     public int y;
     public Vector2Int buildingSize => new Vector2Int(x, y);
 
@@ -51,6 +51,10 @@ public class BuildingSettings
     [Range(0, 50)]
     public int randomSeedOfEastBalconies;
 
+    [Range(0, 50)]
+    public int randomSeedOfRoofElements;
+
+
     public int minOffsetNorthWall;
 
     public int maxOffsetNorthWall;
@@ -88,6 +92,7 @@ public class BuildingSettings
     [HideInInspector] public int roofPrefabIndex = 0;
     [HideInInspector] public int roofBoundPrefabIndex = 0;
     [HideInInspector] public int roofCornerPrefabIndex = 0;
+    [HideInInspector] public int roofElementPrefabIndex = 0;
     [HideInInspector] public int stairSouthPrefabIndex = 0;
     [HideInInspector] public int balconySouthPrefabIndex = 0;
 
@@ -163,12 +168,13 @@ public class BuildingSettings
     [HideInInspector] public int balconyEastOffsetPrefabIndex = 0;
 
 
-    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int offsetOfEntries,  int numberOfBalconies, int randomSeedOfBalconies,
+    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int offsetOfEntries, int numberOfBalconies, int randomSeedOfBalconies,
+        int randomSeedOfRoofElements,
         int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight,
         int minOffsetSouthWall, int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight)
     {
-        x = size.x; 
-        y = size.y; 
+        x = size.x;
+        y = size.y;
         buildingCount = count;
         this.numberOfLevels = numberOfLevels;
         this.type = type;
@@ -176,6 +182,7 @@ public class BuildingSettings
         this.offsetOfEntries = offsetOfEntries;
         this.MaxNumberOfSouthBalconies = numberOfBalconies;
         this.randomSeedOfSouthBalconies = randomSeedOfBalconies;
+        this.randomSeedOfRoofElements = randomSeedOfRoofElements;
         this.minOffsetNorthWall = minOffsetNorthWall;
         this.maxOffsetNorthWall = maxOffsetNorthWall;
         this.depthOffsetNorthWall = depthOffsetNorthWall;
@@ -226,6 +233,7 @@ public class BuildingSettings
         this.roofPrefabIndex = roofPrefabIndex;
         this.roofBoundPrefabIndex = roofBoundPrefabIndex;
         this.roofCornerPrefabIndex = roofCornerPrefabIndex;
+        this.roofElementPrefabIndex = roofElementPrefabIndex;
         this.stairSouthPrefabIndex = stairSouthPrefabIndex;
         this.balconySouthPrefabIndex = balconySouthPrefabIndex;
         this.savedSeedOfSouthBalconies = savedSeedOfSouthBalconies;
