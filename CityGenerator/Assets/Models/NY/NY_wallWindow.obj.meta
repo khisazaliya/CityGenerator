@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: frame
-    second: {fileID: 2100000, guid: ea947a260fcaccd409501cc676543b60, type: 2}
+    second: {fileID: 2100000, guid: 0c82f6a8d2d239d43b61d3665700c974, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: wall
-    second: {fileID: 2100000, guid: c350901980b69ef46a187291f76160e1, type: 2}
+    second: {fileID: 2100000, guid: 043ca3650b0a5d748a0a727c6130a010, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -52,7 +52,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1

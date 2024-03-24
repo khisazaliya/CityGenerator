@@ -376,10 +376,10 @@ public class WaveFunctionCollapse : MonoBehaviour
     };
 
         Vector3[] rotationOffset2 = {
-        new Vector3 (-3f, 270f, 0f),
+        new Vector3 (-5f, 270f, 1f),
         new Vector3 (0f, 0f, 0f),
-        new Vector3 (0f, 90, -3f),
-        new Vector3 (-3f, 180, -3f)
+        new Vector3 (1f, 90, -5f),
+        new Vector3 (-5f, 180, -5f)
     };
         if (places.Count == 0)
         {
@@ -398,14 +398,13 @@ public class WaveFunctionCollapse : MonoBehaviour
                 {
                     int index = rand.Next(0, places.Count);
                     int rotationIndex = rand.Next(0, 4);
-                    Vector3 position = places[index].position + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
-                    //Vector3 position = places[index].position;
-                    oldBuildingsPlaces.Add(position);
-                    var building = buildingGenerator.GenerateBuilding(position, Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f),  buildingSetting);
-                   // var building = buildingGenerator.GenerateBuilding(position, Quaternion.identity, buildingSetting);
-                    //LODGeneratorService.GenerateLODs(building);
-                    //building.transform.RotateAround(position, Vector3.up, rotationOffset[rotationIndex]);
+                    //var building = buildingGenerator.GenerateBuilding(new Vector3(0,0,0), Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f), buildingSetting);
+                    var building = buildingGenerator.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.identity, buildingSetting);
+                   // Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f)
+                    //    + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
+                    Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f);
                     building.transform.position = position;
+                    oldBuildingsPlaces.Add(position);
                     buildings.Add(building);
                     places.RemoveAt(index);
                 }
@@ -505,6 +504,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     public void DestroyBuildings()
     {
         buildings.Clear();
+        oldBuildingsPlaces.Clear();
         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
         string objectName = "Building";
         foreach (GameObject obj in objects)

@@ -65,16 +65,16 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg);
         }
-       /* meshCombiner.CombineMeshes(bldgFolder);
-        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-          string objectName = "Wing";
-          foreach (GameObject obj in objects)
-          {
-              if (obj.name == objectName)
-              {
-                  DestroyImmediate(obj);
-              }
-          }*/
+        /* meshCombiner.CombineMeshes(bldgFolder);
+         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+           string objectName = "Wing";
+           foreach (GameObject obj in objects)
+           {
+               if (obj.name == objectName)
+               {
+                   DestroyImmediate(obj);
+               }
+           }*/
         return bldgFolder.gameObject;
     }
 
@@ -251,6 +251,7 @@ public class BuildingRenderer : MonoBehaviour
                         else
                         {
                             {
+
                                 if (i == 0 && entries.Contains(y)) PlaceEastWall(x, y, i, storyFolder, wallDoorsPrefabs[bldg.wallDoorPrefabIndex]);
                                 else if (i == 0)
                                     PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0EastPrefabIndex]);
@@ -258,7 +259,11 @@ public class BuildingRenderer : MonoBehaviour
                                     PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1EastPrefabIndex]);
                                 else
                                     PlaceEastWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2EastPrefabIndex]);
-                                if (PlaceEastBalcony(bldg, i, y, bldg.numberOfEastBalconies, bldg.randomSeedOfEastBalconies, balconiesEastIndexes)) PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyEastPrefabIndex]);
+                                if (PlaceEastBalcony(bldg, i, y, bldg.numberOfEastBalconies, bldg.randomSeedOfEastBalconies, balconiesEastIndexes))
+                                {
+                                    PlaceEastWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyEastPrefabIndex]);
+
+                                }
                             }
                         }
                     }
@@ -418,7 +423,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 1; i < bldg.level; i++)
+            for (int i = 1; i <= bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                     balconiesSouthIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -426,7 +431,7 @@ public class BuildingRenderer : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < numberOfBalconies; i++)
+            for (int i = 1; i < numberOfBalconies; i++)
             {
                 balconiesSouthIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
             }
@@ -443,7 +448,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 1; i < bldg.level; i++)
+            for (int i = 1; i <= bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                     balconiesNorthIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -451,7 +456,7 @@ public class BuildingRenderer : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < numberOfBalconies; i++)
+            for (int i = 1; i < numberOfBalconies; i++)
             {
                 balconiesNorthIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
             }
@@ -467,7 +472,7 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 1; i < bldg.level; i++)
+            for (int i = 1; i <= bldg.level; i++)
             {
                 for (int j = 0; j < numberOfBalconies; j++)
                     balconiesWestIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
@@ -475,7 +480,7 @@ public class BuildingRenderer : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < numberOfBalconies; i++)
+            for (int i = 1; i < numberOfBalconies; i++)
             {
                 balconiesWestIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
             }
@@ -492,15 +497,15 @@ public class BuildingRenderer : MonoBehaviour
         var balconySpacing = (int)Math.Ceiling(bldg.Size.y / (double)numberOfBalconies);
         if (randomSeedOfBalconies == 0)
         {
-            for (int i = 1; i < bldg.level; i++)
+            for (int i = 1; i <= bldg.level + 1; i++)
             {
-                for (int j = 0; j < numberOfBalconies; j++)
+                for (int j = 1; j < numberOfBalconies; j++)
                     balconiesEastIndexes.Add(new Tuple<int, int>(i, j * balconySpacing));
             }
         }
         else
         {
-            for (int i = 0; i < numberOfBalconies; i++)
+            for (int i = 1; i < numberOfBalconies; i++)
             {
                 balconiesEastIndexes.Add(new Tuple<int, int>(rand.Next(2, 2 + randomSeedOfBalconies), rand.Next(0, 2 + randomSeedOfBalconies)));
             }
@@ -578,13 +583,13 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, 90, 0));
         w.SetParent(storyFolder);
-        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
+        if (level > 0 &&  ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
     }
 
-   
+
     private void PlaceEastWall(int x, int y, int level, Transform storyFolder, Transform wall)
     {
         float height;
@@ -601,7 +606,7 @@ public class BuildingRenderer : MonoBehaviour
                 ),
              Quaternion.identity);
         w.SetParent(storyFolder);
-        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
+        if (level > 0 && ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
@@ -623,7 +628,7 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, -90, 0));
         w.SetParent(storyFolder);
-        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
+        if (level > 0 && ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
@@ -645,15 +650,23 @@ public class BuildingRenderer : MonoBehaviour
                 ),
             Quaternion.Euler(0, 180, 0));
         w.SetParent(storyFolder);
-        if (ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
+        if (level > 0 && ChangeWindowLight && UnityEngine.Random.Range(0f, 100f) < probability)
         {
             ChangeWindowMaterial(w);
         }
     }
     public void ChangeWindowMaterial(Transform wall)
     {
-        Transform windowTransform = wall.GetChild(1);
-        if (windowTransform != null && UnityEngine.Random.Range(0f, 100f) < 10f)
+        Transform windowTransform = wall ;
+        try
+        {
+            windowTransform = wall.GetChild(1);
+        }
+        catch (NullReferenceException)
+        {
+            Debug.Log("changing light is not impossible");
+        }
+        if (UnityEngine.Random.Range(0f, 100f) < 10f)
         {
 
             var renderer = windowTransform.GetComponent<Renderer>();
@@ -675,8 +688,8 @@ public class BuildingRenderer : MonoBehaviour
                 renderer.sharedMaterials = materials;
             }
         }
-
     }
+
     private void RenderRoof(Wing wing, int minX, int maxX, int minY, int maxY, Transform wingFolder, int level, Building bldg)
     {
         var direction = new RoofDirection();
