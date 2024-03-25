@@ -91,7 +91,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SNOWONOFF: 0
-    - _Smoothness: 0.391
+    - _Smoothness: 0.219
     - _SmoothnessTextureChannel: 0
     - _SnowAmount: 1
     - _SnowCoverage: 0.45
@@ -107,8 +107,8 @@ Material:
     - _Translucency: 0
     - _UVSec: 0
     - _WINDMASKONOFF: 0
-    - _WindDensity: 0.48
-    - _WindMovement: 0.8
+    - _WindDensity: 0.68
+    - _WindMovement: 2.03
     - _WindStrength: 0.1
     - _ZWrite: 0
     - __dirty: 0
