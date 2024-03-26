@@ -1,4 +1,3 @@
-#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
@@ -74,4 +73,3 @@ public class WFCEditor : Editor
         }
     }
 }
-#endif

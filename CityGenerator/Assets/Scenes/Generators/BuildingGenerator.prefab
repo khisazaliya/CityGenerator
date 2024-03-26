@@ -1,0 +1,257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7300102697703197466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5635857928092656913}
+  - component: {fileID: 7799941386413032283}
+  - component: {fileID: 900502777253209778}
+  m_Layer: 0
+  m_Name: BuildingGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5635857928092656913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7300102697703197466}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7799941386413032283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7300102697703197466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3072fe934cda469459c7d21d7adfee24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingSettings:
+  - x: 3
+    y: 14
+    buildingCount: 5
+    numberOfLevels: 9
+    type: 0
+    numberOfEntries: 4
+    offsetOfEntries: 1
+    MaxNumberOfSouthBalconies: 3
+    randomSeedOfSouthBalconies: 0
+    MaxNumberOfNorthBalconies: 3
+    randomSeedOfNorthBalconies: 0
+    MaxNumberOfWestBalconies: 4
+    randomSeedOfWestBalconies: 0
+    MaxNumberOfEastBalconies: 5
+    randomSeedOfEastBalconies: 0
+    randomSeedOfRoofElements: 0
+    minOffsetNorthWall: 0
+    maxOffsetNorthWall: -18
+    depthOffsetNorthWall: -28
+    northWallHeight: -13
+    minOffsetSouthWall: -21
+    maxOffsetSouthWall: 1
+    depthOffsetSouthWall: 0
+    southWallHeight: 0
+    minOffsetEastWall: 0
+    maxOffsetEastWall: 0
+    depthOffsetEastWall: -24
+    eastWallHeight: 3
+    entryLocations: []
+    floorSouthPrefabIndex: 2
+    wall0SouthPrefabIndex: 14
+    wall1SouthPrefabIndex: 14
+    wall2SouthPrefabIndex: 14
+    doorSouthPrefabIndex: 0
+    roofPrefabIndex: 3
+    roofBoundPrefabIndex: 8
+    roofCornerPrefabIndex: 9
+    roofElementPrefabIndex: 0
+    stairSouthPrefabIndex: 0
+    balconySouthPrefabIndex: 4
+    savedSeedOfSouthBalconies: 0
+    savedNumberOfSouthBalconies: 0
+    floorNorthPrefabIndex: 2
+    wall0NorthPrefabIndex: 14
+    wall1NorthPrefabIndex: 14
+    wall2NorthPrefabIndex: 14
+    doorNorthPrefabIndex: 0
+    stairNorthPrefabIndex: 0
+    balconyNorthPrefabIndex: 4
+    savedSeedOfNorthBalconies: 0
+    savedNumberOfNorthBalconies: 0
+    floorEastPrefabIndex: 2
+    wall0EastPrefabIndex: 14
+    wall1EastPrefabIndex: 14
+    wall2EastPrefabIndex: 14
+    wallDoorPrefabIndex: 7
+    doorEastPrefabIndex: 5
+    stairEastPrefabIndex: 4
+    balconyEastPrefabIndex: 4
+    savedSeedOfEastBalconies: 0
+    savedNumberOfEastBalconies: 0
+    floorWestPrefabIndex: 2
+    wall0WestPrefabIndex: 14
+    wall1WestPrefabIndex: 14
+    wall2WestPrefabIndex: 14
+    doorWestPrefabIndex: 0
+    stairWestPrefabIndex: 4
+    balconyWestPrefabIndex: 4
+    savedSeedOfWestBalconies: 0
+    savedNumberOfWestBalconies: 0
+    floorSouthOffsetPrefabIndex: 0
+    wall0SouthOffsetPrefabIndex: 0
+    wall1SouthOffsetPrefabIndex: 0
+    wall2SouthOffsetPrefabIndex: 0
+    doorSouthOffsetPrefabIndex: 0
+    roofSouthOffsetPrefabIndex: 0
+    roofSouthOffsetBoundPrefabIndex: 0
+    roofSouthOffsetCornerPrefabIndex: 0
+    stairSouthOffsetPrefabIndex: 0
+    balconySouthOffsetPrefabIndex: 0
+    floorNorthOffsetPrefabIndex: 0
+    wall0NorthOffsetPrefabIndex: 0
+    wall1NorthOffsetPrefabIndex: 0
+    wall2NorthOffsetPrefabIndex: 0
+    doorNorthOffsetPrefabIndex: 0
+    roofNorthOffsetPrefabIndex: 0
+    roofNorthOffsetBoundPrefabIndex: 0
+    roofNorthOffsetCornerPrefabIndex: 4
+    stairNorthOffsetPrefabIndex: 0
+    balconyNorthOffsetPrefabIndex: 0
+    floorEastOffsetPrefabIndex: 0
+    wall0EastOffsetPrefabIndex: 0
+    wall1EastOffsetPrefabIndex: 0
+    wall2EastOffsetPrefabIndex: 0
+    doorEastOffsetPrefabIndex: 0
+    roofEastOffsetPrefabIndex: 0
+    roofEastOffsetBoundPrefabIndex: 0
+    roofEastOffsetCornerPrefabIndex: 0
+    stairEastOffsetPrefabIndex: 0
+    balconyEastOffsetPrefabIndex: 0
+  renderedBuilding: {fileID: 0}
+  buildingRenderer: {fileID: 900502777253209778}
+  loadFilePath: "C:/Users/\u0410\u0437\u0430\u043B\u0438\u044F/Desktop/panelHouses.json"
+--- !u!114 &900502777253209778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7300102697703197466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10e0597a760654044bfb08d9af0c0541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorPrefabs:
+  - {fileID: -8679921383154817045, guid: b0c164d3682bce44f8dc7ec326538dca, type: 3}
+  - {fileID: -8679921383154817045, guid: d9c94eaada2a1e047a7981460ac0f154, type: 3}
+  - {fileID: -8679921383154817045, guid: 676628960f681ae45aab79695bb862ac, type: 3}
+  wallPrefabs:
+  - {fileID: -8679921383154817045, guid: de37d4b57025ceb46ad1c6eb270c45dc, type: 3}
+  - {fileID: -8679921383154817045, guid: f19998c7192ce3646a32ca9d1e79bada, type: 3}
+  - {fileID: -8679921383154817045, guid: bf89094aa4554454384cf9f6317b60ae, type: 3}
+  - {fileID: -8679921383154817045, guid: 2980468334020a04f9e1111a1a771b14, type: 3}
+  - {fileID: -8679921383154817045, guid: 77419218fb4716e43b56287be8af2cb9, type: 3}
+  - {fileID: -8679921383154817045, guid: 9fea3fb43df52754391b3a4e32a0f3c1, type: 3}
+  - {fileID: -8679921383154817045, guid: f9fd8bbd97041034d857b19828ae2481, type: 3}
+  - {fileID: -8679921383154817045, guid: 94c2d9b1c5dade64d878ac2af167f4d6, type: 3}
+  - {fileID: -8679921383154817045, guid: 816229d58cd35f74a980dc0095b050ab, type: 3}
+  - {fileID: -8679921383154817045, guid: 8a23a239d7e3e7445ad93b27af3db6ee, type: 3}
+  - {fileID: -8679921383154817045, guid: 80688be669ab7a8469395a2965cee82f, type: 3}
+  - {fileID: -8679921383154817045, guid: 29dfe7e6844bda949b62f0c9d6c29e86, type: 3}
+  - {fileID: -8679921383154817045, guid: abe4febf46dbb484688386d0bda16a5c, type: 3}
+  - {fileID: -8679921383154817045, guid: f854cca78292d524e8d20bf0bf509945, type: 3}
+  - {fileID: -8679921383154817045, guid: 53849ab0d1de97a4a8fcb291eca1fe5c, type: 3}
+  wallDoorsPrefabs:
+  - {fileID: -8679921383154817045, guid: 77419218fb4716e43b56287be8af2cb9, type: 3}
+  - {fileID: -8679921383154817045, guid: 94c2d9b1c5dade64d878ac2af167f4d6, type: 3}
+  - {fileID: -8679921383154817045, guid: a69fdc6e5797f6143b64f0571d0a4bbb, type: 3}
+  - {fileID: -8679921383154817045, guid: 80688be669ab7a8469395a2965cee82f, type: 3}
+  - {fileID: -8679921383154817045, guid: 29dfe7e6844bda949b62f0c9d6c29e86, type: 3}
+  - {fileID: -8679921383154817045, guid: abe4febf46dbb484688386d0bda16a5c, type: 3}
+  - {fileID: -8679921383154817045, guid: f854cca78292d524e8d20bf0bf509945, type: 3}
+  - {fileID: -8679921383154817045, guid: 53849ab0d1de97a4a8fcb291eca1fe5c, type: 3}
+  doorPrefabs:
+  - {fileID: -8679921383154817045, guid: 845694e71a701cb4f8823098f7c144eb, type: 3}
+  - {fileID: -8679921383154817045, guid: 32a49f74d75185748b19aafb73ad5ce6, type: 3}
+  - {fileID: -8679921383154817045, guid: ca1e3d48ca9ecfc45b3dbf87010ad39e, type: 3}
+  - {fileID: -8679921383154817045, guid: 4db9421d6ea2b1c48a1e618e974bb88e, type: 3}
+  - {fileID: -8679921383154817045, guid: c8e6b0d2a843dbe44b843f4115974f41, type: 3}
+  - {fileID: -8679921383154817045, guid: 84ac01d2a6b45c7409d6bfd88f8f2de5, type: 3}
+  roofPrefabs:
+  - {fileID: -8679921383154817045, guid: 1670fe97434d2f04e957004ba219dcc1, type: 3}
+  - {fileID: -8679921383154817045, guid: 74f834cc0247bd94fb7356923f17cf5e, type: 3}
+  - {fileID: -8679921383154817045, guid: c03442687228b8148aa92fe612f5521c, type: 3}
+  - {fileID: -8679921383154817045, guid: 397e4ea691c1211439c1130db2b36463, type: 3}
+  - {fileID: -8679921383154817045, guid: 8442c040382d6d94caa6e4f17cede153, type: 3}
+  - {fileID: -8679921383154817045, guid: 310a2fd76e5acf54db64a0c8ecdaca4a, type: 3}
+  - {fileID: -8679921383154817045, guid: 2e016301697c3214e83177756d0425fa, type: 3}
+  - {fileID: -8679921383154817045, guid: 5cd62d863467af141acf1a1977b86e06, type: 3}
+  - {fileID: -8679921383154817045, guid: 4a2123148d50fac419a091624a82dda7, type: 3}
+  roofBoundPrefabs:
+  - {fileID: -8679921383154817045, guid: 1670fe97434d2f04e957004ba219dcc1, type: 3}
+  - {fileID: -8679921383154817045, guid: 74f834cc0247bd94fb7356923f17cf5e, type: 3}
+  - {fileID: -8679921383154817045, guid: c03442687228b8148aa92fe612f5521c, type: 3}
+  - {fileID: -8679921383154817045, guid: 397e4ea691c1211439c1130db2b36463, type: 3}
+  - {fileID: -8679921383154817045, guid: 8442c040382d6d94caa6e4f17cede153, type: 3}
+  - {fileID: -8679921383154817045, guid: 310a2fd76e5acf54db64a0c8ecdaca4a, type: 3}
+  - {fileID: -8679921383154817045, guid: 2e016301697c3214e83177756d0425fa, type: 3}
+  - {fileID: -8679921383154817045, guid: e7f32c67c0537fa4abdbf60e512a69e5, type: 3}
+  - {fileID: -8679921383154817045, guid: 4a2123148d50fac419a091624a82dda7, type: 3}
+  roofCornerPrefabs:
+  - {fileID: -8679921383154817045, guid: 1670fe97434d2f04e957004ba219dcc1, type: 3}
+  - {fileID: -8679921383154817045, guid: 74f834cc0247bd94fb7356923f17cf5e, type: 3}
+  - {fileID: -8679921383154817045, guid: c03442687228b8148aa92fe612f5521c, type: 3}
+  - {fileID: -8679921383154817045, guid: 397e4ea691c1211439c1130db2b36463, type: 3}
+  - {fileID: -8679921383154817045, guid: f2347eb42851af548b9dd8908a3522ab, type: 3}
+  - {fileID: -8679921383154817045, guid: 8442c040382d6d94caa6e4f17cede153, type: 3}
+  - {fileID: -8679921383154817045, guid: 310a2fd76e5acf54db64a0c8ecdaca4a, type: 3}
+  - {fileID: -8679921383154817045, guid: 2e016301697c3214e83177756d0425fa, type: 3}
+  - {fileID: -8679921383154817045, guid: 87a87dfd79c661c48b40e4d6bf26ee9d, type: 3}
+  - {fileID: -8679921383154817045, guid: 4a2123148d50fac419a091624a82dda7, type: 3}
+  roofElementPrefabs: []
+  stairPrefabs:
+  - {fileID: -8679921383154817045, guid: cb6fc140e39df5f4d94a6e7a83819270, type: 3}
+  - {fileID: -8679921383154817045, guid: 25a99beec3107ac4188ff95a1ddf90a4, type: 3}
+  - {fileID: -8679921383154817045, guid: f7289497f0031b64cbe1478e887c3687, type: 3}
+  - {fileID: -8679921383154817045, guid: 137eae0fe98823d40b5b825bbd5f6347, type: 3}
+  - {fileID: -8679921383154817045, guid: 7605f8d0c2d08334f9550552f2c6383c, type: 3}
+  balconyPrefabs:
+  - {fileID: -8679921383154817045, guid: ab33236698d1cc34faa4171fbf0e9681, type: 3}
+  - {fileID: -8679921383154817045, guid: c313d4903647ae04e986755268f6a26a, type: 3}
+  - {fileID: -8679921383154817045, guid: 8c437c68430f4f248adf1f94498845cc, type: 3}
+  - {fileID: -8679921383154817045, guid: eb7a21b7139289d4eb020f63c51c2546, type: 3}
+  - {fileID: -8679921383154817045, guid: 25a35096742c3894fb8d499bbb6f850b, type: 3}
+  - {fileID: -8679921383154817045, guid: 624848ef8d4f8174c97d2f7ff23cf324, type: 3}
+  savedSeedOfEastBalconies: 0
+  savedNumberOfEastBalconies: 5
+  savedSeedOfWestBalconies: 0
+  savedNumberOfWestBalconies: 4
+  savedSeedOfNorthBalconies: 0
+  savedNumberOfNorthBalconies: 3
+  savedSeedOfSouthBalconies: 0
+  savedNumberOfSouthBalconies: 3
+  oldMaterial: {fileID: 2100000, guid: 26928252df0d28d4b9adac70703d362c, type: 2}
+  newMaterial: {fileID: 2100000, guid: 35de1abb1ec77294dbdeb86f9bf81498, type: 2}
+  ChangeWindowLight: 1
+  floorSize: {x: 0.000001, y: 0.5, z: 3}
+  probability: 80

@@ -1,4 +1,4 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,4 +15,3 @@ public class Rule : ScriptableObject
         return results[0];
     }
 }
-*/
