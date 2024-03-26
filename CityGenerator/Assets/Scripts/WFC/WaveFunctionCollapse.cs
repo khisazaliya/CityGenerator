@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -428,7 +429,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 GameObject nature = (GameObject)PrefabUtility.InstantiatePrefab(naturePrefabs[natureIndex] as GameObject);
                 natures.Add(nature);
                 nature.name = "Nature";
-                nature.transform.position = places[index].position;
+                nature.transform.position = places[index].position + new Vector3(0, 0, 3);
                 oldNaturesPlaces.Add(places[index].position);
                 places.RemoveAt(index);
             }
@@ -458,7 +459,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             int index = Random.Range(0, newPositions.Count);
             if (index < newPositions.Count)
             {
-                nature.transform.position = newPositions[index];
+                nature.transform.position = newPositions[index] + new Vector3(0, 0, 3);
                 newPositions.RemoveAt(index);
             }
         }
@@ -544,4 +545,4 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
     }
 }
-
+#endif

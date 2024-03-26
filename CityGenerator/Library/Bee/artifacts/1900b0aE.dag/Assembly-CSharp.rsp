@@ -379,6 +379,7 @@
 "Assets/Scripts/BuildingGenerator/Services/SimplifyChildren.cs"
 "Assets/Scripts/CityGenerator/PlacementHelper.cs"
 "Assets/Scripts/CityGenerator/TerrainBuildingSpawner.cs"
+"Assets/Scripts/MovePlayer.cs"
 "Assets/Scripts/RoadGenerator/AgentParameters.cs"
 "Assets/Scripts/RoadGenerator/Direction.cs"
 "Assets/Scripts/RoadGenerator/LSystemGenerator.cs"

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_EDITOR
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -28,7 +29,7 @@ public class BuildingGenerator : MonoBehaviour
         return renderedBuilding;
     }
 
-    [ContextMenu("Load")]
+  [ContextMenu("Load")]
     public void LoadField()
     {
         if (string.IsNullOrEmpty(loadFilePath))
@@ -120,3 +121,4 @@ public class BuildingGenerator : MonoBehaviour
         public List<BuildingSettings> buildingSettings;
     }
 }
+#endif

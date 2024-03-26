@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -88,11 +88,11 @@ public class SimpleVisualizer : MonoBehaviour
                     break;
             }
         }
-/*
+*//*
         foreach (var position in positions)
         {
             Instantiate(prefab, position, Quaternion.identity);
-        }*/
+        }*//*
 
     }
 
@@ -120,3 +120,4 @@ public class SimpleVisualizer : MonoBehaviour
     }
 }
 
+*/

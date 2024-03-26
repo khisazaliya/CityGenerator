@@ -1,3 +1,4 @@
+#if UNIITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
@@ -186,3 +187,4 @@ public class BuildingGeneratorEditor : Editor
         buildingGenerator.GenerateBuilding(Vector3.zero, Quaternion.identity, buildingGenerator.buildingSettings[0]);
     }
 }
+#endif
