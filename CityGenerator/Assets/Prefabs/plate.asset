@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: plate
   m_EditorClassIdentifier: 
   meshRotation: 0
-  prefab: {fileID: 410432731371775883, guid: 53de0dcd556ba174b9850fd1da2bef6e, type: 3}
+  prefab: {fileID: 5841215943505740389, guid: 95e60a5a3e2a6664d85c13ea64e43855, type: 3}
   posX: 4
   negX: 4
   posZ: 4

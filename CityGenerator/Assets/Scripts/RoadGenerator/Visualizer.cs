@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static SimpleVisualizer;
@@ -59,10 +59,10 @@ public class Visualizer : MonoBehaviour
 
         foreach (var letter in sequence)
         {
-           /* if (waitingForTheRoad)
+           *//* if (waitingForTheRoad)
             {
                 yield return new WaitForEndOfFrame();
-            }*/
+            }*//*
             EncodingLetters encoding = (EncodingLetters)letter;
             switch (encoding)
             {
@@ -115,3 +115,4 @@ public class Visualizer : MonoBehaviour
 
     }
 }
+*/

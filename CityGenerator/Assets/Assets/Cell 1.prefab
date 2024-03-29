@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9057981780642714201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8409019962048422256}
+  - component: {fileID: 2101391609311237358}
+  m_Layer: 0
+  m_Name: Cell 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8409019962048422256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057981780642714201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 78.154396, y: -10.551554, z: 77.6182}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2101391609311237358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057981780642714201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b59836f66091a74690ea44c90677d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCollapsed: 0
+  possiblePrototypes:
+  - {fileID: 11400000, guid: 683fd2210bdd8dd4f8753df14812c2b1, type: 2}
+  - {fileID: 11400000, guid: 6f411a6659b95ed4b83657f30afa2058, type: 2}
+  - {fileID: 11400000, guid: e6adb22b0f6434c4694b14a7aea2669a, type: 2}
+  - {fileID: 11400000, guid: 4ae1285cd7bd9b2488c4132cf5622db9, type: 2}
+  - {fileID: 11400000, guid: bf319911873690e40b747c200caf6e4f, type: 2}
+  - {fileID: 11400000, guid: 5c508eaae8e42d544a32852aa84cdf47, type: 2}
+  - {fileID: 11400000, guid: 0eb507449c22e0543b203873dd2cc0ae, type: 2}
+  - {fileID: 11400000, guid: c7a5e13d8c23fd746a03ece3c5caf46c, type: 2}
+  - {fileID: 11400000, guid: c8767e83f51a85d4398314f7febc41af, type: 2}
+  - {fileID: 11400000, guid: ef62aa6fad1a68d4b97473672d2b9101, type: 2}
+  - {fileID: 11400000, guid: df98d0f088fbc6f4e80ed43cf5c05191, type: 2}
+  - {fileID: 11400000, guid: 9e9a099df890cf64eaee9db32b2bdc2e, type: 2}
+  - {fileID: 11400000, guid: 97404d79ee28a1e439f10830f8688754, type: 2}
+  - {fileID: 11400000, guid: c62ed43ab74f23b47b8a703fb37fb63e, type: 2}
+  - {fileID: 11400000, guid: 7d5fdc51592292b48b6762a72a1c6a0a, type: 2}
+  - {fileID: 11400000, guid: 4db75a2d6251aa54d926da183bfc6db7, type: 2}
+  - {fileID: 11400000, guid: de30f9a9cf163bd488b76adeab8e3fe5, type: 2}
+  - {fileID: 11400000, guid: 9f88f418789a2f644a1f9964ba2384c3, type: 2}
+  - {fileID: 11400000, guid: a45804f0c98c7e343a9acfbe2d90f135, type: 2}
+  - {fileID: 11400000, guid: 196abd9a835932840bfcce88cae123c2, type: 2}
+  prototypeWeights: 0100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  coords: {x: 0, y: 0}
+  posZneighbour: {fileID: 0}
+  negZneighbour: {fileID: 0}
+  posXneighbour: {fileID: 0}
+  negXneighbour: {fileID: 0}
+  validPrototypes: []
+  meshFilter: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  validNeighbours:
+    posX: []
+    posZ: []
+    negX: []
+    negZ: []

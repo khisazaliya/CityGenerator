@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.Windows;
 public class PrototypeGenerator : MonoBehaviour
 {
-    public List<Prototype> protoypePrefabs;
+    public List<Prototype> prototypePrefabs;
     public List<Prototype> prototypes;
     public string path = "Assets/Data/Prototypes";
     WFC_Socket posXHolder;
@@ -28,11 +28,11 @@ public class PrototypeGenerator : MonoBehaviour
 #endif
 
         // Generate rotations for all prototypes
-        for (int i = 0; i < protoypePrefabs.Count; i++)
+        for (int i = 0; i < prototypePrefabs.Count; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-                Prototype newProto = CreateMyAsset(path, protoypePrefabs[i].name, j.ToString().Replace(" ", ""));
+                Prototype newProto = CreateMyAsset(path, prototypePrefabs[i].name, j.ToString().Replace(" ", ""));
                 prototypes.Add(newProto);
             }
         }
@@ -42,20 +42,19 @@ public class PrototypeGenerator : MonoBehaviour
     }
     public void UpdatePrototypes()
     {
-        // Generate rotations for all prototypes
-        for (int i = 0; i < protoypePrefabs.Count; i++)
+        for (int i = 0; i < prototypePrefabs.Count; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-                prototypes[i * 4 + j].prefab = protoypePrefabs[i].prefab;
+                prototypes[i * 4 + j].prefab = prototypePrefabs[i].prefab;
                 prototypes[i * 4 + j].validNeighbours = new NeighbourList();
                 prototypes[i * 4 + j].meshRotation = j;
-                prototypes[i * 4 + j].attributes = protoypePrefabs[i].attributes;
+                prototypes[i * 4 + j].attributes = prototypePrefabs[i].attributes;
 
-                prototypes[i * 4 + j].posX = protoypePrefabs[i].posX;
-                prototypes[i * 4 + j].negX = protoypePrefabs[i].negX;
-                prototypes[i * 4 + j].posZ = protoypePrefabs[i].posZ;
-                prototypes[i * 4 + j].negZ = protoypePrefabs[i].negZ;
+                prototypes[i * 4 + j].posX = prototypePrefabs[i].posX;
+                prototypes[i * 4 + j].negX = prototypePrefabs[i].negX;
+                prototypes[i * 4 + j].posZ = prototypePrefabs[i].posZ;
+                prototypes[i * 4 + j].negZ = prototypePrefabs[i].negZ;
 
                 if (j == 0)
                 {
@@ -78,8 +77,6 @@ public class PrototypeGenerator : MonoBehaviour
                 }
             }
         }
-
-        // // Generate valid neighbors
         for (int i = 0; i < prototypes.Count; i++)
             prototypes[i].validNeighbours = GetValidNeighbors(prototypes[i]);
     }
@@ -122,13 +119,13 @@ public class PrototypeGenerator : MonoBehaviour
             prototypeHolder = new List<GameObject>();
         }
 
-        for (int i = 0; i < protoypePrefabs.Count; i++)
+        for (int i = 0; i < prototypePrefabs.Count; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-                GameObject protoObj = Instantiate(protoypePrefabs[i].prefab, new Vector3(i * 1.5f, 0f, j * 1.5f), Quaternion.identity, this.transform);
+                GameObject protoObj = Instantiate(prototypePrefabs[i].prefab, new Vector3(i * 1.5f, 0f, j * 1.5f), Quaternion.identity, this.transform);
                 protoObj.transform.Rotate(new Vector3(0f, j * 90, 0f), Space.Self);
-                protoObj.name = (protoypePrefabs[i].prefab.name + "_" + j.ToString());
+                protoObj.name = (prototypePrefabs[i].prefab.name + "_" + j.ToString());
                 prototypeHolder.Add(protoObj);
             }
         }

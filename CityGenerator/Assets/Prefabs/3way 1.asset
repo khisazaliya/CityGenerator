@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a95f511f4720304b9149e9bf38065c4, type: 3}
+  m_Name: 3way 1
+  m_EditorClassIdentifier: 
+  meshRotation: 0
+  prefab: {fileID: 4880776280568885918, guid: 1f6602e1e1d694542b3de301a2ba5e89, type: 3}
+  posX: 0
+  negX: 4
+  posZ: 0
+  negZ: 0
+  attributes: 00000000
+  validNeighbours:
+    posX:
+    - {fileID: 11400000, guid: e6825db51131380488e9c66bd84f47e5, type: 2}
+    posZ:
+    - {fileID: 11400000, guid: e6825db51131380488e9c66bd84f47e5, type: 2}
+    negX:
+    - {fileID: 11400000, guid: 4117f28cfc848ea4f85bb648db4e11a9, type: 2}
+    negZ:
+    - {fileID: 11400000, guid: e6825db51131380488e9c66bd84f47e5, type: 2}
