@@ -68,9 +68,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c33d5535ea48343499cb2e220108a032, type: 2}
   prototypeWeights: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   coords: {x: 0, y: 0}
-  posXneighbour: {fileID: 0}
-  negXneighbour: {fileID: 0}
   posZneighbour: {fileID: 0}
   negZneighbour: {fileID: 0}
+  posXneighbour: {fileID: 0}
+  negXneighbour: {fileID: 0}
+  validPrototypes: []
   meshFilter: {fileID: 0}
   meshRenderer: {fileID: 0}
+  validNeighbours:
+    posX: []
+    posZ: []
+    negX: []
+    negZ: []

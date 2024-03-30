@@ -30,10 +30,14 @@ public class WaveFunctionCollapse : MonoBehaviour
     public List<GameObject> streetPrefabs = new List<GameObject>();
     public LODGeneratorService LODGeneratorService = new();
     [HideInInspector] public System.Random rand = new();
+    public Terrain terrain;
+    public GameObject buildingPrefab;
+    Vector3 terrainNormal = new();
     void Start()
     {
         StartCoroutine(CollapseOverTime());
     }
+
     public void InitializeWaveFunction()
     {
         ClearAll();
@@ -80,24 +84,8 @@ public class WaveFunctionCollapse : MonoBehaviour
             c.GenerateWeight(weights);
 
         StartCollapse();
-       // CreateBorder();
+        // CreateBorder();
     }
-/*     private void CreateBorder()
-     {
-        for (int x = 0; x < size.x; x++)
-         {
-            Cell cell = GetCell(x * gridOffset + startPosition.x, -1 * gridOffset + startPosition.z);
-            if (cell.possiblePrototypes[0].attributes.Contains(Attribute.Crossroad))
-                DoInstantiate(borderIntersectionPrefab, new Vector3(x * gridOffset + startPosition.x, 0, -1 * gridOffset + startPosition.z), Quaternion.identity, this.transform);
-            else
-            DoInstantiate(borderPrefab, new Vector3(x * gridOffset + startPosition.x, 0, size.y * gridOffset + startPosition.z), Quaternion.identity, this.transform);
-         }
-         for (int z = 0; z < size.y; z++)
-         {
-             DoInstantiate(borderPrefab, new Vector3(-1 * gridOffset, 0, z * gridOffset + startPosition.z), Quaternion.identity, this.transform);
-             DoInstantiate(borderPrefab, new Vector3(size.x * gridOffset + startPosition.x, 0, z * gridOffset + startPosition.z), Quaternion.identity, this.transform);
-         }
-     }*/
 
     private void DoInstantiate(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent)
     {
@@ -178,16 +166,41 @@ public class WaveFunctionCollapse : MonoBehaviour
         finalPrototype.prefab = cell.possiblePrototypes[selectedPrototype].prefab;
         cell.possiblePrototypes.Clear();
         cell.possiblePrototypes.Add(finalPrototype);
+
         GameObject finalPrefab = Instantiate(finalPrototype.prefab, cell.transform, true);
-        if (finalPrototype.attributes[0].Equals(Attribute.Building)) places.Add(finalPrefab.transform);
+     
+        Vector3 cellCenter = cell.transform.position;
+        Vector3 spawnPosition = new Vector3(cellCenter.x, 0f, cellCenter.z);
+
+        // Луч, направленный вниз от точки размещения префаба
+        RaycastHit hit;
+        if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
+        {
+            // Позиция префаба устанавливается на высоту террейна в точке пересечения с лучом
+            finalPrefab.transform.position = hit.point;
+            // Поворот префаба так, чтобы он был параллелен поверхности террейна
+            finalPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+        }
+        else
+        {
+            Debug.LogError("Не удалось определить высоту террейна для размещения префаба.");
+            return;
+        }
+        finalPrefab.transform.Rotate(new Vector3(0f, finalPrototype.meshRotation * 90, 0f), Space.Self);
+        finalPrefab.transform.position += new Vector3(0, 0.6f, 0);
+        if (finalPrototype.attributes[0].Equals(Attribute.Building))
+            places.Add(finalPrefab.transform);
         else
             streetElementsPlaces.Add(finalPrefab.transform);
-        finalPrefab.transform.Rotate(new Vector3(0f, finalPrototype.meshRotation * 90, 0f), Space.Self);
-        finalPrefab.transform.localPosition = Vector3.zero;
+
         cell.name = cell.coords.ToString() + "_" + collapsed.ToString();
         collapsed++;
         cell.isCollapsed = true;
     }
+
+
+
+
     private int SelectPrototype(List<int> prototypeWeights)
     {
         int total = 0;
@@ -372,7 +385,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         float[] rotationOffset = {
         0f,
         90f,
-        180f, 
+        180f,
         270f
     };
 
@@ -399,12 +412,31 @@ public class WaveFunctionCollapse : MonoBehaviour
                 {
                     int index = rand.Next(0, places.Count);
                     int rotationIndex = rand.Next(0, 4);
-                 //   var building = buildingGenerator.GenerateBuilding(new Vector3(0,0,0), Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f), buildingSetting);
+                    //   var building = buildingGenerator.GenerateBuilding(new Vector3(0,0,0), Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f), buildingSetting);
                     var building = buildingGenerator.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.identity, buildingSetting);
-                   // Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f)
-                     //   + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
-                    Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f);
+                    // Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f)
+                    //   + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
+                    Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, -1.3f, building.transform.localScale.z * -5f);
                     building.transform.position = position;
+                    var angle = places[index].rotation;
+
+
+                    // Умножаем текущую ротацию объекта на новую ротацию по оси Y
+                    building.transform.Rotate(new Vector3(places[index].transform.rotation.x, 0, 0), Space.Self);
+                    Debug.Log(places[index].transform.rotation.x + "ugol");
+
+
+                    Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
+
+                    // Луч, направленный вниз от точки размещения префаба
+                    RaycastHit hit;
+                    if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
+                    {
+                        // Позиция префаба устанавливается на высоту террейна в точке пересечения с лучом
+                        // Поворот префаба так, чтобы он был параллелен поверхности террейна
+                        building.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                    }
+
                     oldBuildingsPlaces.Add(position);
                     buildings.Add(building);
                     places.RemoveAt(index);
@@ -429,7 +461,18 @@ public class WaveFunctionCollapse : MonoBehaviour
                 GameObject nature = (GameObject)PrefabUtility.InstantiatePrefab(naturePrefabs[natureIndex] as GameObject);
                 natures.Add(nature);
                 nature.name = "Nature";
-                nature.transform.position = places[index].position + new Vector3(0,0,5);
+                nature.transform.position = places[index].position + new Vector3(0, 0, 5);
+
+                Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
+
+                // Луч, направленный вниз от точки размещения префаба
+                RaycastHit hit;
+                if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
+                {
+                    // Позиция префаба устанавливается на высоту террейна в точке пересечения с лучом
+                    // Поворот префаба так, чтобы он был параллелен поверхности террейна
+                    nature.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                }
                 oldNaturesPlaces.Add(places[index].position);
                 places.RemoveAt(index);
             }
@@ -488,7 +531,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (streetElementsPlaces.Count > 0)
         {
-            for (int i=0; i< streetElementsCount; i++)
+            for (int i = 0; i < streetElementsCount; i++)
             {
                 int streetElementIndex = rand.Next(0, streetPrefabs.Count);
                 int index = rand.Next(0, streetElementsPlaces.Count);
@@ -521,7 +564,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     {
         natures.Clear();
         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-        string objectName = "Nature"; 
+        string objectName = "Nature";
         foreach (GameObject obj in objects)
         {
             if (obj.name == objectName)
