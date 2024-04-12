@@ -20560,7 +20560,7 @@ Transform:
   m_GameObject: {fileID: 419108860}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -27045,16 +27045,48 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].eastWallHeight
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
       propertyPath: buildingSettings.Array.data[0].numberOfLevels
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].northWallHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
       propertyPath: buildingSettings.Array.data[0].numberOfEntries
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
       propertyPath: buildingSettings.Array.data[0].offsetOfEntries
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].maxOffsetNorthWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].maxOffsetSouthWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].minOffsetSouthWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].depthOffsetEastWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].wallDoorPrefabIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: buildingSettings.Array.data[0].depthOffsetNorthWall
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8561504631159772032, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
       propertyPath: buildingSettings.Array.data[0].MaxNumberOfEastBalconies
@@ -27071,6 +27103,10 @@ PrefabInstance:
     - target: {fileID: 9196714365718354881, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
       propertyPath: m_Name
       value: BuildingGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196714365718354881, guid: 0361a33b49b6c3042a5de577301f2d1a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

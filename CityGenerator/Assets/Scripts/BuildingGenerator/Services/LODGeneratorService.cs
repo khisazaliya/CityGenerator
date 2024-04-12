@@ -20,18 +20,18 @@ public class LODGeneratorService : MonoBehaviour
                 LODLevel[] levels = new LODLevel[]
                 {
                             new LODLevel(0.5f, 0.5f, 1f, true, true),
-                            new LODLevel(0.005f, 0.5f, 0.4f, true, true)
+                            new LODLevel(0.005f, 0.5f, 0.1f, true, true)
                 };
 
                 bool autoCollectRenderers = true;
                 SimplificationOptions simplificationOptions = new SimplificationOptions()
                 {
                     PreserveBorderEdges = true,
-                    PreserveUVSeamEdges = false,
+                    PreserveUVSeamEdges = true,
                     PreserveUVFoldoverEdges = true,
                     PreserveSurfaceCurvature = false,
                     EnableSmartLink = true,
-                    VertexLinkDistance = 0.00001,
+                    VertexLinkDistance = 0.01,
                     MaxIterationCount = 100,
                     Agressiveness = 1.0,
                     ManualUVComponentCount = false,

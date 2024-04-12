@@ -1,9 +1,10 @@
-#if UNITY_EDITOR
+п»ї#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class WaveFunctionCollapse : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class WaveFunctionCollapse : MonoBehaviour
     public Dictionary<Vector2, Cell> activeCells = new Dictionary<Vector2, Cell>();
     public List<Cell> cellsAffected = new List<Cell>();
     public Weights weights;
+    public bool withoutRoad = false;
+
     public BuildingGenerator buildingGenerator;
     [HideInInspector] public List<Transform> places = new();
     [HideInInspector] public List<Transform> streetElementsPlaces = new();
@@ -28,6 +31,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     public int natureCount;
     public int streetElementsCount;
     public List<GameObject> streetPrefabs = new List<GameObject>();
+
     public LODGeneratorService LODGeneratorService = new();
     [HideInInspector] public System.Random rand = new();
     public Terrain terrain;
@@ -84,7 +88,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             c.GenerateWeight(weights);
 
         StartCollapse();
-        // CreateBorder();
+        //  CombineRoadModules();
     }
 
     private void DoInstantiate(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent)
@@ -168,37 +172,42 @@ public class WaveFunctionCollapse : MonoBehaviour
         cell.possiblePrototypes.Add(finalPrototype);
 
         GameObject finalPrefab = Instantiate(finalPrototype.prefab, cell.transform, true);
-     
+
         Vector3 cellCenter = cell.transform.position;
         Vector3 spawnPosition = new Vector3(cellCenter.x, 0f, cellCenter.z);
 
-        // Луч, направленный вниз от точки размещения префаба
+        float angle = 0;
         RaycastHit hit;
         if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
         {
-            // Позиция префаба устанавливается на высоту террейна в точке пересечения с лучом
+            Vector3 surfaceNormal = hit.normal;
+            Vector3 upDirection = Vector3.up; // РќР°РїСЂР°РІР»РµРЅРёРµ РІРІРµСЂС…
+
+            // РџРѕР»СѓС‡Р°РµРј СѓРіРѕР» РЅР°РєР»РѕРЅР° РїРѕРІРµСЂС…РЅРѕСЃС‚Рё
+            angle = Vector3.Angle(surfaceNormal, upDirection);
             finalPrefab.transform.position = hit.point;
-            // Поворот префаба так, чтобы он был параллелен поверхности террейна
+
             finalPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
         }
         else
         {
-            Debug.LogError("Не удалось определить высоту террейна для размещения префаба.");
+
             return;
         }
         finalPrefab.transform.Rotate(new Vector3(0f, finalPrototype.meshRotation * 90, 0f), Space.Self);
         finalPrefab.transform.position += new Vector3(0, 0.6f, 0);
-        if (finalPrototype.attributes[0].Equals(Attribute.Building))
-            places.Add(finalPrefab.transform);
-        else
-            streetElementsPlaces.Add(finalPrefab.transform);
+        if (angle < 10)
+        {
+            if (finalPrototype.attributes[0].Equals(Attribute.Building))
+                places.Add(finalPrefab.transform);
+            else
+                streetElementsPlaces.Add(finalPrefab.transform);
+        }
 
         cell.name = cell.coords.ToString() + "_" + collapsed.ToString();
         collapsed++;
         cell.isCollapsed = true;
     }
-
-
 
 
     private int SelectPrototype(List<int> prototypeWeights)
@@ -416,24 +425,27 @@ public class WaveFunctionCollapse : MonoBehaviour
                     var building = buildingGenerator.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.identity, buildingSetting);
                     // Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f)
                     //   + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
-                    Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, -1.3f, building.transform.localScale.z * -5f);
+                    Vector3 position;
+                    if (withoutRoad)
+                        position = places[index].position - new Vector3(0.5f, 1f, 0);
+                    else
+                        position = places[index].position - new Vector3(building.transform.localScale.x * -5f, -1.3f, building.transform.localScale.z * -5f);
+
                     building.transform.position = position;
                     var angle = places[index].rotation;
 
 
-                    // Умножаем текущую ротацию объекта на новую ротацию по оси Y
                     building.transform.Rotate(new Vector3(places[index].transform.rotation.x, 0, 0), Space.Self);
-                    Debug.Log(places[index].transform.rotation.x + "ugol");
+
 
 
                     Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
 
-                    // Луч, направленный вниз от точки размещения префаба
+
                     RaycastHit hit;
                     if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
                     {
-                        // Позиция префаба устанавливается на высоту террейна в точке пересечения с лучом
-                        // Поворот префаба так, чтобы он был параллелен поверхности террейна
+
                         building.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                     }
 
@@ -465,12 +477,9 @@ public class WaveFunctionCollapse : MonoBehaviour
 
                 Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
 
-                // Луч, направленный вниз от точки размещения префаба
                 RaycastHit hit;
                 if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
                 {
-                    // Позиция префаба устанавливается на высоту террейна в точке пересечения с лучом
-                    // Поворот префаба так, чтобы он был параллелен поверхности террейна
                     nature.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                 }
                 oldNaturesPlaces.Add(places[index].position);
@@ -489,6 +498,12 @@ public class WaveFunctionCollapse : MonoBehaviour
             if (index < newPositions.Count)
             {
                 building.transform.position = newPositions[index];
+                Vector3 spawnPosition = new Vector3(newPositions[index].x, 0f, newPositions[index].z);
+                RaycastHit hit;
+                if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
+                {
+                    building.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                }
                 newPositions.RemoveAt(index);
             }
         }
@@ -574,6 +589,8 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
     }
 
+
+
     public void DestroyStreetElements()
     {
         natures.Clear();
@@ -587,6 +604,12 @@ public class WaveFunctionCollapse : MonoBehaviour
             }
         }
     }
+
 }
+
+
+
+
+
 
 #endif

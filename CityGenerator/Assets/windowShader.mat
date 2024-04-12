@@ -14,7 +14,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -59,21 +59,29 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RoofTexture:
+        m_Texture: {fileID: 2800000, guid: 51a21d7b3d592c143a0006b46e48661e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TileSizeMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TopTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WallTexture:
-        m_Texture: {fileID: 2800000, guid: 9b61fc3343ec8284788b892d495dd5e4, type: 3}
-        m_Scale: {x: 0.36, y: 1}
-        m_Offset: {x: 1.08, y: 0}
+        m_Texture: {fileID: 2800000, guid: 23804dacdbdaa434d96b5b7f7bd56567, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WindowAtlas:
-        m_Texture: {fileID: 2800000, guid: b3fcd7e4665e1194887a9ba84a7115d1, type: 3}
-        m_Scale: {x: 1.25, y: 1}
+        m_Texture: {fileID: 2800000, guid: 845354202fee8684487b9aa146bb6139, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindowPositionMap:
-        m_Texture: {fileID: 2800000, guid: 55c6a4a5de75ed3449811d8f45a82e95, type: 3}
-        m_Scale: {x: 1.3, y: 1}
+        m_Texture: {fileID: 2800000, guid: 8d96bd9b07d726c42aea81003ef38d54, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
@@ -93,6 +101,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WindowSizeX: 17.21
+    - _WindowSizeY: -4.78
     - _ZWrite: 1
     m_Colors:
     - _AtlasSizePixels: {r: 1024, g: 1024, b: 0, a: 0}
@@ -103,12 +113,22 @@ Material:
     - _MainTexTiling: {r: 1.36, g: 1, b: 0, a: 0}
     - _MainTex_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _MainTex_Tiling: {r: 1, g: 1, b: 0, a: 0}
-    - _RoofColor: {r: 0.3962264, g: 0.33828765, b: 0.33828765, a: 1}
+    - _RoofColor: {r: 1, g: 0.7688679, b: 0.7688679, a: 1}
+    - _RoofTextureOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _RoofTextureTiling: {r: 1, g: 1, b: 0, a: 0}
     - _TileOffset: {r: 0, g: 0, b: 0, a: 0}
     - _TileSizePixels: {r: 128, g: 128, b: 0, a: 0}
     - _TileTiling: {r: 10.37, g: 1, b: 0, a: 0}
+    - _TopTextureOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _TopTextureTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _WallTextureOffset: {r: 0.29, g: 0.33, b: 0, a: 0}
+    - _WallTextureTiling: {r: 5.77, g: 4.61, b: 0, a: 0}
+    - _WallTexture_Offset: {r: 0.19, g: 0, b: 0, a: 0}
+    - _WallTexture_Tiling: {r: -0.25, g: 1, b: 0, a: 0}
     - _WindowAtlasOffset: {r: 1, g: 1, b: 0, a: 0}
     - _WindowAtlasTiling: {r: 1, g: 1, b: 0, a: 0}
     - _WindowAtlas_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _WindowAtlas_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _WindowSize: {r: 5.04, g: 8.53, b: 0, a: 0}
+    - _WindowTextureSize: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []

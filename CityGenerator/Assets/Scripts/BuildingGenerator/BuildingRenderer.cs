@@ -35,6 +35,8 @@ public class BuildingRenderer : MonoBehaviour
     public Material newMaterial;
     [SerializeField]
     public bool ChangeWindowLight = false;
+    [SerializeField]
+    public bool RotateRoofPrefab = false;
     [HideInInspector] public Vector3 floorSize;
 
     public float probability = 50f;
@@ -749,40 +751,68 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
-                if ((y == minY) && (x == minX))
+                if ((maxY == 1))
                 {
-                    prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
+                    prefab = roofPrefabs[bldg.roofPrefabIndex];
                     direction = RoofDirection.South;
                 }
                 else
-                if ((y == minY) && (x == maxX - 1))
+                 if ((maxX == 1))
                 {
-                    prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
+                    prefab = roofPrefabs[bldg.roofPrefabIndex];
                     direction = RoofDirection.East;
                 }
                 else
                 if ((y == minY) && (x == minX))
                 {
                     prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
-                    direction = RoofDirection.North;
+                        direction = RoofDirection.South; // dont touch
                 }
                 else
                 if ((y == minY) && (x == maxX - 1))
                 {
                     prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
-                    direction = RoofDirection.East;
+                    if (RotateRoofPrefab)
+                        direction = RoofDirection.East;
+                    else
+                        direction = RoofDirection.South; // dont touch
+                }
+                else
+                if ((y == minY) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
+                    if (RotateRoofPrefab)
+                        direction = RoofDirection.North;
+                    else
+                        direction = RoofDirection.West; // не меняется
+                }
+                else
+                if ((y == minY) && (x == maxX - 1))
+                {
+                    prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
+                    if (RotateRoofPrefab)
+                        direction = RoofDirection.East;
+                    else
+                        direction = RoofDirection.North; // не меняется
                 }
                 else
                 if ((y == maxY - 1) && (x == minX))
                 {
                     prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
+                    if (RotateRoofPrefab)
                     direction = RoofDirection.West;
+                    else
+                    direction = RoofDirection.North;
+
                 }
                 else
                 if ((y == maxY - 1) && (x == maxX - 1))
                 {
                     prefab = roofCornerPrefabs[bldg.roofCornerPrefabIndex];
-                    direction = RoofDirection.North;
+                    if (RotateRoofPrefab)
+                        direction = RoofDirection.North;
+                    else
+                        direction = RoofDirection.North;
                 }
                 else
                 if (y == minY && !(y == maxY - 1 || x == minX || x == maxX - 1))
@@ -958,6 +988,12 @@ public class BuildingRenderer : MonoBehaviour
         {
             for (int y = minY; y < maxY; y++)
             {
+                if ((y == minY) && (x == minX))
+                {
+                    prefab = roofCornerPrefabs[bldg.roofEastOffsetCornerPrefabIndex];
+                    direction = RoofDirection.South;
+                }
+                else
                 if ((y == minY) && (x == minX))
                 {
                     prefab = roofCornerPrefabs[bldg.roofEastOffsetCornerPrefabIndex];

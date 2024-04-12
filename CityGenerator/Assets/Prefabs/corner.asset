@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: corner
   m_EditorClassIdentifier: 
   meshRotation: 0
-  prefab: {fileID: 1452221341534576655, guid: 481b4116eab749c4bb5734f3aa1c18f0, type: 3}
+  prefab: {fileID: 6663163363689944196, guid: 0561ecd9855656644b0088b37bdd2925, type: 3}
   posX: 4
   negX: 0
   posZ: 0
