@@ -22,12 +22,12 @@ public class Cell : MonoBehaviour
         int i = 0;
         foreach(Prototype p in possiblePrototypes)
         {
-            if(p.attributes.Count==0)
+            /*if(p.attributes.Count==0)
             {
                 //if no attributes, give it a baseline of 5
                 prototypeWeights[i] = 5;
             }
-            else
+            else*/
             {
                 //otherwise make its weight the avg of it's attributes
                 foreach (Attribute attribute in p.attributes)

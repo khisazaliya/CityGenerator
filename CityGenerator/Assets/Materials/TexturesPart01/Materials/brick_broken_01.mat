@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: brick_broken_01
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: 80571da6ac21c664a810bb99daf9585f, type: 2}
+  m_Shader: {fileID: 4800000, guid: da2c2ea6d42ed1f46bb48297767250f0, type: 3}
+  m_Parent: {fileID: 2100000, guid: 41d383a207ccda548b983831e39b96ac, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _NORMALMAP

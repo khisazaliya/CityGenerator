@@ -21,7 +21,7 @@ public class BuildingGenerator : MonoBehaviour
 
     public GameObject GenerateBuilding(Vector3 position, Quaternion rotation, BuildingSettings buildingSettings)
     {
-        Building b = BuildingData.Build(buildingSettings);
+        Building b = BuildingConstructor.Construct(buildingSettings);
 
         buildingRenderer = GetComponent<BuildingRenderer>();
         renderedBuilding = buildingRenderer.Render(b);

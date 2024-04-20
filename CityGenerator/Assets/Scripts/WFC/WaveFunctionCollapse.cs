@@ -17,7 +17,8 @@ public class WaveFunctionCollapse : MonoBehaviour
     public List<Cell> cellsAffected = new List<Cell>();
     public Weights weights;
     public bool withoutRoad = false;
-
+    public bool BuildingFromList = false;
+    public bool SensitiveToTerrian = false;
     public BuildingGenerator buildingGenerator;
     [HideInInspector] public List<Transform> places = new();
     [HideInInspector] public List<Transform> streetElementsPlaces = new();
@@ -27,15 +28,15 @@ public class WaveFunctionCollapse : MonoBehaviour
     [HideInInspector] public List<Vector3> oldNaturesPlaces = new();
     [HideInInspector] public List<GameObject> natures = new List<GameObject>();
     [HideInInspector] public List<GameObject> streetElements = new List<GameObject>();
-    public List<GameObject> naturePrefabs = new List<GameObject>();
-    public int natureCount;
+    public List<GameObject> largePrefabs = new List<GameObject>();
+    public int largePrefabsCount;
     public int streetElementsCount;
     public List<GameObject> streetPrefabs = new List<GameObject>();
 
     public LODGeneratorService LODGeneratorService = new();
     [HideInInspector] public System.Random rand = new();
     public Terrain terrain;
-    public GameObject buildingPrefab;
+    public List<GameObject> buildingPrefabs;
     Vector3 terrainNormal = new();
     void Start()
     {
@@ -149,7 +150,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         {
             if (!c.isCollapsed)
             {
-                if (c.possiblePrototypes.Count == x)
+                if ( c.possiblePrototypes.Count == x)
                 {
                     cellWithLowestEntropy.Add(c);
                 }
@@ -178,21 +179,28 @@ public class WaveFunctionCollapse : MonoBehaviour
 
         float angle = 0;
         RaycastHit hit;
-        if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
+        if (SensitiveToTerrian)
         {
-            Vector3 surfaceNormal = hit.normal;
-            Vector3 upDirection = Vector3.up; // Направление вверх
+            if (Physics.Raycast(spawnPosition+ new Vector3(0, 200, 0), Vector3.down, out hit))
+            {
+                Vector3 surfaceNormal = hit.normal;
+                Vector3 upDirection = Vector3.up; // Направление вверх
 
-            // Получаем угол наклона поверхности
-            angle = Vector3.Angle(surfaceNormal, upDirection);
-            finalPrefab.transform.position = hit.point;
+                // Получаем угол наклона поверхности
+                angle = Vector3.Angle(surfaceNormal, upDirection);
+                finalPrefab.transform.position = hit.point;
 
-            finalPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                finalPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+            }
+            else
+            {
+
+                return;
+            }
         }
         else
         {
-
-            return;
+            finalPrefab.transform.position = spawnPosition;
         }
         finalPrefab.transform.Rotate(new Vector3(0f, finalPrototype.meshRotation * 90, 0f), Space.Self);
         finalPrefab.transform.position += new Vector3(0, 0.6f, 0);
@@ -409,28 +417,68 @@ public class WaveFunctionCollapse : MonoBehaviour
             Debug.LogWarning("List of free places is empty");
             return;
         }
-
-
-        buildingGenerator.LoadField();
-
-        foreach (var buildingSetting in buildingGenerator.buildingSettings)
+        if (!BuildingFromList)
         {
-            for (int j = 0; j < buildingSetting.buildingCount; j++)
+            buildingGenerator.LoadField();
+
+            foreach (var buildingSetting in buildingGenerator.buildingSettings)
+            {
+                for (int j = 0; j < buildingSetting.buildingCount; j++)
+                {
+                    if (places.Count > 0)
+                    {
+                        int index = rand.Next(0, places.Count);
+                        int rotationIndex = rand.Next(0, 4);
+                        //   var building = buildingGenerator.GenerateBuilding(new Vector3(0,0,0), Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f), buildingSetting);
+                        var building = buildingGenerator.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.identity, buildingSetting);
+                        // Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f)
+                        //   + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
+                        Vector3 position;
+                        if (withoutRoad)
+                            position = places[index].position - new Vector3(0.5f, 1f, 0);
+                        else
+                            position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f);
+                      //  building.transform.SetParent(GetCell(places[index].position.x, places[index].position.y).transform.parent);
+                        building.transform.position = position;
+                        var angle = places[index].rotation;
+
+
+                        building.transform.Rotate(new Vector3(places[index].transform.rotation.x, 0, 0), Space.Self);
+
+
+
+                        Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
+
+
+                        RaycastHit hit;
+                        if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
+                        {
+
+                            building.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                        }
+
+                        oldBuildingsPlaces.Add(position);
+                        buildings.Add(building);
+                        places.RemoveAt(index);
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (var buildingPref in buildingPrefabs)
             {
                 if (places.Count > 0)
                 {
                     int index = rand.Next(0, places.Count);
                     int rotationIndex = rand.Next(0, 4);
-                    //   var building = buildingGenerator.GenerateBuilding(new Vector3(0,0,0), Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f), buildingSetting);
-                    var building = buildingGenerator.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.identity, buildingSetting);
-                    // Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f)
-                    //   + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
                     Vector3 position;
+                    GameObject building = Instantiate(buildingPref);
+                    building.name = "Building";
                     if (withoutRoad)
                         position = places[index].position - new Vector3(0.5f, 1f, 0);
                     else
-                        position = places[index].position - new Vector3(building.transform.localScale.x * -5f, -1.3f, building.transform.localScale.z * -5f);
-
+                        position = places[index].position + new Vector3(0f, 3f, 0);
                     building.transform.position = position;
                     var angle = places[index].rotation;
 
@@ -466,11 +514,11 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (places.Count > 0)
         {
-            for (int i = 0; i < natureCount; i++)
+            for (int i = 0; i < largePrefabsCount; i++)
             {
-                int natureIndex = rand.Next(0, naturePrefabs.Count);
+                int natureIndex = rand.Next(0, largePrefabs.Count);
                 int index = rand.Next(0, places.Count);
-                GameObject nature = (GameObject)PrefabUtility.InstantiatePrefab(naturePrefabs[natureIndex] as GameObject);
+                GameObject nature = (GameObject)PrefabUtility.InstantiatePrefab(largePrefabs[natureIndex] as GameObject);
                 natures.Add(nature);
                 nature.name = "Nature";
                 nature.transform.position = places[index].position + new Vector3(0, 0, 5);
@@ -531,7 +579,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             int index = Random.Range(0, newPositions.Count);
             if (index < newPositions.Count)
             {
-                streetElement.transform.position = newPositions[index];
+                streetElement.transform.position = streetElementsPlaces[index].position + new Vector3(gridOffset / 2, 0, gridOffset / 2);
                 newPositions.RemoveAt(index);
             }
         }
@@ -554,7 +602,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 streetElements.Add(streetElement);
                 streetElement.name = "StreetElement";
                 streetElement.transform.position = streetElementsPlaces[index].position + new Vector3(gridOffset / 2, 0, gridOffset / 2);
-                oldStreetElementsPlaces.Add(streetElementsPlaces[index].position);
+                oldStreetElementsPlaces.Add(streetElement.transform.position);
                 streetElementsPlaces.RemoveAt(index);
             }
         }

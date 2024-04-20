@@ -7,6 +7,21 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: A_EXPO.obj.008_frame.003Mat
+    second: {fileID: 2100000, guid: 9e6f197c4c591274093352a390b32d4e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: A_EXPO.obj.008_glass.003Mat
+    second: {fileID: 2100000, guid: 71e4d5f270a80094e9d470c9159610ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: A_EXPO.obj.008_wal.002Mat
+    second: {fileID: 2100000, guid: 5b2aa725c401a954eb803e3f8a77c47d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: frame
     second: {fileID: 2100000, guid: 9e6f197c4c591274093352a390b32d4e, type: 2}
   - first:

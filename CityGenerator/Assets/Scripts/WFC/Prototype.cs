@@ -23,7 +23,7 @@ public class NeighbourList
     public List<Prototype> negZ = new List<Prototype>();
 
 }
-public enum WFC_Socket { Socket_Road, Socket_Curb, Socket_Buildings_Pos, Socket_Buildings_Neg, Socket_FullBuildings }
+public enum WFC_Socket { Socket_Road, Socket_Corner, Socket_Building}
 
 [System.Serializable]
 public class SocketConnection

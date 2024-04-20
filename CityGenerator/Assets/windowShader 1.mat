@@ -1,0 +1,222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: windowShader 1
+  m_Shader: {fileID: 4800000, guid: 23fb3c51ab0b5a44e925d7a900aeb999, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AdditionalMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BackTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeTexture:
+        m_Texture: {fileID: 2800000, guid: 79a9a99282d6bd144a65b130b33ec623, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DoorTexture:
+        m_Texture: {fileID: 2800000, guid: aa9f4e6a9f717f848a1591dba66c9b49, type: 3}
+        m_Scale: {x: 5.61, y: 22.85}
+        m_Offset: {x: 23.67, y: 62.3}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FrontTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HouseAtlas:
+        m_Texture: {fileID: 2800000, guid: 79a9a99282d6bd144a65b130b33ec623, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HousePositionMap:
+        m_Texture: {fileID: 2800000, guid: 61a0bc5f78a4e8643bdd0ac923911ff5, type: 3}
+        m_Scale: {x: 13.97, y: 1}
+        m_Offset: {x: 3.19, y: 1}
+    - _HouseTexture:
+        m_Texture: {fileID: 2800000, guid: 79a9a99282d6bd144a65b130b33ec623, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LeftTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: e37ca78d251f32e4d93b913ad180bd91, type: 3}
+        m_Scale: {x: -2.17, y: 2.49}
+        m_Offset: {x: 1.96, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RightTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RoofTexture:
+        m_Texture: {fileID: 2800000, guid: 51a21d7b3d592c143a0006b46e48661e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TileSizeMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TopTexture:
+        m_Texture: {fileID: 2800000, guid: ea0b7731ad9bc6a46be2625f012aaf74, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WallTexture:
+        m_Texture: {fileID: 2800000, guid: 431a0919e40210e438740274a880d394, type: 3}
+        m_Scale: {x: 0.89, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindowAtlas:
+        m_Texture: {fileID: 2800000, guid: 4408c5b85004dd340b138d3ebdf532fc, type: 3}
+        m_Scale: {x: 1.81, y: 0.2}
+        m_Offset: {x: -1.22, y: 0.6}
+    - _WindowMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WindowPositionMap:
+        m_Texture: {fileID: 2800000, guid: d0449ad86f811dc42999bce5690be044, type: 3}
+        m_Scale: {x: -0.89, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BoxSize: 1
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _NumWindows: 10
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _WindowCount: 10
+    - _WindowRowCount: 1
+    - _WindowSizeX: 1
+    - _WindowSizeY: 1
+    - _WindowSpacing: 0.1
+    - _ZWrite: 1
+    m_Colors:
+    - _AtlasOffset: {r: 0.01, g: 0, b: 0, a: 0}
+    - _AtlasSizePixels: {r: 1024, g: 1024, b: 0, a: 0}
+    - _AtlasTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _BackWindowAtlasOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _BackWindowAtlasTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _BottomWindowAtlasOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _BottomWindowAtlasTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _BoxSize: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DoorTextureOffset: {r: 2.64, g: 30.6, b: 0, a: 0}
+    - _DoorTextureTiling: {r: 27.82, g: 13.36, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FirstPixelUV: {r: 10, g: 0, b: 1, a: 0.96}
+    - _FrontWindowAtlasOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _FrontWindowAtlasTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _HouseAtlas_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _HouseAtlas_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _LeftWindowAtlasOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _LeftWindowAtlasTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _MainTexOffset: {r: 2.17, g: 0, b: 0, a: 0}
+    - _MainTexTiling: {r: 1.36, g: 1, b: 0, a: 0}
+    - _MainTex_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _MainTex_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _RightWindowAtlasOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _RightWindowAtlasTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _RoofColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+    - _RoofTextureOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _RoofTextureTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _RoofTexture_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _RoofTexture_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _TileOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _TileSizePixels: {r: 128, g: 128, b: 0, a: 0}
+    - _TileTiling: {r: 10.37, g: 1, b: 0, a: 0}
+    - _TopTextureOffset: {r: -0.07, g: 0, b: 0, a: 0}
+    - _TopTextureTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _TopWindowAtlasOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _TopWindowAtlasTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _WallTextureOffset: {r: 3.4, g: 0, b: 0, a: 0}
+    - _WallTextureTiling: {r: -8.5, g: 9.2, b: 0, a: 0}
+    - _WallTexture_Offset: {r: 0.19, g: 0, b: 0, a: 0}
+    - _WallTexture_Tiling: {r: -0.25, g: 1, b: 0, a: 0}
+    - _WallUV: {r: 0, g: 0, b: 0, a: 0}
+    - _WindowAtlasOffset: {r: 0.45, g: 0.2, b: 0, a: 0}
+    - _WindowAtlasOffset_Back: {r: 0.28, g: -0.04, b: 0, a: 0}
+    - _WindowAtlasOffset_Bottom: {r: 0, g: 0, b: 0, a: 0}
+    - _WindowAtlasOffset_Front: {r: -0.08, g: -0.04, b: 0, a: 0}
+    - _WindowAtlasOffset_Left: {r: 0.23, g: 0.16, b: 0, a: 0}
+    - _WindowAtlasOffset_Right: {r: 0.65, g: -0.15, b: 0, a: 0}
+    - _WindowAtlasOffset_Top: {r: 0.55, g: 0, b: 0, a: 0}
+    - _WindowAtlasOffset_X: {r: 0, g: 0, b: 0, a: 0}
+    - _WindowAtlasOffset_Y: {r: 0, g: 0, b: 0, a: 0}
+    - _WindowAtlasTiling: {r: 72.7, g: 72.95, b: 0, a: 0}
+    - _WindowAtlasTiling_Back: {r: 1.6, g: 2.4, b: 0, a: 0}
+    - _WindowAtlasTiling_Bottom: {r: 1, g: 1, b: 0, a: 0}
+    - _WindowAtlasTiling_Front: {r: 1.6, g: 2.4, b: 0, a: 0}
+    - _WindowAtlasTiling_Left: {r: 1.99, g: 2.2, b: 0, a: 0}
+    - _WindowAtlasTiling_Right: {r: 1.91, g: 2.15, b: 0, a: 0}
+    - _WindowAtlasTiling_Top: {r: 1, g: 1, b: 0, a: 0}
+    - _WindowAtlasTiling_X: {r: 1, g: 1, b: 0, a: 0}
+    - _WindowAtlasTiling_Y: {r: 1, g: 1, b: 0, a: 0}
+    - _WindowAtlas_Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _WindowAtlas_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _WindowPosition: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _WindowSize: {r: 5.04, g: 8.53, b: 0, a: 0}
+    - _WindowTextureSize: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _WindowTileSize: {r: 0.25, g: 0.25, b: 0, a: 0}
+  m_BuildTextureStacks: []

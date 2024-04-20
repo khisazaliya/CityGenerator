@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: pngaaa.com-3905963
-    second: {fileID: 2100000, guid: c9903e352b5fbc942b69c7ba65754f01, type: 2}
+    second: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
   materials:
     materialImportMode: 2
     materialName: 0

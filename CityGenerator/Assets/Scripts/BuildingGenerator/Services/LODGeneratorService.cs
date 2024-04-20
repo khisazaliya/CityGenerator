@@ -19,7 +19,7 @@ public class LODGeneratorService : MonoBehaviour
                 //GenerateLODs(building);
                 LODLevel[] levels = new LODLevel[]
                 {
-                            new LODLevel(0.5f, 0.5f, 1f, true, true),
+                            new LODLevel(0.5f, 0.5f, 0.8f, true, true),
                             new LODLevel(0.005f, 0.5f, 0.1f, true, true)
                 };
 
@@ -28,7 +28,7 @@ public class LODGeneratorService : MonoBehaviour
                 {
                     PreserveBorderEdges = true,
                     PreserveUVSeamEdges = true,
-                    PreserveUVFoldoverEdges = true,
+                    PreserveUVFoldoverEdges = false,
                     PreserveSurfaceCurvature = false,
                     EnableSmartLink = true,
                     VertexLinkDistance = 0.01,

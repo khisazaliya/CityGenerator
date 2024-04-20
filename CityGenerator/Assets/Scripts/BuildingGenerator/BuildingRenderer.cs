@@ -331,7 +331,7 @@ public class BuildingRenderer : MonoBehaviour
                                     PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex], bldg);
                             }
                         }
-                        else
+                       /* else
                         {
                             if (i == 0)
                                 PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex], bldg);
@@ -340,7 +340,7 @@ public class BuildingRenderer : MonoBehaviour
                             else
                                 PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex], bldg);
                             if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex], bldg);
-                        }
+                        }*/
 
                     }
 

@@ -40,15 +40,15 @@ public class WFCEditor : Editor
         {
             waveFunctionCollapse.DestroyBuildings();
         }
-        if (GUILayout.Button("Place nature"))
+        if (GUILayout.Button("Place large prefabs"))
         {
             waveFunctionCollapse.PlaceNature();
         }
-        if (GUILayout.Button("Randomize nature positions"))
+        if (GUILayout.Button("Randomize large prefabs positions"))
         {
             waveFunctionCollapse.RandomizeNaturePositions();
         }
-        if (GUILayout.Button("Destroy nature"))
+        if (GUILayout.Button("Destroy large prefabs"))
         {
             waveFunctionCollapse.DestroyNature();
         }

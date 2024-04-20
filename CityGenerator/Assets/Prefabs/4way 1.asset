@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 4way 1
   m_EditorClassIdentifier: 
   meshRotation: 0
-  prefab: {fileID: 1254051215894537872, guid: ad74193e191d49c45b71bafd16956111, type: 3}
+  prefab: {fileID: 2073020869169084246, guid: 651db86663ca18946b36a1afe705de9d, type: 3}
   posX: 0
   negX: 0
   posZ: 0

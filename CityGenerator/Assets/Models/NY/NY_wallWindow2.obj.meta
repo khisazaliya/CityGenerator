@@ -12,12 +12,27 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: frame.001
+    second: {fileID: 2100000, guid: f7265bfabe2206441876d7c3cc939e42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: glass
     second: {fileID: 2100000, guid: 71e4d5f270a80094e9d470c9159610ad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: glass.001
+    second: {fileID: 2100000, guid: 1cae6a78f7281be409769900ba2535c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: wal
+    second: {fileID: 2100000, guid: d828d965dd3389d4baf10b61c8029800, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wal.001
     second: {fileID: 2100000, guid: d828d965dd3389d4baf10b61c8029800, type: 2}
   materials:
     materialImportMode: 2

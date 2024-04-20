@@ -7,6 +7,26 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: A_EXPO.obj.002_barrelsMat
+    second: {fileID: 2100000, guid: 8fc6644c24b3ad5448cfc628fd2cd733, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: A_EXPO.obj.002_frameMat
+    second: {fileID: 2100000, guid: 100809bd690cb5648976bf6a72d9e3c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: A_EXPO.obj.002_glass.001Mat
+    second: {fileID: 2100000, guid: 1cae6a78f7281be409769900ba2535c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: A_EXPO.obj.002_wall.001Mat
+    second: {fileID: 2100000, guid: 6c0e67e5455374a419bfdd3e1e47c0fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: barrels
     second: {fileID: 2100000, guid: e2bf7d35afb9ba54f982817f58ed2734, type: 2}
   - first:
