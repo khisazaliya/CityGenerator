@@ -19,7 +19,6 @@ public class BuildingSettings
     public int buildingCount;
     [Range(0, 50)]
     public int numberOfLevels;
-    public BuildingType type;
 
     [Range(0, 50)]
     public int numberOfEntries;
@@ -168,7 +167,7 @@ public class BuildingSettings
     [HideInInspector] public int balconyEastOffsetPrefabIndex = 0;
 
 
-    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, BuildingType type, int numberOfEntries, int offsetOfEntries, int numberOfBalconies, int randomSeedOfBalconies,
+    public BuildingSettings(Vector2Int size, int count, int numberOfLevels, int numberOfEntries, int offsetOfEntries, int numberOfBalconies, int randomSeedOfBalconies,
         int randomSeedOfRoofElements,
         int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight,
         int minOffsetSouthWall, int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight)
@@ -177,7 +176,6 @@ public class BuildingSettings
         y = size.y;
         buildingCount = count;
         this.numberOfLevels = numberOfLevels;
-        this.type = type;
         this.numberOfEntries = numberOfEntries;
         this.offsetOfEntries = offsetOfEntries;
         this.MaxNumberOfSouthBalconies = numberOfBalconies;
@@ -187,20 +185,18 @@ public class BuildingSettings
         this.maxOffsetNorthWall = maxOffsetNorthWall;
         this.depthOffsetNorthWall = depthOffsetNorthWall;
         this.northWallHeight = northWallHeight;
-
         this.minOffsetSouthWall = minOffsetSouthWall;
         this.maxOffsetSouthWall = maxOffsetSouthWall;
         this.depthOffsetSouthWall = depthOffsetSouthWall;
         this.southWallHeight = southWallHeight;
     }
 
-    public BuildingSettings(int x, int y, int buildingCount, int numberOfLevels, BuildingType type, int numberOfEntries, int offsetOfEntries, int maxNumberOfSouthBalconies, int randomSeedOfSouthBalconies, int maxNumberOfNorthBalconies, int randomSeedOfNorthBalconies, int maxNumberOfWestBalconies, int randomSeedOfWestBalconies, int maxNumberOfEastBalconies, int randomSeedOfEastBalconies, int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight, int minOffsetSouthWall, int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight, int minOffsetEastWall, int maxOffsetEastWall, int depthOffsetEastWall, int eastWallHeight, List<Tuple<int, int>> balconyLocations, List<Vector3Int> entryLocations, int floorSouthPrefabIndex, int wall0SouthPrefabIndex, int wall1SouthPrefabIndex, int wall2SouthPrefabIndex, int doorSouthPrefabIndex, int roofPrefabIndex, int roofBoundPrefabIndex, int roofCornerPrefabIndex, int stairSouthPrefabIndex, int balconySouthPrefabIndex, int savedSeedOfSouthBalconies, int savedNumberOfSouthBalconies, int floorNorthPrefabIndex, int wall0NorthPrefabIndex, int wall1NorthPrefabIndex, int wall2NorthPrefabIndex, int doorNorthPrefabIndex, int stairNorthPrefabIndex, int balconyNorthPrefabIndex, int savedSeedOfNorthBalconies, int savedNumberOfNorthBalconies, int floorEastPrefabIndex, int wall0EastPrefabIndex, int wall1EastPrefabIndex, int wall2EastPrefabIndex, int wallDoorPrefabIndex, int doorEastPrefabIndex, int stairEastPrefabIndex, int balconyEastPrefabIndex, int savedSeedOfEastBalconies, int savedNumberOfEastBalconies, int floorWestPrefabIndex, int wall0WestPrefabIndex, int wall1WestPrefabIndex, int wall2WestPrefabIndex, int doorWestPrefabIndex, int stairWestPrefabIndex, int balconyWestPrefabIndex, int savedSeedOfWestBalconies, int savedNumberOfWestBalconies, int floorSouthOffsetPrefabIndex, int wall0SouthOffsetPrefabIndex, int wall1SouthOffsetPrefabIndex, int wall2SouthOffsetPrefabIndex, int doorSouthOffsetPrefabIndex, int roofSouthOffsetPrefabIndex, int roofSouthOffsetBoundPrefabIndex, int roofSouthOffsetCornerPrefabIndex, int stairSouthOffsetPrefabIndex, int balconySouthOffsetPrefabIndex, int floorNorthOffsetPrefabIndex, int wall0NorthOffsetPrefabIndex, int wall1NorthOffsetPrefabIndex, int wall2NorthOffsetPrefabIndex, int doorNorthOffsetPrefabIndex, int roofNorthOffsetPrefabIndex, int roofNorthOffsetBoundPrefabIndex, int roofNorthOffsetCornerPrefabIndex, int stairNorthOffsetPrefabIndex, int balconyNorthOffsetPrefabIndex, int floorEastOffsetPrefabIndex, int wall0EastOffsetPrefabIndex, int wall1EastOffsetPrefabIndex, int wall2EastOffsetPrefabIndex, int doorEastOffsetPrefabIndex, int roofEastOffsetPrefabIndex, int roofEastOffsetBoundPrefabIndex, int roofEastOffsetCornerPrefabIndex, int stairEastOffsetPrefabIndex, int balconyEastOffsetPrefabIndex)
+    public BuildingSettings(int x, int y, int buildingCount, int numberOfLevels, int numberOfEntries, int offsetOfEntries, int maxNumberOfSouthBalconies, int randomSeedOfSouthBalconies, int maxNumberOfNorthBalconies, int randomSeedOfNorthBalconies, int maxNumberOfWestBalconies, int randomSeedOfWestBalconies, int maxNumberOfEastBalconies, int randomSeedOfEastBalconies, int minOffsetNorthWall, int maxOffsetNorthWall, int depthOffsetNorthWall, int northWallHeight, int minOffsetSouthWall, int maxOffsetSouthWall, int depthOffsetSouthWall, int southWallHeight, int minOffsetEastWall, int maxOffsetEastWall, int depthOffsetEastWall, int eastWallHeight, List<Tuple<int, int>> balconyLocations, List<Vector3Int> entryLocations, int floorSouthPrefabIndex, int wall0SouthPrefabIndex, int wall1SouthPrefabIndex, int wall2SouthPrefabIndex, int doorSouthPrefabIndex, int roofPrefabIndex, int roofBoundPrefabIndex, int roofCornerPrefabIndex, int stairSouthPrefabIndex, int balconySouthPrefabIndex, int savedSeedOfSouthBalconies, int savedNumberOfSouthBalconies, int floorNorthPrefabIndex, int wall0NorthPrefabIndex, int wall1NorthPrefabIndex, int wall2NorthPrefabIndex, int doorNorthPrefabIndex, int stairNorthPrefabIndex, int balconyNorthPrefabIndex, int savedSeedOfNorthBalconies, int savedNumberOfNorthBalconies, int floorEastPrefabIndex, int wall0EastPrefabIndex, int wall1EastPrefabIndex, int wall2EastPrefabIndex, int wallDoorPrefabIndex, int doorEastPrefabIndex, int stairEastPrefabIndex, int balconyEastPrefabIndex, int savedSeedOfEastBalconies, int savedNumberOfEastBalconies, int floorWestPrefabIndex, int wall0WestPrefabIndex, int wall1WestPrefabIndex, int wall2WestPrefabIndex, int doorWestPrefabIndex, int stairWestPrefabIndex, int balconyWestPrefabIndex, int savedSeedOfWestBalconies, int savedNumberOfWestBalconies, int floorSouthOffsetPrefabIndex, int wall0SouthOffsetPrefabIndex, int wall1SouthOffsetPrefabIndex, int wall2SouthOffsetPrefabIndex, int doorSouthOffsetPrefabIndex, int roofSouthOffsetPrefabIndex, int roofSouthOffsetBoundPrefabIndex, int roofSouthOffsetCornerPrefabIndex, int stairSouthOffsetPrefabIndex, int balconySouthOffsetPrefabIndex, int floorNorthOffsetPrefabIndex, int wall0NorthOffsetPrefabIndex, int wall1NorthOffsetPrefabIndex, int wall2NorthOffsetPrefabIndex, int doorNorthOffsetPrefabIndex, int roofNorthOffsetPrefabIndex, int roofNorthOffsetBoundPrefabIndex, int roofNorthOffsetCornerPrefabIndex, int stairNorthOffsetPrefabIndex, int balconyNorthOffsetPrefabIndex, int floorEastOffsetPrefabIndex, int wall0EastOffsetPrefabIndex, int wall1EastOffsetPrefabIndex, int wall2EastOffsetPrefabIndex, int doorEastOffsetPrefabIndex, int roofEastOffsetPrefabIndex, int roofEastOffsetBoundPrefabIndex, int roofEastOffsetCornerPrefabIndex, int stairEastOffsetPrefabIndex, int balconyEastOffsetPrefabIndex)
     {
         this.x = x;
         this.y = y;
         this.buildingCount = buildingCount;
         this.numberOfLevels = numberOfLevels;
-        this.type = type;
         this.numberOfEntries = numberOfEntries;
         this.offsetOfEntries = offsetOfEntries;
         MaxNumberOfSouthBalconies = maxNumberOfSouthBalconies;

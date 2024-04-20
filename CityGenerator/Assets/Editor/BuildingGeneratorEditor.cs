@@ -45,7 +45,6 @@ public class BuildingGeneratorEditor : Editor
         previousSettings = new BuildingSettings(buildingGenerator.buildingSettings[0].buildingSize,
             buildingGenerator.buildingSettings[0].buildingCount,
             buildingGenerator.buildingSettings[0].numberOfLevels,
-            buildingGenerator.buildingSettings[0].type,
             buildingGenerator.buildingSettings[0].numberOfEntries,
             buildingGenerator.buildingSettings[0].offsetOfEntries,
              buildingGenerator.buildingSettings[0].MaxNumberOfSouthBalconies,
@@ -64,7 +63,6 @@ public class BuildingGeneratorEditor : Editor
             y = buildingGenerator.buildingSettings[0].buildingSize.y,
             buildingCount = buildingGenerator.buildingSettings[0].buildingCount,
             numberOfLevels = buildingGenerator.buildingSettings[0].numberOfLevels,
-            type = buildingGenerator.buildingSettings[0].type,
             numberOfEntries = buildingGenerator.buildingSettings[0].numberOfEntries,
             offsetOfEntries = buildingGenerator.buildingSettings[0].offsetOfEntries,
             MaxNumberOfSouthBalconies = buildingGenerator.buildingSettings[0].MaxNumberOfSouthBalconies,
@@ -172,7 +170,6 @@ public class BuildingGeneratorEditor : Editor
         return settings1.buildingSize.Equals(settings2.buildingSize)
             && settings1.buildingCount == settings2.buildingCount
             && settings1.numberOfLevels == settings2.numberOfLevels
-            && settings1.type == settings2.type
             && settings1.numberOfEntries == settings2.numberOfEntries
             && settings1.MaxNumberOfSouthBalconies == settings2.MaxNumberOfSouthBalconies
             && settings1.randomSeedOfSouthBalconies == settings2.randomSeedOfSouthBalconies;

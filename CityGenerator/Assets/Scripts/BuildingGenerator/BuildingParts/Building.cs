@@ -7,7 +7,6 @@ public class Building
 {
     Vector2Int size;
     Wing[] wings;
-    BuildingType type;
 
     public int numberOfEntries;
 
@@ -31,8 +30,6 @@ public class Building
     public int level;
     public Vector2Int Size { get { return size; } }
     public Wing[] Wings { get { return wings; } }
-
-    public BuildingType Type { get => type; }
 
     public int minOffsetNorthWall;
 
@@ -147,7 +144,7 @@ public class Building
         size = new Vector2Int(sizeX, sizeY);
     }
 
-    public Building(int sizeX, int sizeY, Wing[] wings, BuildingType type, int numberOfEntries,
+    public Building(int sizeX, int sizeY, Wing[] wings, int numberOfEntries,
         int offsetOfEntries, int numberOfSouthBalconies, int randomSeedOfSouthBalconies,
         int numberOfNorthBalconies, int randomSeedOfNorthBalconies, int numberOfWestBalconies,
         int randomSeedOfWestBalconies,int numberOfEastBalconies, int randomSeedOfEastBalconies, int randomSeedOfRoofElements,
@@ -179,7 +176,6 @@ public class Building
     {
         this.size = new Vector2Int(sizeX, sizeY);
         this.wings = wings;
-        this.type = type;
         this.numberOfEntries = numberOfEntries;
         this.offsetOfEntries = offsetOfEntries;
         this.numberOfSouthBalconies = numberOfSouthBalconies;
@@ -287,9 +283,4 @@ public class Building
         }
         return bldg;
     }
-}
-
-public enum BuildingType
-{
-    Residental
 }

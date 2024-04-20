@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityMeshSimplifier;
 
@@ -47,6 +48,8 @@ public class BuildingRenderer : MonoBehaviour
     List<Tuple<int, int>> balconiesWestIndexes = new List<Tuple<int, int>>();
     List<Tuple<int, int>> balconiesEastIndexes = new List<Tuple<int, int>>();
     Transform bldgFolder;
+
+    Vector3 wallSize = new();
     public BuildingRenderer(List<Transform> floorPrefab, List<Transform> wallPrefab, List<Transform> doorPrefab, List<Transform> roofPrefab, List<Transform> stairPrefab)
     {
         this.floorPrefabs = floorPrefab;
@@ -68,16 +71,6 @@ public class BuildingRenderer : MonoBehaviour
         {
             RenderWing(wing, bldg);
         }
-        /* meshCombiner.CombineMeshes(bldgFolder);
-         GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-           string objectName = "Wing";
-           foreach (GameObject obj in objects)
-           {
-               if (obj.name == objectName)
-               {
-                   DestroyImmediate(obj);
-               }
-           }*/
         return bldgFolder.gameObject;
     }
 
@@ -105,6 +98,7 @@ public class BuildingRenderer : MonoBehaviour
         storyFolder.SetParent(wingFolder);
         List<int> entries = CalculateEntryIndex(wing, bldg.numberOfEntries, bldg);
         List<Tuple<int, int>> offsets = GenerateBuildingShape(bldg.Size.x);
+        GetWallSize(bldg);
         for (int x = wing.Bounds.min.x; x < wing.Bounds.max.x; x++)
         {
             for (int y = wing.Bounds.min.y; y < wing.Bounds.max.y; y++)
@@ -331,17 +325,6 @@ public class BuildingRenderer : MonoBehaviour
                                     PlaceNorthWall(x + bldg.depthOffsetEastWall, bldg.maxOffsetEastWall, i, storyFolder, wallPrefabs[bldg.wall2EastOffsetPrefabIndex], bldg);
                             }
                         }
-                       /* else
-                        {
-                            if (i == 0)
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall0NorthPrefabIndex], bldg);
-                            else if (i % 2 == 1)
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall1NorthPrefabIndex], bldg);
-                            else
-                                PlaceNorthWall(x, y, i, storyFolder, wallPrefabs[bldg.wall2NorthPrefabIndex], bldg);
-                            if (PlaceNorthBalcony(bldg, i, x, bldg.numberOfNorthBalconies, bldg.randomSeedOfNorthBalconies, balconiesNorthIndexes)) PlaceNorthWall(x, y, i, storyFolder, balconyPrefabs[bldg.balconyNorthPrefabIndex], bldg);
-                        }*/
-
                     }
 
                     //west wall
@@ -529,9 +512,27 @@ public class BuildingRenderer : MonoBehaviour
         }
         return entries;
     }
+    public Vector3 GetFloorSize(Transform prefab)
+    {
+        Vector3 size = Vector3.zero;
+        var renderer = prefab.GetComponentInChildren<MeshRenderer>();
+
+        if (renderer != null)
+        {
+            size = renderer.bounds.size;
+        }
+        else
+        {
+            Debug.LogError("Prefab does not have a MeshRenderer component!");
+        }
+
+
+        return size;
+    }
+
     private void PlaceFloor(int x, int y, int level, int[] angles, Transform storyFolder, Transform floor)
     {
-        floorSize = GetPrefabSize(floor);
+        floorSize = GetFloorSize(floor) / 2;
         Transform f = Instantiate(floor, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.Euler(angles[0], angles[1], angles[2]));
         f.SetParent(storyFolder);
     }
@@ -566,7 +567,7 @@ public class BuildingRenderer : MonoBehaviour
     }
     private void PlaceStair(int x, int y, int level, Transform storyFolder, Transform stair, Building bldg)
     {
-        var stairSize = GetPrefabSize(stairPrefabs[bldg.stairSouthPrefabIndex]);
+        var stairSize = GetFloorSize(stairPrefabs[bldg.stairSouthPrefabIndex]);
         Transform f = Instantiate(stair, storyFolder.TransformPoint(new Vector3(x * -3f, 0f + level * 2.5f, y * -3f - 3f)), Quaternion.identity);
         f.SetParent(storyFolder);
     }
@@ -577,19 +578,21 @@ public class BuildingRenderer : MonoBehaviour
         float height;
         if (level == 0) height = floorSize.y;
         else height = level * 2 + floorSize.y;
+
         Transform w = Instantiate(
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
-                    x * -3f,
+                    x * -wallSize.z,
                     height,
-                    y * 3f
+                    y * wallSize.z
                     )
                 ),
             Quaternion.Euler(0, 90, 0));
         w.SetParent(storyFolder);
         if (level == bldg.level - 1)
         {
+
             try
             {
                 var stair = w.Find("stair_Cube.051").gameObject;
@@ -609,6 +612,7 @@ public class BuildingRenderer : MonoBehaviour
 
     private void PlaceEastWall(int x, int y, int level, Transform storyFolder, Transform wall, Building bldg)
     {
+        Debug.Log(wallSize.x + " " + wallSize.y + " " + wallSize.z);
         float height;
         if (level == 0) height = floorSize.y;
         else height = level * 2 + floorSize.y;
@@ -616,9 +620,9 @@ public class BuildingRenderer : MonoBehaviour
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
-                    x * -3f - 3f,
+                    x * -wallSize.z - wallSize.z,
                     height,
-                    y * -3f
+                    y * -wallSize.z
                     )
                 ),
              Quaternion.identity);
@@ -650,9 +654,9 @@ public class BuildingRenderer : MonoBehaviour
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
-                    x * -3f - 3f,
+                    x * -wallSize.z - wallSize.z,
                     height,
-                    y * -3f - 3f
+                    y * -wallSize.z - wallSize.z
                     )
                 ),
             Quaternion.Euler(0, -90, 0));
@@ -684,9 +688,9 @@ public class BuildingRenderer : MonoBehaviour
             wall,
             storyFolder.TransformPoint(
                 new Vector3(
-                    x * -3f,
+                    x * -wallSize.z,
                     height,
-                    y * -3f - 3f
+                    y * -wallSize.z - wallSize.z
                     )
                 ),
             Quaternion.Euler(0, 180, 0));
@@ -1097,23 +1101,25 @@ public class BuildingRenderer : MonoBehaviour
           );;
         re.SetParent(wingFolder);
     }
-    public Vector3 GetPrefabSize(Transform prefab)
+    public Vector3 GetWallSize(Building bldg)
     {
-        Vector3 size = Vector3.zero;
-        GameObject instance = Instantiate(prefab.gameObject, Vector3.zero, Quaternion.identity);
-        var renderer = instance.GetComponentInChildren<MeshRenderer>();
-
-        if (renderer != null)
+       MeshRenderer[] renderers = wallPrefabs[bldg.wall0SouthPrefabIndex].GetComponentsInChildren<MeshRenderer>();
+        Vector3 size = new();
+        foreach (MeshRenderer renderer in renderers)
         {
-            size = renderer.bounds.size;
+            if (renderer.bounds.size.x > size.x)
+                size.x = renderer.bounds.size.x;
+            if (renderer.bounds.size.y > size.y)
+                size.y = renderer.bounds.size.y;
+            if (renderer.bounds.size.z > size.z)
+                size.z = renderer.bounds.size.z;
         }
-        else
-        {
-            Debug.LogError("Prefab does not have a MeshRenderer component!");
-        }
-        DestroyImmediate(instance);
+        wallSize.x = (int)Math.Round(size.x);
+        wallSize.y = (int)Math.Round(size.y);
+        wallSize.z = (int)Math.Round(size.z);
 
         return size;
     }
+
 
 }

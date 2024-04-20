@@ -10,7 +10,6 @@ public class BuildingConstructor : MonoBehaviour
            buildingSettings.buildingSize.x,
            buildingSettings.buildingSize.y,
            GenerateWings(buildingSettings),
-           buildingSettings.type,
            buildingSettings.numberOfEntries,
            buildingSettings.offsetOfEntries,
            buildingSettings.MaxNumberOfSouthBalconies,
