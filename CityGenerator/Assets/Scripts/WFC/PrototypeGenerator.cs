@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.Windows;
 public class PrototypeGenerator : MonoBehaviour
 {
-    public List<Prototype> prototypePrefabs;
+    public List<Prototype> roadModules;
     public List<Prototype> prototypes;
     public string path = "Assets/Data/Prototypes";
     WFC_Socket posXHolder;
@@ -27,12 +27,11 @@ public class PrototypeGenerator : MonoBehaviour
         Directory.CreateDirectory(path);
 #endif
 
-        // Generate rotations for all prototypes
-        for (int i = 0; i < prototypePrefabs.Count; i++)
+        for (int i = 0; i < roadModules.Count; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-                Prototype newProto = CreateMyAsset(path, prototypePrefabs[i].name, j.ToString().Replace(" ", ""));
+                Prototype newProto = CreateMyAsset(path, roadModules[i].name, j.ToString().Replace(" ", ""));
                 prototypes.Add(newProto);
             }
         }
@@ -42,19 +41,19 @@ public class PrototypeGenerator : MonoBehaviour
     }
     public void UpdatePrototypes()
     {
-        for (int i = 0; i < prototypePrefabs.Count; i++)
+        for (int i = 0; i < roadModules.Count; i++)
         {
             for (int j = 0; j < 4; j++)
             {
-                prototypes[i * 4 + j].prefab = prototypePrefabs[i].prefab;
+                prototypes[i * 4 + j].prefab = roadModules[i].prefab;
                 prototypes[i * 4 + j].validNeighbours = new NeighbourList();
                 prototypes[i * 4 + j].meshRotation = j;
-                prototypes[i * 4 + j].attributes = prototypePrefabs[i].attributes;
+                prototypes[i * 4 + j].attributes = roadModules[i].attributes;
 
-                prototypes[i * 4 + j].posX = prototypePrefabs[i].posX;
-                prototypes[i * 4 + j].negX = prototypePrefabs[i].negX;
-                prototypes[i * 4 + j].posZ = prototypePrefabs[i].posZ;
-                prototypes[i * 4 + j].negZ = prototypePrefabs[i].negZ;
+                prototypes[i * 4 + j].posX = roadModules[i].posX;
+                prototypes[i * 4 + j].negX = roadModules[i].negX;
+                prototypes[i * 4 + j].posZ = roadModules[i].posZ;
+                prototypes[i * 4 + j].negZ = roadModules[i].negZ;
 
                 if (j == 0)
                 {
@@ -93,41 +92,21 @@ public class PrototypeGenerator : MonoBehaviour
 
         return asset;
     }
-    private NeighbourList GetValidNeighbors(Prototype proto)
+    private NeighbourList GetValidNeighbors(Prototype prototype)
     {
         NeighbourList neighbourList = new NeighbourList();
         foreach (Prototype p in prototypes)
         {
-            if (proto.posX == p.negX)
+            if (prototype.posX == p.negX)
                 neighbourList.posX.Add(p);
-            if (proto.negX == p.posX)
+            if (prototype.negX == p.posX)
                 neighbourList.negX.Add(p);
-            if (proto.posZ == p.negZ)
+            if (prototype.posZ == p.negZ)
                 neighbourList.posZ.Add(p);
-            if (proto.negZ == p.posZ)
+            if (prototype.negZ == p.posZ)
                 neighbourList.negZ.Add(p);
         }
         return neighbourList;
     }
-    public void DisplayPrototypes()
-    {
-        if (prototypeHolder.Count != 0)
-        {
-            foreach (GameObject p in prototypeHolder)
-                DestroyImmediate(p);
-
-            prototypeHolder = new List<GameObject>();
-        }
-
-        for (int i = 0; i < prototypePrefabs.Count; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                GameObject protoObj = Instantiate(prototypePrefabs[i].prefab, new Vector3(i * 1.5f, 0f, j * 1.5f), Quaternion.identity, this.transform);
-                protoObj.transform.Rotate(new Vector3(0f, j * 90, 0f), Space.Self);
-                protoObj.name = (prototypePrefabs[i].prefab.name + "_" + j.ToString());
-                prototypeHolder.Add(protoObj);
-            }
-        }
-    }
+  
 }

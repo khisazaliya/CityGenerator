@@ -848,7 +848,7 @@ public class BuildingRenderer : MonoBehaviour
                     direction = RoofDirection.North;
                 }
 
-                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
+                PlaceRoof(x, y, level, wingFolder, direction, prefab);
             }
         }
     }
@@ -914,7 +914,7 @@ public class BuildingRenderer : MonoBehaviour
                     direction = RoofDirection.North;
                 }
 
-                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
+                PlaceRoof(x, y, level, wingFolder, direction, prefab);
             }
         }
     }
@@ -980,7 +980,7 @@ public class BuildingRenderer : MonoBehaviour
                     direction = RoofDirection.North;
                 }
 
-                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
+                PlaceRoof(x, y, level, wingFolder, direction, prefab);
             }
         }
     }
@@ -1051,12 +1051,12 @@ public class BuildingRenderer : MonoBehaviour
                     direction = RoofDirection.North;
                 }
 
-                PlaceRoof(x, y, level, wingFolder, wing.GetRoof.Type, direction, prefab);
+                PlaceRoof(x, y, level, wingFolder, direction, prefab);
             }
         }
     }
 
-    private void PlaceRoof(int x, int y, int level, Transform wingFolder, RoofType type, RoofDirection direction, Transform prefab)
+    private void PlaceRoof(int x, int y, int level, Transform wingFolder, RoofDirection direction, Transform prefab)
     {
         Transform r;
         r = Instantiate(

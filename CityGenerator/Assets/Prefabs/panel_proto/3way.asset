@@ -15,7 +15,7 @@ MonoBehaviour:
   meshRotation: 0
   prefab: {fileID: 5994736661017998078, guid: 367f04aeb0d3bb347b49f2bce9da1d18, type: 3}
   posX: 0
-  negX: 4
+  negX: 2
   posZ: 0
   negZ: 0
   attributes: 00000000

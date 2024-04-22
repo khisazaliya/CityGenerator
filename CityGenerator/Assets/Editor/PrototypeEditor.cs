@@ -13,9 +13,7 @@ public class PrototypeEditor : Editor {
 		if (GUILayout.Button ("Generate Prototypes")) {
 			prototypeGenerator.GeneratePrototypes();
 		}
-        if (GUILayout.Button ("Display Prototypes")) {
-			prototypeGenerator.DisplayPrototypes();
-		}
+       
 	}
 }
 #endif

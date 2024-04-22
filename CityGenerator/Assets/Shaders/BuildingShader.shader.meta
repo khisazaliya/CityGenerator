@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 23fb3c51ab0b5a44e925d7a900aeb999
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _CubeUVMap: {fileID: 2800000, guid: 02e1b5fe1fbf7dd4389e715083dd95f6, type: 3}
+  - _WindowAtlas: {fileID: 2800000, guid: 845354202fee8684487b9aa146bb6139, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

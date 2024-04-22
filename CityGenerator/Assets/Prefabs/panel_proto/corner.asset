@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRotation: 0
   prefab: {fileID: 6714541287360731624, guid: a1d8cdf568ed35e43a5f72539ea53820, type: 3}
-  posX: 4
+  posX: 2
   negX: 0
   posZ: 0
-  negZ: 4
+  negZ: 2
   attributes: 02000000
   validNeighbours:
     posX:

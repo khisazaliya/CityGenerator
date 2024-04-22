@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 using Unity.VisualScripting;
+using Assets.Scripts.BuildingGenerator.Services;
 
 public class WaveFunctionCollapse : MonoBehaviour
 {
@@ -16,28 +17,12 @@ public class WaveFunctionCollapse : MonoBehaviour
     public Dictionary<Vector2, Cell> activeCells = new Dictionary<Vector2, Cell>();
     public List<Cell> cellsAffected = new List<Cell>();
     public Weights weights;
-    public bool withoutRoad = false;
-    public bool BuildingFromList = false;
-    public bool SensitiveToTerrian = false;
-    public BuildingGenerator buildingGenerator;
     [HideInInspector] public List<Transform> places = new();
     [HideInInspector] public List<Transform> streetElementsPlaces = new();
     [HideInInspector] public List<Vector3> oldBuildingsPlaces = new();
     [HideInInspector] public List<Vector3> oldStreetElementsPlaces = new();
-    [HideInInspector] public List<GameObject> buildings = new List<GameObject>();
     [HideInInspector] public List<Vector3> oldNaturesPlaces = new();
-    [HideInInspector] public List<GameObject> natures = new List<GameObject>();
-    [HideInInspector] public List<GameObject> streetElements = new List<GameObject>();
-    public List<GameObject> largePrefabs = new List<GameObject>();
-    public int largePrefabsCount;
-    public int streetElementsCount;
-    public List<GameObject> streetPrefabs = new List<GameObject>();
 
-    public LODGeneratorService LODGeneratorService = new();
-    [HideInInspector] public System.Random rand = new();
-    public Terrain terrain;
-    public List<GameObject> buildingPrefabs;
-    Vector3 terrainNormal = new();
     void Start()
     {
         StartCoroutine(CollapseOverTime());
@@ -46,14 +31,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     public void InitializeWaveFunction()
     {
         ClearAll();
-        places.Clear();
-        oldBuildingsPlaces.Clear();
-        buildings.Clear();
-        oldNaturesPlaces.Clear();
-        natures.Clear();
-        streetElementsPlaces.Clear();
-        oldStreetElementsPlaces.Clear();
-        streetElements.Clear();
+    
         for (int x = 0, y = 0; x < size.x; x++)
         {
             for (int z = 0; z < size.y; z++)
@@ -89,14 +67,8 @@ public class WaveFunctionCollapse : MonoBehaviour
             c.GenerateWeight(weights);
 
         StartCollapse();
-        //  CombineRoadModules();
     }
 
-    private void DoInstantiate(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent)
-    {
-        Transform temp = ((GameObject)Instantiate(prefab, position, rotation)).transform;
-        temp.parent = parent;
-    }
     private void FindNeighbours(Cell c)
     {
         c.posZneighbour = GetCell(c.coords.x, c.coords.y + 1);
@@ -113,6 +85,9 @@ public class WaveFunctionCollapse : MonoBehaviour
             return null;
     }
     int collapsed;
+
+    public bool SensitiveToTerrain { get; private set; }
+
     public void StartCollapse()
     {
         collapsed = 0;
@@ -143,26 +118,44 @@ public class WaveFunctionCollapse : MonoBehaviour
     }
     private Cell GetCellWithLowestEntropy()
     {
-        List<Cell> cellWithLowestEntropy = new List<Cell>();
-        int x = 100000;
+        List<Cell> cellsWithLowestEntropy = new List<Cell>();
+        float lowestEntropy = float.MaxValue;
 
-        foreach (Cell c in cells)
+        foreach (Cell cell in cells)
         {
-            if (!c.isCollapsed)
+            if (!cell.isCollapsed)
             {
-                if ( c.possiblePrototypes.Count == x)
+                float entropy = CalculateEntropy(cell);
+                if (entropy < lowestEntropy)
                 {
-                    cellWithLowestEntropy.Add(c);
+                    cellsWithLowestEntropy.Clear();
+                    cellsWithLowestEntropy.Add(cell);
+                    lowestEntropy = entropy;
                 }
-                else if (c.possiblePrototypes.Count < x)
+                else if (entropy == lowestEntropy)
                 {
-                    cellWithLowestEntropy.Clear();
-                    cellWithLowestEntropy.Add(c);
-                    x = c.possiblePrototypes.Count;
+                    cellsWithLowestEntropy.Add(cell);
                 }
             }
         }
-        return cellWithLowestEntropy[Random.Range(0, cellWithLowestEntropy.Count)];
+
+        return cellsWithLowestEntropy.Count > 0 ? cellsWithLowestEntropy[Random.Range(0, cellsWithLowestEntropy.Count)] : null;
+    }
+    private float CalculateEntropy(Cell cell)
+    {
+        float entropy = 0;
+        int total = 0;
+        foreach (int weight in cell.prototypeWeights)
+            total += weight;
+
+
+        foreach (var prototypeWeight in cell.prototypeWeights)
+        {
+            float probability = (float)prototypeWeight / total;
+            entropy -= probability * Mathf.Log(probability, 2);
+        }
+
+        return entropy;
     }
     private void CollapseAt(Cell cell)
     {
@@ -179,7 +172,7 @@ public class WaveFunctionCollapse : MonoBehaviour
 
         float angle = 0;
         RaycastHit hit;
-        if (SensitiveToTerrian)
+        if (SensitiveToTerrain)
         {
             if (Physics.Raycast(spawnPosition+ new Vector3(0, 200, 0), Vector3.down, out hit))
             {
@@ -371,22 +364,6 @@ public class WaveFunctionCollapse : MonoBehaviour
         return socketsAccepted;
     }
 
-    private List<WFC_Socket> GetPossibleSockets(List<Prototype> possibleNeighbors)
-    {
-        List<WFC_Socket> socketsAccepted = new List<WFC_Socket>();
-        foreach (Prototype proto in possibleNeighbors)
-        {
-            if (!socketsAccepted.Contains(proto.posX))
-                socketsAccepted.Add(proto.posX);
-            if (!socketsAccepted.Contains(proto.negX))
-                socketsAccepted.Add(proto.negX);
-            if (!socketsAccepted.Contains(proto.posZ))
-                socketsAccepted.Add(proto.posZ);
-            if (!socketsAccepted.Contains(proto.negZ))
-                socketsAccepted.Add(proto.negZ);
-        }
-        return socketsAccepted;
-    }
     public void ClearAll()
     {
         cells.Clear();
@@ -395,264 +372,12 @@ public class WaveFunctionCollapse : MonoBehaviour
         {
             DestroyImmediate(this.transform.GetChild(i).gameObject);
         }
-    }
-
-    public void PlaceBuildings()
-    {
-        float[] rotationOffset = {
-        0f,
-        90f,
-        180f,
-        270f
-    };
-
-        Vector3[] rotationOffset2 = {
-        new Vector3 (-5f, 270f, 1f),
-        new Vector3 (0f, 0f, 0f),
-        new Vector3 (1f, 90, -5f),
-        new Vector3 (-5f, 180, -5f)
-    };
-        if (places.Count == 0)
-        {
-            Debug.LogWarning("List of free places is empty");
-            return;
-        }
-        if (!BuildingFromList)
-        {
-            buildingGenerator.LoadField();
-
-            foreach (var buildingSetting in buildingGenerator.buildingSettings)
-            {
-                for (int j = 0; j < buildingSetting.buildingCount; j++)
-                {
-                    if (places.Count > 0)
-                    {
-                        int index = rand.Next(0, places.Count);
-                        int rotationIndex = rand.Next(0, 4);
-                        //   var building = buildingGenerator.GenerateBuilding(new Vector3(0,0,0), Quaternion.Euler(0f, rotationOffset2[rotationIndex].y, 0f), buildingSetting);
-                        var building = buildingGenerator.GenerateBuilding(new Vector3(0, 0, 0), Quaternion.identity, buildingSetting);
-                        // Vector3 position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f)
-                        //   + new Vector3(rotationOffset2[rotationIndex].x, 0, rotationOffset2[rotationIndex].z);
-                        Vector3 position;
-                        if (withoutRoad)
-                            position = places[index].position - new Vector3(0.5f, 1f, 0);
-                        else
-                            position = places[index].position - new Vector3(building.transform.localScale.x * -5f, 0f, building.transform.localScale.z * -5f);
-                      //  building.transform.SetParent(GetCell(places[index].position.x, places[index].position.y).transform.parent);
-                        building.transform.position = position;
-                        var angle = places[index].rotation;
-
-
-                        building.transform.Rotate(new Vector3(places[index].transform.rotation.x, 0, 0), Space.Self);
-
-
-
-                        Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
-
-
-                        RaycastHit hit;
-                        if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
-                        {
-
-                            building.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                        }
-
-                        oldBuildingsPlaces.Add(position);
-                        buildings.Add(building);
-                        places.RemoveAt(index);
-                    }
-                }
-            }
-        }
-        else
-        {
-            foreach (var buildingPref in buildingPrefabs)
-            {
-                if (places.Count > 0)
-                {
-                    int index = rand.Next(0, places.Count);
-                    int rotationIndex = rand.Next(0, 4);
-                    Vector3 position;
-                    GameObject building = Instantiate(buildingPref);
-                    building.name = "Building";
-                    if (withoutRoad)
-                        position = places[index].position - new Vector3(0.5f, 1f, 0);
-                    else
-                        position = places[index].position + new Vector3(0f, 3f, 0);
-                    building.transform.position = position;
-                    var angle = places[index].rotation;
-
-
-                    building.transform.Rotate(new Vector3(places[index].transform.rotation.x, 0, 0), Space.Self);
-
-
-
-                    Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
-
-
-                    RaycastHit hit;
-                    if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
-                    {
-
-                        building.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                    }
-
-                    oldBuildingsPlaces.Add(position);
-                    buildings.Add(building);
-                    places.RemoveAt(index);
-                }
-            }
-        }
-    }
-
-    public void PlaceNature()
-    {
-        if (places.Count == 0)
-        {
-            Debug.LogWarning("List of free places is empty");
-            return;
-        }
-        if (places.Count > 0)
-        {
-            for (int i = 0; i < largePrefabsCount; i++)
-            {
-                int natureIndex = rand.Next(0, largePrefabs.Count);
-                int index = rand.Next(0, places.Count);
-                GameObject nature = (GameObject)PrefabUtility.InstantiatePrefab(largePrefabs[natureIndex] as GameObject);
-                natures.Add(nature);
-                nature.name = "Nature";
-                nature.transform.position = places[index].position + new Vector3(0, 0, 5);
-
-                Vector3 spawnPosition = new Vector3(places[index].position.x, 0f, places[index].position.z);
-
-                RaycastHit hit;
-                if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
-                {
-                    nature.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                }
-                oldNaturesPlaces.Add(places[index].position);
-                places.RemoveAt(index);
-            }
-        }
-
-    }
-
-    public void RandomizeBuildingPositions()
-    {
-        List<Vector3> newPositions = new List<Vector3>(oldBuildingsPlaces);
-        foreach (var building in buildings)
-        {
-            int index = Random.Range(0, newPositions.Count);
-            if (index < newPositions.Count)
-            {
-                building.transform.position = newPositions[index];
-                Vector3 spawnPosition = new Vector3(newPositions[index].x, 0f, newPositions[index].z);
-                RaycastHit hit;
-                if (Physics.Raycast(spawnPosition, Vector3.down, out hit))
-                {
-                    building.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                }
-                newPositions.RemoveAt(index);
-            }
-        }
-    }
-
-    public void RandomizeNaturePositions()
-    {
-        List<Vector3> newPositions = new List<Vector3>(oldNaturesPlaces);
-        foreach (var nature in natures)
-        {
-            int index = Random.Range(0, newPositions.Count);
-            if (index < newPositions.Count)
-            {
-                nature.transform.position = newPositions[index] + new Vector3(0, 0, 5);
-                newPositions.RemoveAt(index);
-            }
-        }
-    }
-
-    public void RandomizeStreetElementsPositions()
-    {
-        List<Vector3> newPositions = new List<Vector3>(oldStreetElementsPlaces);
-        foreach (var streetElement in streetElements)
-        {
-            int index = Random.Range(0, newPositions.Count);
-            if (index < newPositions.Count)
-            {
-                streetElement.transform.position = streetElementsPlaces[index].position + new Vector3(gridOffset / 2, 0, gridOffset / 2);
-                newPositions.RemoveAt(index);
-            }
-        }
-    }
-
-    public void PlaceStreetElements()
-    {
-        if (streetElementsPlaces.Count == 0)
-        {
-            Debug.LogWarning("List of free places is empty");
-            return;
-        }
-        if (streetElementsPlaces.Count > 0)
-        {
-            for (int i = 0; i < streetElementsCount; i++)
-            {
-                int streetElementIndex = rand.Next(0, streetPrefabs.Count);
-                int index = rand.Next(0, streetElementsPlaces.Count);
-                GameObject streetElement = (GameObject)PrefabUtility.InstantiatePrefab(streetPrefabs[streetElementIndex] as GameObject);
-                streetElements.Add(streetElement);
-                streetElement.name = "StreetElement";
-                streetElement.transform.position = streetElementsPlaces[index].position + new Vector3(gridOffset / 2, 0, gridOffset / 2);
-                oldStreetElementsPlaces.Add(streetElement.transform.position);
-                streetElementsPlaces.RemoveAt(index);
-            }
-        }
-
-    }
-    public void DestroyBuildings()
-    {
-        buildings.Clear();
+        places.Clear();
         oldBuildingsPlaces.Clear();
-        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-        string objectName = "Building";
-        foreach (GameObject obj in objects)
-        {
-            if (obj.name == objectName)
-            {
-                DestroyImmediate(obj);
-            }
-        }
+        oldNaturesPlaces.Clear();
+        streetElementsPlaces.Clear();
+        oldStreetElementsPlaces.Clear();
     }
-
-    public void DestroyNature()
-    {
-        natures.Clear();
-        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-        string objectName = "Nature";
-        foreach (GameObject obj in objects)
-        {
-            if (obj.name == objectName)
-            {
-                DestroyImmediate(obj);
-            }
-        }
-    }
-
-
-
-    public void DestroyStreetElements()
-    {
-        natures.Clear();
-        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-        string objectName = "StreetElement";
-        foreach (GameObject obj in objects)
-        {
-            if (obj.name == objectName)
-            {
-                DestroyImmediate(obj);
-            }
-        }
-    }
-
 }
 
 

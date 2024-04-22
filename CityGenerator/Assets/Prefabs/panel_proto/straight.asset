@@ -16,8 +16,8 @@ MonoBehaviour:
   prefab: {fileID: 6415158888709624533, guid: f042c7af8913f594c954f79f886d010f, type: 3}
   posX: 0
   negX: 0
-  posZ: 4
-  negZ: 4
+  posZ: 2
+  negZ: 2
   attributes: 01000000
   validNeighbours:
     posX:

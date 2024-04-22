@@ -20,21 +20,12 @@ public class Cell : MonoBehaviour
     {
         prototypeWeights = new List<int>(new int[possiblePrototypes.Count]);
         int i = 0;
-        foreach(Prototype p in possiblePrototypes)
+        foreach (Prototype p in possiblePrototypes)
         {
-            /*if(p.attributes.Count==0)
-            {
-                //if no attributes, give it a baseline of 5
-                prototypeWeights[i] = 5;
-            }
-            else*/
-            {
-                //otherwise make its weight the avg of it's attributes
-                foreach (Attribute attribute in p.attributes)
-                    prototypeWeights[i] += weights.GetWeight(attribute);
+            foreach (Attribute attribute in p.attributes)
+                prototypeWeights[i] += weights.GetWeight(attribute);
 
-                prototypeWeights[i] = (int)((float)prototypeWeights[i]/ (float)p.attributes.Count);
-            }
+            prototypeWeights[i] = (int)((float)prototypeWeights[i] / (float)p.attributes.Count);
             i++;
         }
     }

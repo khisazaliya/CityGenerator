@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using Assets.Scripts.BuildingGenerator.Services;
 
 [CustomEditor(typeof(BuildingGenerator))]
 [CanEditMultipleObjects]
@@ -9,13 +10,14 @@ public class BuildingGeneratorEditor : Editor
 {
     private BuildingGenerator buildingGenerator;
     private BuildingSettings previousSettings;
-    private GameObject tempObject;
+    private Repository repository;
 
 
     private void OnEnable()
     {
         buildingGenerator = (BuildingGenerator)target;
         previousSettings = null;
+        repository = new();
         // previousRenderer = null;
     }
 
@@ -31,16 +33,16 @@ public class BuildingGeneratorEditor : Editor
         }
         if (GUILayout.Button("Add buildings settings to file"))
         {
-            buildingGenerator.AddBuildingSettingsToFile();
+            repository.AddBuildingSettingsToFile(buildingGenerator.buildingSettings);
         }
         if (GUILayout.Button("Save settings as a new file"))
         {
-            buildingGenerator.SaveAsNewFile();
+            repository.SaveAsNewFile(buildingGenerator.buildingSettings);
         }
         if (GUILayout.Button("Select File for loading"))
         {
             string loadFilePath = EditorUtility.OpenFilePanel("Select File", "", "");
-            buildingGenerator.SetLoadFilePath(loadFilePath);
+            repository.SetLoadFilePath(loadFilePath);
         }
         previousSettings = new BuildingSettings(buildingGenerator.buildingSettings[0].buildingSize,
             buildingGenerator.buildingSettings[0].buildingCount,
